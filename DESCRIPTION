@@ -15,4 +15,5 @@ Suggests:
   stats,
   english,
   lubridate,
-  boot
+  boot,
+  stringr
