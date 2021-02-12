@@ -1,11 +1,13 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions Created by Chris Evans and Clara Paz
-Version: 0.1.0
+Version: 0.0.0.6
 Author: Chris Evans
 Maintainer: Chris Evans <chris@psyctc.org>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This should evolve into a repository of all the functions that I (CE)
+  and Clara Paz (CP) have created (so far only CE!) and tested enough to
+  want to store here where we will know we can always find the latest
+  versions.  Very much work in progress now.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
