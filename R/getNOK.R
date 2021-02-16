@@ -7,6 +7,12 @@
 #'
 #' @examples
 #' getNOK(c(1:5, NA, 7:10))
+#'
+#' @family counting functions
+#' @seealso \code{\link{getNNA}} for count of missing values
+#'
 getNOK <- function(x){
   sum(!is.na(x))
 }
+
+

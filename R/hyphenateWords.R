@@ -9,6 +9,9 @@
 #' @examples
 #' hyphenateWords(87)
 #' hyphenateWords(87, capitalise = TRUE)
+#' @family text utilities
+#' @seealso \code{\link{convertVector2sentence}} for another utility function for text, converts vectors to comma (or other symbol), separated clauses, e.g. 1:3 to "1, 2 and 3".
+#'
 hyphenateWords <- function(x, capitalise = FALSE) {
   ### this is an almost shameful copy of a suggestion from Bill Venables <Bill.Venables@gmail.com>
   ### Bill is the maintainer of the english package as well as a key man in R

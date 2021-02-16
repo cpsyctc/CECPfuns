@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions Created by Chris Evans and Clara Paz
-Version: 0.0.0.7
+Version: 0.0.0.8
 Author: Chris Evans
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
@@ -19,9 +19,14 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports:
+  tidyr,
+  dplyr,
+  tibble,
+  ggplot2,
+  stringr
 Suggests:
   stats,
   english,
   lubridate,
-  boot,
-  stringr
+  boot

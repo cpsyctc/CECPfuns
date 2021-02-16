@@ -1,2 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "cor")
+importFrom("stats", "na.omit", "sd")
+importFrom("dplyr", "%>%", "as_tibble", "n_distinct", "group_by", "summarise", "n", "pull")

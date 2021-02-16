@@ -10,6 +10,10 @@
 #'
 #' @examples
 #' convertVector2sentence(1:4)
+#'
+#' @family text utilities
+#' @seealso \code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
+#'
 convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteChar = '"'){
   ### takes a vector x, say c(1,2,3,4) and returns
   ### a character variable "1,2,3 and 4"

@@ -19,4 +19,12 @@ Trivial function to count number of non-NA values in input
 }
 \examples{
 getNOK(c(1:5, NA, 7:10))
+
 }
+\seealso{
+\code{\link{getNNA}} for count of missing values
+
+Other counting functions: 
+\code{\link{getNNA}()}
+}
+\concept{counting functions}

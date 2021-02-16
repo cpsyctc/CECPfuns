@@ -25,4 +25,12 @@ convertVector2sentence
 }
 \examples{
 convertVector2sentence(1:4)
+
 }
+\seealso{
+\code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
+
+Other text utilities: 
+\code{\link{hyphenateWords}()}
+}
+\concept{text utilities}

@@ -20,4 +20,12 @@ Trivial function to count number of NA values in input
 \examples{
 getNNA(c(1:5, NA, 7:10))
 getNNA(c(1:5, NA, 7:10))
+
 }
+\seealso{
+\code{\link{getNOK}} for count of non-missing values
+
+Other counting functions: 
+\code{\link{getNOK}()}
+}
+\concept{counting functions}
