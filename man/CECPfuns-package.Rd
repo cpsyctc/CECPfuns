@@ -2,11 +2,33 @@
 % Please edit documentation in R/CECPfuns-package.R
 \docType{package}
 \name{CECPfuns-package}
-\alias{CECPfuns}
 \alias{CECPfuns-package}
 \title{CECPfuns: Package of Utility Functions Created by Chris Evans and Clara Paz}
 \description{
-More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+This should evolve into a repository of all the functions that I (CE)
+  and Clara Paz (CP) have created (so far only CE!) and tested enough to
+  want to store here where we will know we can always find the latest
+  versions.  Very much work in progress now.
 }
-\keyword{internal}
+\details{
+The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single,
+up to date, repository where I can find potentially reusable functions I have written.
+However, it is something that has been very much encouraged by (Dr. Clara Paz) and she has
+contributed to some of these functions and to the general idea of the package.
+Input has also come from Emily Blackshaw\url{https://www.researchgate.net/profile/Emily_Blackshaw2}.
+It is possible that these functions may be of use to others so I am uploading it regularly after
+any significant changes to GitHub at \url{https://github.com/cpsyctc/CECPfuns}.
+
+General resources:
+As above, you can find out more about Clara at \url{https://investigacion.udla.edu.ec/udla_teams/clara-paz/},
+you can find out more about Emily at \url{https://www.researchgate.net/profile/Emily_Blackshaw2}
+and about her PhD which I am supervising on ResearchGate,
+\href{https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility}{here}
+and my own biggest research programme, which overlaps with Emily's work, is the CORE system:
+\url{https://www.corestemtrust.org.uk/} and a web site about my non-CORE work is slowly building (from a much earlier one)
+at \url{https://www.psyctc.org/psyctc/} and my personal site is \url{https://www.psyctc.org/pelerinage2016}.
+}
+\author{
+\strong{Maintainer}: Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
+
+}
