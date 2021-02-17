@@ -4,23 +4,26 @@
 #' @param formula1 formula defining the two variables to be correlated as var1 ~ var2
 #' @param data data.frame or tibble with the data, often cur_data() in dplyr
 #' @param bootReps integer giving number of bootstrap replications
-#' @param conf numeric giving width of confidence interval, e.g. .95 (default)
+#' @param conf numeric value giving width of confidence interval, e.g. .95 (default)
 #' @param method string giving correlation method, can be single letter 'p', 's' or 'k' for pearson, spearman or kendall (in cor())
-#' @param bootCImethod string giving method to derive bootstrap CI, can be two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bcagte
+#' @param bootCImethod string giving method to derive bootstrap CI, can be two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca
 #'
-#' @return list
+#' @return list of named values: obsCorr, LCLCorr and UCLCorr
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' library(tidyverse)
 #' data %>%
+#'    ### don't forget to prefix the call with "list(" to tell dplyr
+#'    ### you are creating list output
 #'    summarise(corr = list(getBootCICorr(score1 ~ score2,
 #'              cur_data(),
 #'              method = "p", # gets the Pearson correlation
 #'              bootReps = 1000,
 #'              ### "pe" in next line gets the percentile bootstrap CI
 #'              bootCImethod = "pe"))) %>%
+#'    ### now unnest the list output to separate columns
 #'    unnest_wider(corr)
 #'}
 #'
@@ -34,7 +37,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   ### bootReps sets the number of bootstrap replications
   ### conf sets the width of the CI
   ### uses the boot() and boot.ci() functions from the package boot, hence ...
-  invisible(stopifnot(requireNamespace("boot")))
+  invisible(stopifnot(base::requireNamespace("boot")))
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### sanity check 1: is formula1 a formula?!
@@ -57,7 +60,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   vecVar1 <- eval(var1, data, e)
   ### same for the predictor
   vecVar2 <- eval(var2, data, e)
-  ### sanity check 4: variables must but numeric
+  ### sanity check 4: variables must be numeric
   if (!is.numeric(vecVar1) | !is.numeric(vecVar2)) {
     stop("Variables must be numeric")
   }
@@ -132,7 +135,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   }
   ### end of sanity checking
   ###
-  message("Function: getBootCIPearson")
+  message("Function: getBootCICorr")
   message(paste("Correlation method is:",
                 useMethod))
   message("Function always uses only pairwise complete values of both variables")
