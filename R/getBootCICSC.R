@@ -9,6 +9,12 @@
 #' @return list of named values obsCSC, LCLCSC and UCLCSC
 #' @export
 #'
+#' @section Background:
+#' For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
+#'
+#' @family RCSC functions
+#' @seealso \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
+#'
 #' @examples
 #' \dontrun{
 #' ### will need tidyverse to run
@@ -33,6 +39,7 @@
 #' tmpDat %>%
 #'   ### don't forget to prefix the call with "list(" to tell dplyr
 #'   ### you are creating list output
+#'   summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) %>%
 #'   ### now unnest the list to columns
 #'   unnest_wider(CSC)
 #'
@@ -75,9 +82,17 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   scores <- eval(var1, data, e)
   ### same for the predictor
   grp <- eval(var2, data, e)
+  ### boot() needs stratification variable, i.e. grouping variable, to be numeric
+  if (!is.numeric(grp)) {
+    if (is.factor(grp)) {
+      grp <- as.numeric(grp)
+    } else {
+      grp <- as.numeric(factor(grp))
+    }
+  }
   ### sanity check 4: must have only 2 values in grp
   if (n_distinct(grp) != 2){
-    stop("grouping variable must have two and only two values")
+    stop("Grouping variable must have two and only two values.  You may see this if group_by() stratifying\nhas meant you don't have two values of the grouping variable.")
   }
   list(scores = scores,
        grp = grp) %>%
@@ -94,7 +109,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
     summarise(min = min(n)) %>%
     pull() -> valMinN
   if (valMinN < 20) {
-    stop("You won't get a stable bootstrap CI with minimum cell size < 20")
+    stop("You won't get a stable bootstrap CI with minimum cell size < 20. You may see this if group_by() stratifying\nhas given you a small cell size.")
   }
   ### sanity check 7: R must be numeric and integer
   ### can't imagine we really need this but ...

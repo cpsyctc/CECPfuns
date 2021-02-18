@@ -1,10 +1,37 @@
-
 #' Title
 #' Function to return Jacobson (et al.) Clinically Significant Change (CSC)
+#' @description
+#' Fairly trivial function to compute CSC, mainly useful if using group_by() piping to find CSCs for various groups/subsets in your data.
 #' @param formula1 defines variables to use as score ~ grp where score has scores and grp has grouping
 #' @param data is the data, typically cur_data() when called in tidyverse pipe
 #'
-#' @return single value for the CSC
+#' @return A single numeric value for the CSC
+#'
+#' @section Background:
+#' The CSC comes out of the classic paper Jacobson, N. S., Follette, W. C., & Revenstorf, D. (1984).
+#' Psychotherapy outcome research: Methods for reporting variability and evaluating clinical significance.
+#' Behavior Therapy, 15, 336–352.
+#' The authors defined three methods to set a criterion between "clinical" and "non-clinical" scores.
+#' Generally we prefer "help-seeking" and "non-help-seeking" to "clinical" and "non-clinical" to avoid automatically jumping into a disease/medical model.
+#'
+#' For a measure cued so that higher scores indicate more problems the methods were as follows.
+#' * Method a: the score 2 SD below the mean in the help-seeking group.
+#' * Method b: the score 2 SD above the mean in the non-help-seeking group.
+#' * Method c: the score between the means of the two groups defined so that,
+#' for Gaussian distributions of scores, the cutting point would misclassify the same proportions of each group.
+#' This is often spoken of as the point halfway between the two means but the definition
+#' is actually more subtle than that and will only be halfway between the means where
+#' the two groups have the same score SD.  Where the groups have different SD the formula for
+#' method c is this.
+#'
+#' \loadmathjax{}
+#' \mjdeqn{\frac{SD_{HS}*M_{notHS} + SD_{notHS}*M_{HS}}{SD_{HS}+SD_{notHS}}}{}
+#'
+#' (with SD for Standard Deviation (doh!) and M for Mean)
+#'
+#' @family RCSC functions
+#' @seealso \code{\link{getBootCICSC}} for CSC and bootstrap CI around it
+#'
 #' @export
 #'
 #' @examples
@@ -35,6 +62,8 @@
 #'  group_by(gender) %>%
 #'  summarise(CSC = getCSC(scores ~ grp, cur_data()))
 #' }
+#'
+#' @author Chris Evans
 
 getCSC <- function(formula1, data) {
   ### function to return CSC

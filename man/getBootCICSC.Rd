@@ -25,6 +25,11 @@ list of named values obsCSC, LCLCSC and UCLCSC
 Title
 Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that.
 }
+\section{Background}{
+
+For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
+}
+
 \examples{
 \dontrun{
 ### will need tidyverse to run
@@ -49,6 +54,7 @@ set.seed(12345) # to get replicable results from the bootstrap
 tmpDat \%>\%
   ### don't forget to prefix the call with "list(" to tell dplyr
   ### you are creating list output
+  summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) \%>\%
   ### now unnest the list to columns
   unnest_wider(CSC)
 
@@ -61,3 +67,10 @@ tmpDat \%>\%
   unnest_wider(CSC)
 }
 }
+\seealso{
+\code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
+
+Other RCSC functions: 
+\code{\link{getCSC}()}
+}
+\concept{RCSC functions}
