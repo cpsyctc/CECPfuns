@@ -1,8 +1,7 @@
-#' Title
 #' Trivial function to count number of non-NA values in input
-#' @param x vector
+#' @param x is a vector of values
 #'
-#' @return numeric
+#' @return numeric: the number of non-NA values in x
 #' @export
 #'
 #' @examples
@@ -10,6 +9,8 @@
 #'
 #' @family counting functions
 #' @seealso \code{\link{getNNA}} for count of missing values
+#'
+#' @author Chris Evans
 #'
 getNOK <- function(x){
   sum(!is.na(x))

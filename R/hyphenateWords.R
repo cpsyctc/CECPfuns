@@ -1,4 +1,3 @@
-#' Title
 #' Function to convert numbers to hyphenated (English) words, e.g. 87 to "eighty-seven"
 #' @param x numeric
 #' @param capitalise logical
@@ -11,6 +10,8 @@
 #' hyphenateWords(87, capitalise = TRUE)
 #' @family text utilities
 #' @seealso \code{\link{convertVector2sentence}} for another utility function for text, converts vectors to comma (or other symbol), separated clauses, e.g. 1:3 to "1, 2 and 3".
+#'
+#' @author Chris Evans
 #'
 hyphenateWords <- function(x, capitalise = FALSE) {
   ### this is an almost shameful copy of a suggestion from Bill Venables <Bill.Venables@gmail.com>

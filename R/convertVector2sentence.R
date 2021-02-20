@@ -1,5 +1,4 @@
-#' Title
-#' convertVector2sentence
+#' Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
 #' @param x input vector to convert
 #' @param andVal string to put between penultimate and last entry
 #' @param quoted logical indicating whether each item should be quoted and hence
@@ -13,6 +12,8 @@
 #'
 #' @family text utilities
 #' @seealso \code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
+#'
+#' @author Chris Evans
 #'
 convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteChar = '"'){
   ### takes a vector x, say c(1,2,3,4) and returns

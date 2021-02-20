@@ -2,8 +2,7 @@
 % Please edit documentation in R/hyphenateWords.R
 \name{hyphenateWords}
 \alias{hyphenateWords}
-\title{Title
-Function to convert numbers to hyphenated (English) words, e.g. 87 to "eighty-seven"}
+\title{Function to convert numbers to hyphenated (English) words, e.g. 87 to "eighty-seven"}
 \usage{
 hyphenateWords(x, capitalise = FALSE)
 }
@@ -16,7 +15,6 @@ hyphenateWords(x, capitalise = FALSE)
 character
 }
 \description{
-Title
 Function to convert numbers to hyphenated (English) words, e.g. 87 to "eighty-seven"
 }
 \examples{
@@ -28,5 +26,8 @@ hyphenateWords(87, capitalise = TRUE)
 
 Other text utilities: 
 \code{\link{convertVector2sentence}()}
+}
+\author{
+Chris Evans
 }
 \concept{text utilities}

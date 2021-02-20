@@ -2,19 +2,17 @@
 % Please edit documentation in R/getNNA.R
 \name{getNNA}
 \alias{getNNA}
-\title{Title
-Trivial function to count number of NA values in input}
+\title{Trivial function to count number of NA values in input}
 \usage{
 getNNA(x)
 }
 \arguments{
-\item{x}{vector}
+\item{x}{vector containing the values to check for NAs}
 }
 \value{
-numeric
+numeric: the number of NA values in
 }
 \description{
-Title
 Trivial function to count number of NA values in input
 }
 \examples{
@@ -27,5 +25,8 @@ getNNA(c(1:5, NA, 7:10))
 
 Other counting functions: 
 \code{\link{getNOK}()}
+}
+\author{
+Chris Evans
 }
 \concept{counting functions}

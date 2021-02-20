@@ -1,4 +1,3 @@
-#' Title
 #' Function to return Jacobson (et al.) Clinically Significant Change (CSC)
 #' @description
 #' Fairly trivial function to compute CSC, mainly useful if using group_by() piping to find CSCs for various groups/subsets in your data.
@@ -8,9 +7,7 @@
 #' @return A single numeric value for the CSC
 #'
 #' @section Background:
-#' The CSC comes out of the classic paper Jacobson, N. S., Follette, W. C., & Revenstorf, D. (1984).
-#' Psychotherapy outcome research: Methods for reporting variability and evaluating clinical significance.
-#' Behavior Therapy, 15, 336–352.
+#' The CSC comes out of the classic paper Jacobson, Follette & Revenstorf (1984)
 #' The authors defined three methods to set a criterion between "clinical" and "non-clinical" scores.
 #' Generally we prefer "help-seeking" and "non-help-seeking" to "clinical" and "non-clinical" to avoid automatically jumping into a disease/medical model.
 #'
@@ -64,6 +61,14 @@
 #' }
 #'
 #' @author Chris Evans
+#'
+#' @references
+#' * Jacobson, N. S., Follette, W. C., & Revenstorf, D. (1984).
+#' Psychotherapy outcome research: Methods for reporting variability and evaluating clinical significance.
+#' Behavior Therapy, 15, 336–352.
+#' * Evans, C., Margison, F., & Barkham, M. (1998). The contribution of reliable and clinically significant
+#' change methods to evidence-based mental health. Evidence Based Mental Health, 1, 70–72. https://doi.org/0.1136/ebmh.1.3.70
+#'
 
 getCSC <- function(formula1, data) {
   ### function to return CSC

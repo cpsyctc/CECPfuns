@@ -8,7 +8,7 @@
 This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to
   want to store here where we will know we can always find the latest
-  versions.  Very much work in progress now.
+  versions.  Please check the MIT licence for disclaimer.
 }
 \details{
 The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single,
@@ -35,6 +35,41 @@ and about her PhD which I am supervising on ResearchGate,
 at \url{https://www.psyctc.org/psyctc/} and
 \item my personal site is \url{https://www.psyctc.org/pelerinage2016}.
 }
+}
+}
+
+\section{To do list}{
+
+\itemize{
+\item Improve help pages for existing functions
+\item Add tests
+\item Add vignettes
+\item Add data
+\item Add getCronbachAlpha()
+\item Add getBootCICronbachAlpha()
+\item Add convWithSpearmanBrown()
+\item Add getRCIfromSDandAlpha()
+\item Add getRCIfromScoresAndAlpha()
+\item Add getRCIfromItemData()
+\item Add getBootCIRCIfromScoresAndAlpha()
+\item Add getBootCIRCIfromItemData()
+\item Add getBootCIMeanDiff()
+\item Add getHedgesg() (currently an empty file)
+\item Add getCohend() (deal with "-2")
+\item Add getCohendPaired()
+\item Add convCohend2Hedgesg() (deal with "-2")
+\item Add countRCSCnumbers() (allow for gender?)
+\item Add plotJacobsonRCSC() (ditto)
+\item Add findYourFunctions()
+\item Add getRmdFileStats()
+\item Add readCEdates()
+\item Add isOne2One()
+\item Add allUnique()
+\item Add getScore()
+\item Add getCOREOMscores() (for the CORE-OM)
+\item Add getCORESFAOMscores() (for the CORE-SF/A)
+\item Add getCORESFBOMscores() (for the CORE-SF/B)
+\item then perhaps some functions for standard reports from (fairly) standard CORE datasets (should feed separate Rmd templates)
 }
 }
 

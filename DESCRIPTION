@@ -1,13 +1,13 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions Created by Chris Evans and Clara Paz
-Version: 0.0.0.8
+Version: 0.0.0.9
 Author: Chris Evans
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to
   want to store here where we will know we can always find the latest
-  versions.  Very much work in progress now.
+  versions.  Please check the MIT licence for disclaimer.
 Authors@R: 
     person(given = "Chris",
            family = "Evans",
@@ -27,8 +27,11 @@ Imports:
   ggplot2,
   stringr
 Suggests:
-  stats,
-  english,
-  lubridate,
-  boot,
-  mathjaxr
+    stats,
+    english,
+    lubridate,
+    boot,
+    mathjaxr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

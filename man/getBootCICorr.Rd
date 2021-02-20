@@ -2,8 +2,7 @@
 % Please edit documentation in R/getBootCICorr.R
 \name{getBootCICorr}
 \alias{getBootCICorr}
-\title{Title
-Function to return observed correlation between two variables with bootstrap CI}
+\title{Function to return observed correlation between two variables with bootstrap CI}
 \usage{
 getBootCICorr(
   formula1,
@@ -31,7 +30,6 @@ getBootCICorr(
 list of named values: obsCorr, LCLCorr and UCLCorr
 }
 \description{
-Title
 Function to return observed correlation between two variables with bootstrap CI
 }
 \examples{
@@ -52,6 +50,11 @@ data \%>\%
 
 }
 \seealso{
-\code{\link{getNNA}} for count of missing values
+Other bootstrap CI functions: 
+\code{\link{getBootCICSC}()},
+\code{\link{getBootCImean}()}
+}
+\author{
+Chris Evans
 }
 \concept{bootstrap CI functions}

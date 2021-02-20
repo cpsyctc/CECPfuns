@@ -23,4 +23,35 @@
 #'   at <https://www.psyctc.org/psyctc/> and
 #'   +  my personal site is <https://www.psyctc.org/pelerinage2016>.
 #'
+#' @section To do list:
+#' * Improve help pages for existing functions
+#' * Add tests
+#' * Add vignettes
+#' * Add data
+#' * Add getCronbachAlpha()
+#' * Add getBootCICronbachAlpha()
+#' * Add convWithSpearmanBrown()
+#' * Add getRCIfromSDandAlpha()
+#' * Add getRCIfromScoresAndAlpha()
+#' * Add getRCIfromItemData()
+#' * Add getBootCIRCIfromScoresAndAlpha()
+#' * Add getBootCIRCIfromItemData()
+#' * Add getBootCIMeanDiff()
+#' * Add getHedgesg() (currently an empty file)
+#' * Add getCohend() (deal with "-2")
+#' * Add getCohendPaired()
+#' * Add convCohend2Hedgesg() (deal with "-2")
+#' * Add countRCSCnumbers() (allow for gender?)
+#' * Add plotJacobsonRCSC() (ditto)
+#' * Add findYourFunctions()
+#' * Add getRmdFileStats()
+#' * Add readCEdates()
+#' * Add isOne2One()
+#' * Add allUnique()
+#' * Add getScore()
+#' * Add getCOREOMscores() (for the CORE-OM)
+#' * Add getCORESFAOMscores() (for the CORE-SF/A)
+#' * Add getCORESFBOMscores() (for the CORE-SF/B)
+#' * then perhaps some functions for standard reports from (fairly) standard CORE datasets (should feed separate Rmd templates)
+#'
 "_PACKAGE"

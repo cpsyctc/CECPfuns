@@ -2,8 +2,7 @@
 % Please edit documentation in R/convert2CEdate.R
 \name{convert2CEdate}
 \alias{convert2CEdate}
-\title{Title
-Function to convert Dates to my date format strings}
+\title{Function to convert Dates to my date format strings}
 \usage{
 convert2CEdate(date)
 }
@@ -14,13 +13,27 @@ convert2CEdate(date)
 string
 }
 \description{
-Title
 Function to convert Dates to my date format strings
 }
+\section{Background}{
+
+I like to write dates in the format dd.mm.yyyy but doing the months, mm,
+in Roman numerals, i.e. i = January, xii = December.  This, unless someone
+has never met the Roman's weird numbering system seems always to promote
+initial bemusement but then recognition and I've never had anyone say
+"but why not use Roman numerals for the days?" so I think it does disambiguate dates.
+It is a trivial function and perhaps I'm the only person who will ever use it but here it is.
+It expects input as a Date and can handle a vector of dates.
+}
+
 \examples{
 date1 <- as.Date("1/1/2021", format = "\%d/\%m/\%Y")
 convert2CEdate(date1)
 date2 <- as.Date("2/1/2021", format = "\%d/\%m/\%Y")
 dates12 <- c(date1, date2)
 convert2CEdate(dates12)
+
+}
+\author{
+Chris Evans
 }

@@ -1,4 +1,3 @@
-#' Title
 #' Function to return observed correlation between two variables with bootstrap CI
 #'
 #' @param formula1 formula defining the two variables to be correlated as var1 ~ var2
@@ -28,7 +27,9 @@
 #'}
 #'
 #' @family bootstrap CI functions
-#' @seealso \code{\link{getNNA}} for count of missing values
+#'
+#' @author Chris Evans
+#'
 getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = .95, bootCImethod = "pe") {
   ### function to return bootstrap CI around an observed correlation
   ### between two variables fed in within a formula as variable1 ~ variable2

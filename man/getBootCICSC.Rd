@@ -66,11 +66,20 @@ tmpDat \%>\%
   ### remember to unnnest again!
   unnest_wider(CSC)
 }
+
 }
 \seealso{
 \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
 
 Other RCSC functions: 
 \code{\link{getCSC}()}
+
+Other bootstrap CI functions: 
+\code{\link{getBootCICorr}()},
+\code{\link{getBootCImean}()}
+}
+\author{
+Chris Evans
 }
 \concept{RCSC functions}
+\concept{bootstrap CI functions}

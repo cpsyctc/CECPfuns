@@ -2,19 +2,17 @@
 % Please edit documentation in R/getNOK.R
 \name{getNOK}
 \alias{getNOK}
-\title{Title
-Trivial function to count number of non-NA values in input}
+\title{Trivial function to count number of non-NA values in input}
 \usage{
 getNOK(x)
 }
 \arguments{
-\item{x}{vector}
+\item{x}{is a vector of values}
 }
 \value{
-numeric
+numeric: the number of non-NA values in x
 }
 \description{
-Title
 Trivial function to count number of non-NA values in input
 }
 \examples{
@@ -26,5 +24,8 @@ getNOK(c(1:5, NA, 7:10))
 
 Other counting functions: 
 \code{\link{getNNA}()}
+}
+\author{
+Chris Evans
 }
 \concept{counting functions}

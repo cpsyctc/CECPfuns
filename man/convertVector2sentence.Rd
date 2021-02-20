@@ -2,8 +2,7 @@
 % Please edit documentation in R/convertVector2sentence.R
 \name{convertVector2sentence}
 \alias{convertVector2sentence}
-\title{Title
-convertVector2sentence}
+\title{Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3}
 \usage{
 convertVector2sentence(x, andVal = " and ", quoted = FALSE, quoteChar = "\\"")
 }
@@ -20,8 +19,7 @@ convertVector2sentence(x, andVal = " and ", quoted = FALSE, quoteChar = "\\"")
 string
 }
 \description{
-Title
-convertVector2sentence
+Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
 }
 \examples{
 convertVector2sentence(1:4)
@@ -32,5 +30,8 @@ convertVector2sentence(1:4)
 
 Other text utilities: 
 \code{\link{hyphenateWords}()}
+}
+\author{
+Chris Evans
 }
 \concept{text utilities}

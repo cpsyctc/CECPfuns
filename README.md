@@ -4,6 +4,12 @@
 # CECPfuns
 
 <!-- badges: start -->
+
+![Package:
+CECPfuns](https://img.shields.io/badge/Package-CECPfuns-lightgrey)
+![Lifecycle:
+developing](https://img.shields.io/badge/Lifecycle-developing-orange)
+![Licence: MIT](https://img.shields.io/badge/Licence-MIT-brightgreen)
 <!-- badges: end -->
 
 The goal driving the creation of CECPfuns is largely selfish: to make
@@ -45,3 +51,19 @@ can look for it every time you launch R, see
     site about my non-CORE work is slowly building (from a much earlier
     one) at <https://www.psyctc.org/psyctc/> and my personal site is
     <https://www.psyctc.org/pelerinage2016>.
+
+## Licence and disclaimer
+
+The package is licensed under the MIT licence
+<https://opensource.org/licenses/MIT> which means you should be able to
+reuse anything here that you find useful with no fee to me as long as
+you comply with the terms of that licence. The licence has a very
+capitalised disclaimer:
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

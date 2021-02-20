@@ -13,6 +13,7 @@
 #' For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
 #'
 #' @family RCSC functions
+#' @family bootstrap CI functions
 #' @seealso \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
 #'
 #' @examples
@@ -51,6 +52,9 @@
 #'   ### remember to unnnest again!
 #'   unnest_wider(CSC)
 #' }
+#'
+#' @author Chris Evans
+#'
 getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImethod = "pe") {
   ### function to return bootstrap CI around an observed correlation
   ### between two variables fed in within a formula as variable1 ~ variable2
