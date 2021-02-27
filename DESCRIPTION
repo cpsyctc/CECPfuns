@@ -33,5 +33,9 @@ Suggests:
     boot,
     mathjaxr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    nlme,
+    lme4,
+    lmerTest,
+    specr
 VignetteBuilder: knitr

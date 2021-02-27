@@ -1,4 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "cor")
 importFrom("stats", "na.omit", "sd")
-importFrom("dplyr", "%>%", "as_tibble", "n_distinct", "group_by", "summarise", "n", "pull")
+importFrom("dplyr", "%>%", "as_tibble", "n_distinct", "group_by", "summarise", "n", "pull", "lag", "filter", "if_else", "mutate", "select", "arrange", "desc", "row_number")
+importFrom("stringr", "fixed", "str_replace", "str_c", "str_trim", "str_split")
+importFrom("stats", "qnorm")

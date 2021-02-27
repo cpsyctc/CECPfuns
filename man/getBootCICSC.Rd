@@ -72,7 +72,8 @@ tmpDat \%>\%
 \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
 
 Other RCSC functions: 
-\code{\link{getCSC}()}
+\code{\link{getCSC}()},
+\code{\link{getRCIfromSDandAlpha}()}
 
 Other bootstrap CI functions: 
 \code{\link{getBootCICorr}()},

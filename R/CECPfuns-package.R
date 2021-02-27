@@ -32,7 +32,6 @@
 #' * Add getBootCICronbachAlpha()
 #' * Add convWithSpearmanBrown()
 #' * Add getRCIfromSDandAlpha()
-#' * Add getRCIfromScoresAndAlpha()
 #' * Add getRCIfromItemData()
 #' * Add getBootCIRCIfromScoresAndAlpha()
 #' * Add getBootCIRCIfromItemData()

@@ -7,7 +7,12 @@
 #' @return A single numeric value for the CSC
 #'
 #' @section Background:
-#' The CSC comes out of the classic paper Jacobson, Follette & Revenstorf (1984)
+#' Like the CSC, the RCI comes out of the classic paper Jacobson, Follette & Revenstorf (1984).  The thrust of the paper
+#' was about trying to bridge the gap between (quantitative) researchers who then, and still, tend to think in terms of
+#' aggregated data about change in therapy, and clinicians who tend to think about individual client's change.
+#'
+#' The authors came up with two indices: the RCI, and the one here: the CSC or Clinically Significant Change (cut-off).
+#'
 #' The authors defined three methods to set a criterion between "clinical" and "non-clinical" scores.
 #' Generally we prefer "help-seeking" and "non-help-seeking" to "clinical" and "non-clinical" to avoid automatically jumping into a disease/medical model.
 #'
