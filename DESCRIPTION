@@ -25,7 +25,8 @@ Imports:
   dplyr,
   tibble,
   ggplot2,
-  stringr
+  stringr,
+  magrittr
 Suggests:
     stats,
     english,

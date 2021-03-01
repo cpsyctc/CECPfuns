@@ -5,19 +5,22 @@
 \title{Function to return bootstrap CI around observed mean}
 \usage{
 getBootCImean(
-  var,
-  data,
+  x,
+  data = NULL,
   bootReps = 1000,
   conf = 0.95,
   bootCImethod = c("perc", "norm", "basic", "bca"),
   na.rm = TRUE,
-  verbose = TRUE
+  verbose = TRUE,
+  nLT20err = TRUE,
+  nGT10kerr = TRUE,
+  zeroSDerr = FALSE
 )
 }
 \arguments{
-\item{var}{name of variable in ...}
+\item{x}{name of variable in data, character or bare name, or simply a numeric vector if data is NULL, see examples}
 
-\item{data}{dataframe or tibble (often cur_data() if using function in dplyr pipe)}
+\item{data}{data frame or tibble containing variable, NULL if x passed directly}
 
 \item{bootReps}{integer for number of bootstrap replications}
 
@@ -28,6 +31,12 @@ getBootCImean(
 \item{na.rm}{logical, set to FALSE to ensure function will fail if there are missing data}
 
 \item{verbose}{logical, FALSE suppresses the messages}
+
+\item{nLT20err}{logical, throws error if length(na.omit(x)) < 20, otherwise returns NA for CI}
+
+\item{nGT10kerr}{logical, throws error if length(na.omit(x)) > 10k to prevent very long rusn, override with FALSE}
+
+\item{zeroSDerr}{logical, default is to return NA for CI if sd(x) is near zero or zero, zeroSDerr throws error}
 }
 \value{
 list of length 3: obsmean, LCLmean and UCLmean
@@ -35,10 +44,26 @@ list of length 3: obsmean, LCLmean and UCLmean
 \description{
 Function to return bootstrap CI around observed mean
 }
+\section{comment}{
+
+I have tried to make this function as flexible as possible in two particular ways.
+\enumerate{
+\item The variable on which to compute the bootstrapped CI of the mean can be fed in as a simple vector, or as a named column in a dataframe or tibble
+\item The function defaults to stop with an error where it might run for many hours.  However, that can be overridden with nGT10kerr = FALSE.
+\item Where there are insufficient non-missing values the default is to stop but again nLT20err = FALSE overrides that and returns NA for the
+confidence limits.
+\item Where there is zero or near zero variance the function returns NA for the confidence limits but that can be made an error condition with zeroSDerr = TRUE.
+\item The function defaults (verbose = TRUE) to give quite a lot of information in messages.  Those can be switched off.
+\item The width of the confidence interval and the method of computing it can be set, as can the number of bootstrap resamples to run.
+}
+
+As with almost all my functions in the CECPfuns package, getBootCImean() is primarily designed for use in dplyr piping.
+}
+
 \examples{
 \dontrun{
 set.seed(12345) # get replicable results
-
+library(tidyverse) # strictly only magrittr needed but
 ### now make up some silly data
 n <- 50
 rnorm(n) \%>\% # get some random Gaussian data
@@ -48,11 +73,27 @@ rnorm(n) \%>\% # get some random Gaussian data
          ### create variable with some missing data to test na.rm = FALSE
          y = if_else(value < -1, NA_real_, value)) -> tmpDat
 
-### check that worked!
+### check that worked
 tmpDat
 ### looks fine!
 
-### default arguments, get mean of value
+### default arguments, just supply variable
+getBootCImean(tmpDat$value)
+
+### default arguments, select variable by name as character
+getBootCImean("value", tmpDat))
+
+### default arguments, select variable by name as bare name
+tmpDat \%>\%
+  summarise(meanCI = list(getBootCImean(value, cur_data()))) \%>\%
+  unnest_wider(meanCI)
+
+### default arguments, select variable by name as character
+tmpDat \%>\%
+  summarise(meanCI = list(getBootCImean("value", cur_data()))) \%>\%
+  unnest_wider(meanCI)
+
+### default arguments, select variable by name as bare name
 tmpDat \%>\%
   summarise(meanCI = list(getBootCImean(value, cur_data()))) \%>\%
   unnest_wider(meanCI)
