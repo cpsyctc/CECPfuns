@@ -131,8 +131,6 @@ getBootCImean <- function(x,
                           nLT20err = TRUE,
                           nGT10kerr = TRUE,
                           zeroSDerr = FALSE) {
-  ### parse the arguments
-
 
   ### function to return bootstrap CI around an observed mean for
   ### single variable fed in within a data frame or tibble, data
@@ -144,9 +142,10 @@ getBootCImean <- function(x,
   invisible(stopifnot(base::requireNamespace("magrittr")))
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
+  ### parse the arguments
   listCall <- as.list(match.call())
   ### sort out data
-  print(listCall)
+  # print(listCall)
   if (!is.null(listCall$data)) {
     if (!("data.frame" %in% class(data))) {
       stop("You passed non-null data argument into getBootCImean so must have 'data.frame' in class(data), i.e. should be data.frame or tibble generally.")
@@ -220,7 +219,7 @@ getBootCImean <- function(x,
   ###
   if (verbose){
     message("Function: getBootCImean{CECPfuns}")
-    message(paste("Call:", match.call()))
+    message(paste("Call:", list(match.call())))
     message(paste("Usable n =", length(x)))
     message(paste("Number of bootstrap replications is:",
                   bootReps))

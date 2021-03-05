@@ -11,6 +11,7 @@
 #' convertVector2sentence(1:4)
 #'
 #' @family text utilities
+#' @family converting utilities
 #' @seealso \code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
 #'
 #' @author Chris Evans

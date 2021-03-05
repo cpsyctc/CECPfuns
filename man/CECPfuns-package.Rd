@@ -47,7 +47,6 @@ at \url{https://www.psyctc.org/psyctc/} and
 \item Add data
 \item Add getCronbachAlpha()
 \item Add getBootCICronbachAlpha()
-\item Add convWithSpearmanBrown()
 \item Add getRCIfromSDandAlpha()
 \item Add getRCIfromItemData()
 \item Add getBootCIRCIfromScoresAndAlpha()

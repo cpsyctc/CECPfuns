@@ -20,6 +20,8 @@
 #' dates12 <- c(date1, date2)
 #' convert2CEdate(dates12)
 #'
+#' @family converting utilities
+#'
 #' @author Chris Evans
 #'
 convert2CEdate <- function(date){

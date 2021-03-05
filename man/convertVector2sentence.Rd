@@ -30,8 +30,12 @@ convertVector2sentence(1:4)
 
 Other text utilities: 
 \code{\link{hyphenateWords}()}
+
+Other converting utilities: 
+\code{\link{convert2CEdate}()}
 }
 \author{
 Chris Evans
 }
+\concept{converting utilities}
 \concept{text utilities}

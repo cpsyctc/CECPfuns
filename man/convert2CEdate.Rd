@@ -34,6 +34,11 @@ dates12 <- c(date1, date2)
 convert2CEdate(dates12)
 
 }
+\seealso{
+Other converting utilities: 
+\code{\link{convertVector2sentence}()}
+}
 \author{
 Chris Evans
 }
+\concept{converting utilities}

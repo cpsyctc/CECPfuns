@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions Created by Chris Evans and Clara Paz
-Version: 0.0.0.9
+Version: 0.0.0.14
 Author: Chris Evans
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
