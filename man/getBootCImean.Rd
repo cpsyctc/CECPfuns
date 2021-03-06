@@ -63,7 +63,7 @@ As with almost all my functions in the CECPfuns package, getBootCImean() is prim
 \examples{
 \dontrun{
 set.seed(12345) # get replicable results
-library(tidyverse) # strictly only magrittr needed but
+library(magrittr)
 ### now make up some silly data
 n <- 50
 rnorm(n) \%>\% # get some random Gaussian data

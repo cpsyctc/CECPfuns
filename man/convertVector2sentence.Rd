@@ -22,7 +22,21 @@ string
 Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
 }
 \examples{
+### default behaviour
 convertVector2sentence(1:4)
+### [1] "1, 2, 3 and 4"
+
+### default behaviour
+convertVector2sentence(1:4, quoted = TRUE)
+### [1] "\"1\", \"2\", \"3\" and \"4\""
+
+### change andVal (note the spaces, can't see why you wouldn't want them but ...)
+convertVector2sentence(1:4, andVal = ' & ')
+### [1] "1, 2, 3 & 4"
+
+### change the quoting character (note no spaces)
+convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'")
+### [1] "'1', '2', '3' and '4'"
 
 }
 \seealso{

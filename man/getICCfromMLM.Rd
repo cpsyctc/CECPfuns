@@ -19,6 +19,9 @@ Get ICC for levels in multilevel models
 }
 \section{Background}{
 
+6.iii.21: Do not use with nlme::lme().  This works for lme4::lmer() or lmerTest::lmer() but I
+cannot sort out issues about results in out of nlme::lme() differing from those of lme4::lmer()
+
 The ICC gives the proportion of all variance on dependent variable in Multi-Level Models (MLMs).  I my field
 multilevel models typically have levels of measurements points for individual participants and participants
 can be nested within therapist, service, organisation or perhaps area.  Crucially the MLM handles the

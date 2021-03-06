@@ -9,6 +9,12 @@
 #' @return list of named values obsCSC, LCLCSC and UCLCSC
 #' @export
 #'
+#' @importFrom magrittr %>%
+#' @importFrom tibble as_tibble
+#' @importFrom stats na.omit
+#' @importFrom stats sd
+#' @importFrom dplyr n
+#'
 #' @section Background:
 #' For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
 #'
@@ -95,23 +101,23 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
     }
   }
   ### sanity check 4: must have only 2 values in grp
-  if (n_distinct(grp) != 2){
+  if (dplyr::n_distinct(grp) != 2){
     stop("Grouping variable must have two and only two values.  You may see this if group_by() stratifying\nhas meant you don't have two values of the grouping variable.")
   }
   list(scores = scores,
        grp = grp) %>%
     as_tibble() %>%
     na.omit() -> tmpDat
-  ### sanity check 5: scores must but numeric
+  ### sanity check 5: scores must be numeric
   if (!is.numeric(scores)) {
     stop("Scores must be numeric")
   }
   ### sanity check 6: smallest sample must be > 20 to get stable bootstrap
   tmpDat %>%
-    group_by(grp) %>%
-    summarise(n = n()) %>%
-    summarise(min = min(n)) %>%
-    pull() -> valMinN
+    dplyr::group_by(grp) %>%
+    dplyr::summarise(n = n()) %>%
+    dplyr::summarise(min = min(n)) %>%
+    dplyr::pull() -> valMinN
   if (valMinN < 20) {
     stop("You won't get a stable bootstrap CI with minimum cell size < 20. You may see this if group_by() stratifying\nhas given you a small cell size.")
   }
@@ -167,13 +173,13 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   getCSClocal <- function(tmpDat){
     ### tmpDat has two columns: scores and grp and has been prechecked
     tmpDat %>%
-      group_by(grp) %>%
-      summarise(n = n(),
-                mean = mean(scores),
-                sd = sd(scores)) -> tibStats
+      dplyr::group_by(grp) %>%
+      dplyr::summarise(n = n(),
+                       mean = mean(scores),
+                       sd = sd(scores)) -> tibStats
     tibStats %>%
-      summarise(denominator = sum(sd)) %>%
-      pull() -> denominator
+      dplyr::summarise(denominator = sum(sd)) %>%
+      dplyr::pull() -> denominator
     numerator <- tibStats$mean[2] * tibStats$sd[1] + tibStats$mean[1] * tibStats$sd[2]
     ### CSC is numerator / denominator (doh!)
     numerator / denominator

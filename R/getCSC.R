@@ -36,6 +36,13 @@
 #'
 #' @export
 #'
+#' @importFrom stats qnorm
+#' @importFrom dplyr filter
+#' @importFrom dplyr lag
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarise
+#' @importFrom dplyr pull
+#'
 #' @examples
 #' \dontrun{
 #' # example uses very crude simulated data but illustrates utility of being able to pipe grouped
@@ -81,19 +88,21 @@ getCSC <- function(formula1, data) {
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### I'm using tibbles and piping so ...
-  invisible(stopifnot(base::requireNamespace("tidyverse")))
+  invisible(stopifnot(base::requireNamespace("magrittr")))
   if (class(formula1) != "formula"){
     stop("Argument must be a simple formula of form scores ~ groups")
   }
+  ###
   ### sanity check 2: it should have two terms
   if (length(formula1) != 3){
     stop("first argument must be a simple formula of form scores ~ groups")
   }
   scores <- formula1[[2]]
   grp <- formula1[[3]]
+  ###
   ### sanity check 3
   if (length(scores) != 1 | length(grp) != 1) {
-    stop("formula input can only have one term on each side of the formula")
+    stop("formula must be a simple one with one dependent and one predictor")
   }
   ### I think this will always work and just pulls the environment
   e <- environment(formula1)
@@ -101,11 +110,13 @@ getCSC <- function(formula1, data) {
   scores <- eval(scores, data, e)
   ### same for the predictor
   grp <- eval(grp, data, e)
+  ###
   ### sanity check 4: scores must but numeric
   if (!is.numeric(scores)) {
     stop("Scores must be numeric")
   }
-  ### sanity check 2: length of grouping and of score must be the same
+  ###
+  ### sanity check 5: length of grouping and of score must be the same
   if (length(scores) != length(grp)) {
     stop("Lengths of scores (scores) and of the grouping (grp) must be the same")
   }
@@ -114,10 +125,24 @@ getCSC <- function(formula1, data) {
        grp = grp) %>%
     as_tibble() %>%
     na.omit() -> tmpDat
-  ### sanity check 3: must be only two values for grp in tmpDat
-  if (n_distinct(tmpDat$grp) != 2) {
+  ###
+  ### sanity check 6: must be only two values for grp in tmpDat
+  if (dplyr::n_distinct(tmpDat$grp) != 2) {
     stop("Grouping variable (grp) must have two and only two values")
   }
+  ###
+  ### sanity check 7: not much point in computing a CSC with smallest group < 10
+  tmpDat %>%
+    group_by(grp) %>%
+    summarise(n = n()) %>%
+    summarise(minN = min(n)) %>%
+    pull() -> tmpMinN
+  if (tmpMinN < 10) {
+    warning("Not a lot of point in computing CSC with smallest cell size < 10")
+  }
+  ###
+  ### end of sanity checking of input
+  ### get the CSC
   tmpDat %>%
     group_by(grp) %>%
     summarise(n = n(),

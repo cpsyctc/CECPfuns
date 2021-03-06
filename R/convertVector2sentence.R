@@ -8,7 +8,21 @@
 #' @export
 #'
 #' @examples
+#' ### default behaviour
 #' convertVector2sentence(1:4)
+#' ### [1] "1, 2, 3 and 4"
+#'
+#' ### default behaviour
+#' convertVector2sentence(1:4, quoted = TRUE)
+#' ### [1] "\"1\", \"2\", \"3\" and \"4\""
+#'
+#' ### change andVal (note the spaces, can't see why you wouldn't want them but ...)
+#' convertVector2sentence(1:4, andVal = ' & ')
+#' ### [1] "1, 2, 3 & 4"
+#'
+#' ### change the quoting character (note no spaces)
+#' convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'")
+#' ### [1] "'1', '2', '3' and '4'"
 #'
 #' @family text utilities
 #' @family converting utilities
@@ -22,6 +36,25 @@ convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteCha
   ### where "and" will be andVal (so you can use "&")
   ### CE 20200815 adding "quoted" which allows you to quote each entry separately
   ### CE 20201215 added quoteChar so I can quote with ', " or * (or anything!)
+  ### CE 20210306 added sanity checking on input and then a test-convertVector2sentence.R file
+  ### sanity check 1
+  if (!is.vector(x) | length(x) == 1 | is.list(x)){
+    stop("x must be vector and no realistic use for vector of length 1 and list input too unlikely to parse as you want")
+  }
+  ### sanity check 2
+  if (!is.character(andVal) | length(andVal) > 1){
+    stop("andVal must be character of length 1")
+  }
+  ### sanity check 3
+  if (!is.character(quoteChar) | length(quoteChar) > 1){
+    stop("quoteChar must be character of length 1")
+  }
+  ### sanity check 4
+  if (!is.logical(quoted)) {
+    stop("quoted must be logical: 'TRUE', 'FALSE' or, less safely, 'T' or 'F'")
+  }
+
+  ### end of sanity checking
   if (quoted) {
     ### need to create the quoted separators
     ### first to put between comma separated values

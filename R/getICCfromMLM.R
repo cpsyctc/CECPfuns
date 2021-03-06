@@ -6,7 +6,22 @@
 #' @return a tibble containing the ICCs for each level in the MLM model output and, if percent == TRUE, the percentages of variance too
 #' @export
 #'
+#' @importFrom stringr str_split
+#' @importFrom stringr str_replace
+#' @importFrom stringr str_trim
+#' @importFrom stringr str_c
+#' @importFrom stringr fixed
+#' @importFrom dplyr mutate
+#' @importFrom dplyr if_else
+#' @importFrom dplyr select
+#' @importFrom dplyr row_number
+#' @importFrom dplyr arrange
+#' @importFrom dplyr desc
+#'
 #' @section Background:
+#' 6.iii.21: Do not use with nlme::lme().  This works for lme4::lmer() or lmerTest::lmer() but I
+#' cannot sort out issues about results in out of nlme::lme() differing from those of lme4::lmer()
+#'
 #' The ICC gives the proportion of all variance on dependent variable in Multi-Level Models (MLMs).  I my field
 #' multilevel models typically have levels of measurements points for individual participants and participants
 #' can be nested within therapist, service, organisation or perhaps area.  Crucially the MLM handles the
@@ -71,13 +86,21 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
       valClass == "lmerModLmerTest") {
     stop("Your input to getICCfromMLM() doesn't appear to have come from nlme::lme(), lme4::lmer() or lmerTest::lmer() so I'm stumped.")
   }
+  ###
+  ### OK, that's the end of the sanity checking!
+  ###
   if (valClass == "lme"){
     ### so output is from nlme::lme()
-    if (str_split(as.character(modelOutput$call)[4], fixed("|"))[[1]][1] != "~1 ") {
+    tmpValTest <- str_split(as.character(modelOutput$call)[4], fixed("|"))[[1]][1]
+    if (tmpValTest != "~1 ") {
+      print(modelOutput$call)
+      print(tmpValTest)
       stop("Sorry, I haven't fixed ICClme2 to handle random predictors")
     }
     tmpVarCorr <- nlme::VarCorr(modelOutput)
+    print(tmpVarCorr)
     class(tmpVarCorr) <- "matrix"
+    print(tmpVarCorr)
     tmpVarCorr %>%
       as_tibble(rownames = "grp") %>%
       ### now sort out the names
@@ -114,7 +137,7 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
       ### now reverse the order to match that from lme4::lmer()
       arrange(desc(row_number())) -> retVal
     ################################
-    ### end of lmer::lme() block ###
+    ### end of nlme::lme() block ###
     ################################
   } else {
     ###########################################################
@@ -128,6 +151,7 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
       if (sum(is.na(varEsts$var2)) != nrow(varEsts)){
         stop("Sorry, I haven't fixed ICClme2 to handle random predictors")
       }
+      print(varEsts)
       varEsts %>%
         summarise(totVar = sum(vcov)) %>%
         pull() -> totVar

@@ -13,6 +13,10 @@
 #' @return list of length 3: obsmean, LCLmean and UCLmean
 #' @export
 #'
+#' @importFrom tidyr unnest_wider
+#' @importFrom dplyr mutate
+#' @importFrom dplyr cur_data
+#'
 #' @section comment:
 #' I have tried to make this function as flexible as possible in two particular ways.
 #' 1. The variable on which to compute the bootstrapped CI of the mean can be fed in as a simple vector, or as a named column in a dataframe or tibble
@@ -28,7 +32,7 @@
 #' @examples
 #' \dontrun{
 #' set.seed(12345) # get replicable results
-#' library(tidyverse) # strictly only magrittr needed but
+#' library(magrittr)
 #' ### now make up some silly data
 #' n <- 50
 #' rnorm(n) %>% # get some random Gaussian data
@@ -138,20 +142,16 @@ getBootCImean <- function(x,
   ### conf sets the width of the CI
   ### uses the boot() and boot.ci() functions from the package boot, hence ...
   invisible(stopifnot(base::requireNamespace("boot")))
-  invisible(stopifnot(base::requireNamespace("tidyverse")))
   invisible(stopifnot(base::requireNamespace("magrittr")))
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### parse the arguments
   listCall <- as.list(match.call())
   ### sort out data
-  # print(listCall)
   if (!is.null(listCall$data)) {
     if (!("data.frame" %in% class(data))) {
       stop("You passed non-null data argument into getBootCImean so must have 'data.frame' in class(data), i.e. should be data.frame or tibble generally.")
     }
-    print("Got here")
-    print(listCall$x)
     if (is.character(listCall$x)){
       x <- data[[x]]
     } else {
@@ -170,7 +170,6 @@ getBootCImean <- function(x,
     stop("You have set na.rm = FALSE for getBootCImean and there are missing data.")
   }
   x <- na.omit(x) # now remove missing values
-  print(length(x))
   ### sanity check 3: sample smaller than 20 won't give to get stable bootstrap
   if (length(x) < 20) {
     ### the default setting of nLT20err is to throw an error for fewer than 20 usable values
@@ -202,6 +201,9 @@ getBootCImean <- function(x,
   ### sanity check 7: large sample?
   if (nGT10kerr == TRUE & length(x) > 10000) {
     stop("The default in getBootCImean() is to stop if length(!is.na(x)) > 10k as it may take ages to analyse.  Override with nGT10kerr = FALSE")
+  }
+  if (nGT10kerr == FALSE & length(x) > 10000) {
+    warning("The default in getBootCImean() is to stop if length(!is.na(x)) > 10k as it may take ages to analyse.  Override with nGT10kerr = FALSE")
   }
   ### sanity check 8: negligible SD
   if (sd(x) < sqrt(.Machine$double.eps)) {

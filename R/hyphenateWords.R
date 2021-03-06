@@ -26,13 +26,15 @@ hyphenateWords <- function(x, capitalise = FALSE) {
   ### capitalise is used to get capitalised word, e.g. "Eighty-seven"
   invisible(stopifnot(requireNamespace("english")))
   ### sanity check input
+  ### sanity check 1
   if (!is.logical(capitalise)) {
     stop("capitalise argument must be a logical: TRUE, FALSE or (deprecated) T or F")
   }
+  ### sanity check 2
   if (!is.numeric(x)) {
     stop("argument x must be numeric")
   }
-
+  ### enough sanity checking: do it!
   if (capitalise) {
     gsub("y (one|two|three|four|five|six|seven|eight|nine)", "y-\\1", english::Words(x))
   } else {

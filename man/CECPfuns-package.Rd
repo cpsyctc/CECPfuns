@@ -3,7 +3,7 @@
 \docType{package}
 \name{CECPfuns-package}
 \alias{CECPfuns-package}
-\title{CECPfuns: Package of Utility Functions Created by Chris Evans and Clara Paz}
+\title{CECPfuns: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being work (Created by Chris Evans and Clara Paz)}
 \description{
 This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to
@@ -73,5 +73,10 @@ at \url{https://www.psyctc.org/psyctc/} and
 
 \author{
 \strong{Maintainer}: Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
+
+Other contributors:
+\itemize{
+  \item Clara Paz \email{clara.paz@udla.edu.ec} (\href{https://orcid.org/0000-0003-1106-9567}{ORCID}) [consultant, reviewer]
+}
 
 }
