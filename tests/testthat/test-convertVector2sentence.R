@@ -18,6 +18,9 @@ testthat::test_that("sanity checks work", {
   ### 4
   ### if (!is.logical(quoted)) {
   testthat::expect_error(convertVector2sentence(quoted = 1))
+  ### 5
+  ### if (!is.logical(italicY))
+  testthat::expect_error(convertVector2sentence(italicY = 1))
 })
 
 ### there are no warnings to test
@@ -25,8 +28,11 @@ testthat::test_that("sanity checks work", {
 ### trivial tests of outputs
 testthat::test_that("Output correct", {
   testthat::expect_equal(convertVector2sentence(1:4), "1, 2, 3 and 4")
+  testthat::expect_equal(convertVector2sentence(1:4, italicY = TRUE), "*1*, *2*, *3* and *4*")
   testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE), "\"1\", \"2\", \"3\" and \"4\"")
-  testthat::expect_equal(convertVector2sentence(1:4, andVal = ' & '), "1, 2, 3 & 4")
+  testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, italicY = TRUE),"*\"1*\", \"*2*\", \"*3\"* and *\"4\"*")
+  testthat::expect_equal(convertVector2sentence(1:4, andChar = ' & '), "1, 2, 3 & 4")
+  testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'"), "'1', '2', '3' and '4'")
   testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'"), "'1', '2', '3' and '4'")
 })
 

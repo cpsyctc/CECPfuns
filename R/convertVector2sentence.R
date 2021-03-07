@@ -1,9 +1,9 @@
 #' Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
 #' @param x input vector to convert
-#' @param andVal string to put between penultimate and last entry
+#' @param andChar string to put between penultimate and last entry
 #' @param quoted logical indicating whether each item should be quoted and hence
 #' @param quoteChar string to put around each item to quote it
-#'
+#' @param italicY logical to have items italicised
 #' @return string
 #' @export
 #'
@@ -16,13 +16,16 @@
 #' convertVector2sentence(1:4, quoted = TRUE)
 #' ### [1] "\"1\", \"2\", \"3\" and \"4\""
 #'
-#' ### change andVal (note the spaces, can't see why you wouldn't want them but ...)
-#' convertVector2sentence(1:4, andVal = ' & ')
+#' ### change andChar (note the spaces, can't see why you wouldn't want them but ...)
+#' convertVector2sentence(1:4, andChar = ' & ')
 #' ### [1] "1, 2, 3 & 4"
 #'
 #' ### change the quoting character (note no spaces)
 #' convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'")
 #' ### [1] "'1', '2', '3' and '4'"
+#'
+#' convertVector2sentence(1:4, italicY = TRUE) # italicises the items
+#' convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE) # italics and quotation
 #'
 #' @family text utilities
 #' @family converting utilities
@@ -30,10 +33,10 @@
 #'
 #' @author Chris Evans
 #'
-convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteChar = '"'){
+convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteChar = '"', italicY = FALSE){
   ### takes a vector x, say c(1,2,3,4) and returns
   ### a character variable "1,2,3 and 4"
-  ### where "and" will be andVal (so you can use "&")
+  ### where "and" will be andChar (so you can use "&")
   ### CE 20200815 adding "quoted" which allows you to quote each entry separately
   ### CE 20201215 added quoteChar so I can quote with ', " or * (or anything!)
   ### CE 20210306 added sanity checking on input and then a test-convertVector2sentence.R file
@@ -42,8 +45,8 @@ convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteCha
     stop("x must be vector and no realistic use for vector of length 1 and list input too unlikely to parse as you want")
   }
   ### sanity check 2
-  if (!is.character(andVal) | length(andVal) > 1){
-    stop("andVal must be character of length 1")
+  if (!is.character(andChar) | length(andChar) > 1){
+    stop("andChar must be character of length 1")
   }
   ### sanity check 3
   if (!is.character(quoteChar) | length(quoteChar) > 1){
@@ -53,70 +56,91 @@ convertVector2sentence <- function(x, andVal = " and ", quoted = FALSE, quoteCha
   if (!is.logical(quoted)) {
     stop("quoted must be logical: 'TRUE', 'FALSE' or, less safely, 'T' or 'F'")
   }
+  ### sanity check 5
+  if (!is.logical(italicY)) {
+    stop("italicY must be logical: 'TRUE', 'FALSE' or, less safely, 'T' or 'F'")
+  }
 
   ### end of sanity checking
-  if (quoted) {
-    ### need to create the quoted separators
-    ### first to put between comma separated values
-    quotedComma <- paste0(quoteChar,
-                          ", ",
-                          quoteChar)
-    ### and create the quoted andVal
-    quotedAnd <- paste0(quoteChar,
-                        andVal,
-                        quoteChar)
-  } else {
+  ### we put things together from the values in the vector,
+  ### the comma separator: commaChar
+  ### and the andChar (!)
+  ### need to create quoted values for these
+  ###                italic values ...
+  ###     ... and both quoted _and_ italicised values
+  ### italic marker ("*") has to come outside the quoteChar
+  ### set up quoting
+  if (!quoted) {
     quoteChar <- ""
   }
-  ### now we can move to handle the vector
-  if (length(x) == 1){
-    ### just one value in the vector
-    if (quoted) {
-      return(paste0(quoteChar,
-                    x,
-                    quoteChar))
-    } else {
-      return(x)
-    }
+  ### need to create the quoted separators
+  ### first to put between comma separated values
+  commaChar <- paste0(quoteChar,
+                      ", ",
+                      quoteChar)
+  ### now add italics
+  if (italicY){
+    italicChar <- "*"
+  } else {
+    italicChar <- ""
   }
+  commaChar <- paste0(italicChar,
+                      commaChar,
+                      italicChar)
+  prefixChar <- termChar <- ""
+  if (quoted) {
+    prefixChar <- quoteChar
+    termChar <- quoteChar
+  }
+  if (italicY) {
+    prefixChar <- paste0(italicChar,
+                         prefixChar)
+    termChar <- paste0(termChar,
+                       italicChar)
+  }
+  ### now we can move to handle the vector
   if (length(x) == 2){
     ### two values, very easy
     if (quoted) {
-      return(paste0(quoteChar,
+      return(paste0(italicChar,
+                    quoteChar,
                     x[1],
-                    quotedAnd,
+                    quoteChar,
+                    italicChar,
+                    andChar,
+                    italicChar,
+                    quoteChar,
                     x[2],
-                    quoteChar))
-    } else {}
-    return(paste0(x[1],
-                  andVal,
-                  x[2]))
+                    quoteChar,
+                    italicChar))
+    }
+    return(paste0(italicChar,
+                  x[1],
+                  italicChar,
+                  andChar,
+                  italicChar,
+                  x[2],
+                  italicChar))
   }
   ### OK, if we get here we have more than two values in the vector
   ### so need to parse them to handle the last value correctly and put in the and separator correctly
   len <- length(x)
   endItem <- x[len] # last value
   earlyItems <- x[-len] # earlier items
-  if (quoted){
-    earlyItems <- paste0(x[-len],
-                         collapse = quotedComma)
-    ### got to add the initial quote
-    earlyItems <- paste0(quoteChar,
-                         earlyItems)
-    endItem <- paste0(quotedAnd,
-                      endItem,
-                      quoteChar)
-  } else {
-    earlyItems <- paste0(x[-len],
-                         collapse = ", ")
-    ### got to add the initial quote
-    earlyItems <- paste0(quoteChar,
-                         earlyItems)
-    endItem <- paste0(andVal,
-                      endItem)
-  }
+  earlyItems <- paste0(x[-len],
+                       collapse = commaChar)
+  ### got to add the initial and terminal quotes
+  earlyItems <- paste0(prefixChar,
+                       earlyItems,
+                       termChar)
+
+  endItem <- paste0(andChar,
+                    prefixChar,
+                    endItem,
+                    termChar)
   ### now put the last item on
-  allItems <- paste0(earlyItems, endItem)
-  ### now return the result (for length(x) > 2, had already dealt with shorter vectors)
+  allItems <- paste0(earlyItems,
+                     endItem)
+  ### now return the result
   allItems
 }

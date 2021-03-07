@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being work (Created by Chris Evans and Clara Paz)
-Version: 0.0.0.9015
+Version: 0.0.0.9017
 Author: Chris Evans [au, cre]
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
@@ -18,7 +18,12 @@ Authors@R:
              family = "Paz",
              role = c("csl", "rev"),
              email = "clara.paz@udla.edu.ec",
-             comment = c(ORCID = "0000-0003-1106-9567")))
+             comment = c(ORCID = "0000-0003-1106-9567")),
+      person(given = "Emily",
+             family = "Blackshaw",
+             role = "rev",
+             email = "blackshe@roehampton.ac.uk"),
+             comment = c(ORCID = "0000-0002-2674-9189"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
