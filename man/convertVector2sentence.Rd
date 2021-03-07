@@ -4,16 +4,24 @@
 \alias{convertVector2sentence}
 \title{Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3}
 \usage{
-convertVector2sentence(x, andVal = " and ", quoted = FALSE, quoteChar = "\\"")
+convertVector2sentence(
+  x,
+  andChar = " and ",
+  quoted = FALSE,
+  quoteChar = "\\"",
+  italicY = FALSE
+)
 }
 \arguments{
 \item{x}{input vector to convert}
 
-\item{andVal}{string to put between penultimate and last entry}
+\item{andChar}{string to put between penultimate and last entry}
 
 \item{quoted}{logical indicating whether each item should be quoted and hence}
 
 \item{quoteChar}{string to put around each item to quote it}
+
+\item{italicY}{logical to have items italicised}
 }
 \value{
 string
@@ -30,13 +38,16 @@ convertVector2sentence(1:4)
 convertVector2sentence(1:4, quoted = TRUE)
 ### [1] "\"1\", \"2\", \"3\" and \"4\""
 
-### change andVal (note the spaces, can't see why you wouldn't want them but ...)
-convertVector2sentence(1:4, andVal = ' & ')
+### change andChar (note the spaces, can't see why you wouldn't want them but ...)
+convertVector2sentence(1:4, andChar = ' & ')
 ### [1] "1, 2, 3 & 4"
 
 ### change the quoting character (note no spaces)
 convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'")
 ### [1] "'1', '2', '3' and '4'"
+
+convertVector2sentence(1:4, italicY = TRUE) # italicises the items
+convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE) # italics and quotation
 
 }
 \seealso{
