@@ -24,7 +24,7 @@ getBootCImean(
 
 \item{bootReps}{integer for number of bootstrap replications}
 
-\item{conf}{confidence interval desired as fraction, e.g. .95}
+\item{conf}{numeric confidence interval desired as fraction, e.g. .95}
 
 \item{bootCImethod}{method of deriving bootstrap CI from "perc", "norm", "basic" or "bca"}
 
@@ -156,7 +156,8 @@ tmpDat \%>\%
 \seealso{
 Other bootstrap CI functions: 
 \code{\link{getBootCICSC}()},
-\code{\link{getBootCICorr}()}
+\code{\link{getBootCICorr}()},
+\code{\link{getBootCIalpha}()}
 }
 \author{
 Chris Evans

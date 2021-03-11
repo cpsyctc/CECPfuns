@@ -52,6 +52,7 @@ data \%>\%
 \seealso{
 Other bootstrap CI functions: 
 \code{\link{getBootCICSC}()},
+\code{\link{getBootCIalpha}()},
 \code{\link{getBootCImean}()}
 }
 \author{

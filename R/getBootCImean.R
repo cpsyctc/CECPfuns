@@ -2,7 +2,7 @@
 #' @param x name of variable in data, character or bare name, or simply a numeric vector if data is NULL, see examples
 #' @param data data frame or tibble containing variable, NULL if x passed directly
 #' @param bootReps integer for number of bootstrap replications
-#' @param conf confidence interval desired as fraction, e.g. .95
+#' @param conf numeric confidence interval desired as fraction, e.g. .95
 #' @param bootCImethod method of deriving bootstrap CI from "perc", "norm", "basic" or "bca"
 #' @param na.rm logical, set to FALSE to ensure function will fail if there are missing data
 #' @param verbose logical, FALSE suppresses the messages

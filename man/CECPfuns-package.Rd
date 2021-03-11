@@ -77,6 +77,7 @@ at \url{https://www.psyctc.org/psyctc/} and
 Other contributors:
 \itemize{
   \item Clara Paz \email{clara.paz@udla.edu.ec} (\href{https://orcid.org/0000-0003-1106-9567}{ORCID}) [consultant, reviewer]
+  \item Emily Blackshaw \email{blackshe@roehampton.ac.uk} (\href{https://orcid.org/0000-0002-2674-9189}{ORCID}) [reviewer]
 }
 
 }
