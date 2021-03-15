@@ -35,7 +35,7 @@ getBootCIalpha  <- function(dat,
                            nGT10kerr = TRUE,
                            bootReps = 1000,
                            conf = .95,
-                           bootCImethod = c("perc", "norm", "basic", "bca")){
+                           bootCImethod = c("perc", "norm", "basic", "bca")) {
   ### builds on trivial function getBootCIalpha ,
   ### takes data, dat
   ### removes rows with any missing data
@@ -50,7 +50,7 @@ getBootCIalpha  <- function(dat,
   }
   ###
   ### sanity check 2
-  if (ncol(dat) < 3){
+  if (ncol(dat) < 3) {
     stop("No point in computing alpha for just two variables")
   }
   ### turn dat to matrix (makes next checks easier)
@@ -59,7 +59,7 @@ getBootCIalpha  <- function(dat,
   }
   ###
   ### sanity check 3
-  if (!is.numeric(dat)){
+  if (!is.numeric(dat)) {
     stop("All columns of dat submitted to getChronbachAlpha must be numeric")
   }
   ### OK, purge out missing data rowwise
@@ -99,22 +99,31 @@ getBootCIalpha  <- function(dat,
   }
   ###
   ### sanity check 6
-  if (!is.logical(verbose)){
+  if (!is.logical(verbose)) {
     stop("The argument verbose to getBootCIalpha () must be logical")
   }
   ###
   ### sanity check 7
-  if (!is.logical(na.rm)){
+  if (!is.logical(na.rm)) {
     stop("The argument na.rm to getBootCIalpha () which terminates the run if there is missing data must be logical")
   }
   ### sanity check 8
-  if (!is.logical(nLT20err)){
+  if (!is.logical(nLT20err)) {
     stop("The argument nLT20err to getBootCIalpha () which terminates the run if there are fewer than 20 rows of non-missing data must be logical")
   }
   ### sanity check 9
-  if (!is.logical(nGT10kerr)){
+  if (!is.logical(nGT10kerr)) {
     stop("The argument nLT20err to getBootCIalpha () which terminates the run if there are more than 10k rows of non-missing data must be logical")
   }
+  ###
+  ### sanity check 10
+  if (!is.character(bootCImethod)) {
+    stop("Argument bootCImethod must be character")
+  }
+  ###
+  ### sanity check 11
+  bootCImethod <- tolower(bootCImethod)
+  match.arg(bootCImethod)
   ###
   ### end of sanity checking
   ###

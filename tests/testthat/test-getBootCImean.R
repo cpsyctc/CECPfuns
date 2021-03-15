@@ -75,48 +75,48 @@ testthat::test_that("Output correct", {
 
   set.seed(12345)
   tmpDat %>%
-    summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
-    unnest_wider(meanCI) -> tmpRes2
+    dplyr::summarise(meanCI = list(getBootCImean(value, dplyr::cur_data()))) %>%
+    tidyr::unnest_wider(meanCI) -> tmpRes2
 
   ### default arguments, get mean of value by food
   set.seed(12345)
   tmpDat %>%
-    group_by(food) %>%
-    summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
-    unnest_wider(meanCI) -> tmpRes3
+    dplyr::group_by(food) %>%
+    dplyr::summarise(meanCI = list(getBootCImean(value, dplyr::cur_data()))) %>%
+    tidyr::unnest_wider(meanCI) -> tmpRes3
 
   ### change bootstrap interval
   set.seed(12345)
   tmpDat %>%
-    summarise(meanCI = list(getBootCImean(y,
-                                          cur_data(),
+    dplyr::summarise(meanCI = list(getBootCImean(y,
+                                          dplyr::cur_data(),
                                           conf = .9))) %>%
-    unnest_wider(meanCI) -> tmpRes4
+    tidyr::unnest_wider(meanCI) -> tmpRes4
 
   ### change bootstrap CI method ("perc" is default)
   set.seed(12345)
   tmpDat %>%
-    summarise(meanCI = list(getBootCImean(y,
-                                          cur_data(),
+    dplyr::summarise(meanCI = list(getBootCImean(y,
+                                          dplyr::cur_data(),
                                           verbose = TRUE,
                                           bootCImethod = "no"))) %>%
-    unnest_wider(meanCI) -> tmpResNorm
+    tidyr::unnest_wider(meanCI) -> tmpResNorm
 
   set.seed(12345)
   tmpDat %>%
-    summarise(meanCI = list(getBootCImean(y,
-                                          cur_data(),
+    dplyr::summarise(meanCI = list(getBootCImean(y,
+                                          dplyr::cur_data(),
                                           verbose = TRUE,
                                           bootCImethod = "ba"))) %>%
-    unnest_wider(meanCI) -> tmpResBasic
+    tidyr::unnest_wider(meanCI) -> tmpResBasic
 
   set.seed(12345)
   tmpDat %>%
-    summarise(meanCI = list(getBootCImean(y,
-                                          cur_data(),
+    dplyr::summarise(meanCI = list(getBootCImean(y,
+                                          dplyr::cur_data(),
                                           verbose = TRUE,
                                           bootCImethod = "bc"))) %>%
-    unnest_wider(meanCI) -> tmpResBca
+    tidyr::unnest_wider(meanCI) -> tmpResBca
 
   set.seed(12345)
   testthat::expect_equal(getBootCImean(tmpDat$value,
@@ -133,44 +133,44 @@ testthat::test_that("Output correct", {
   testthat::expect_equal(getBootCImean("value", tmpDat), tmpRes)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
-                           unnest_wider(meanCI), tmpRes2)
+                           dplyr::summarise(meanCI = list(getBootCImean(value, dplyr::cur_data()))) %>%
+                           tidyr::unnest_wider(meanCI), tmpRes2)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean("value", cur_data()))) %>%
-                           unnest_wider(meanCI), tmpRes2)
+                           dplyr::summarise(meanCI = list(getBootCImean("value", dplyr::cur_data()))) %>%
+                           tidyr::unnest_wider(meanCI), tmpRes2)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
                            group_by(food) %>%
-                           summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
-                           unnest_wider(meanCI),  tmpRes3)
+                           dplyr::summarise(meanCI = list(getBootCImean(value, dplyr::cur_data()))) %>%
+                           tidyr::unnest_wider(meanCI),  tmpRes3)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean(y,
-                                                                 cur_data(),
+                           dplyr::summarise(meanCI = list(getBootCImean(y,
+                                                                 dplyr::cur_data(),
                                                                  conf = .9))) %>%
-                           unnest_wider(meanCI), tmpRes4)
+                           tidyr::unnest_wider(meanCI), tmpRes4)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean(y,
-                                                                 cur_data(),
+                           dplyr::summarise(meanCI = list(getBootCImean(y,
+                                                                 dplyr::cur_data(),
                                                                  verbose = TRUE,
                                                                  bootCImethod = "no"))) %>%
-                           unnest_wider(meanCI), tmpResNorm)
+                           tidyr::unnest_wider(meanCI), tmpResNorm)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean(y,
-                                                                 cur_data(),
+                           dplyr::summarise(meanCI = list(getBootCImean(y,
+                                                                 dplyr::cur_data(),
                                                                  verbose = TRUE,
                                                                  bootCImethod = "ba"))) %>%
-                           unnest_wider(meanCI), tmpResBasic)
+                           tidyr::unnest_wider(meanCI), tmpResBasic)
   set.seed(12345)
   testthat::expect_equal(tmpDat %>%
-                           summarise(meanCI = list(getBootCImean(y,
-                                                                 cur_data(),
+                           dplyr::summarise(meanCI = list(getBootCImean(y,
+                                                                 dplyr::cur_data(),
                                                                  verbose = TRUE,
                                                                  bootCImethod = "bc"))) %>%
-                           unnest_wider(meanCI), tmpResBca)
+                           tidyr::unnest_wider(meanCI), tmpResBca)
 })
 
 ### tidy up

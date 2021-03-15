@@ -9,11 +9,10 @@
 #' @return list of named values obsCSC, LCLCSC and UCLCSC
 #' @export
 #'
-#' @importFrom magrittr %>%
-#' @importFrom tibble as_tibble
 #' @importFrom stats na.omit
 #' @importFrom stats sd
 #' @importFrom dplyr n
+#' @importFrom dplyr mutate
 #'
 #' @section Background:
 #' For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
@@ -73,11 +72,11 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### sanity check 1: is formula1 a formula?!
-  if (class(formula1) != "formula"){
+  if (class(formula1) != "formula") {
     stop("first argument must be a simple formula of form dependent ~ predictor")
   }
   ### sanity check 2: it should have two terms
-  if (length(formula1) != 3){
+  if (length(formula1) != 3) {
     stop("first argument must be a simple formula of form variable1 ~ variable2")
   }
   var1 <- formula1[[2]]
@@ -101,7 +100,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
     }
   }
   ### sanity check 4: must have only 2 values in grp
-  if (dplyr::n_distinct(grp) != 2){
+  if (dplyr::n_distinct(grp) != 2) {
     stop("Grouping variable must have two and only two values.  You may see this if group_by() stratifying\nhas meant you don't have two values of the grouping variable.")
   }
   list(scores = scores,
@@ -126,7 +125,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   ### function from documentation of integer in base R
   is.wholenumber <-
     function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) < tol
-  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20){
+  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20) {
     stop("Bootreps must be integer and numeric and, even for testing, >= 20")
   }
   ### sanity check 8: conf must be sensible
@@ -134,7 +133,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
     stop("conf must be numeric and 0 < conf < .999")
   }
   ### sanity check 9: check bootCImethod, i.e. type of bootstrap CI to be used
-  if (!is.character(bootCImethod) | length(bootCImethod) != 1){
+  if (!is.character(bootCImethod) | length(bootCImethod) != 1) {
     stop("bootCImethod must be character variable of length 1")
   }
   bootCImethod = stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))
@@ -170,7 +169,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
                       "%")))
   ### now we need a function to feed into boot() to get CSC
   ### first a minimal getCSC
-  getCSClocal <- function(tmpDat){
+  getCSClocal <- function(tmpDat) {
     ### tmpDat has two columns: scores and grp and has been prechecked
     tmpDat %>%
       dplyr::group_by(grp) %>%

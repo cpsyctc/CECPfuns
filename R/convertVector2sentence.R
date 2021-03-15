@@ -1,7 +1,9 @@
-#' Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
+#' Function that converts a vector to an English language list:
+#'   e.g. 1:3 becomes 1, 2 and 3
 #' @param x input vector to convert
 #' @param andChar string to put between penultimate and last entry
-#' @param quoted logical indicating whether each item should be quoted and hence
+#' @param quoted logical indicating whether each item should be
+#'   quoted and hence
 #' @param quoteChar string to put around each item to quote it
 #' @param italicY logical to have items italicised
 #' @return string
@@ -16,7 +18,8 @@
 #' convertVector2sentence(1:4, quoted = TRUE)
 #' ### [1] "\"1\", \"2\", \"3\" and \"4\""
 #'
-#' ### change andChar (note the spaces, can't see why you wouldn't want them but ...)
+#' ### change andChar (note the spaces,
+#' ###  I can't see why you wouldn't want them but ...)
 #' convertVector2sentence(1:4, andChar = ' & ')
 #' ### [1] "1, 2, 3 & 4"
 #'
@@ -25,15 +28,21 @@
 #' ### [1] "'1', '2', '3' and '4'"
 #'
 #' convertVector2sentence(1:4, italicY = TRUE) # italicises the items
-#' convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE) # italics and quotation
+#' ### and now italics and quotation:
+#' convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE)
 #'
 #' @family text utilities
 #' @family converting utilities
-#' @seealso \code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
+#' @seealso \code{\link{hyphenateWords}} for another utility function to
+#'  convert numbers to English words, e.g. "87" to "eighty-seven".
 #'
 #' @author Chris Evans
 #'
-convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteChar = '"', italicY = FALSE){
+convertVector2sentence <- function(x,
+                                   andChar = " and ",
+                                   quoted = FALSE,
+                                   quoteChar = '"',
+                                   italicY = FALSE) {
   ### takes a vector x, say c(1,2,3,4) and returns
   ### a character variable "1,2,3 and 4"
   ### where "and" will be andChar (so you can use "&")
@@ -41,15 +50,15 @@ convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteCh
   ### CE 20201215 added quoteChar so I can quote with ', " or * (or anything!)
   ### CE 20210306 added sanity checking on input and then a test-convertVector2sentence.R file
   ### sanity check 1
-  if (!is.vector(x) | length(x) == 1 | is.list(x)){
+  if (!is.vector(x) | length(x) == 1 | is.list(x)) {
     stop("x must be vector and no realistic use for vector of length 1 and list input too unlikely to parse as you want")
   }
   ### sanity check 2
-  if (!is.character(andChar) | length(andChar) > 1){
+  if (!is.character(andChar) | length(andChar) > 1) {
     stop("andChar must be character of length 1")
   }
   ### sanity check 3
-  if (!is.character(quoteChar) | length(quoteChar) > 1){
+  if (!is.character(quoteChar) | length(quoteChar) > 1) {
     stop("quoteChar must be character of length 1")
   }
   ### sanity check 4
@@ -79,7 +88,7 @@ convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteCh
                       ", ",
                       quoteChar)
   ### now add italics
-  if (italicY){
+  if (italicY) {
     italicChar <- "*"
   } else {
     italicChar <- ""
@@ -99,7 +108,7 @@ convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteCh
                        italicChar)
   }
   ### now we can move to handle the vector
-  if (length(x) == 2){
+  if (length(x) == 2) {
     ### two values, very easy
     if (quoted) {
       return(paste0(italicChar,
@@ -123,7 +132,8 @@ convertVector2sentence <- function(x, andChar = " and ", quoted = FALSE, quoteCh
                   italicChar))
   }
   ### OK, if we get here we have more than two values in the vector
-  ### so need to parse them to handle the last value correctly and put in the and separator correctly
+  ### so need to parse them to handle the last value correctly
+  ### and put in the and separator correctly
   len <- length(x)
   endItem <- x[len] # last value
   earlyItems <- x[-len] # earlier items

@@ -10,13 +10,11 @@
 #' @importFrom stringr str_replace
 #' @importFrom stringr str_trim
 #' @importFrom stringr str_c
-#' @importFrom stringr fixed
-#' @importFrom dplyr mutate
-#' @importFrom dplyr if_else
-#' @importFrom dplyr select
-#' @importFrom dplyr row_number
 #' @importFrom dplyr arrange
 #' @importFrom dplyr desc
+#' @importFrom dplyr row_number
+#' @importFrom stringr fixed
+#'
 #'
 #' @section Background:
 #' 6.iii.21: Do not use with nlme::lme().  This works for lme4::lmer() or lmerTest::lmer() but I
@@ -67,7 +65,7 @@
 #' specr::icc_specs(model2lme4)
 #' }
 #'
-getICCfromMLM <- function(modelOutput, percent = TRUE){
+getICCfromMLM <- function(modelOutput, percent = TRUE) {
   ### function modelled on specr::icc_specs()
   ### but extended to handle model output from lme4::lmer() (as specr::icc_specs() does)
   ### and from nlme::lme()
@@ -89,9 +87,9 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
   ###
   ### OK, that's the end of the sanity checking!
   ###
-  if (valClass == "lme"){
+  if (valClass == "lme") {
     ### so output is from nlme::lme()
-    tmpValTest <- str_split(as.character(modelOutput$call)[4], fixed("|"))[[1]][1]
+    tmpValTest <- str_split(as.character(modelOutput$call)[4], stringr::fixed("|"))[[1]][1]
     if (tmpValTest != "~1 ") {
       print(modelOutput$call)
       print(tmpValTest)
@@ -102,40 +100,40 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
     class(tmpVarCorr) <- "matrix"
     print(tmpVarCorr)
     tmpVarCorr %>%
-      as_tibble(rownames = "grp") %>%
+      tibble::as_tibble(rownames = "grp") %>%
       ### now sort out the names
-      mutate(grp = if_else(grp == "(Intercept)",
-                           lag(grp),
+      dplyr::mutate(grp = dplyr::if_else(grp == "(Intercept)",
+                                         dplyr::lag(grp),
                            grp),
-             grp = str_replace(grp, fixed("="), ""),
-             grp = str_trim(grp)) %>%
-      filter(Variance != "pdLogChol(1)") %>%
-      mutate(Variance = as.numeric(Variance)) -> tmpVarCorr
+             grp = stringr::str_replace(grp, stringr::fixed("="), ""),
+             grp = stringr::str_trim(grp)) %>%
+      dplyr::filter(Variance != "pdLogChol(1)") %>%
+      dplyr::mutate(Variance = as.numeric(Variance)) -> tmpVarCorr
     ### now get the total variance
     tmpVarCorr %>%
-      summarise(totVar = sum(Variance)) %>%
-      pull() -> totVar
+      dplyr::summarise(totVar = sum(Variance)) %>%
+      dplyr::pull() -> totVar
     if (percent) {
       tmpVarCorr %>%
-        filter(grp != "Residual") %>%
-        mutate(ICC = Variance / totVar,
+        dplyr::filter(grp != "Residual") %>%
+        dplyr::mutate(ICC = Variance / totVar,
                perc = paste0(round(100 * ICC, 1), "%")) %>%
-        select(grp, ICC, perc) -> retVal
+        dplyr::select(grp, ICC, perc) -> retVal
     } else {
       tmpVarCorr %>%
-        filter(grp != "Residual") %>%
-        mutate(ICC = Variance / totVar) %>%
-        select(grp, ICC, perc) -> retVal
+        dplyr::filter(grp != "Residual") %>%
+        dplyr::mutate(ICC = Variance / totVar) %>%
+        dplyr::select(grp, ICC, perc) -> retVal
     }
     ### now get the grps labelled as in output from lme4::lmer()
     retVal %>%
-      mutate(grp = if_else(row_number() == 2,
-                           str_c(grp,
+      dplyr::mutate(grp = dplyr::if_else(dplyr::row_number() == 2,
+                           stringr::str_c(grp,
                                  ":",
-                                 lag(grp)),
+                                 dplyr::lag(grp)),
                            grp)) %>%
       ### now reverse the order to match that from lme4::lmer()
-      arrange(desc(row_number())) -> retVal
+      dplyr::arrange(dplyr::desc(dplyr::row_number())) -> retVal
     ################################
     ### end of nlme::lme() block ###
     ################################
@@ -146,9 +144,9 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
     if (valClass == "lmerMod" | valClass == "lmerModLmerTest") {
       ### got output from lme4::lmer() or from lmerTest::lmer()
       lme4::VarCorr(modelOutput) %>%
-        as_tibble -> varEsts
+        tibble::as_tibble -> varEsts
       ### check that we don't have random predictors
-      if (sum(is.na(varEsts$var2)) != nrow(varEsts)){
+      if (sum(is.na(varEsts$var2)) != nrow(varEsts)) {
         stop("Sorry, I haven't fixed ICClme2 to handle random predictors")
       }
       print(varEsts)
@@ -157,15 +155,15 @@ getICCfromMLM <- function(modelOutput, percent = TRUE){
         pull() -> totVar
       if (percent) {
         varEsts %>%
-          filter(grp != "Residual") %>%
-          mutate(ICC = vcov / totVar,
+          dplyr::filter(grp != "Residual") %>%
+          dplyr::mutate(ICC = vcov / totVar,
                  perc = paste0(round(100 * ICC, 1), "%")) %>%
-          select(grp, ICC, perc) -> retVal
+          dplyr::select(grp, ICC, perc) -> retVal
       } else {
         varEsts %>%
-          filter(grp != "Residual") %>%
-          mutate(ICC = vcov / totVar) %>%
-          select(grp, ICC, perc) -> retVal
+          dplyr::filter(grp != "Residual") %>%
+          dplyr::mutate(ICC = vcov / totVar) %>%
+          dplyr::select(grp, ICC, perc) -> retVal
       }
     }
   }

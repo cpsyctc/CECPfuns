@@ -30,6 +30,16 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(getBootCIalpha(tmpMat2))
   ### sanity check 6
   testthat::expect_error(getBootCIalpha(tmpMat2, verbose = "A"))
+  ### sanity check 7
+  testthat::expect_error(getBootCIalpha(tmpMat2, na.rm = "A"))
+  ### sanity check 8
+  testthat::expect_error(getBootCIalpha(tmpMat2, nLT20err = "A"))
+  ### sanity check 9
+  testthat::expect_error(getBootCIalpha(tmpMat2, nGT10kerr = "A"))
+  ### sanity check 10
+  testthat::expect_error(getBootCIalpha(tmpMat2, bootCImethod = TRUE))
+  ### sanity check 11
+  testthat::expect_error(getBootCIalpha(tmpMat2, bootCImethod = "sausages"))
 })
 
 ### test warnings

@@ -24,7 +24,7 @@
 #'
 #' @author Chris Evans
 #'
-convert2CEdate <- function(date){
+convert2CEdate <- function(date) {
   ### I like to write dates in the format dd.mm.yyyy but doing the months, mm
   ### in Roman numerals, i.e. i = January, xii = December
   ### This, unless someone has never met the Roman's weird numbering system

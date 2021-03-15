@@ -13,6 +13,6 @@
 #'
 #' @author Chris Evans
 #'
-getNNA <- function(x){
+getNNA <- function(x) {
   sum(is.na(x))
 }

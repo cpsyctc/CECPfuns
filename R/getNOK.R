@@ -12,7 +12,7 @@
 #'
 #' @author Chris Evans
 #'
-getNOK <- function(x){
+getNOK <- function(x) {
   sum(!is.na(x))
 }
 

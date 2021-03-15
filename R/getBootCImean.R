@@ -13,9 +13,10 @@
 #' @return list of length 3: obsmean, LCLmean and UCLmean
 #' @export
 #'
-#' @importFrom tidyr unnest_wider
+#' @importFrom stringr str_to_lower
 #' @importFrom dplyr mutate
 #' @importFrom dplyr cur_data
+#' @importFrom tidyr unnest_wider
 #'
 #' @section comment:
 #' I have tried to make this function as flexible as possible in two particular ways.
@@ -152,7 +153,7 @@ getBootCImean <- function(x,
     if (!("data.frame" %in% class(data))) {
       stop("You passed non-null data argument into getBootCImean so must have 'data.frame' in class(data), i.e. should be data.frame or tibble generally.")
     }
-    if (is.character(listCall$x)){
+    if (is.character(listCall$x)) {
       x <- data[[x]]
     } else {
       # ### I think this will always work and just pulls the environment
@@ -188,7 +189,7 @@ getBootCImean <- function(x,
   ### function from documentation of integer in base R
   is.wholenumber <-
     function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) < tol
-  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20){
+  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20) {
     stop("Bootreps must be integer and numeric and, even for testing, >= 20")
   }
   ### sanity check 5: conf must be sensible
@@ -219,7 +220,7 @@ getBootCImean <- function(x,
   }
   ### end of sanity checking
   ###
-  if (verbose){
+  if (verbose) {
     message("Function: getBootCImean{CECPfuns}")
     message(paste("Call:", list(match.call())))
     message(paste("Usable n =", length(x)))

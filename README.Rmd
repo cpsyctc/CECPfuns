@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 ![Package: CECPfuns](https://img.shields.io/badge/Package-CECPfuns-lightgrey)
 ![Lifecycle: developing](https://img.shields.io/badge/Lifecycle-developing-orange)
 ![Licence: MIT](https://img.shields.io/badge/Licence-MIT-brightgreen)
+[![Codecov test coverage](https://codecov.io/gh/cpsyctc/CECPfuns/branch/main/graph/badge.svg)](https://codecov.io/gh/cpsyctc/CECPfuns?branch=main)
+[![R-CMD-check](https://github.com/cpsyctc/CECPfuns/workflows/R-CMD-check/badge.svg)](https://github.com/cpsyctc/CECPfuns/actions)
 <!-- badges: end -->
 
 The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single, up to date, repository where I can find potentially reusable functions I have written.  However, it is something that has been very much encouraged by 

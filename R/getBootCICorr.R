@@ -42,11 +42,11 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### sanity check 1: is formula1 a formula?!
-  if (class(formula1) != "formula"){
+  if (class(formula1) != "formula") {
     stop("first argument must be a simple formula of form dependent ~ predictor")
   }
   ### sanity check 2: it should have two terms
-  if (length(formula1) != 3){
+  if (length(formula1) != 3) {
     stop("first argument must be a simple formula of form variable1 ~ variable2")
   }
   var1 <- formula1[[2]]
@@ -70,7 +70,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   ### function from documentation of integer in base R
   is.wholenumber <-
     function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) < tol
-  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20){
+  if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20) {
     stop("Bootreps must be integer and numeric and, even for testing, >= 20")
   }
   ### sanity check 6: conf must be sensible
@@ -78,25 +78,8 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
     stop("conf must be numeric and 0 < conf < .999")
   }
   ### sanity check 7: check method
-  if (!is.character(method) | length(method) != 1){
-    stop("method must be character variable of length 1")
-  }
-  method = stringr::str_to_lower(stringr::str_sub(method, 1, 1))
-  if (!method %in% c("p", "s", "k")) {
-    stop("method must start with one of 'p', 'P', 's', 'S', 'k', 'K'")
-  }
-  ### clumsy switch but easy to read
-  if (method == "p") {
-    useMethod <- "pearson"
-  }
-  if (method == "s") {
-    useMethod <- "spearman"
-  }
-  if (method == "k") {
-    useMethod <- "kendall"
-  }
   ### sanity check 8: check method
-  if (!is.character(method) | length(method) != 1){
+  if (!is.character(method) | length(method) != 1) {
     stop("method must be character variable of length 1")
   }
   method = stringr::str_to_lower(stringr::str_sub(method, 1, 1))
@@ -114,7 +97,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
     useMethod <- "kendall"
   }
   ### sanity check 8: check bootCImethod, i.e. type of bootstrap CI to be used
-  if (!is.character(bootCImethod) | length(bootCImethod) != 1){
+  if (!is.character(bootCImethod) | length(bootCImethod) != 1) {
     stop("bootCImethod must be character variable of length 1")
   }
   bootCImethod = stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))

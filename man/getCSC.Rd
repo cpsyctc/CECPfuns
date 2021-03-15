@@ -89,6 +89,12 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 \code{\link{getBootCICSC}} for CSC and bootstrap CI around it
 
 Other RCSC functions: 
+\code{\link{classifyRCIfromScores}()},
+\code{\link{getBootCICSC}()},
+\code{\link{getRCIfromSDandAlpha}()}
+
+Other RCSC functions: 
+\code{\link{classifyRCIfromScores}()},
 \code{\link{getBootCICSC}()},
 \code{\link{getRCIfromSDandAlpha}()}
 }

@@ -37,11 +37,11 @@
 #' @export
 #'
 #' @importFrom stats qnorm
-#' @importFrom dplyr filter
-#' @importFrom dplyr lag
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarise
+#' @importFrom tibble as_tibble
+#' @importFrom magrittr %>%
 #' @importFrom dplyr pull
+#' @importFrom dplyr summarise
+#' @importFrom dplyr group_by
 #'
 #' @examples
 #' \dontrun{
@@ -72,6 +72,8 @@
 #'  summarise(CSC = getCSC(scores ~ grp, cur_data()))
 #' }
 #'
+#' @family RCSC functions
+#'
 #' @author Chris Evans
 #'
 #' @references
@@ -89,12 +91,12 @@ getCSC <- function(formula1, data) {
   ### if things go wrong
   ### I'm using tibbles and piping so ...
   invisible(stopifnot(base::requireNamespace("magrittr")))
-  if (class(formula1) != "formula"){
+  if (class(formula1) != "formula") {
     stop("Argument must be a simple formula of form scores ~ groups")
   }
   ###
   ### sanity check 2: it should have two terms
-  if (length(formula1) != 3){
+  if (length(formula1) != 3) {
     stop("first argument must be a simple formula of form scores ~ groups")
   }
   scores <- formula1[[2]]

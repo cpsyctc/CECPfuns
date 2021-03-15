@@ -2,7 +2,8 @@
 % Please edit documentation in R/convertVector2sentence.R
 \name{convertVector2sentence}
 \alias{convertVector2sentence}
-\title{Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3}
+\title{Function that converts a vector to an English language list:
+e.g. 1:3 becomes 1, 2 and 3}
 \usage{
 convertVector2sentence(
   x,
@@ -17,7 +18,8 @@ convertVector2sentence(
 
 \item{andChar}{string to put between penultimate and last entry}
 
-\item{quoted}{logical indicating whether each item should be quoted and hence}
+\item{quoted}{logical indicating whether each item should be
+quoted and hence}
 
 \item{quoteChar}{string to put around each item to quote it}
 
@@ -27,7 +29,8 @@ convertVector2sentence(
 string
 }
 \description{
-Function that converts a vector to an English language list: e.g. 1:3 becomes 1, 2 and 3
+Function that converts a vector to an English language list:
+e.g. 1:3 becomes 1, 2 and 3
 }
 \examples{
 ### default behaviour
@@ -38,7 +41,8 @@ convertVector2sentence(1:4)
 convertVector2sentence(1:4, quoted = TRUE)
 ### [1] "\"1\", \"2\", \"3\" and \"4\""
 
-### change andChar (note the spaces, can't see why you wouldn't want them but ...)
+### change andChar (note the spaces,
+###  I can't see why you wouldn't want them but ...)
 convertVector2sentence(1:4, andChar = ' & ')
 ### [1] "1, 2, 3 & 4"
 
@@ -47,11 +51,13 @@ convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'")
 ### [1] "'1', '2', '3' and '4'"
 
 convertVector2sentence(1:4, italicY = TRUE) # italicises the items
-convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE) # italics and quotation
+### and now italics and quotation:
+convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE)
 
 }
 \seealso{
-\code{\link{hyphenateWords}} for another utility function to convert numbers to English words, e.g. "87" to "eighty-seven".
+\code{\link{hyphenateWords}} for another utility function to
+convert numbers to English words, e.g. "87" to "eighty-seven".
 
 Other text utilities: 
 \code{\link{hyphenateWords}()}

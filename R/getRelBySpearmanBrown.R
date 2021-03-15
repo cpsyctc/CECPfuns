@@ -41,7 +41,7 @@
 #'
 #' @author Chris Evans
 #'
-getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, verbose = TRUE){
+getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, verbose = TRUE) {
   ### simple function using Spearman-Brown (or Brown-Spearman) formula
   ### to predict reliability from reliability of existing measure (oldRel)
   ### from a measure lengthRatio times the length of that gave oldRel
@@ -49,7 +49,7 @@ getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, ver
   ### sanity check 1: numeric oldRel and assume 0 < oldRel < 1
   ### as no real point in using formula for other possible values
   ### or for impossible values
-  if (!is.numeric(oldRel) | length(oldRel) != 1 | oldRel <= 0 | oldRel >= 1){
+  if (!is.numeric(oldRel) | length(oldRel) != 1 | oldRel <= 0 | oldRel >= 1) {
     stop("oldRel must be numeric, of length 1 and 0 <= oldrel <= 1")
   }
   ### sanity check 2: check you're only being asked for one answer!
@@ -69,7 +69,7 @@ getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, ver
     }
   }
   ### sanity check 5: check verbose!
-  if (!is.logical(verbose)){
+  if (!is.logical(verbose)) {
     stop("Somehow your arguments have resulted in a value for verbose that is not a logical")
   }
   ### end of sanity checking

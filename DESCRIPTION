@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being work (Created by Chris Evans and Clara Paz)
-Version: 0.0.0.9019
+Version: 0.0.0.9021
 Author: Chris Evans [au, cre]
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
@@ -25,29 +25,33 @@ Authors@R: c(person(given = "Chris",
        comment = c(ORCID = "0000-0002-2674-9189")))
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: no
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 RdMacros: mathjaxr 
 Imports:
-  tidyr,
-  dplyr,
-  tibble,
+  mathjaxr,
   ggplot2,
+  lubridate,
+  magrittr,
+  rlang,
   stringr,
-  magrittr
+  tibble,
+  tidyr,
+  dplyr
 Suggests:
-    stats,
-    english,
-    lubridate,
-    boot,
-    mathjaxr,
-    knitr,
-    rmarkdown,
-    nlme,
-    lme4,
-    lmerTest,
-    specr,
-    testthat (>= 3.0.0)
+  stats,
+  boot,
+  english,
+  knitr,
+  nlme,
+  lme4,
+  lmerTest,
+  rmarkdown,
+  specr,
+  testthat (>= 3.0.0),
+  covr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)

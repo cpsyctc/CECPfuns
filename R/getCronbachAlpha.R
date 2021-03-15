@@ -39,7 +39,7 @@
 #' Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297–334.
 #' McDonald R. P. (1999) Test Theory: A Unified Treatment. Mahwah, NJ: Erlbaum
 
-getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE){
+getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE) {
   ### trivial function which takes data, dat
   ### removes rows with any missing data
   ### and computes Cronbach's alpha
@@ -53,7 +53,7 @@ getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE){
   }
   ###
   ### sanity check 2
-  if (ncol(dat) < 3){
+  if (ncol(dat) < 3) {
     stop("No point in computing alpha for just two variables")
   }
   ### turn dat to matrix (makes next checks easier)
@@ -62,13 +62,13 @@ getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE){
   }
   ###
   ### sanity check 3
-  if (!is.numeric(dat)){
+  if (!is.numeric(dat)) {
     stop("All columns of dat submitted to getChronbachAlpha must be numeric")
   }
   ### OK, purge out missing data rowwise
   tmpN <- nrow(dat)
   dat <- na.omit(dat)
-  if (!na.rm & nrow(dat) != tmpN){
+  if (!na.rm & nrow(dat) != tmpN) {
     stop("You have set na.rm to FALSE and you do have missing data so getCronbachAlpha is exiting")
   }
   ###
@@ -93,7 +93,7 @@ getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE){
   }
   ###
   ### sanity check 6
-  if (!is.logical(verbose)){
+  if (!is.logical(verbose)) {
     stop("The argument verbose to getCronbachAlpha() must be logical")
   }
   ###
