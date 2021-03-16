@@ -1,0 +1,7 @@
+# linters: with_defaults(object_usage_linter = NULL)
+linters: with_defaults(
+  line_length_linter(120),
+  cyclocomp_linter(25),
+  object_name_linter(styles = "symbol")
+  # commented_code_linter = NULL
+  )
