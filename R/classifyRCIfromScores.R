@@ -100,7 +100,7 @@ classifyRCIfromScores <- function(scoreChange = NULL,
     }
     ### got score1 and score2
     ### sanity check 5
-    if(length(score1) != length(score2)) {
+    if (length(score1) != length(score2)) {
       stop("You have input score1, baseline score, and score2,
            last score, but they are not the same length")
     }
@@ -118,7 +118,7 @@ classifyRCIfromScores <- function(scoreChange = NULL,
   cueing <- match.arg(cueing, c("negative", "positive"))
   ###
   ### sanity check 7
-  if (length(dp)!= 1 | !is.numeric(dp) | dp < 0) {
+  if (length(dp) != 1 | !is.numeric(dp) | dp < 0) {
     stop("Argument dp dictating number of decimal places in
          the percentages must be length 1 and numeric and zero or positive")
   }
@@ -157,8 +157,6 @@ classifyRCIfromScores <- function(scoreChange = NULL,
     }
   } else {
     ### got score1 and score2
-    nNA1 <- sum(is.na(score1))
-    nNA2 <- sum(is.na(score2))
     nTot <- length(score1)
     scoreChange <- na.omit(score1 - score2)
     nOK <- length(scoreChange)
@@ -191,7 +189,7 @@ classifyRCIfromScores <- function(scoreChange = NULL,
 
   ### deal with cueing
   if (cueing == "positive") {
-    scoreChange = 0 - scoreChange
+    scoreChange <- 0 - scoreChange
   }
   scoreChange %>%
     tibble::as_tibble() %>%

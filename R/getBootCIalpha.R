@@ -87,7 +87,7 @@ getBootCIalpha  <- function(dat,
   tmpVars <- apply(dat, 2, stats::var)
   if (sum(tmpVars < .Machine$double.eps) > 0) {
     tmpColIndices <- which(tmpVars < .Machine$double.eps)
-    if (length (tmpColIndices) == 1) {
+    if (length(tmpColIndices) == 1) {
       stop(paste0("You appear to have one variable, with column number ",
                   tmpColIndices,
                   " whose non-missing values have essentially zero variance: no meaningful alpha possible"))
@@ -147,7 +147,7 @@ getBootCIalpha  <- function(dat,
     message(paste("Width of confidence interval is:",
                   conf,
                   "i.e.",
-                  paste0(round(100*conf),
+                  paste0(round(100 * conf),
                          "%")))
     message(paste0("Function getBootCIalpha  returning Cronbach alpha from data with ",
                    ncol(dat),
@@ -160,18 +160,17 @@ getBootCIalpha  <- function(dat,
   tmpGetCronbachForBoot <- function(dat, i) {
     ### compute alpha
     ### after checking out a number of packaged functions:
-    ###    psyc::cronbach()
-    ###    performance::cronbachs_alpha()
-    ###    psych::alpha()
+    ###    cronbach from psyc
+    ###    cronbachs_alpha from performance
+    ###    alpha from psych
     ### all of which are nice and give the same results on trivial testing
     ### I have used slightly pruned code from psychometric::alpha()
     ### kudos to Thomas D. Fletcher who wrote psychometric
     ###
     ### this just indexes dat by i to feed boot::boot()
     dat <- dat[i, ]
-    nv1 <- ncol(dat)
-    pv1 <- nrow(dat)
-    alpha <- (nv1/(nv1 - 1)) * (1 - sum(apply(dat, 2, stats::var))/stats::var(apply(dat, 1, sum)))
+    k <- ncol(dat)
+    alpha <- (k / (k - 1)) * (1 - sum(apply(dat, 2, stats::var)) / stats::var(apply(dat, 1, sum)))
     alpha
   }
 
@@ -205,5 +204,3 @@ getBootCIalpha  <- function(dat,
   }
   retVal
 }
-
-

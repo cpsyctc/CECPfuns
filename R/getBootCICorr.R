@@ -74,7 +74,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
     stop("Bootreps must be integer and numeric and, even for testing, >= 20")
   }
   ### sanity check 6: conf must be sensible
-  if (!is.numeric(conf) | conf <= 0 | conf > .999 ) {
+  if (!is.numeric(conf) | conf <= 0 | conf > .999) {
     stop("conf must be numeric and 0 < conf < .999")
   }
   ### sanity check 7: check method
@@ -82,7 +82,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   if (!is.character(method) | length(method) != 1) {
     stop("method must be character variable of length 1")
   }
-  method = stringr::str_to_lower(stringr::str_sub(method, 1, 1))
+  method <- stringr::str_to_lower(stringr::str_sub(method, 1, 1))
   if (!method %in% c("p", "s", "k")) {
     stop("method must start with one of 'p', 'P', 's', 'S', 'k', 'K'")
   }
@@ -100,7 +100,7 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   if (!is.character(bootCImethod) | length(bootCImethod) != 1) {
     stop("bootCImethod must be character variable of length 1")
   }
-  bootCImethod = stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))
+  bootCImethod <- stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))
   if (!bootCImethod %in% c("no", "ba", "st", "pe", "bc")) {
     stop("bootCImethod must start, after lowercasing with one of 'no', 'ba', 'pe' or 'bc'")
   }
@@ -130,13 +130,13 @@ getBootCICorr <- function(formula1, data, method = "p", bootReps = 1000, conf = 
   message(paste("Width of confidence interval is:",
                 conf,
                 "i.e. ",
-                paste0(round(100*conf),
+                paste0(round(100 * conf),
                       "%")))
   ### now we need a function to feed into boot() to get Pearson correlation
-  pearsonForBoot <- function(x,i) {
+  pearsonForBoot <- function(x, i) {
     ### expects x as two column structure
-    stats::cor(x[i,1],
-        x[i,2],
+    stats::cor(x[i, 1],
+        x[i, 2],
         method = useMethod,
         use = "pairwise.complete.obs")
   }

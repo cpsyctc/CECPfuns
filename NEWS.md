@@ -1,5 +1,6 @@
-# Version 0.0.0.9021
-Trying to get continuous integration testing on github with github actions running.
+# Version 0.0.0.9023
+More work to get continuous integration testing on github with github actions running.
+Moved linting off GitHub, some linting of some of the code.
 
 # Version 0.0.0.9021
 Added classifyRCIfromScores() which at first seemed a trivial function, 
