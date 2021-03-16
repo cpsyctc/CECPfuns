@@ -20,6 +20,8 @@
 #' <https://investigacion.udla.edu.ec/udla_teams/clara-paz/>.
 #' *  You can find out more about Emily at
 #' <https://www.researchgate.net/profile/Emily_Blackshaw2>
+
+
 #' and about her PhD which I am supervising on ResearchGate,
 #' [here](https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility)
 #' * My own sites are:
