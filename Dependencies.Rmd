@@ -1,0 +1,95 @@
+---
+title: "Dependencies"
+author: "CE"
+date: "17/03/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(pander)
+library(renv)
+library(gtools)
+rm(list = ls())
+```
+
+Here are the direct dependencies.
+
+```{r direct, echo=FALSE, message=FALSE, cache=FALSE}
+### little script to help monitor dependencies
+
+### this gets direct dependencies
+renv::dependencies(progress = FALSE,
+                   dev = TRUE) %>% 
+  as_tibble() -> tmpTibDirectDependencies
+
+tmpTibDirectDependencies %>% 
+  group_by(Dev, Package) %>% 
+  summarise(n = n()) %>% 
+  arrange(Dev, desc(n)) %>%
+  mutate(i = row_number()) %>%
+  select(i, everything()) -> tmpTibDirectDependencies2
+
+tmpTibDirectDependencies2 %>%
+  pander::pander(justify = "rllr")
+
+tmpTibDirectDependencies2 %>%
+  select(Package) %>%
+  pull() -> tmpVecDirectDependencies
+```
+
+```{r all, echo=FALSE, message=FALSE, results="hide", cache=FALSE}
+### this gets indirect dependencies as well as direct ones
+gtools::getDependencies("CECPfuns",
+                       c("Depends", "Imports", "LinkingTo", "Suggests"),
+                       base = TRUE,
+                       recommended = TRUE) %>%
+  as_tibble() %>%
+  rename(Package = value) %>%
+  arrange(Package) %>%
+  mutate(i = row_number()) %>%
+  select(i, Package) -> tmpTibAllDependencies
+
+tmpTibAllDependencies %>% 
+  pander::pander(justify = "rl")
+
+tmpTibAllDependencies %>% 
+  select(Package) %>%
+  pull() -> tmpVecAllDependencies
+```
+
+And here are the indirect dependencies (only).
+
+```{r indirect, echo=FALSE, message=FALSE, cache=FALSE}
+tmpTibAllDependencies %>% 
+  select(Package) %>%
+  pull() -> tmpVecAllDependencies
+
+setdiff(tmpVecAllDependencies, tmpVecDirectDependencies) %>%
+  as_tibble() %>%
+  rename(Indirect = value) %>%
+  arrange(Indirect) %>%
+  mutate(i = row_number()) %>%
+  select(i, Indirect) -> tmpTibIndirectDependencies
+
+tmpTibIndirectDependencies %>%
+  pander::pander(justify = "rl")
+```
+
+So we have `r nrow(tmpTibAllDependencies)` dependencies in all, of which
+`r nrow(tmpTibDirectDependencies2)` are direct, and 
+`r nrow(tmpTibIndirectDependencies)` are indirect.
+
+For reasons I haven't sussed out yet, there is a discrepancy there!  The ones found by `renv::dependencies()` but not by
+`gtools::getDependencies()` are these.
+
+```{r weirdness, echo=FALSE}
+setdiff(tmpVecDirectDependencies, tmpVecAllDependencies) %>%
+  as_tibble() %>%
+  rename(Package = value) %>%
+  arrange(Package) %>%
+  mutate(i = row_number()) %>%
+  select(i, Package) %>%
+  pander::pander(justify = "rl")
+```

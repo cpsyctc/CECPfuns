@@ -58,13 +58,13 @@ getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, ver
   }
   ### sanity check 3: check lengthRatio
   if (!is.null(lengthRatio)) {
-    if (!is.numeric(lengthRatio) | length(lengthRatio) != 1 | lengthRatio <=0) {
+    if (!is.numeric(lengthRatio) | length(lengthRatio) != 1 | lengthRatio <= 0) {
       stop("If not null (sought) then lengthRatio must be numeric of length 1 and > 0")
     }
   }
   ### sanity check 4: check newRel
   if (!is.null(newRel)) {
-    if (!is.numeric(newRel) | length(newRel) != 1 | newRel <=0) {
+    if (!is.numeric(newRel) | length(newRel) != 1 | newRel <= 0) {
       stop("If not null (sought) then lengthRatio must be numeric of length 1 and > 0")
     }
   }
@@ -99,4 +99,3 @@ getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, ver
     return(lengthRatio)
   }
 }
-

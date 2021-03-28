@@ -68,7 +68,7 @@ getRCIfromSDandAlpha <- function(SD, rel, conf = .95) {
   ### trivial function to return RCI given baseline score SD
   ### and sensible estimate of reliability, usually Cronbach alpha
   ### sanity check 1: SD
-  if (!is.numeric(SD) | length(SD) != 1 | SD <= 0 ) {
+  if (!is.numeric(SD) | length(SD) != 1 | SD <= 0) {
     stop("SD input must be single positive number larger than zero")
   }
   ### sanity check 2: rel
@@ -76,12 +76,11 @@ getRCIfromSDandAlpha <- function(SD, rel, conf = .95) {
     stop("reliability (rel) input must be single number between .1 and 1.0")
   }
   ### sanity check 3: conf must be sensible
-  if (!is.numeric(conf) | conf <= 0 | conf > .999 ) {
+  if (!is.numeric(conf) | conf <= 0 | conf > .999) {
     stop("conf must be numeric and 0 < conf < .999")
   }
   ### OK, we can go ahead
-  retVal <- qnorm(1 - (1 - conf)/2) # get the correct multiplier for desired confidence
+  retVal <- qnorm(1 - (1 - conf) / 2) # get the correct multiplier for desired confidence
   retVal <- retVal * sqrt(2) * SD * sqrt(1 - rel) # get the rest of the equation
   retVal # return the answer (doh!)
 }
-getRCIfromSDandAlpha(5.2 , .83)

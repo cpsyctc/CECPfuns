@@ -13,8 +13,8 @@ testthat::test_that("sanity checks work", {
 
 ### trivial tests of outputs
 testthat::test_that("Output correct", {
-  testthat::expect_equal(hyphenateWords(1:4), c("one", "two", "three", "four") )
-  testthat::expect_equal(hyphenateWords(1:4, capitalise = TRUE), c("One", "Two", "Three", "Four") )
+  testthat::expect_equal(hyphenateWords(1:4), c("one", "two", "three", "four"))
+  testthat::expect_equal(hyphenateWords(1:4, capitalise = TRUE), c("One", "Two", "Three", "Four"))
 })
 
 ### test comment:

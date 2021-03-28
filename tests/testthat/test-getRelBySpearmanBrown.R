@@ -2,7 +2,7 @@
 ### pretty obsessional doing this but I like it!
 testthat::test_that("sanity checks work", {
   ### 1
-  ### if (!is.numeric(oldRel) | length(oldRel) != 1 | oldRel <= 0 | oldRel >= 1){
+  ### if (!is.numeric(oldRel) | length(oldRel) != 1 | oldRel <= 0 | oldRel >= 1) {
   testthat::expect_error(suppressWarnings(getRelBySpearmanBrown(oldRel = 1:2))) # suppressWarnings() as warning precedes error
   testthat::expect_error(getRelBySpearmanBrown("A"))
   testthat::expect_error(getRelBySpearmanBrown(0))

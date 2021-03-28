@@ -81,7 +81,7 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 }
 \seealso{
 Other RCSC functions: 
-\code{\link{classifyRCIfromScores}()},
+\code{\link{classifyScoresVectorByRCI}()},
 \code{\link{getBootCICSC}()},
 \code{\link{getCSC}()}
 }

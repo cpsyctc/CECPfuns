@@ -5,3 +5,5 @@
 inst/doc
 doc
 Meta
+^Dependencies.Rmd$
+^Dependencies.html$

@@ -15,7 +15,7 @@ list(x = rnorm(12),
 
 testthat::test_that("sanity checks work", {
   ### 1
-  ### if (class(formula1) != "formula"){
+  ### if (class(formula1) != "formula") {
   testthat::expect_error(getCSC("a"))
   ### 2
   ### if (length(formula1) != 3)

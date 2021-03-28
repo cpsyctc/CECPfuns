@@ -129,14 +129,14 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
     stop("Bootreps must be integer and numeric and, even for testing, >= 20")
   }
   ### sanity check 8: conf must be sensible
-  if (!is.numeric(conf) | conf <= 0 | conf > .999 ) {
+  if (!is.numeric(conf) | conf <= 0 | conf > .999) {
     stop("conf must be numeric and 0 < conf < .999")
   }
   ### sanity check 9: check bootCImethod, i.e. type of bootstrap CI to be used
   if (!is.character(bootCImethod) | length(bootCImethod) != 1) {
     stop("bootCImethod must be character variable of length 1")
   }
-  bootCImethod = stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))
+  bootCImethod <- stringr::str_to_lower(stringr::str_sub(bootCImethod, 1, 2))
   if (!bootCImethod %in% c("no", "ba", "st", "pe", "bc")) {
     stop("bootCImethod must start, after lowercasing with one of 'no', 'ba', 'pe' or 'bc'")
   }
@@ -165,7 +165,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   message(paste("Width of confidence interval is:",
                 conf,
                 "i.e.",
-                paste0(round(100*conf),
+                paste0(round(100 * conf),
                       "%")))
   ### now we need a function to feed into boot() to get CSC
   ### first a minimal getCSC
@@ -223,4 +223,3 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   }
   retVal
 }
-

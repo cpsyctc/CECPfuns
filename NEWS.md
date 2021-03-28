@@ -1,3 +1,6 @@
+# Version 0.0.0.9024
+Renamed classifyRCIfromScores to classifyScoresByRCI.  Some dependency hunting. 
+
 # Version 0.0.0.9023
 More work to get continuous integration testing on github with github actions running.
 Moved linting off GitHub, some linting of some of the code.

@@ -157,5 +157,3 @@ getCSC <- function(formula1, data) {
   ### CSC is numerator / denominator (doh!)
   numerator / denominator
 }
-
-

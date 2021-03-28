@@ -7,3 +7,6 @@
 ^codecov\.yml$
 ^\.github$
 ^data-raw$
+^Dependencies.Rmd$
+^Dependencies.html$
+^.lintr$

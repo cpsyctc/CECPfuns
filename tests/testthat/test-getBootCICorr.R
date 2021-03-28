@@ -1,7 +1,7 @@
 ### test the sanity checks
 testthat::test_that("sanity checks work", {
   ### 1
-  ### if (class(formula1) != "formula"){
+  ### if (class(formula1) != "formula") {
   testthat::expect_error(getBootCICorrSD("a"))
   ### 2
   ### if (length(formula1) != 3)
@@ -18,7 +18,7 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(getBootCICorrSD(y + x + z ~ "u"))
   ### 5
   ### R must be numeric and integer
-  ### if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20){
+  ### if (!is.numeric(bootReps) | !is.wholenumber(bootReps) | bootReps < 20) {
   testthat::expect_error(getBootCICorrSD(bootReps = "a"))
   testthat::expect_error(getBootCICorrSD(bootReps = 10))
   testthat::expect_error(getBootCICorrSD(bootReps = 50.1))
@@ -28,7 +28,7 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(getBootCICorrSD(conf = 0))
   testthat::expect_error(getBootCICorrSD(conf = .9999))
   ### 7
-  ### if (!is.character(method) | length(method) != 1){
+  ### if (!is.character(method) | length(method) != 1) {
   ### if (!method %in% c("p", "s", "k"))
   testthat::expect_error(getBootCICorrSD(method = 1))
   testthat::expect_error(suppressWarnings(getBootCICorrSD(method = letters[1:2])))

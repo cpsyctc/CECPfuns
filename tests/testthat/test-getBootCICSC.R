@@ -1,6 +1,6 @@
 testthat::test_that("sanity checks work", {
   ### 1
-  ### if (class(formula1) != "formula"){
+  ### if (class(formula1) != "formula") {
   testthat::expect_error(getBootCICSC("a"))
   ### 2
   ### if (length(formula1) != 3)

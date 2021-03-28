@@ -8,11 +8,11 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(convertVector2sentence(1))
   testthat::expect_error(convertVector2sentence(tmpMat))
   ### 2
-  ###  if(!is.character(andVal) | length(andVal) > 1){
+  ###  if(!is.character(andVal) | length(andVal) > 1) {
   testthat::expect_error(convertVector2sentence(andVal = 1))
   testthat::expect_error(convertVector2sentence(andVal = 1:2))
   ### 3
-  ###  if(!is.character(quoteChar) | length(quoteChar) > 1){
+  ###  if(!is.character(quoteChar) | length(quoteChar) > 1) {
   testthat::expect_error(convertVector2sentence(quoteChar = 1))
   testthat::expect_error(convertVector2sentence(quoteChar = 1:2))
   ### 4
@@ -30,8 +30,8 @@ testthat::test_that("Output correct", {
   testthat::expect_equal(convertVector2sentence(1:4), "1, 2, 3 and 4")
   testthat::expect_equal(convertVector2sentence(1:4, italicY = TRUE), "*1*, *2*, *3* and *4*")
   testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE), "\"1\", \"2\", \"3\" and \"4\"")
-  testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, italicY = TRUE),"*\"1*\", \"*2*\", \"*3\"* and *\"4\"*")
-  testthat::expect_equal(convertVector2sentence(1:4, andChar = ' & '), "1, 2, 3 & 4")
+  testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, italicY = TRUE), "*\"1*\", \"*2*\", \"*3\"* and *\"4\"*")
+  testthat::expect_equal(convertVector2sentence(1:4, andChar = " & "), "1, 2, 3 & 4")
   testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'"), "'1', '2', '3' and '4'")
   testthat::expect_equal(convertVector2sentence(1:4, quoted = TRUE, quoteChar = "'"), "'1', '2', '3' and '4'")
 })

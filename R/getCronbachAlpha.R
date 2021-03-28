@@ -81,7 +81,7 @@ getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE) {
   tmpVars <- apply(dat, 2, stats::var)
   if (sum(tmpVars < .Machine$double.eps) > 0) {
     tmpColIndices <- which(tmpVars < .Machine$double.eps)
-    if (length (tmpColIndices) == 1) {
+    if (length(tmpColIndices) == 1) {
       stop(paste0("You appear to have one variable, with column number ",
                   tmpColIndices,
                   " whose non-missing values have essentially zero variance: no meaningful alpha possible"))
@@ -113,14 +113,13 @@ getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE) {
   ###
   ### compute alpha
   ### after checking out a number of packaged functions:
-  ###    psyc::cronbach()
-  ###    performance::cronbachs_alpha()
-  ###    psych::alpha()
+  ###    cronbach from psch
+  ###    cronbachs_alpha from performance
+  ###    alpha from psych
   ### all of which are nice and give the same results on trivial testing
   ### I have used slightly pruned code from psychometric::alpha()
   ### kudos to Thomas D. Fletcher who wrote psychometric
-  nv1 <- ncol(dat)
-  pv1 <- nrow(dat)
-  alpha <- (nv1/(nv1 - 1)) * (1 - sum(apply(dat, 2, stats::var))/stats::var(apply(dat, 1, sum)))
+  k <- ncol(dat)
+  alpha <- (k / (k - 1)) * (1 - sum(apply(dat, 2, stats::var)) / stats::var(apply(dat, 1, sum)))
   alpha
 }

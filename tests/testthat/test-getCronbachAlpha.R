@@ -10,7 +10,7 @@ testthat::test_that("sanity checks work", {
   ### sanity check 1: correct class of data
   testthat::expect_error(getChronbachAlpha(1:20))
   ### sanity check 2: at least 3 columns of data
-  testthat::expect_error(getChronbachAlpha(tmpMat[,1:2]))
+  testthat::expect_error(getChronbachAlpha(tmpMat[, 1:2]))
   ### sanity check 3: data numeric
   tmpDat2 <- tmpDat
   tmpDat2$V2 <- as.character(tmpDat2)
