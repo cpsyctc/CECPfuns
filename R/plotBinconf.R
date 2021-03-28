@@ -66,10 +66,12 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
     stop("Your minN, maxN and step give more than 200 CIs to plot: too many!")
   }
 
+  options(tidyverse.quiet = TRUE)
+
   ### declare variables to preempt complaints later
   n <- value <- obsProp <- LCL <- UCL <- CI <- NULL
   `...1` <- `...2` <- `...3` <- NULL
-  vecN %>%
+  suppressMessages(vecN %>%
     tibble::as_tibble() %>%
     dplyr::rename(n = value) %>%
     dplyr::rowwise() %>%
@@ -78,7 +80,7 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
     tidyr::unnest_wider(CI) %>%
     dplyr::rename(obsProp = `...1`,
            LCL = `...2`,
-           UCL = `...3`) -> tibDat
+           UCL = `...3`)) -> tibDat
 
   ggplot2::ggplot(data = tibDat,
                   ggplot2::aes(x = n, y = obsProp)) +
@@ -88,3 +90,4 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
     ggplot2::ylab("Proportion") -> p
   p
 }
+

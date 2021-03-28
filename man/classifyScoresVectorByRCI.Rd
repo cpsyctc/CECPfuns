@@ -72,7 +72,7 @@ scoreChanges # is:
 #  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5
 
 ## so now apply an RCI value of 2 to that:
-classifyScoresByRCI(scoreChange = scoreChanges, RCI = 2)
+cclassifyScoresVectorByRCI(scoreChange = scoreChanges, RCI = 2)
 ## produces:
 # You input 11 values for scoreChange.  There were no missing values.
 ## A tibble: 3 x 4
@@ -95,9 +95,9 @@ score1 <- rnorm(n) # random Gaussian scores
 score2 <- score1 - rnorm(n, mean = .2, sd = .2) # and some random change
 scoreChange <- score1 - score2 # get the change
 
-classifyScoresByRCI(scoreChange, RCI = .3)
+cclassifyScoresVectorByRCI(scoreChange, RCI = .3)
 
-classifyScoresByRCI(score1 = score1, score2 = score2, RCI = .3)
+cclassifyScoresVectorByRCI(score1 = score1, score2 = score2, RCI = .3)
 }
 
 }

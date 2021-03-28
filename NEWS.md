@@ -1,3 +1,11 @@
+# Version 0.0.0.9026
+Corrected mistake in classifyScoresVectorByRCI() help examples.  
+Added suppressMessages to plotBinconf() to get rid of irritating messages from dplyr.
+
+# Version 0.0.0.9025
+Added classifyScoresVectorByRCI() and plotBinconf(). 
+Both still need work on help and tests but usable.
+
 # Version 0.0.0.9024
 Renamed classifyRCIfromScores to classifyScoresByRCI.  Some dependency hunting. 
 
