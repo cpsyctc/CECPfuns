@@ -190,36 +190,36 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
     }
   }
   ###
-  ### sanity check 6
+  ### sanity check 7
   cueing <- match.arg(cueing, c("negative", "positive"))
   ###
-  ### sanity check 7
+  ### sanity check 8
   if (length(dp) != 1 | !is.numeric(dp) | dp < 0) {
     stop("Argument dp dictating number of decimal places in
          the percentages must be length 1 and numeric and zero or positive")
   }
   ###
-  ### sanity check 8
+  ### sanity check 9
   if (length(returnTable) != 1 | !is.logical(returnTable)) {
     stop("Argument returnTable must be length 1 and logical")
   }
   ###
-  ### sanity check 9
+  ### sanity check 10
   if (length(addCI) != 1 | !is.logical(addCI)) {
     stop("Argument addCI must be length 1 and logical")
   }
   ###
-  ### sanity check 10
+  ### sanity check 11
   if (length(CLsSeparate) != 1 | !is.logical(CLsSeparate)) {
     stop("Argument CLsSeparate must be length 1 and logical")
   }
   ###
-  ### sanity check 11
+  ### sanity check 12
   if (length(returnNumeric) != 1 | !is.logical(returnNumeric)) {
     stop("Argument returnNumeric must be length 1 and logical")
   }
   ###
-  ### sanity check 12: conf must be sensible
+  ### sanity check 13: conf must be sensible
   if (!is.numeric(conf) | conf <= 0 | conf > .999) {
     stop("conf must be numeric and 0 < conf < .999")
   }

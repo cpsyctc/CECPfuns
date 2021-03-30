@@ -1,8 +1,8 @@
 ---
-title: "Introduction"
+title: "Introduction to the CECPfuns package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction}
+  %\VignetteIndexEntry{Introduction to the CECPfuns package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,14 +13,128 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
 ```{r setup}
 library(CECPfuns)
 ```
+## Background
 
-# Introduction to the CECPfuns package
+This should evolve into a repository of all the functions that I (CE) have created. The first post about the package is [here](https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/).
 
-I need to write stuff here!
+The primary goal driving the creation of CECPfuns was fairly selfish: to make sure I have a single repository of my functions that I could keep up to date and where I could easily find the latest version of any potentially reusable functions I have written. However, two of my colleagues, Dr. Clara Paz and Emily Blackshaw have encouraged me to think that this might become something of use for others and I am now very much working toward that aim and, with that in mind I have put the package on GitHub at https://github.com/cpsyctc/CECPfuns.  You should always be able to install the latest version of the package with
 
-# Stuff from https://r-pkgs.org/vignettes.html
+* `remotes::install_github("cpsyctc/CECPfuns")`
 
+* `devtools::install_github("cpsyctc/CECPfuns")`
+
+Clearly, to make those commands work you will need to have installed either the massive (and amazing) devtools package (`install.packages("devtools")`) or the much lighter remotes package (`install.packages("remotes")`) which is largely a wrapper for some devtools functions.
+
+Please check the [MIT licence](https://opensource.org/licenses/MIT) for liability disclaimer: use these functions entirely at your own risk.  
+
+## How might you find this package useful?
+
+I have functions for various areas of my own needs:
+
+1. data cleaning/checking and shaping for analysis
+2. functions that provide statistical and psychometric analyses
+3. functions that illustrate or help such analyses
+4. miscellaneous functions that have made my life easier!
+
+Clara and Emily have each found some of these functions useful to them and the functions have helped us with the analyses in Emily's enormous PhD and for papers that Clara and and I have published.  We imagine that others working in the mental health, well-being, therapy worlds will also find them useful and they could even be useful in universities and other training settings where R is replacing SPSS.
+
+## How will it be best to use the package?
+
+### Operating system, R version and R package requirements
+
+I am trying to make sure that all the functions run on the major operating systems: Linux, Windows and Mac and that it should work back to R 3.5.  At the moment I think it works fine on all permutations of those systems and all major releases of R since 3.6.  In theory it should work on 3.5 but the R-hub test machine gives an error saying that the package tibble on which CECPfuns depends is not available there though the tibble package page says it works for R ≥ 3.1.0 so there is something odd there that I may or may not be be able to sort out. If you find the package won't work on your system for R ≥ 3.5.0 do [contact me](https://www.psyctc.org/psyctc/contact-me/) with details of your system and what errors you see and I'll see if I can make changes to fix it.
+
+### Why tidyverse?
+
+In the last year or so, since some time probably late 2019, I have been using the tidyverse realm within the rather diverse ecosystems of R, see [here](https://www.psyctc.org/Rblog/posts/2021-02-07-why-pipe-why-the-tidyverse/) for more about why. That's probable sensible reading if you are not already a tidyverse user and want to understand some of the design decisions I have made.  The next post in my SAFAQ R blog [More piping, and rowwise()](https://www.psyctc.org/Rblog/posts/2021-02-10-more-piping-introducing-rowwise/) is also probable sensible reading as it says a bit about why many of the functions here are designed so that they can be used either standalone or in dplyr pipes.  That is particularly useful when you might want to run the same analyses for an entire dataset but also separately for subgroups, e.g. by gender, or by therapist.
+
+My page [Wisdom(!)](https://www.psyctc.org/Rblog/wisdom.html) contains, a little ruefully, many things I have learned the hard way about data checking, cleaning, mangling and analysing over the last three decades.  Some of it now converges well with the reproducibility movement.
+
+## Design choices
+
+### Messages, error messages and warnings
+
+I have tried to put in error messages that will stop functions rather than warnings.  Sometimes, where it might conceivably be sensible to do override such a trap because you have a value you want to input to a function that I have tried to warn against, I have tried to give the function an argument that allows you to turn that error into a warning. 
+I have put in warnings in the rarer cases when I really don't think an error stopping things is correct, but where I think the input might be a mistake.
+
+I have also put in messages from some functions but if I have, I think I have always also added a "verbose = " argument which if you set it to FALSE, will suppress the warning.
+
+I have put in ridiculous numbers of sanity checks on inputs and other arguments, often there are > 10 of these even for fairly simple functions.  My rationale was that I want this package to be fairly friendly for relative newcomers to R, or those only using it infrequently.  I have done this to try to avoid the situation in which I put something silly into a function but it passes it on to a deeper function or step with the result that the error message I see can be very hard to understand and won't immediately point me to my error.  My aspiration is that everything you might not have meant to do gets trapped before it goes any further.
+
+### FunctionNamesAreVerlongAnd ... names generally!
+
+I have used long names for functions and for arguments.  I'm sorry but I think the extra typing is offset by reduced confusion.
+
+My function names tend to start with a verb: "classify", "get" and "plot" are recurring ones.  I am also using a rather debased "camelCase" where names start with a lower case letter and upper case letters mark where a space has been lost from ordinary English.  However, I can't bear to use getNNa for "get the Number of NA values" so it's `getNNA`.  Generally I have priviledged multiple capital letters from English abbreviations over strict camelCase in that way.
+
+I have tried to use names inside functions that start with the class of the object: vecN, valX, listNames, matCorr, tibData.  However, I think you won't see those unless you want to see the code inside a function, which you can always do with `functionName`, i.e. the function but without the usual "()" on the end.
+
+### Code testing
+
+I have tried to write tests for all functions that get run every time I update the package at all.  These (laboriously!) test all the sanity checking of inputs to make sure the error traps work, test all the warnings (I think I have tested all of them) and generally test the output.  However, at the moment I am not testing the ggplot output from `plotFunction()` functions as I suspect that would then involve me having to reset the test targets whenever `ggplot()` is updated.  Those tests are run on my local machine but also on the major operating systems and major R releases back to 3.5 (see above for requirements).
+
+### Help pages and vignettes
+
+I am trying to make the help pages far more extensive than they would be for many R functions and have tried to write them so they not only give the basics to enable you to run the function, know what arguments do what and what it returns, but also to give a lot of examples of use of the function.  Again unusually, I have tried to give at least some of the statistical, psychometric or pragmatic background to the function.  I am also planning to build a lot of vignettes into the package which will often link a number of functions together and give more background and perhaps some illustrations of use and output.  I am also aiming for the help pages, but particularly the vignettes to link to the web resources, particularly to my own (that's not just narcissism: it's also because then I am responsible for keeping the links working and logical and so links shouldn't break).
+
+## Who are we?
+
+* You can [find out more about Clara here](https://investigacion.udla.edu.ec/udla_teams/clara-paz/).
+* You can [find out more about Emily here](https://www.researchgate.net/profile/Emily_Blackshaw2) and about her PhD, which I am supervising, at her [ResearchGate project page](https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility).
+* My own sites are:
+  + my biggest research programme, which overlaps with Emily's work, the CORE system at https://www.coresystemtrust.org.uk/
+  + a [web site about my non-CORE work](https://www.psyctc.org/psyctc/), which I am slowly (re)building from a much earlier one
+  + my ["R blog" or "SAFAQ"](https://www.psyctc.org/Rblog/) as I have called it  of pages created using R and the [distill package](https://rstudio.github.io/distill/)
+  + pages which relate to a book, co-authored with Jo-anne Carlyle, coming out in autumn 2021: watch this space!
+  + my [personal site](https://www.psyctc.org/pelerinage2016).
+
+## To do list!
+
+Sadly, this is definitely incomplete and I am sure it will continue to develop, the package too I hope, for years!
+
+* General enhancement of the package
+
+  + Improve help pages for existing functions
+
+  + Add tests: added for all functions so far, could do with expansion?
+
+  + Add vignettes
+
+  + Add data
+   + UK YP-CORE cutting points
+
+* Functions
+
+  + data cleaning/checking and shaping for analysis
+    + Add isOne2One()
+    + Add allUnique()
+    + Add getScore()
+    + Add getCOREOMscores() (for the CORE-OM)
+    + Add getCORESFAOMscores() (for the CORE-SF/A)
+    + Add getCORESFBOMscores() (for the CORE-SF/B)
+    + Add classifyYPCOREScores() (for the YP-CORE, by age and gender)
+    + Add classifyScoresGeneric()
+  
+  + functions that provide statistical and psychometric analyses
+    + Add getRCIfromItemData()
+    +  Add getBootCIRCIfromScoresAndAlpha()
+    + Add getBootCIRCIfromItemData()
+    + Add getBootCIMeanDiff()
+    + Add getHedgesg()
+    + Add getCohend() (deal with "-2" issue)
+    + Add getCohendPaired()
+    + Add convCohend2Hedgesg() (deal with "-2")
+    + Add countRCSCnumbers() (allow for gender?)
+  
+  + functions that illustrate or help such analyses
+    + Add plotJacobsonRCSC() (ditto)
+  
+  + miscellaneous functions that have made my life easier!
+    + Add findYourFunctions()
+    + Add getRmdFileStats()
+    + Add readCEdates()
+
+then perhaps some functions for standard reports from (fairly) standard CORE datasets (should feed separate Rmd templates)

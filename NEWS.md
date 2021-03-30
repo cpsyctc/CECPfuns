@@ -1,3 +1,8 @@
+# Version 0.0.0.9027
+Tweaked ./.github/workflows/R-CMD-check.yaml to removing checking on R < 3.5, tests added for 
+classifyScoresVectorByRCI() and plotBinconf(), introductory vignette fleshed out and 
+package help page now largely replaced by a link to that vignette.
+
 # Version 0.0.0.9026
 Corrected mistake in classifyScoresVectorByRCI() help examples.  
 Added suppressMessages to plotBinconf() to get rid of irritating messages from dplyr.

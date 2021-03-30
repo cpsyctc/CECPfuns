@@ -48,7 +48,7 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
   }
   ###
   ### sanity check 4: maxN must be sensible
-  if(!is.numeric(maxN) | length(maxN) != 1 | maxN < 10 | maxN > 10000) {
+  if(length(maxN) != 1 | !is.numeric(maxN) | maxN < 10 | maxN > 10000) {
     stop("Argument maxN must be numeric between 10 and 10000 (inclusive) and length 1")
   }
   ###

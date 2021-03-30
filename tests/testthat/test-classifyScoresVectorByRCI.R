@@ -4,13 +4,16 @@ options(digits = 22)
 
 ### test the sanity checks
 testthat::test_that("sanity checks work", {
-  ### 1
+  ###
+  ### sanity check 1
   testthat::expect_error(classifyScoresVectorByRCI(verbose = "a"))
+  ###
   ### sanity check 2
   ### if (length(RCI) != 1 | !is.numeric(RCI) | RCI < .Machine$double.eps)
   testthat::expect_error(suppressWarnings(classifyScoresVectorByRCI(RCI = 1:2)))
   testthat::expect_error(classifyScoresVectorByRCI(RCI = "A"))
   testthat::expect_error(classifyScoresVectorByRCI(RCI = 0))
+  ###
   ### sanity check 3
   ### nNulls <- is.null(scoreChange) + is.null(score1) + is.null(score2)
   ###  if (nNulls == 3)
@@ -19,33 +22,58 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(classifyScoresVectorByRCI(scoreChange = 1:5, score1 = 1:5))
   testthat::expect_error(classifyScoresVectorByRCI(scoreChange = 1:5, score2 = 1:5))
   testthat::expect_error(classifyScoresVectorByRCI(scoreChange = 1:5, score1 = 1:5, score2 = 1:5))
+  ###
   ### sanity check 4
   ### if (nNulls == 1) {
   ###   if (!is.numeric(score1) | !is.vector(score1))
   testthat::expect_error(classifyScoresVectorByRCI(score1 = letters[5], score2 = 1:5))
   testthat::expect_error(classifyScoresVectorByRCI(score1 = 1, score2 = 1))
   testthat::expect_error(classifyScoresVectorByRCI(score2 = letters[5], score1 = 1:5))
+  ###
   ### sanity check 5
   ### if(length(score1) != length(score2))
   testthat::expect_error(classifyScoresVectorByRCI(score2 = 1, score1 = 1:5))
+  ###
   ### sanity check 6
   ### check scoreChange
   ### if (!is.numeric(scoreChange))
   testthat::expect_error(classifyScoresVectorByRCI(scoreChange = letters))
-  ### sanity check 6
+  ###
+  ### sanity check 7
   ### cueing <- match.arg(cueing, c("negative", "positive"))
   testthat::expect_error(classifyScoresVectorByRCI(cueing = "sausages"))
-  ### sanity check 7
+  ###
+  ### sanity check 8
   ### if (length(dp)!= 1 | !is.numeric(dp) | dp < 0)
   testthat::expect_error(classifyScoresVectorByRCI(dp = "A"))
   testthat::expect_error(classifyScoresVectorByRCI(dp = 1:2))
   testthat::expect_error(classifyScoresVectorByRCI(dp = -1))
-  ### sanity check 8
+  ##
+  ### sanity check 9
   ### if (length(returnTable) != 1 | !is.logical(returnTable))
   testthat::expect_error(classifyScoresVectorByRCI(returnTable = c(FALSE, TRUE)))
   testthat::expect_error(classifyScoresVectorByRCI(returnTable = "A"))
+  ##
+  ### sanity check 10
+  testthat::expect_error(classifyScoresVectorByRCI(addCI = c(FALSE, TRUE)))
+  testthat::expect_error(classifyScoresVectorByRCI(addCI = "A"))
+  ##
+  ### sanity check 11
+  testthat::expect_error(classifyScoresVectorByRCI(CLsSeparate = c(FALSE, TRUE)))
+  testthat::expect_error(classifyScoresVectorByRCI(CLsSeparate = "A"))
+  ##
+  ### sanity check 12
+  testthat::expect_error(classifyScoresVectorByRCI(returnNumeric = c(FALSE, TRUE)))
+  testthat::expect_error(classifyScoresVectorByRCI(returnNumeric = "A"))
+  ###
+  ### sanity check 13:
+  # if (!is.numeric(conf) | conf <= 0 | conf > .999) {
+  #   stop("conf must be numeric and 0 < conf < .999")
+  testthat::expect_error(classifyScoresVectorByRCI(conf = c(.95, .9775)))
+  testthat::expect_error(classifyScoresVectorByRCI(conf = 0))
+  testthat::expect_error(classifyScoresVectorByRCI(conf = 1))
+  testthat::expect_error(classifyScoresVectorByRCI(conf = "A"))
 })
-
 
 
 ### test warnings

@@ -12,70 +12,12 @@ This should evolve into a repository of all the functions that I (CE)
   versions.  Please check the MIT licence for disclaimer.
 }
 \details{
-The goal driving the creation of CECPfuns is largely selfish:
-to make sure I have a single,#' up to date, repository where
-I can find potentially reusable functions I have written.
-However, it is something that has been very much encouraged
-by (Dr. Clara Paz) and she has contributed to some of these
-functions and to the general idea of the package.  Emily
-Blackshaw \url{https://www.researchgate.net/profile/Emily_Blackshaw2}
-has also been alpha testing and advising on the
-development of the package
-
-It is possible that these functions may be of use to others
-so I am uploading it regularly after
-any significant changes to GitHub at \url{https://github.com/cpsyctc/CECPfuns}.
+Run:
+\code{vignette("Introduction", package = "CECPfuns")}
+to get the the vignette that gives the best introduction to the package
+or jump to the index of the package's (as with any R package, index link is at the bottom of every
+help page within any package).
 }
-\section{General resources}{
-\itemize{
-\item As above, you can find out more about Clara at
-\url{https://investigacion.udla.edu.ec/udla_teams/clara-paz/}.
-\item You can find out more about Emily at
-\url{https://www.researchgate.net/profile/Emily_Blackshaw2}
-and about her PhD which I am supervising on ResearchGate,
-\href{https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility}{here}
-\item My own sites are:
-\itemize{
-\item my biggest research programme, which overlaps with Emily's
-work, is the CORE system: \url{https://www.corestemtrust.org.uk/}
-\item a web site about my non-CORE work which I am slowly (re)building
-from a much earlier one is at \url{https://www.psyctc.org/psyctc/} and
-\item my personal site is \url{https://www.psyctc.org/pelerinage2016}.
-}
-}
-}
-
-\section{To do list}{
-
-\itemize{
-\item Improve help pages for existing functions
-\item Add tests: \emph{added for all functions so far, could do with expansion?}
-\item Add vignettes
-\item Add data
-\item Add getRCIfromItemData()
-\item Add getBootCIRCIfromScoresAndAlpha()
-\item Add getBootCIRCIfromItemData()
-\item Add getBootCIMeanDiff()
-\item Add getHedgesg()
-\item Add getCohend() (deal with "-2" issue)
-\item Add getCohendPaired()
-\item Add convCohend2Hedgesg() (deal with "-2")
-\item Add countRCSCnumbers() (allow for gender?)
-\item Add plotJacobsonRCSC() (ditto)
-\item Add findYourFunctions()
-\item Add getRmdFileStats()
-\item Add readCEdates()
-\item Add isOne2One()
-\item Add allUnique()
-\item Add getScore()
-\item Add getCOREOMscores() (for the CORE-OM)
-\item Add getCORESFAOMscores() (for the CORE-SF/A)
-\item Add getCORESFBOMscores() (for the CORE-SF/B)
-\item then perhaps some functions for standard reports
-from (fairly) standard CORE datasets (should feed separate Rmd templates)
-}
-}
-
 \author{
 \strong{Maintainer}: Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
 
