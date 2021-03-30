@@ -24,8 +24,13 @@ getNOK(c(1:5, NA, 7:10))
 
 Other counting functions: 
 \code{\link{getNNA}()}
+
+Other data checking functions: 
+\code{\link{getNNA}()},
+\code{\link{isOneToOne}()}
 }
 \author{
 Chris Evans
 }
 \concept{counting functions}
+\concept{data checking functions}

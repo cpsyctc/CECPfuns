@@ -34,9 +34,9 @@ Please check the [MIT licence](https://opensource.org/licenses/MIT) for liabilit
 
 I have functions for various areas of my own needs:
 
-1. data cleaning/checking and shaping for analysis
-2. functions that provide statistical and psychometric analyses
-3. functions that illustrate or help such analyses
+1. data cleaning/checking and shaping for analysis, e.g. `isOneToOne()`, `getNOK()`
+2. functions that provide statistical and psychometric analyses, e.g. `getCSC()`, `getBootCImean()`
+3. functions that illustrate or help such analyses, e.g. `plotBinconf()`
 4. miscellaneous functions that have made my life easier!
 
 Clara and Emily have each found some of these functions useful to them and the functions have helped us with the analyses in Emily's enormous PhD and for papers that Clara and and I have published.  We imagine that others working in the mental health, well-being, therapy worlds will also find them useful and they could even be useful in universities and other training settings where R is replacing SPSS.
@@ -109,7 +109,6 @@ Sadly, this is definitely incomplete and I am sure it will continue to develop, 
 * Functions
 
   + data cleaning/checking and shaping for analysis
-    + Add isOne2One()
     + Add allUnique()
     + Add getScore()
     + Add getCOREOMscores() (for the CORE-OM)

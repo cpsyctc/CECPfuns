@@ -8,6 +8,7 @@
 #' getNOK(c(1:5, NA, 7:10))
 #'
 #' @family counting functions
+#' @family data checking functions
 #' @seealso \code{\link{getNNA}} for count of missing values
 #'
 #' @author Chris Evans

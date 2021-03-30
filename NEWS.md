@@ -1,3 +1,8 @@
+# Version 0.0.0.9028
+Some tweaks to classifyScoresVectorByRCI() and plotBinconf() to please lintR!  R-CMD-check.yaml 
+tweaked to get R 3.5.0 checked on windows to see if error report from 3.5 in Ubuntu is replicated.
+Added isOneToOne().
+
 # Version 0.0.0.9027
 Tweaked ./.github/workflows/R-CMD-check.yaml to removing checking on R < 3.5, tests added for 
 classifyScoresVectorByRCI() and plotBinconf(), introductory vignette fleshed out and 

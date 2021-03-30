@@ -327,7 +327,7 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
       dplyr::summarise(n = n(),
                 percent = 100 * n / nTot,
                 percentChar = sprintf(fmt, percent),
-                percentChar= paste0(percentChar, "%"),
+                percentChar = paste0(percentChar, "%"),
                 valid_percent = 100 * n / nValid,
                 valid_percentChar = sprintf(fmt, valid_percent),
                 valid_percentChar = paste0(valid_percentChar, "%")) %>%
@@ -339,7 +339,7 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
                                                 NA_character_,
                                                 valid_percentChar)) %>%
       ungroup() -> tmpTib
-    if (addCI){
+    if (addCI) {
       suppressMessages(
       tmpTib %>%
         dplyr::rowwise() %>%
@@ -410,6 +410,3 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
   }
   return(tmpTib)
 }
-
-
-

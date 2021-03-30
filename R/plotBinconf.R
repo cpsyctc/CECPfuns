@@ -28,12 +28,12 @@
 #' plotBinconf(.3, .95, 100, 700, 5)
 #' }
 #'
-plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
+plotBinconf <- function(proportion, conf, minN, maxN, step = 1) {
   ### little function using Hmisc::binconf() to get CI around observed proportion and plot this
   ### sanity checks
   ###
   ### sanity check 1
-  if(!is.numeric(proportion) | length(proportion) != 1 | proportion < 0 | proportion > 1) {
+  if (!is.numeric(proportion) | length(proportion) != 1 | proportion < 0 | proportion > 1) {
     stop("Argument proportion must be numeric between 0 and 1 (inclusive) and length 1")
   }
   ###
@@ -43,17 +43,17 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
   }
   ###
   ### sanity check 3: minN must be sensible
-  if(!is.numeric(minN) | length(minN) != 1 | minN < 5 | minN > 1000 | minN > maxN) {
+  if (!is.numeric(minN) | length(minN) != 1 | minN < 5 | minN > 1000 | minN > maxN) {
     stop("Argument minN must be numeric between 5 and 1000 (inclusive), less than maxN and of length 1")
   }
   ###
   ### sanity check 4: maxN must be sensible
-  if(length(maxN) != 1 | !is.numeric(maxN) | maxN < 10 | maxN > 10000) {
+  if (length(maxN) != 1 | !is.numeric(maxN) | maxN < 10 | maxN > 10000) {
     stop("Argument maxN must be numeric between 10 and 10000 (inclusive) and length 1")
   }
   ###
   ### sanity check 5: step must be sensible
-  if(!is.numeric(step) | length(step) != 1 | step < 1 | step > 100) {
+  if (!is.numeric(step) | length(step) != 1 | step < 1 | step > 100) {
     stop("Argument minN must be numeric between 1 and 100 (inclusive) and length 1")
   }
   ###
@@ -90,4 +90,3 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1){
     ggplot2::ylab("Proportion") -> p
   p
 }
-
