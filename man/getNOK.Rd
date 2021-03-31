@@ -26,6 +26,7 @@ Other counting functions:
 \code{\link{getNNA}()}
 
 Other data checking functions: 
+\code{\link{checkAllUnique}()},
 \code{\link{getNNA}()},
 \code{\link{isOneToOne}()}
 }

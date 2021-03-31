@@ -1,3 +1,6 @@
+# Version 0.0.0.9029
+Added checkAllUnique()
+
 # Version 0.0.0.9028
 Some tweaks to classifyScoresVectorByRCI() and plotBinconf() to please lintR!  R-CMD-check.yaml 
 tweaked to get R 3.5.0 checked on windows to see if error report from 3.5 in Ubuntu is replicated.

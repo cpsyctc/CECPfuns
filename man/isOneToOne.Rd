@@ -2,9 +2,12 @@
 % Please edit documentation in R/isOneToOne.R
 \name{isOneToOne}
 \alias{isOneToOne}
+\alias{checkIsOneToOne}
 \title{Data checking function to check if the contents of two variables have a 1:1 mapping}
 \usage{
 isOneToOne(x, y)
+
+checkIsOneToOne(x, y)
 }
 \arguments{
 \item{x}{first variable}
@@ -17,43 +20,43 @@ logical: TRUE if 1:1 mapping, FALSE otherwise
 \description{
 Data checking function to check if the contents of two variables have a 1:1 mapping
 }
-\section{background}{
+\section{Background}{
 
 This is a little utility function that I use from time to time when I want to check
 whether two variables have a one to one mapping they should have.  Typically this
 is where one of them is a short code say variable x, for the other, say variable y.
 If you have two vectors, one of the short codes, x, and one of the longer, y,
 they should have a perfect 1:1 mapping, so for any value in x there must the same
-number of its mapped value in y.  For example:
-
-x  y
-1  Male
-2  Female
-3  Other
-2  Female
-2  Female
-1  Male
-3  Other
-Has a perfect 1:1 mapping of x to y so, assuming that
-I had x and y as vectors,
-\code{isOneToOne(x, y)} will return TRUE.
-
-However
-x  y
-1  Male
-2  Female
-3  Other
-2  Feemale
-2  Female
-1  male
-3  Other
-does not 1:1 (and isn't a completely mad example
-of typical messes in real world data, if perhaps a very
-simple one!) Of course, here
-\code{isOneToOne(x, y)} will return FALSE.
+number of its mapped value in y.  For example:\tabular{ll}{
+   x \tab y \cr
+   1 \tab Male \cr
+   2 \tab Female \cr
+   3 \tab Other \cr
+   2 \tab Female \cr
+   2 \tab Female \cr
+   1 \tab Male \cr
+   3 \tab Other \cr
+   Has a perfect 1:1 mapping of x to y so, assuming that \tab  \cr
+   I had x and y as vectors, \tab  \cr
+   \code{isOneToOne(x, y)} will return TRUE. \tab  \cr
+}
+\tabular{ll}{
+   x \tab y \cr
+   1 \tab Male \cr
+   2 \tab Feemale \cr
+   3 \tab Other \cr
+   2 \tab Female \cr
+   2 \tab Female \cr
+   1 \tab male \cr
+   3 \tab Other \cr
+   does not 1:1 (and isn't a completely mad example \tab  \cr
+   of typical messes in real world data, if perhaps a very \tab  \cr
+   simple one!) Of course, here \tab  \cr
+   \code{isOneToOne(x, y)} will return FALSE. \tab  \cr
+}
 }
 
-\section{acknowledgements}{
+\section{Acknowledgements}{
 
 I found this nice way of doing this at
 https://stackoverflow.com/questions/52399474/check-if-variables-are-in-a-one-to-one-mapping
@@ -76,9 +79,11 @@ isOneToOne(c(1, 1:26), c("1", letters[1:25], "1"))
 isOneToOne(1:26,c("a",letters[1:25]))
 }
 
+
 }
 \seealso{
 Other data checking functions: 
+\code{\link{checkAllUnique}()},
 \code{\link{getNNA}()},
 \code{\link{getNOK}()}
 }

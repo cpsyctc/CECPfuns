@@ -55,6 +55,12 @@ My page [Wisdom(!)](https://www.psyctc.org/Rblog/wisdom.html) contains, a little
 
 ## Design choices
 
+### Code
+
+The code is all R: no C, C++, FORTRAN as they're really beyond my programming abilities.
+
+I have tried to indent and space the code following the conventions that lintr::lint() likes so a lot of space and consistent indenting.  I have also tried to comment things liberally.  Perhaps sometimes I have overdone that where the code might have been sufficiently clear not to need comments.  However, I know my coding is not good (I'm essentially self-taught: a week of introduction to FORTRAN for students *not* doing computing in 1975).  I do now sometimes find myself working with long thin format datasets with over a million rows and that will climb so some of these functions may get to be run on such sizes of data, however, most of what I work with is much, much smaller so I have almost never worried about speed or whether large numbers will break anything.  I have put some error traps in on bootstrapping functions where I think the number of replications might tie things up for a long time.  However, I think I have always allowed for those traps to be overridden.
+
 ### Messages, error messages and warnings
 
 I have tried to put in error messages that will stop functions rather than warnings.  Sometimes, where it might conceivably be sensible to do override such a trap because you have a value you want to input to a function that I have tried to warn against, I have tried to give the function an argument that allows you to turn that error into a warning. 
@@ -72,9 +78,14 @@ My function names tend to start with a verb: "classify", "get" and "plot" are re
 
 I have tried to use names inside functions that start with the class of the object: vecN, valX, listNames, matCorr, tibData.  However, I think you won't see those unless you want to see the code inside a function, which you can always do with `functionName`, i.e. the function but without the usual "()" on the end.
 
+### Synonyms
+
+Occasionally I have created a synonym for a function, for example `checkIsOneToOne()` is simply the same function as `isOneToOne()` and if you ask for the 
 ### Code testing
 
-I have tried to write tests for all functions that get run every time I update the package at all.  These (laboriously!) test all the sanity checking of inputs to make sure the error traps work, test all the warnings (I think I have tested all of them) and generally test the output.  However, at the moment I am not testing the ggplot output from `plotFunction()` functions as I suspect that would then involve me having to reset the test targets whenever `ggplot()` is updated.  Those tests are run on my local machine but also on the major operating systems and major R releases back to 3.5 (see above for requirements).
+I have used the excellent testthat library and tried to write tests for all functions.  Every function has tests on the sanity tests on the inputs/arguments you give the fun, if the function can give warnings, then I have tested them and generally I have put in some test on expected output from sample input.  However, at the moment I am not testing the ggplot output from `plotFunction()` functions as I suspect that would then involve me having to reset the test targets whenever `ggplot()` is updated.  
+
+Those tests get run every time I update the package and are run on my local machine but also on the major operating systems and major R releases back to 3.5 (see above for requirements).
 
 ### Help pages and vignettes
 
@@ -109,7 +120,7 @@ Sadly, this is definitely incomplete and I am sure it will continue to develop, 
 * Functions
 
   + data cleaning/checking and shaping for analysis
-    + Add allUnique()
+    + Add checkAllUnique()
     + Add getScore()
     + Add getCOREOMscores() (for the CORE-OM)
     + Add getCORESFAOMscores() (for the CORE-SF/A)
@@ -119,7 +130,7 @@ Sadly, this is definitely incomplete and I am sure it will continue to develop, 
   
   + functions that provide statistical and psychometric analyses
     + Add getRCIfromItemData()
-    +  Add getBootCIRCIfromScoresAndAlpha()
+    + Add getBootCIRCIfromScoresAndAlpha()
     + Add getBootCIRCIfromItemData()
     + Add getBootCIMeanDiff()
     + Add getHedgesg()

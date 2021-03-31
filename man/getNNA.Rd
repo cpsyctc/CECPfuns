@@ -27,6 +27,7 @@ Other counting functions:
 \code{\link{getNOK}()}
 
 Other data checking functions: 
+\code{\link{checkAllUnique}()},
 \code{\link{getNOK}()},
 \code{\link{isOneToOne}()}
 }
