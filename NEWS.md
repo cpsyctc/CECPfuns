@@ -1,3 +1,12 @@
+# Version 0.0.0.9031
+Added "pak_install_extra(upgrade = FALSE)" to R-CMD-check.yaml to see if that will 
+run and perhaps solve the failure on R 3.5 on Ubuntu.
+Split "Introduction" vignette into "Introduction" and "Background", added basics of 
+"Bootstrapping" (and CIs) vignette and one for the RCSC framework.
+
+# Version 0.0.0.9030
+Minor improvements to classifyScoresVectorByRCI.
+
 # Version 0.0.0.9029
 Added checkAllUnique()
 

@@ -80,7 +80,7 @@
 #' #  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5
 #'
 #' ## so now apply an RCI value of 2 to that:
-#' cclassifyScoresVectorByRCI(scoreChange = scoreChanges, RCI = 2)
+#' classifyScoresVectorByRCI(scoreChange = scoreChanges, RCI = 2)
 #' ## produces:
 #' # You input 11 values for scoreChange.  There were no missing values.
 #' ## A tibble: 3 x 4
@@ -103,9 +103,9 @@
 #' score2 <- score1 - rnorm(n, mean = .2, sd = .2) # and some random change
 #' scoreChange <- score1 - score2 # get the change
 #'
-#' cclassifyScoresVectorByRCI(scoreChange, RCI = .3)
+#' classifyScoresVectorByRCI(scoreChange, RCI = .3)
 #'
-#' cclassifyScoresVectorByRCI(score1 = score1, score2 = score2, RCI = .3)
+#' classifyScoresVectorByRCI(score1 = score1, score2 = score2, RCI = .3)
 #' }
 #'
 #' @family RCSC functions
@@ -339,31 +339,6 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
                                                 NA_character_,
                                                 valid_percentChar)) %>%
       ungroup() -> tmpTib
-    if (addCI) {
-      suppressMessages(
-      tmpTib %>%
-        dplyr::rowwise() %>%
-        dplyr::mutate(percCI = if_else(!is.na(RCIclass),
-                                       list(Hmisc::binconf(n, nValid)),
-                                       list(rep(0, 3)))) %>%
-        dplyr::ungroup() %>%
-        tidyr::unnest_wider(percCI) %>%
-        dplyr::select(-`...1`) %>%
-        dplyr::rename(LCLperc = `...2`,
-                      UCLperc = `...3`) %>%
-        ### get CLs as nicely formatted percentages
-        dplyr::mutate(LCLpercChar = if_else(!is.na(RCIclass),
-                                        paste0(sprintf(fmt, 100 * LCLperc), "%"),
-                                               ""),
-                      UCLpercChar = if_else(!is.na(RCIclass),
-                                        paste0(sprintf(fmt, 100 * UCLperc), "%"),
-                                        ""),
-                      CI = if_else(!is.na(RCIclass),
-                                   paste0(LCLpercChar,
-                                  " to ",
-                                  UCLpercChar),
-                                  ""))) -> tmpTib
-    }
     ###
     if (nrow(tmpTib) - sum(is.na(tmpTib$RCIclass)) < 3) {
       ### we've got an empty, row so
@@ -382,13 +357,38 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
                                                      percentChar),
                         valid_percent = percent,
                         valid_percentChar = percentChar) -> tmpTib)
-      if (addCI) {
-        suppressMessages(tmpTib %>%
-                           dplyr::mutate(CI = if_else(n == 0,
-                                                      "",
-                                                      CI)) -> tmpTib)
-      }
+      # if (addCI) {
+      #   suppressMessages(tmpTib %>%
+      #                      dplyr::mutate(CI = if_else(n == 0,
+      #                                                 "",
+      #                                                 CI)) -> tmpTib)
+      # }
     }
+  }
+  if (addCI) {
+    suppressMessages(
+      tmpTib %>%
+        dplyr::rowwise() %>%
+        dplyr::mutate(percCI = if_else(!is.na(RCIclass),
+                                       list(Hmisc::binconf(n, nValid)),
+                                       list(rep(0, 3)))) %>%
+        dplyr::ungroup() %>%
+        tidyr::unnest_wider(percCI) %>%
+        dplyr::select(-`...1`) %>%
+        dplyr::rename(LCLperc = `...2`,
+                      UCLperc = `...3`) %>%
+        ### get CLs as nicely formatted percentages
+        dplyr::mutate(LCLpercChar = if_else(!is.na(RCIclass),
+                                            paste0(sprintf(fmt, 100 * LCLperc), "%"),
+                                            ""),
+                      UCLpercChar = if_else(!is.na(RCIclass),
+                                            paste0(sprintf(fmt, 100 * UCLperc), "%"),
+                                            ""),
+                      CI = if_else(!is.na(RCIclass),
+                                   paste0(LCLpercChar,
+                                          " to ",
+                                          UCLpercChar),
+                                   ""))) -> tmpTib
   }
   ### sort out whether returning character or numeric results
   ### CLsSeparate always returns numeric results

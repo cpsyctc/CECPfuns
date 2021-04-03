@@ -7,3 +7,4 @@ doc
 Meta
 ^Dependencies.Rmd$
 ^Dependencies.html$
+^restart_to_get_vignettes.R$

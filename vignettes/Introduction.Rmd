@@ -1,8 +1,8 @@
 ---
-title: "Introduction to the CECPfuns package"
+title: "Introduction"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to the CECPfuns package}
+  %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,11 +16,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(CECPfuns)
 ```
-## Background
+## Installation
 
-This should evolve into a repository of all the functions that I (CE) have created. The first post about the package is [here](https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/).
-
-The primary goal driving the creation of CECPfuns was fairly selfish: to make sure I have a single repository of my functions that I could keep up to date and where I could easily find the latest version of any potentially reusable functions I have written. However, two of my colleagues, Dr. Clara Paz and Emily Blackshaw have encouraged me to think that this might become something of use for others and I am now very much working toward that aim and, with that in mind I have put the package on GitHub at https://github.com/cpsyctc/CECPfuns.  You should always be able to install the latest version of the package with
+You should always be able to install the latest version of the package with
 
 * `remotes::install_github("cpsyctc/CECPfuns")`
 
@@ -91,20 +89,24 @@ Those tests get run every time I update the package and are run on my local mach
 
 I am trying to make the help pages far more extensive than they would be for many R functions and have tried to write them so they not only give the basics to enable you to run the function, know what arguments do what and what it returns, but also to give a lot of examples of use of the function.  Again unusually, I have tried to give at least some of the statistical, psychometric or pragmatic background to the function.  I am also planning to build a lot of vignettes into the package which will often link a number of functions together and give more background and perhaps some illustrations of use and output.  I am also aiming for the help pages, but particularly the vignettes to link to the web resources, particularly to my own (that's not just narcissism: it's also because then I am responsible for keeping the links working and logical and so links shouldn't break).
 
-## Who are we?
+At the moment the vignettes here are:
 
-* You can [find out more about Clara here](https://investigacion.udla.edu.ec/udla_teams/clara-paz/).
-* You can [find out more about Emily here](https://www.researchgate.net/profile/Emily_Blackshaw2) and about her PhD, which I am supervising, at her [ResearchGate project page](https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility).
-* My own sites are:
-  + my biggest research programme, which overlaps with Emily's work, the CORE system at https://www.coresystemtrust.org.uk/
-  + a [web site about my non-CORE work](https://www.psyctc.org/psyctc/), which I am slowly (re)building from a much earlier one
-  + my ["R blog" or "SAFAQ"](https://www.psyctc.org/Rblog/) as I have called it  of pages created using R and the [distill package](https://rstudio.github.io/distill/)
-  + pages which relate to a book, co-authored with Jo-anne Carlyle, coming out in autumn 2021: watch this space!
-  + my [personal site](https://www.psyctc.org/pelerinage2016).
+* this introduction
+* some background on the package (`vignette("Background", package = "CECPfuns")`)
+* information about the RCSC framework (`vignette("RCSC_framework", package = "CECPfuns")`)
+* information on confidence intervals (CIs) and bootstrapping (`vignette("Bootstrapping", package = "CECPfuns")`)
+
+## Background
+
+You can find more background about the tiny team working on this, and some other background, in the background vignette.  You should be able to get to that with this.
+
+```
+vignette("Background", package = "CECPfuns") 
+```
 
 ## To do list!
 
-Sadly, this is definitely incomplete and I am sure it will continue to develop, the package too I hope, for years!
+Sadly, this list is long and certainly incomplete.  I am sure it will continue to develop, the package too I hope, for years!
 
 * General enhancement of the package
 

@@ -10,3 +10,4 @@
 ^Dependencies.Rmd$
 ^Dependencies.html$
 ^.lintr$
+^restart_to_get_vignettes.R$

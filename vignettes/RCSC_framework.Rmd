@@ -1,0 +1,23 @@
+---
+title: "RCSC_framework"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{RCSC_framework}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CECPfuns)
+```
+
+## The RCSC framework
+
+Stuff needed!
