@@ -1,3 +1,6 @@
+# Version 0.0.0.9032
+Hm.  Tweaked "pak_install_extra(upgrade = FALSE)" to "pak::pak_install_extra(upgrade = FALSE)"
+
 # Version 0.0.0.9031
 Added "pak_install_extra(upgrade = FALSE)" to R-CMD-check.yaml to see if that will 
 run and perhaps solve the failure on R 3.5 on Ubuntu.
