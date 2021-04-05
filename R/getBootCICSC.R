@@ -1,5 +1,5 @@
 #' Title
-#'  Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that.
+#'  Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that
 #' @param formula1 formula defining the two variables to be correlated as scores ~ group
 #' @param data data.frame or tibble with the data, often cur_data() in dplyr
 #' @param bootReps integer giving number of bootstrap replications

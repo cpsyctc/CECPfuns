@@ -27,7 +27,7 @@ testthat::test_that("Output correct", {
   testthat::expect_equal(isOneToOne(rep(1:5, 2), rep(letters[1:5], 2)), TRUE)
   testthat::expect_equal(isOneToOne(1:26, c("1", letters[1:25])), TRUE)
   testthat::expect_equal(isOneToOne(c(1, 1:26), c("1", letters[1:25], "1")), FALSE)
-  testthat::expect_equal(isOneToOne(1:26,c("a",letters[1:25])), FALSE)
+  testthat::expect_equal(isOneToOne(1:26, c("a", letters[1:25])), FALSE)
 })
 
 ### test comment:

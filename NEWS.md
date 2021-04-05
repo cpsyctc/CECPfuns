@@ -1,3 +1,7 @@
+# Version 0.0.0.9033
+Tiny tweaks to Description in light of rhub checking.  Small improvements to plotBinconf and gave it synonym plotCIproportion. 
+Added plotCIcorrelation (with synonym plotCIPearson).
+
 # Version 0.0.0.9032
 Hm.  Tweaked "pak_install_extra(upgrade = FALSE)" to "pak::pak_install_extra(upgrade = FALSE)"
 

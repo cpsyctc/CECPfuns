@@ -22,7 +22,7 @@ tmpDatNA
 
 testthat::test_that("sanity check works", {
   ### sanity check 1
-  ### if(allowMultipleColumns & !errIfNA){
+  ### if(allowMultipleColumns & !errIfNA) {
   testthat::expect_error(checkAllUnique(allowMultipleColumns = TRUE, errIfNA = FALSE))
   ###
   ### sanity check 2

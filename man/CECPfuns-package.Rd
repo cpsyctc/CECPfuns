@@ -4,7 +4,7 @@
 \name{CECPfuns-package}
 \alias{CECPfuns-package}
 \alias{CECPfuns}
-\title{CECPfuns: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being work (Created by Chris Evans and Clara Paz)}
+\title{CECPfuns: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being Work (Created by Chris Evans and Clara Paz)}
 \description{
 This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to

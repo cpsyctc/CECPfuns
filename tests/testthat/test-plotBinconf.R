@@ -37,6 +37,12 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(suppressWarnings(plotBinconf(step = 1:2)))
   testthat::expect_error(plotBinconf(step = 0.5))
   testthat::expect_error(plotBinconf(step = 101))
+  ### sanity check 6: number of points on x axis must be sensible
+  testthat::expect_error(plotBinconf(minN = 5, maxN = 900))
+  ### sanity check 7
+  ### if (length(fixYlim) != 1 | !is.logical(fixYlim)) {
+  testthat::expect_error(plotBinconf(fixYlim = 1:3))
+  testthat::expect_error(plotBinconf(fixYlim = "A"))
 })
 
 ### there are no warnings to test

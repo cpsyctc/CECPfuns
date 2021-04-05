@@ -3,7 +3,7 @@
 \name{getBootCICSC}
 \alias{getBootCICSC}
 \title{Title
-Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that.}
+Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that}
 \usage{
 getBootCICSC(formula1, data, bootReps = 1000, conf = 0.95, bootCImethod = "pe")
 }
@@ -23,7 +23,7 @@ list of named values obsCSC, LCLCSC and UCLCSC
 }
 \description{
 Title
-Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that.
+Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that
 }
 \section{Background}{
 

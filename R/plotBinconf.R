@@ -1,22 +1,42 @@
-#' Function outputting a plot of confidence of a proportion for a range of sample sizes
+#' Function outputting a plot of confidence interval around a proportion for a range of sample sizes
 #'
 #' @param proportion numeric: the proportion sought (actual proportion will be nearest possible for each n)
 #' @param conf numeric: confidence interval width, usually .95
 #' @param minN numeric: the smallest sample size, n, to estimate and plot
 #' @param maxN numeric: the largest n
 #' @param step numeric: the steps to use between minN and maxN, defaults to 1 but set higher if plotting a wide range of n
+#' @param fixYlim logical: if FALSE, ggplot finds sensible y limits, if TRUE, y axis runs from 0 to 1
 #'
 #' @return a ggplot object, by default that will print but you can save it and modify it as you like
 #' @export
 #'
+#' @section Background:
+#' This little function just plots confidence intervals (CIs) for a proportion for a range of sample sizes.  I wrote
+#' it after writing \code{\link{classifyScoresVectorByRCI}} which will give CIs around observed proportions and
+#' I thought that for people not entirely familiar with and comfortable with CIs it might be useful for them to be
+#' able to see a plot of how intervals around observed proportions change with sample size.
+#'#'
 #' @examples
 #' \dontrun{
 #'
 #' ### 95% CI around proportion .5 for n from 10 to 70
-#' plotBinconf(.5, .95, 10, 70)
+#' plotBinconf(.5, 10, 70, conf = .95) # don't have to declare conf, defaults to .95
+#' ### notice that the observed proportion wiggles up and down as n increases as
+#' ### you can only have integer counts so functions gets nearest to the desired
+#' ### proportion, here .5, possible for that n, so for n = 10, we can have perfect .5
+#' ### but for n = 11 6/11 is .545454..
 #'
-#' ### same exporting to tmpPlot and then changing plot
-#' plotBinconf(.5, .95, 10, 70) -> tmpPlot
+#' ### 90% CI around proportion .5 for n from 10 to 70
+#' plotBinconf(.5, 10, 70, conf = .90)
+#'
+#' ### 90% CI around proportion .5 for n from 100 to 200
+#' plotBinconf(.5, 10, 70, conf = .90)
+#'
+#' ### same but fixing y limits to 0 and 1
+#' plotBinconf(.5, 10, 70, conf = .90, fixYlim = TRUE)
+#'
+#' ### default 95% CI, exporting to tmpPlot and then changing plot
+#' plotBinconf(.5, 10, 70) -> tmpPlot
 #' tmpPlot +
 #'    ggtitle("95% CI around proportion .5 for n from 10 to 70") +
 #'    theme_bw()
@@ -26,9 +46,15 @@
 #' plotBinconf(1, .95, 10, 70)
 #' plotBinconf(.7, .95, 100, 200)
 #' plotBinconf(.3, .95, 100, 700, 5)
+#'
 #' }
 #'
-plotBinconf <- function(proportion, conf, minN, maxN, step = 1) {
+#' @family confidence interval functions
+#' @family demonstration functions
+#'
+#' @author Chris Evans
+#'
+plotBinconf <- function(proportion, minN, maxN, step = 1, conf = .95, fixYlim = FALSE) {
   ### little function using Hmisc::binconf() to get CI around observed proportion and plot this
   ### sanity checks
   ###
@@ -65,6 +91,11 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1) {
   if (length(vecN) > 200) {
     stop("Your minN, maxN and step give more than 200 CIs to plot: too many!")
   }
+  ###
+  ### sanity check 7
+  if (length(fixYlim) != 1 | !is.logical(fixYlim)) {
+    stop("fixYlim, which imposes a 0 to 1 limit on y axis, must be logical and length one")
+  }
 
   options(tidyverse.quiet = TRUE)
 
@@ -82,11 +113,25 @@ plotBinconf <- function(proportion, conf, minN, maxN, step = 1) {
            LCL = `...2`,
            UCL = `...3`)) -> tibDat
 
+  if (fixYlim) {
+    # y limits to be fixed at 0 and 1
+    minY <- 0
+    maxY <- 1
+  } else {
+    minY <- min(tibDat$LCL)
+    maxY <- max(tibDat$UCL)
+  }
+
   ggplot2::ggplot(data = tibDat,
                   ggplot2::aes(x = n, y = obsProp)) +
     ggplot2::geom_point() +
     ggplot2::geom_linerange(ggplot2::aes(ymin = LCL, ymax = UCL)) +
+    ggplot2::ylim(minY, maxY) +
     ggplot2::xlim(minN, maxN) +
     ggplot2::ylab("Proportion") -> p
   p
 }
+#'
+#' @rdname plotBinconf
+#' @export
+plotCIProportion <- plotBinconf

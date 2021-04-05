@@ -180,13 +180,13 @@
 checkAllUnique <- function(dat,
                            errIfNA = TRUE,
                            allowJustOneNA = TRUE,
-                           allowMultipleColumns = FALSE){
+                           allowMultipleColumns = FALSE) {
   ### trivial function to check that each value in dat occurs only once
   ### as you often want for ID codes or table indices in multidimensional table
   ### data structures and particularly if you are pivoting things around
   ###
   ### sanity check 1: don't allow multiple NA and multiple columns
-  if(allowMultipleColumns & !errIfNA){
+  if (allowMultipleColumns & !errIfNA) {
     stop("You have asked to use multiple columns and to all multiple NA values. I'm so sure this is a bad idea that I've blocked it. Sorry.")
   }
   ###
@@ -201,17 +201,17 @@ checkAllUnique <- function(dat,
   }
     ###
   ### sanity check 4
-  if(length(errIfNA) != 1 | !is.logical(errIfNA)) {
+  if (length(errIfNA) != 1 | !is.logical(errIfNA)) {
     stop("Argument errIfNA must be logical and length 1")
   }
   ###
   ### sanity check 5
-  if(length(allowJustOneNA) != 1 | !is.logical(allowJustOneNA)) {
+  if (length(allowJustOneNA) != 1 | !is.logical(allowJustOneNA)) {
     stop("Argument allowJustOneNA must be logical and length 1")
   }
   ###
   ### sanity check 6
-  if(length(allowMultipleColumns) != 1 | !is.logical(allowMultipleColumns)) {
+  if (length(allowMultipleColumns) != 1 | !is.logical(allowMultipleColumns)) {
     stop("Argument allowMultipleColumns must be logical and length 1")
   }
   ###
@@ -230,7 +230,7 @@ checkAllUnique <- function(dat,
   ### finished sanity checks, check dat
   ###
   ### simple bit if errIfNA:
-  if (getNNA(dat) == 1 & errIfNA ) {
+  if (getNNA(dat) == 1 & errIfNA) {
     ### got one NA but errIfNA set so ...
     return(FALSE)
   }
@@ -260,4 +260,3 @@ checkAllUnique <- function(dat,
     }
   }
 }
-
