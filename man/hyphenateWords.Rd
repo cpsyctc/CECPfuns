@@ -17,6 +17,11 @@ character
 \description{
 Function to convert numbers to hyphenated (English) words, e.g. 87 to "eighty-seven"
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 hyphenateWords(87)
 hyphenateWords(87, capitalise = TRUE)

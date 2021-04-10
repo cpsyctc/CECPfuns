@@ -15,6 +15,11 @@ numeric: the number of NA values in
 \description{
 Trivial function to count number of NA values in input
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 getNNA(c(1:5, NA, 7:10))
 getNNA(c(1:5, NA, 7:10))

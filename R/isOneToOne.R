@@ -68,6 +68,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 isOneToOne <- function(x, y) {
   ### checking that there is a 1:1 correspondence between values of x and y
   ### uses a simplification of the plan I found in

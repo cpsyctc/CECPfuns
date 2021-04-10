@@ -13,6 +13,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 hyphenateWords <- function(x, capitalise = FALSE) {
   ### this is an almost shameful copy of a suggestion from Bill Venables <Bill.Venables@gmail.com>
   ### Bill is the maintainer of the english package as well as a key man in R

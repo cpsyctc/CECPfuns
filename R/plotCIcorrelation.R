@@ -44,6 +44,10 @@
 #' @family demonstration functions
 #'
 #' @author Chris Evans
+#'
+#' @section History/development log:
+#' Version 1: 5.iv.21
+#'
 plotCIcorrelation <- function(corr, minN, maxN, step = 1, conf = .95, minY = NULL, maxY = NULL) {
   ### little function using Hmisc::binconf() to get CI around observed correlation and plot this
   ### sanity checks

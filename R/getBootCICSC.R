@@ -60,6 +60,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImethod = "pe") {
   ### function to return bootstrap CI around an observed correlation
   ### between two variables fed in within a formula as variable1 ~ variable2

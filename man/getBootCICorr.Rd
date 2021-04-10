@@ -32,6 +32,11 @@ list of named values: obsCorr, LCLCorr and UCLCorr
 \description{
 Function to return observed correlation between two variables with bootstrap CI
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 library(tidyverse)

@@ -52,6 +52,11 @@ This is another function like \code{\link{plotBinconf}} which plots the width of
 intervals (CIs) for a range of sample/dataset sizes.
 }
 
+\section{History/development log}{
+
+Version 1: 5.iv.21
+}
+
 \examples{
 \dontrun{
 ### simple example for observed 95\% confidence interval (CI) around observed correlation of .7

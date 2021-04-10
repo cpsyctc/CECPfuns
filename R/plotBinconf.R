@@ -54,6 +54,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 plotBinconf <- function(proportion, minN, maxN, step = 1, conf = .95, fixYlim = FALSE) {
   ### little function using Hmisc::binconf() to get CI around observed proportion and plot this
   ### sanity checks

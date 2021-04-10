@@ -38,6 +38,10 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#' 10.iv.21: added synonym convertVectorToSentence
+#'
 convertVector2sentence <- function(x,
                                    andChar = " and ",
                                    quoted = FALSE,
@@ -154,3 +158,7 @@ convertVector2sentence <- function(x,
   ### now return the result
   allItems
 }
+#'
+#' @rdname convertVector2sentence
+#' @export
+convertVectorToSentence <- convertVector2sentence

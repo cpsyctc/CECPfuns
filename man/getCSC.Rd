@@ -46,6 +46,11 @@ method c is this.
 (with SD for Standard Deviation (doh!) and M for Mean)
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 # example uses very crude simulated data but illustrates utility of being able to pipe grouped

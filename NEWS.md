@@ -1,3 +1,10 @@
+# Version 0.0.0.9035
+Improved help page for getRelBySpearmanBrown and linked it to new Rblog page https://www.psyctc.org/Rblog/posts/2021-04-09-spearman-brown-formula/.
+All help page "History" sections renamed to "History/development log" to avoid confusion with other use of "History".  Functions convertVector2sentence and convert2CEdate got synonyms convertVectorToSentence and convertToCEdate: more congruent with my general naming conventions.
+
+# Version 0.0.0.9034
+All help pages now have a "History" section for their function to keep an updating record.
+
 # Version 0.0.0.9033
 Tiny tweaks to Description in light of rhub checking.  Small improvements to plotBinconf and gave it synonym plotCIproportion. 
 Added plotCIcorrelation (with synonym plotCIPearson).

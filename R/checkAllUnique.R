@@ -177,6 +177,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 checkAllUnique <- function(dat,
                            errIfNA = TRUE,
                            allowJustOneNA = TRUE,

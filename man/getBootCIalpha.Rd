@@ -38,6 +38,11 @@ list of length 3: obsAlpha, LCLAlpha and UCLAlpha
 \description{
 function returning observed Cronbach alpha with bootstrap confidence interval around that value
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 set.seed(12345)

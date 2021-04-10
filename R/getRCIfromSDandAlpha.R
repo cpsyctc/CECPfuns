@@ -51,7 +51,6 @@
 #'
 #' @family RCSC functions
 #'
-#'
 #' @references
 #' * Christensen, L., & Mendoza, J. L. (1986). A method of assessing change in a single subject:
 #' An alteration of the RC index. Behavior Therapy, 17, 305–308.
@@ -63,6 +62,10 @@
 #' * Evans, C., Margison, F., & Barkham, M. (1998). The contribution of reliable and clinically significant
 #' change methods to evidence-based mental health. Evidence Based Mental Health, 1, 70–72. https://doi.org/0.1136/ebmh.1.3.70
 #'
+#' @author Chris Evans
+#'
+#' @section History:
+#' Started before 5.iv.21
 #'
 getRCIfromSDandAlpha <- function(SD, rel, conf = .95) {
   ### trivial function to return RCI given baseline score SD

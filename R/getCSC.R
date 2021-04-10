@@ -83,7 +83,9 @@
 #' * Evans, C., Margison, F., & Barkham, M. (1998). The contribution of reliable and clinically significant
 #' change methods to evidence-based mental health. Evidence Based Mental Health, 1, 70–72. https://doi.org/0.1136/ebmh.1.3.70
 #'
-
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 getCSC <- function(formula1, data) {
   ### function to return CSC
   ### takes to

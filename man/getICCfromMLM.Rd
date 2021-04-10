@@ -62,6 +62,11 @@ three level MLMs from lme4::lmer() and the same results when the same data are p
 analysis using the same models in nlme::lme().  As ever, there is no warranty on this function!
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 getICCfromMLM(model2nlmer)
@@ -70,4 +75,7 @@ getICCfromMLM(model2lme4)
 specr::icc_specs(model2lme4)
 }
 
+}
+\author{
+Chris Evans
 }

@@ -15,6 +15,11 @@ numeric: the number of non-NA values in x
 \description{
 Trivial function to count number of non-NA values in input
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 getNOK(c(1:5, NA, 7:10))
 

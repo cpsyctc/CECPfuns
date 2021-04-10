@@ -112,6 +112,8 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
 #'
 classifyScoresVectorByRCI <- function(scoreChange = NULL,
                                 score1 = NULL,

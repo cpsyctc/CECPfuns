@@ -30,6 +30,11 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 ### will need tidyverse to run

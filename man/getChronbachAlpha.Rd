@@ -35,6 +35,11 @@ remains the most reported statistic for internal relability of multi-item measur
 reasons: it is simple, robust and never claimed to be doing things it doesn't do!
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 ### make some nonsense data

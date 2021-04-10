@@ -2,9 +2,12 @@
 % Please edit documentation in R/convert2CEdate.R
 \name{convert2CEdate}
 \alias{convert2CEdate}
+\alias{converToCEdate}
 \title{Function to convert Dates to my date format strings}
 \usage{
 convert2CEdate(date)
+
+converToCEdate(date)
 }
 \arguments{
 \item{date}{Date}
@@ -24,6 +27,12 @@ initial bemusement but then recognition and I've never had anyone say
 "but why not use Roman numerals for the days?" so I think it does disambiguate dates.
 It is a trivial function and perhaps I'm the only person who will ever use it but here it is.
 It expects input as a Date and can handle a vector of dates.
+}
+
+\section{History/development log}{
+
+Started before 5.iv.21
+10.iv.21: tweaked to add synonym convertToCEdate
 }
 
 \examples{

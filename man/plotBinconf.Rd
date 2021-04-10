@@ -44,6 +44,11 @@ able to see a plot of how intervals around observed proportions change with samp
 #'
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 

@@ -15,7 +15,6 @@
 #' @importFrom dplyr row_number
 #' @importFrom stringr fixed
 #'
-#'
 #' @section Background:
 #' 6.iii.21: Do not use with nlme::lme().  This works for lme4::lmer() or lmerTest::lmer() but I
 #' cannot sort out issues about results in out of nlme::lme() differing from those of lme4::lmer()
@@ -64,6 +63,11 @@
 #' ### check against specr::icc_specs()
 #' specr::icc_specs(model2lme4)
 #' }
+#'
+#' @author Chris Evans
+#'
+#' @section History/development log:
+#' Started before 5.iv.21
 #'
 getICCfromMLM <- function(modelOutput, percent = TRUE) {
   ### function modelled on specr::icc_specs()

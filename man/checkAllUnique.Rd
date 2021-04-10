@@ -47,6 +47,11 @@ data depending on an ID variable whose values ought to be unique but aren't.  Ch
 \href{https://www.psyctc.org/Rblog/wisdom.html}{Wisdom! Rblog page} .
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 ### letters gets us the 26 lower case letters of the English alphabet so should test OK

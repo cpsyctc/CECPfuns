@@ -60,6 +60,11 @@ confidence limits.
 As with almost all my functions in the CECPfuns package, getBootCImean() is primarily designed for use in dplyr piping.
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 set.seed(12345) # get replicable results

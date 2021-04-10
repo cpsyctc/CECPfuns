@@ -59,6 +59,11 @@ There's also an issue that Jacobson and his colleagues were looking for criteria
 RCSC paradigm seems to have become just another way aggregate scores but my counting.
 }
 
+\section{History}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 
@@ -84,5 +89,8 @@ Other RCSC functions:
 \code{\link{classifyScoresVectorByRCI}()},
 \code{\link{getBootCICSC}()},
 \code{\link{getCSC}()}
+}
+\author{
+Chris Evans
 }
 \concept{RCSC functions}

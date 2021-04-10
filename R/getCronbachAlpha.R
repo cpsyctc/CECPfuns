@@ -38,6 +38,9 @@
 #' @references
 #' Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297–334.
 #' McDonald R. P. (1999) Test Theory: A Unified Treatment. Mahwah, NJ: Erlbaum
+#'
+#' @section History/development log:
+#' Started before 5.iv.21
 
 getChronbachAlpha <- function(dat, na.rm = TRUE, verbose = TRUE) {
   ### trivial function which takes data, dat

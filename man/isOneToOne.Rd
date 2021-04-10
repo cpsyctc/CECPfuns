@@ -62,6 +62,11 @@ I found this nice way of doing this at
 https://stackoverflow.com/questions/52399474/check-if-variables-are-in-a-one-to-one-mapping
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 ### this should map OK

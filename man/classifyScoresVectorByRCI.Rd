@@ -63,6 +63,11 @@ The RCI is part of Jacobson, Follette and Revenstorf's "RCSC":
 Reliable and Clinically Significant Change paradigm.
 }
 
+\section{History/development log}{
+
+Started before 5.iv.21
+}
+
 \examples{
 \dontrun{
 

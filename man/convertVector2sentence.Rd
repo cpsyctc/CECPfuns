@@ -2,10 +2,19 @@
 % Please edit documentation in R/convertVector2sentence.R
 \name{convertVector2sentence}
 \alias{convertVector2sentence}
+\alias{convertVectorToSentence}
 \title{Function that converts a vector to an English language list:
 e.g. 1:3 becomes 1, 2 and 3}
 \usage{
 convertVector2sentence(
+  x,
+  andChar = " and ",
+  quoted = FALSE,
+  quoteChar = "\\"",
+  italicY = FALSE
+)
+
+convertVectorToSentence(
   x,
   andChar = " and ",
   quoted = FALSE,
@@ -32,6 +41,12 @@ string
 Function that converts a vector to an English language list:
 e.g. 1:3 becomes 1, 2 and 3
 }
+\section{History/development log}{
+
+Started before 5.iv.21
+10.iv.21: added synonym convertVectorToSentence
+}
+
 \examples{
 ### default behaviour
 convertVector2sentence(1:4)

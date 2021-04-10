@@ -28,6 +28,9 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#'
 getBootCIalpha  <- function(dat,
                            verbose = TRUE,
                            na.rm = TRUE,

@@ -24,6 +24,10 @@
 #'
 #' @author Chris Evans
 #'
+#' @section History/development log:
+#' Started before 5.iv.21
+#' 10.iv.21: tweaked to add synonym convertToCEdate
+#'
 convert2CEdate <- function(date) {
   ### I like to write dates in the format dd.mm.yyyy but doing the months, mm
   ### in Roman numerals, i.e. i = January, xii = December
@@ -65,3 +69,7 @@ convert2CEdate <- function(date) {
          ".",
          thisYear)
 }
+#'
+#' @rdname convert2CEdate
+#' @export
+converToCEdate <- convert2CEdate

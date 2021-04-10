@@ -10,15 +10,29 @@
 #'
 #' @section background:
 #' This is ancient psychometrics but still of some use.  It has been checked against two functions in the
-#' psychometric package with gratitude.
+#' psychometric package with gratitude.  For more information, see:\cr
 #'
-#' The background is that any multi-item measure will have overall internal reliability/consistency that is
+#'    \url{https://www.psyctc.org/Rblog/posts/2021-04-09-spearman-brown-formula/}
+#' \cr
+#'
+#' \cr
+#' The formula is simple:
+#'
+#' \loadmathjax{}
+#' \mjdeqn{{\rho^{*}}=\frac{n\rho}{1 + (n-1)\rho}}{}
+#'
+#' The short summary is that any multi-item measure will have overall internal reliability/consistency that is
 #' a function of the mean inter-item correlations and the number of items and, for any mean inter-item
-#' correlation, a longer measure will have a higher reliabilty.  The formula for the relationship was
+#' correlation, a longer measure will have a higher reliability.  The formula for the relationship was
 #' published separately by both Spearman in 1910 and in the same year by Brown, who was working for Karl Pearson,
-#' who had a running feud with Spearman.  See https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula#History
+#' who had a running feud with Spearman.  See:\cr
+#'
+#'    \url{https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula#History}
+#' \cr
+#'
+#' \cr
 #' That also gives some arguments that the formula should really be termed the Brown-Spearman formula but I am
-#' bowing to history here.
+#' bowing to historical precedent here.
 #'
 #' @examples
 #' \dontrun{
@@ -40,6 +54,9 @@
 #' @family converting functions
 #'
 #' @author Chris Evans
+#'
+#' @section History/development log:
+#' Started before 5.iv.21, updated help page 10.iv.21.
 #'
 getRelBySpearmanBrown <- function(oldRel, lengthRatio = NULL, newRel = NULL, verbose = TRUE) {
   ### simple function using Spearman-Brown (or Brown-Spearman) formula
