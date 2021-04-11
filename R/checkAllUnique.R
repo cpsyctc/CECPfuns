@@ -34,26 +34,26 @@
 #' \dontrun{
 #' ### letters gets us the 26 lower case letters of the English alphabet so should test OK
 #' checkAllUnique(letters)
-#' [1] TRUE
+#' # [1] TRUE
 #' ### good!
 #'
 #' ### the checking is case sensitive:
 #' checkAllUnique(c("A", letters), errIfNA = FALSE, allowJustOneNA = FALSE)
-#' [1] TRUE
+#' # [1] TRUE
 #' ### but ...
 #' checkAllUnique(c("a", letters), errIfNA = FALSE, allowJustOneNA = FALSE)
-#' [1] FALSE
+#' # [1] FALSE
 #' ### both good!
 #'
 #' ### by default checkAllUnique doesn't allow any NA values,
 #' ### generally sensible for my data: ID codes or table indices
 #' checkAllUnique(c(letters, NA))
-#' [1] FALSE
+#' # [1] FALSE
 #' ### good!
 #'
 #' ### but we can override that:
 #' checkAllUnique(c(letters, NA), errIfNA = FALSE)
-#' [1] TRUE
+#' # [1] TRUE
 #' ### good!
 #'
 #' ### but generally I wouldn't want multiple NA values
@@ -61,12 +61,12 @@
 #' ### checkAllUnique() so I have forced you to allow
 #' ### that explicitly if you really want it ...
 #' checkAllUnique(c(NA, letters, NA), errIfNA = FALSE)
-#' [1] FALSE
+#' # [1] FALSE
 #' ### good!
 #'
 #' ### but you _can_ override that if you need to ...
 #' checkAllUnique(c(NA, letters, NA), errIfNA = FALSE, allowJustOneNA = FALSE)
-#' [1] TRUE
+#' # [1] TRUE
 #' ### good!
 #' ### but you _can_ override that if you need to ...
 #' checkAllUnique(c(NA, letters, NA), errIfNA = FALSE, allowJustOneNA = FALSE)
@@ -104,8 +104,8 @@
 #' ### whoops, I remember, must pull() to extract as vector
 #' checkAllUnique(tmpTib %>% pull(1))
 #' # [1] TRUE
-# checkAllUnique(tmpTib %>% pull(2))
-# [1] TRUE
+#' checkAllUnique(tmpTib %>% pull(2))
+#' # [1] TRUE
 #'
 #' ### you _can_ allow multiple columns
 #' checkAllUnique(tmpDat, allowMultipleColumns = TRUE)
@@ -163,7 +163,7 @@
 #' # 2 NA  7
 #' # 3  3  8
 #' # 4  4  9
-#'  5  5 10
+#' # 5  5 10
 #' checkAllUnique(tmpDatNA, allowMultipleColumns = TRUE)
 #' # [1] FALSE
 #' # Warning message:

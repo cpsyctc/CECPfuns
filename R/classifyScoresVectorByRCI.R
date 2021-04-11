@@ -90,13 +90,10 @@
 #' #   2 No reliable change         5 45.5%   45.5%
 #' #   3 Reliable improvement       3 27.3%   27.3%
 #'
-#' ### you could pipe that to your R/tidyverse table formating
-#' tool of choice, \code{pander}, \code{huxtable}, whatever.
+#' ### you could pipe that to your R/tidyverse table formatting
+#' ### tool of choice, \code{pander}, \code{huxtable}, whatever.
 #'
 #' ### you can add the 95% CI:
-#'
-#'
-#'
 #' ### create some spurious scores
 #' n <- 75
 #' score1 <- rnorm(n) # random Gaussian scores

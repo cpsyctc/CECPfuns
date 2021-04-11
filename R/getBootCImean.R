@@ -51,7 +51,7 @@
 #' getBootCImean(tmpDat$value)
 #'
 #' ### default arguments, select variable by name as character
-#' getBootCImean("value", tmpDat))
+#' getBootCImean("value", tmpDat)
 #'
 #' ### default arguments, select variable by name as bare name
 #' tmpDat %>%

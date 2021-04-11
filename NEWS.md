@@ -1,3 +1,7 @@
+# Version 0.0.0.9036
+Used pkgdown to make a web site for the package.  The process checks all the examples so some tweaks to examples in getBootCImean, 
+classifyScoresVectorsByRCI and checkAllUnique so they run correctly.
+
 # Version 0.0.0.9035
 Improved help page for getRelBySpearmanBrown and linked it to new Rblog page https://www.psyctc.org/Rblog/posts/2021-04-09-spearman-brown-formula/.
 All help page "History" sections renamed to "History/development log" to avoid confusion with other use of "History".  Functions convertVector2sentence and convert2CEdate got synonyms convertVectorToSentence and convertToCEdate: more congruent with my general naming conventions.

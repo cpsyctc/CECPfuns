@@ -12,3 +12,6 @@
 ^.lintr$
 ^restart_to_get_vignettes.R$
 .old$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
