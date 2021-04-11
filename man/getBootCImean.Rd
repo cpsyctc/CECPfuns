@@ -63,6 +63,7 @@ As with almost all my functions in the CECPfuns package, getBootCImean() is prim
 \section{History/development log}{
 
 Started before 5.iv.21
+Tweaked 11.iv.21 to fix error in examples.
 }
 
 \examples{

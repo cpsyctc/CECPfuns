@@ -1,3 +1,7 @@
+# Version 0.0.0.9037
+Merged code of conduct and contributors documents created on GitHub (and the GitHub repository now has issue templates).
+Tweak to README to point to the pkgdown website for the package at https://cecpfuns.psyctc.org/.
+
 # Version 0.0.0.9036
 Used pkgdown to make a web site for the package.  The process checks all the examples so some tweaks to examples in getBootCImean, 
 classifyScoresVectorsByRCI and checkAllUnique so they run correctly.
