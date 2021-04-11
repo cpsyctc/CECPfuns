@@ -1,0 +1,13 @@
+pandoc: 2.11.2
+pkgdown: 1.6.1.9000
+pkgdown_sha: 1c28ef9d9476e35974e1933de76a9aaa24d4cd27
+articles:
+  Background: Background.html
+  Bootstrapping: Bootstrapping.html
+  Introduction: Introduction.html
+  RCSC_framework: RCSC_framework.html
+last_built: 2021-04-11T09:49Z
+urls:
+  reference: https://github.com/cpsyctc/CECPfuns/reference
+  article: https://github.com/cpsyctc/CECPfuns/articles
+
