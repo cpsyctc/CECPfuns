@@ -1,6 +1,6 @@
 #' Function that converts a vector to an English language list:
 #'   e.g. 1:3 becomes 1, 2 and 3
-#' @param x input vector to convert
+#' @param x input vector or one dimensional list to convert
 #' @param andChar string to put between penultimate and last entry
 #' @param quoted logical indicating whether each item should be
 #'   quoted and hence
@@ -54,8 +54,8 @@ convertVector2sentence <- function(x,
   ### CE 20201215 added quoteChar so I can quote with ', " or * (or anything!)
   ### CE 20210306 added sanity checking on input and then a test-convertVector2sentence.R file
   ### sanity check 1
-  if (!is.vector(x) | length(x) == 1 | is.list(x)) {
-    stop("x must be vector and no realistic use for vector of length 1 and list input too unlikely to parse as you want")
+  if (!checkIsOneDim(x) | length(x) == 1 | is.list(x)) {
+    stop("x must be vector or single dimension list and vector of length 1 input is unlikely to parse as you want so it throws an error")
   }
   ### sanity check 2
   if (!is.character(andChar) | length(andChar) > 1) {

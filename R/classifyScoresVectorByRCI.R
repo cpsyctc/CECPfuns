@@ -20,6 +20,7 @@
 #' @importFrom dplyr if_else
 #' @importFrom dplyr rowwise
 #' @importFrom dplyr ungroup
+#' @importFrom tidyselect starts_with
 #'
 #' @section Warning:
 #' Function is still under development.  Currently handles vector input.
@@ -185,7 +186,7 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
   if (nNulls == 2) {
     ### sanity check 6
     ### check scoreChange
-    if (!is.numeric(scoreChange)) {
+    if (!is.numeric(scoreChange) | !checkIsOneDim(scoreChange)) {
       stop("You have input scoreChange but it's not numeric")
     }
   }
@@ -403,10 +404,10 @@ classifyScoresVectorByRCI <- function(scoreChange = NULL,
   ### or as separate numeric limits
   if (CLsSeparate) {
     tmpTib %>%
-      dplyr::select(-c(CI, LCLpercChar, UCLpercChar)) -> tmpTib
+      dplyr::select(-c(CI, starts_with("LCLperc"), starts_with("UCLperc"))) -> tmpTib
   } else {
     tmpTib %>%
-      dplyr::select(-c(LCLperc, UCLperc, LCLpercChar, UCLpercChar)) -> tmpTib
+      dplyr::select(-c(starts_with("LCLperc"), starts_with("UCLperc"))) -> tmpTib
   }
   return(tmpTib)
 }

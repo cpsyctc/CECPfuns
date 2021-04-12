@@ -1,3 +1,8 @@
+# Version 0.0.0.9038
+Added internal functions checkIsVector() and checkIsOneDim() to get around some (easily done) misunderstanding of base::is.vector().
+Tweaks to checkAllUnique(), classifyScoresVectorByRIC() and convertVector2sentence() to clean up handling of vectors with attributes
+and to handle single dimensional lists.
+
 # Version 0.0.0.9037
 Merged code of conduct and contributors documents created on GitHub (and the GitHub repository now has issue templates).
 Tweak to README to point to the pkgdown website for the package at https://cecpfuns.psyctc.org/.

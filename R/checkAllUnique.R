@@ -1,6 +1,6 @@
 #' Function to check all values of a vector or data frame/tibble column are unique
 #'
-#' @param dat vector, or columns of data frame or tibble to test to see if values/rows are all unique
+#' @param dat vector, single dimensional list or columns of data frame or tibble to test to see if values/rows are all unique
 #' @param errIfNA logical: defaults to TRUE to disallow any NA values
 #' @param allowJustOneNA logical: defaults to TRUE so if errIfNA is FALSE but you have more than one NA function returns FALSE
 #' @param allowMultipleColumns logical: defaults to FALSE but if you really do want to allow all of multi-column dat, set to TRUE
@@ -10,13 +10,16 @@
 #'
 #' @section Background:
 #' This is a utility function to check that all the values of a vector, or a single column of a data frame or tibble,
-#' or the rows of multiple columns of a data frame or tibble, are all unique.  This is important where you expect a
-#' single row of data for each participant say, and so you expect the values of participantID in a data set to be
-#' unique.  It will cripple things later if you don't identify duplicated ID values.  Sometimes it's not just a single
-#' variable that should be unique, a typical example of this is when you have data from multiple services and ID values
-#' for participants from each service.  Then there may be multiple values for ID but they should each come from a different
-#' service.  (Mind you, once I have established that rows are unique across serviceID and participantID I usally paste
-#' the two variables together with something like
+#' or a single dimensional list are unique.  It can also check that all the rows of multiple columns of a data frame
+#' or tibble, are all unique.
+#'
+#' This is important where you expect a single row of data for each participant say, and so you expect the
+#' values of participantID in a data set to be unique.  It will cripple things later if you don't identify
+#' duplicated ID values.  Sometimes it's not just a single variable that should be unique, a typical example
+#' of this is when you have data from multiple services and ID values for participants from each service.
+#' Then there may be multiple values for ID but they should each come from a different service.  (Mind you,
+#' once I have established that rows are unique across serviceID and participantID I usally paste the two
+#' variables together with something like
 #' ```
 #' data$superID = paste0(data$serviceID, ":", data$participantID)
 #' ```
@@ -200,7 +203,7 @@ checkAllUnique <- function(dat,
   }
   ###
   ### sanity check 3
-  if (!is.data.frame(dat) & !is.vector(dat)) {
+  if (!is.data.frame(dat) & !checkIsOneDim(dat)) {
     stop("dat input to checkAllUnique is not a vector, data frame or tibble: no go!")
   }
     ###

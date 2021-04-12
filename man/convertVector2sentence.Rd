@@ -23,7 +23,7 @@ convertVectorToSentence(
 )
 }
 \arguments{
-\item{x}{input vector to convert}
+\item{x}{input vector or one dimensional list to convert}
 
 \item{andChar}{string to put between penultimate and last entry}
 
