@@ -1,3 +1,7 @@
+# Version 0.0.0.9040
+Yet another commit as I've realised that I have to run pkgdown::build_site() _BEFORE_ committing to get the pkgdown site
+rebuilt.  Let's see if this works!
+
 # Version 0.0.0.9039
 A rebuild to see if I have got around the rather frustrating failure of Rstudio's build to rebuild the vignettes which had
 resulted in them disappearing.  Also testing to see if usethis::use_github_action("pkgdown") has looked after getting the

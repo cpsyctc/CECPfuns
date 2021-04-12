@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CECPfuns</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9036</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9039</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>vector, or columns of data frame or tibble to test to see if values/rows are all unique</p></td>
+      <td><p>vector, single dimensional list or columns of data frame or tibble to test to see if values/rows are all unique</p></td>
     </tr>
     <tr>
       <th>errIfNA</th>
@@ -174,13 +174,15 @@
     
 
 <p>This is a utility function to check that all the values of a vector, or a single column of a data frame or tibble,
-or the rows of multiple columns of a data frame or tibble, are all unique.  This is important where you expect a
-single row of data for each participant say, and so you expect the values of participantID in a data set to be
-unique.  It will cripple things later if you don't identify duplicated ID values.  Sometimes it's not just a single
-variable that should be unique, a typical example of this is when you have data from multiple services and ID values
-for participants from each service.  Then there may be multiple values for ID but they should each come from a different
-service.  (Mind you, once I have established that rows are unique across serviceID and participantID I usally paste
-the two variables together with something like</p><pre><span class='va'>data</span><span class='op'>$</span><span class='va'>superID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>serviceID</span>, <span class='st'>":"</span>, <span class='va'>data</span><span class='op'>$</span><span class='va'>participantID</span><span class='op'>)</span>
+or a single dimensional list are unique.  It can also check that all the rows of multiple columns of a data frame
+or tibble, are all unique.</p>
+<p>This is important where you expect a single row of data for each participant say, and so you expect the
+values of participantID in a data set to be unique.  It will cripple things later if you don't identify
+duplicated ID values.  Sometimes it's not just a single variable that should be unique, a typical example
+of this is when you have data from multiple services and ID values for participants from each service.
+Then there may be multiple values for ID but they should each come from a different service.  (Mind you,
+once I have established that rows are unique across serviceID and participantID I usally paste the two
+variables together with something like</p><pre><span class='va'>data</span><span class='op'>$</span><span class='va'>superID</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>$</span><span class='va'>serviceID</span>, <span class='st'>":"</span>, <span class='va'>data</span><span class='op'>$</span><span class='va'>participantID</span><span class='op'>)</span>
 </pre>
 
 <p>or a tidyverse way of doing it:</p><pre><span class='va'>data</span> <span class='op'>%&gt;%</span>
@@ -194,7 +196,8 @@ data depending on an ID variable whose values ought to be unique but aren't.  Ch
 
     
 
-<p>Started before 5.iv.21</p>
+<p>Started before 5.iv.21
+Tweaked 11.iv.21 to fix error in examples.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other data checking functions: 
