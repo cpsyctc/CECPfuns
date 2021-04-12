@@ -1,3 +1,8 @@
+# Version 0.0.0.9039
+A rebuild to see if I have got around the rather frustrating failure of Rstudio's build to rebuild the vignettes which had
+resulted in them disappearing.  Also testing to see if usethis::use_github_action("pkgdown") has looked after getting the
+pkgdown site rebuilt after any new push, like this one!
+
 # Version 0.0.0.9038
 Added internal functions checkIsVector() and checkIsOneDim() to get around some (easily done) misunderstanding of base::is.vector().
 Tweaks to checkAllUnique(), classifyScoresVectorByRIC() and convertVector2sentence() to clean up handling of vectors with attributes
