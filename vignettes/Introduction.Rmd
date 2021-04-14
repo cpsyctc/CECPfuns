@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(CECPfuns)
 ```
+
+*[Updated 14.iv.21 partly to test uploading of vignettes]*
+
 ## Installation
 
 You should always be able to install the latest version of the package with
@@ -114,7 +117,7 @@ Sadly, this list is long and certainly incomplete.  I am sure it will continue t
 
   + Add tests: added for all functions so far, could do with expansion?
 
-  + Add vignettes
+  + Complete the other vignettes that exist and then add more.
 
   + Add data
    + UK YP-CORE cutting points
@@ -122,7 +125,6 @@ Sadly, this list is long and certainly incomplete.  I am sure it will continue t
 * Functions
 
   + data cleaning/checking and shaping for analysis
-    + Add checkAllUnique()
     + Add getScore()
     + Add getCOREOMscores() (for the CORE-OM)
     + Add getCORESFAOMscores() (for the CORE-SF/A)

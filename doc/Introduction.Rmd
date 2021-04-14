@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(CECPfuns)
 ```
+
 *[Updated 14.iv.21 partly to test uploading of vignettes]*
 
 ## Installation
