@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CECPfuns)</span></code></pre></div>
+<p><em>[Updated 14.iv.21 partly to test uploading of vignettes]</em></p>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>You should always be able to install the latest version of the package with</p>
+<ul>
+<li><p><code>remotes::install_github(&quot;cpsyctc/CECPfuns&quot;)</code></p></li>
+<li><p><code>devtools::install_github(&quot;cpsyctc/CECPfuns&quot;)</code></p></li>
+</ul>
+<p>Clearly, to make those commands work you will need to have installed either the massive (and amazing) devtools package (<code>install.packages(&quot;devtools&quot;)</code>) or the much lighter remotes package (<code>install.packages(&quot;remotes&quot;)</code>) which is largely a wrapper for some devtools functions.</p>
+<p>Please check the <a href="https://opensource.org/licenses/MIT">MIT licence</a> for liability disclaimer: use these functions entirely at your own risk.</p>
+</div>
+<div id="how-might-you-find-this-package-useful" class="section level2">
+<h2>How might you find this package useful?</h2>
+<p>I have functions for various areas of my own needs:</p>
+<ol style="list-style-type: decimal">
+<li>data cleaning/checking and shaping for analysis, e.g. <code>isOneToOne()</code>, <code>getNOK()</code></li>
+<li>functions that provide statistical and psychometric analyses, e.g. <code>getCSC()</code>, <code>getBootCImean()</code></li>
+<li>functions that illustrate or help such analyses, e.g. <code>plotBinconf()</code></li>
+<li>miscellaneous functions that have made my life easier!</li>
+</ol>
+<p>Clara and Emily have each found some of these functions useful to them and the functions have helped us with the analyses in Emily’s enormous PhD and for papers that Clara and and I have published. We imagine that others working in the mental health, well-being, therapy worlds will also find them useful and they could even be useful in universities and other training settings where R is replacing SPSS.</p>
+</div>
+<div id="how-will-it-be-best-to-use-the-package" class="section level2">
+<h2>How will it be best to use the package?</h2>
+<div id="operating-system-r-version-and-r-package-requirements" class="section level3">
+<h3>Operating system, R version and R package requirements</h3>
+<p>I am trying to make sure that all the functions run on the major operating systems: Linux, Windows and Mac and that it should work back to R 3.5. At the moment I think it works fine on all permutations of those systems and all major releases of R since 3.6. In theory it should work on 3.5 but the R-hub test machine gives an error saying that the package tibble on which CECPfuns depends is not available there though the tibble package page says it works for R ≥ 3.1.0 so there is something odd there that I may or may not be be able to sort out. If you find the package won’t work on your system for R ≥ 3.5.0 do <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a> with details of your system and what errors you see and I’ll see if I can make changes to fix it.</p>
+</div>
+<div id="why-tidyverse" class="section level3">
+<h3>Why tidyverse?</h3>
+<p>In the last year or so, since some time probably late 2019, I have been using the tidyverse realm within the rather diverse ecosystems of R, see <a href="https://www.psyctc.org/Rblog/posts/2021-02-07-why-pipe-why-the-tidyverse/">here</a> for more about why. That’s probable sensible reading if you are not already a tidyverse user and want to understand some of the design decisions I have made. The next post in my SAFAQ R blog <a href="https://www.psyctc.org/Rblog/posts/2021-02-10-more-piping-introducing-rowwise/">More piping, and rowwise()</a> is also probable sensible reading as it says a bit about why many of the functions here are designed so that they can be used either standalone or in dplyr pipes. That is particularly useful when you might want to run the same analyses for an entire dataset but also separately for subgroups, e.g. by gender, or by therapist.</p>
+<p>My page <a href="https://www.psyctc.org/Rblog/wisdom.html">Wisdom(!)</a> contains, a little ruefully, many things I have learned the hard way about data checking, cleaning, mangling and analysing over the last three decades. Some of it now converges well with the reproducibility movement.</p>
+</div>
+</div>
+<div id="design-choices" class="section level2">
+<h2>Design choices</h2>
+<div id="code" class="section level3">
+<h3>Code</h3>
+<p>The code is all R: no C, C++, FORTRAN as they’re really beyond my programming abilities.</p>
+<p>I have tried to indent and space the code following the conventions that lintr::lint() likes so a lot of space and consistent indenting. I have also tried to comment things liberally. Perhaps sometimes I have overdone that where the code might have been sufficiently clear not to need comments. However, I know my coding is not good (I’m essentially self-taught: a week of introduction to FORTRAN for students <em>not</em> doing computing in 1975). I do now sometimes find myself working with long thin format datasets with over a million rows and that will climb so some of these functions may get to be run on such sizes of data, however, most of what I work with is much, much smaller so I have almost never worried about speed or whether large numbers will break anything. I have put some error traps in on bootstrapping functions where I think the number of replications might tie things up for a long time. However, I think I have always allowed for those traps to be overridden.</p>
+</div>
+<div id="messages-error-messages-and-warnings" class="section level3">
+<h3>Messages, error messages and warnings</h3>
+<p>I have tried to put in error messages that will stop functions rather than warnings. Sometimes, where it might conceivably be sensible to do override such a trap because you have a value you want to input to a function that I have tried to warn against, I have tried to give the function an argument that allows you to turn that error into a warning. I have put in warnings in the rarer cases when I really don’t think an error stopping things is correct, but where I think the input might be a mistake.</p>
+<p>I have also put in messages from some functions but if I have, I think I have always also added a “verbose =” argument which if you set it to FALSE, will suppress the warning.</p>
+<p>I have put in ridiculous numbers of sanity checks on inputs and other arguments, often there are &gt; 10 of these even for fairly simple functions. My rationale was that I want this package to be fairly friendly for relative newcomers to R, or those only using it infrequently. I have done this to try to avoid the situation in which I put something silly into a function but it passes it on to a deeper function or step with the result that the error message I see can be very hard to understand and won’t immediately point me to my error. My aspiration is that everything you might not have meant to do gets trapped before it goes any further.</p>
+</div>
+<div id="functionnamesareverlongand-names-generally" class="section level3">
+<h3>FunctionNamesAreVerlongAnd … names generally!</h3>
+<p>I have used long names for functions and for arguments. I’m sorry but I think the extra typing is offset by reduced confusion.</p>
+<p>My function names tend to start with a verb: “classify”, “get” and “plot” are recurring ones. I am also using a rather debased “camelCase” where names start with a lower case letter and upper case letters mark where a space has been lost from ordinary English. However, I can’t bear to use getNNa for “get the Number of NA values” so it’s <code>getNNA</code>. Generally I have priviledged multiple capital letters from English abbreviations over strict camelCase in that way.</p>
+<p>I have tried to use names inside functions that start with the class of the object: vecN, valX, listNames, matCorr, tibData. However, I think you won’t see those unless you want to see the code inside a function, which you can always do with <code>functionName</code>, i.e. the function but without the usual “()” on the end.</p>
+</div>
+<div id="synonyms" class="section level3">
+<h3>Synonyms</h3>
+<p>Occasionally I have created a synonym for a function, for example <code>checkIsOneToOne()</code> is simply the same function as <code>isOneToOne()</code> and if you ask for the ### Code testing</p>
+<p>I have used the excellent testthat library and tried to write tests for all functions. Every function has tests on the sanity tests on the inputs/arguments you give the fun, if the function can give warnings, then I have tested them and generally I have put in some test on expected output from sample input. However, at the moment I am not testing the ggplot output from <code>plotFunction()</code> functions as I suspect that would then involve me having to reset the test targets whenever <code>ggplot()</code> is updated.</p>
+<p>Those tests get run every time I update the package and are run on my local machine but also on the major operating systems and major R releases back to 3.5 (see above for requirements).</p>
+</div>
+<div id="help-pages-and-vignettes" class="section level3">
+<h3>Help pages and vignettes</h3>
+<p>I am trying to make the help pages far more extensive than they would be for many R functions and have tried to write them so they not only give the basics to enable you to run the function, know what arguments do what and what it returns, but also to give a lot of examples of use of the function. Again unusually, I have tried to give at least some of the statistical, psychometric or pragmatic background to the function. I am also planning to build a lot of vignettes into the package which will often link a number of functions together and give more background and perhaps some illustrations of use and output. I am also aiming for the help pages, but particularly the vignettes to link to the web resources, particularly to my own (that’s not just narcissism: it’s also because then I am responsible for keeping the links working and logical and so links shouldn’t break).</p>
+<p>At the moment the vignettes here are:</p>
+<ul>
+<li>this introduction</li>
+<li>some background on the package (<code>vignette(&quot;Background&quot;, package = &quot;CECPfuns&quot;)</code>)</li>
+<li>information about the RCSC framework (<code>vignette(&quot;RCSC_framework&quot;, package = &quot;CECPfuns&quot;)</code>)</li>
+<li>information on confidence intervals (CIs) and bootstrapping (<code>vignette(&quot;Bootstrapping&quot;, package = &quot;CECPfuns&quot;)</code>)</li>
+</ul>
+</div>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>You can find more background about the tiny team working on this, and some other background, in the background vignette. You should be able to get to that with this.</p>
+<pre><code>vignette(&quot;Background&quot;, package = &quot;CECPfuns&quot;) </code></pre>
+</div>
+<div id="to-do-list" class="section level2">
+<h2>To do list!</h2>
+<p>Sadly, this list is long and certainly incomplete. I am sure it will continue to develop, the package too I hope, for years!</p>
+<ul>
+<li><p>General enhancement of the package</p>
+<ul>
+<li><p>Improve help pages for existing functions</p></li>
+<li><p>Add tests: added for all functions so far, could do with expansion?</p></li>
+<li><p>Complete the other vignettes that exist and then add more.</p></li>
+<li><p>Add data</p></li>
+<li><p>UK YP-CORE cutting points</p></li>
+</ul></li>
+<li><p>Functions</p>
+<ul>
+<li>data cleaning/checking and shaping for analysis
+<ul>
+<li>Add getScore()</li>
+<li>Add getCOREOMscores() (for the CORE-OM)</li>
+<li>Add getCORESFAOMscores() (for the CORE-SF/A)</li>
+<li>Add getCORESFBOMscores() (for the CORE-SF/B)</li>
+<li>Add classifyYPCOREScores() (for the YP-CORE, by age and gender)</li>
+<li>Add classifyScoresGeneric()</li>
+</ul></li>
+<li>functions that provide statistical and psychometric analyses
+<ul>
+<li>Add getRCIfromItemData()</li>
+<li>Add getBootCIRCIfromScoresAndAlpha()</li>
+<li>Add getBootCIRCIfromItemData()</li>
+<li>Add getBootCIMeanDiff()</li>
+<li>Add getHedgesg()</li>
+<li>Add getCohend() (deal with “-2” issue)</li>
+<li>Add getCohendPaired()</li>
+<li>Add convCohend2Hedgesg() (deal with “-2”)</li>
+<li>Add countRCSCnumbers() (allow for gender?)</li>
+</ul></li>
+<li>functions that illustrate or help such analyses
+<ul>
+<li>Add plotJacobsonRCSC() (ditto)</li>
+</ul></li>
+<li>miscellaneous functions that have made my life easier!
+<ul>
+<li>Add findYourFunctions()</li>
+<li>Add getRmdFileStats()</li>
+<li>Add readCEdates()</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>then perhaps some functions for standard reports from (fairly) standard CORE datasets (should feed separate Rmd templates)</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

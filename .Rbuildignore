@@ -2,7 +2,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README.Rmd
-^doc$
 ^Meta$
 ^codecov\.yml$
 ^\.github$
@@ -13,7 +12,6 @@
 ^restart_to_get_vignettes.R$
 .old$
 ^_pkgdown\.yml$
-^docs$
 ^pkgdown$
 ^CODE_OF_CONDUCT.md$
 ^CONTRIBUTING.md$

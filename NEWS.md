@@ -1,3 +1,6 @@
+# Version 0.0.0.9041
+Just trying using "Build Source" to see if that gets me the vignettes up on GitHub.  Small tweaks to Introduction vignette.
+
 # Version 0.0.0.9040
 Yet another commit as I've realised that I have to run pkgdown::build_site() _BEFORE_ committing to get the pkgdown site
 rebuilt.  Let's see if this works!

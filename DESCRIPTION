@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being Work (Created by Chris Evans and Clara Paz)
-Version: 0.0.0.9040
+Version: 0.0.0.9041
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to
