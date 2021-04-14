@@ -10,6 +10,9 @@ CECPfuns](https://img.shields.io/badge/Package-CECPfuns-lightgrey)
 ![Lifecycle:
 developing](https://img.shields.io/badge/Lifecycle-developing-orange)
 ![Licence: MIT](https://img.shields.io/badge/Licence-MIT-brightgreen)
+[![Codecov test
+coverage](https://codecov.io/gh/cpsyctc/CECPfuns/branch/main/graph/badge.svg)](https://codecov.io/gh/cpsyctc/CECPfuns?branch=main)
+[![R-CMD-check](https://github.com/cpsyctc/CECPfuns/workflows/R-CMD-check/badge.svg)](https://github.com/cpsyctc/CECPfuns/actions)
 <!-- badges: end -->
 
 The goal driving the creation of CECPfuns is largely selfish: to make
@@ -20,9 +23,12 @@ that has been very much encouraged by (Dr. Clara Paz)\[
 contributed to some of these functions and to the general idea of the
 package. Input has also come from (Emily
 Blackshaw)\[<https://www.researchgate.net/profile/Emily_Blackshaw2>\].
-It is possible that these functions may be of use to others so I am
-uploading it regularly after any significant changes to GitHub at
-<https://github.com/cpsyctc/CECPfuns>
+It is possible that these functions may be of use to others so I am now
+uploading it to GitHub at <https://github.com/cpsyctc/CECPfuns> after
+any significant changes.
+
+There is also now a pkgdown produced web site for the package at
+<https::/cecpfuns.psyctc.org/>.
 
 ## Installation
 
@@ -30,7 +36,9 @@ You can install the latest version of CECPfuns from
 <https://github.com/cpsyctc/CECPfuns>.
 
 ``` r
-devtools::install_github("cpsyctc/CECPfuns")
+devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
+### or
+remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
 ```
 
 If you really want to make sure you always have the latest version, you

@@ -23,9 +23,9 @@ library(CECPfuns)
 
 You should always be able to install the latest version of the package with
 
-* `remotes::install_github("cpsyctc/CECPfuns")`
+* `remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)`
 
-* `devtools::install_github("cpsyctc/CECPfuns")`
+* `devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)`
 
 Clearly, to make those commands work you will need to have installed either the massive (and amazing) devtools package (`install.packages("devtools")`) or the much lighter remotes package (`install.packages("remotes")`) which is largely a wrapper for some devtools functions.
 

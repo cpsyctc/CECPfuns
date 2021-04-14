@@ -35,7 +35,9 @@ There is also now a pkgdown produced web site for the package at https::/cecpfun
 You can install the latest version of CECPfuns from https://github.com/cpsyctc/CECPfuns.  
 
 ``` r
-devtools::install_github("cpsyctc/CECPfuns")
+devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
+### or
+remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
 ```
 
 If you really want to make sure you always have the latest version, you can look for it every time you launch R, see [here](https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/#how-i-am-synching-my-package-to-machines-other-than-my-main-machine).
