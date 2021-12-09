@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CECPfuns</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9041</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9041</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -95,12 +91,12 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CECPfuns</span><span class="op">)</span></code></pre></div>
-<div id="bootstrapping-and-confidence-intervals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bootstrapping-and-confidence-intervals" class="anchor"></a>Bootstrapping and confidence intervals</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CECPfuns</span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="bootstrapping-and-confidence-intervals">Bootstrapping and confidence intervals<a class="anchor" aria-label="anchor" href="#bootstrapping-and-confidence-intervals"></a>
+</h2>
 <p>Since I first discovered confidence intervals (CIs) back in the 1980s, and then discovered bootstrapping probably in the late 90s or early naughties, the advantages they have respectively over traditional null hypothesis significance testing (NHST) and over splitting analytic methods into parametric and non-parametric in a very clumsy way have been utterly persuasive for me. However, with a few exceptions both were late to be implemented into SPSS which has been the dominant statistical software used by psychologists and psychotherapy researchers until recently.</p>
-<p>R, mainly through the excellent <code>boot</code> package offered me a way to bring the two together and I have leant on that for many papers for probably 15 years now. However, <code><a href="https://rdrr.io/pkg/boot/man/boot.html">boot::boot()</a></code> is not always the friendliest of R functions and coupling it into the tidverse way of doing things in R isn’t always easy as <code>boot</code> is firmly in the “base R” tradition.</p>
+<p>R, mainly through the excellent <code>boot</code> package offered me a way to bring the two together and I have leant on that for many papers for probably 15 years now. However, <code><a href="https://rdrr.io/pkg/boot/man/boot.html" class="external-link">boot::boot()</a></code> is not always the friendliest of R functions and coupling it into the tidverse way of doing things in R isn’t always easy as <code>boot</code> is firmly in the “base R” tradition.</p>
 <p>From the start of thinking about this CECPfuns package I wanted to pull together the various bootstrap functions, often very clumsy ones, and make sure I had the latest versions to hand and tested and documented so I would remember how they worked and what I’d done inside them fairly easily. As I started to think of making CECPfuns fairly public I realised that these function should help non-statisticians and relative R newcomers to use bootstrapping to get confidence intervals for typical therapy data analyses research. At the moment the functions in the package are:</p>
 <ul>
 <li>getBootCICorr()</li>
@@ -108,7 +104,7 @@
 <li>getBootCImean()</li>
 <li>getBootCICSC()</li>
 </ul>
-<p>Each, I think, has sufficient information for people to use them in their help files and each has pretty extensive trapping of improbable or impossible inputs so I hope their error messages and warnings will be protective (<code><a href="https://rdrr.io/pkg/boot/man/boot.html">boot::boot()</a></code> is brilliant but not always transparently helpful when I try to something stupid with it!)</p>
+<p>Each, I think, has sufficient information for people to use them in their help files and each has pretty extensive trapping of improbable or impossible inputs so I hope their error messages and warnings will be protective (<code><a href="https://rdrr.io/pkg/boot/man/boot.html" class="external-link">boot::boot()</a></code> is brilliant but not always transparently helpful when I try to something stupid with it!)</p>
 <p>Over the next few months more bootstrap functions for the sample statistics we use a lot will be added and I will add these sections to this vignette.</p>
 <ol style="list-style-type: decimal">
 <li>Background on confidence intervals for those not (fully) happy they understand the ideas including some simple theory about the relationships between CIs and NHST. What CIs are and what they are not.</li>
@@ -130,11 +126,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Chris Evans.</p>
+  <p></p>
+<p>Developed by Chris Evans.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -142,6 +140,8 @@
 
   
 
+
+  
 
   </body>
 </html>

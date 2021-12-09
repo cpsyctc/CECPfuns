@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">CECPfuns</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9041</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9041</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -95,22 +91,22 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">CECPfuns</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">CECPfuns</span><span class="op">)</span></code></pre></div>
 <p><em>[Updated 14.iv.21 partly to test uploading of vignettes]</em></p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You should always be able to install the latest version of the package with</p>
 <ul>
-<li><p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)</a></code></p></li>
+<li><p><code>remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)</code></p></li>
 <li><p><code>devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)</code></p></li>
 </ul>
-<p>Clearly, to make those commands work you will need to have installed either the massive (and amazing) devtools package (<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code>) or the much lighter remotes package (<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("remotes")</a></code>) which is largely a wrapper for some devtools functions.</p>
-<p>Please check the <a href="https://opensource.org/licenses/MIT">MIT licence</a> for liability disclaimer: use these functions entirely at your own risk.</p>
+<p>Clearly, to make those commands work you will need to have installed either the massive (and amazing) devtools package (<code>install.packages("devtools")</code>) or the much lighter remotes package (<code>install.packages("remotes")</code>) which is largely a wrapper for some devtools functions.</p>
+<p>Please check the <a href="https://opensource.org/licenses/MIT" class="external-link">MIT licence</a> for liability disclaimer: use these functions entirely at your own risk.</p>
 </div>
-<div id="how-might-you-find-this-package-useful" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-might-you-find-this-package-useful" class="anchor"></a>How might you find this package useful?</h2>
+<div class="section level2">
+<h2 id="how-might-you-find-this-package-useful">How might you find this package useful?<a class="anchor" aria-label="anchor" href="#how-might-you-find-this-package-useful"></a>
+</h2>
 <p>I have functions for various areas of my own needs:</p>
 <ol style="list-style-type: decimal">
 <li>data cleaning/checking and shaping for analysis, e.g. <code><a href="../reference/isOneToOne.html">isOneToOne()</a></code>, <code><a href="../reference/getNOK.html">getNOK()</a></code>
@@ -123,54 +119,54 @@
 </ol>
 <p>Clara and Emily have each found some of these functions useful to them and the functions have helped us with the analyses in Emily’s enormous PhD and for papers that Clara and and I have published. We imagine that others working in the mental health, well-being, therapy worlds will also find them useful and they could even be useful in universities and other training settings where R is replacing SPSS.</p>
 </div>
-<div id="how-will-it-be-best-to-use-the-package" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-will-it-be-best-to-use-the-package" class="anchor"></a>How will it be best to use the package?</h2>
-<div id="operating-system-r-version-and-r-package-requirements" class="section level3">
-<h3 class="hasAnchor">
-<a href="#operating-system-r-version-and-r-package-requirements" class="anchor"></a>Operating system, R version and R package requirements</h3>
-<p>I am trying to make sure that all the functions run on the major operating systems: Linux, Windows and Mac and that it should work back to R 3.5. At the moment I think it works fine on all permutations of those systems and all major releases of R since 3.6. In theory it should work on 3.5 but the R-hub test machine gives an error saying that the package tibble on which CECPfuns depends is not available there though the tibble package page says it works for R ≥ 3.1.0 so there is something odd there that I may or may not be be able to sort out. If you find the package won’t work on your system for R ≥ 3.5.0 do <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a> with details of your system and what errors you see and I’ll see if I can make changes to fix it.</p>
+<div class="section level2">
+<h2 id="how-will-it-be-best-to-use-the-package">How will it be best to use the package?<a class="anchor" aria-label="anchor" href="#how-will-it-be-best-to-use-the-package"></a>
+</h2>
+<div class="section level3">
+<h3 id="operating-system-r-version-and-r-package-requirements">Operating system, R version and R package requirements<a class="anchor" aria-label="anchor" href="#operating-system-r-version-and-r-package-requirements"></a>
+</h3>
+<p>I am trying to make sure that all the functions run on the major operating systems: Linux, Windows and Mac and that it should work back to R 3.5. At the moment I think it works fine on all permutations of those systems and all major releases of R since 3.6. In theory it should work on 3.5 but the R-hub test machine gives an error saying that the package tibble on which CECPfuns depends is not available there though the tibble package page says it works for R ≥ 3.1.0 so there is something odd there that I may or may not be be able to sort out. If you find the package won’t work on your system for R ≥ 3.5.0 do <a href="https://www.psyctc.org/psyctc/contact-me/" class="external-link">contact me</a> with details of your system and what errors you see and I’ll see if I can make changes to fix it.</p>
 </div>
-<div id="why-tidyverse" class="section level3">
-<h3 class="hasAnchor">
-<a href="#why-tidyverse" class="anchor"></a>Why tidyverse?</h3>
-<p>In the last year or so, since some time probably late 2019, I have been using the tidyverse realm within the rather diverse ecosystems of R, see <a href="https://www.psyctc.org/Rblog/posts/2021-02-07-why-pipe-why-the-tidyverse/">here</a> for more about why. That’s probable sensible reading if you are not already a tidyverse user and want to understand some of the design decisions I have made. The next post in my SAFAQ R blog <a href="https://www.psyctc.org/Rblog/posts/2021-02-10-more-piping-introducing-rowwise/">More piping, and rowwise()</a> is also probable sensible reading as it says a bit about why many of the functions here are designed so that they can be used either standalone or in dplyr pipes. That is particularly useful when you might want to run the same analyses for an entire dataset but also separately for subgroups, e.g. by gender, or by therapist.</p>
-<p>My page <a href="https://www.psyctc.org/Rblog/wisdom.html">Wisdom(!)</a> contains, a little ruefully, many things I have learned the hard way about data checking, cleaning, mangling and analysing over the last three decades. Some of it now converges well with the reproducibility movement.</p>
+<div class="section level3">
+<h3 id="why-tidyverse">Why tidyverse?<a class="anchor" aria-label="anchor" href="#why-tidyverse"></a>
+</h3>
+<p>In the last year or so, since some time probably late 2019, I have been using the tidyverse realm within the rather diverse ecosystems of R, see <a href="https://www.psyctc.org/Rblog/posts/2021-02-07-why-pipe-why-the-tidyverse/" class="external-link">here</a> for more about why. That’s probable sensible reading if you are not already a tidyverse user and want to understand some of the design decisions I have made. The next post in my SAFAQ R blog <a href="https://www.psyctc.org/Rblog/posts/2021-02-10-more-piping-introducing-rowwise/" class="external-link">More piping, and rowwise()</a> is also probable sensible reading as it says a bit about why many of the functions here are designed so that they can be used either standalone or in dplyr pipes. That is particularly useful when you might want to run the same analyses for an entire dataset but also separately for subgroups, e.g. by gender, or by therapist.</p>
+<p>My page <a href="https://www.psyctc.org/Rblog/wisdom.html" class="external-link">Wisdom(!)</a> contains, a little ruefully, many things I have learned the hard way about data checking, cleaning, mangling and analysing over the last three decades. Some of it now converges well with the reproducibility movement.</p>
 </div>
 </div>
-<div id="design-choices" class="section level2">
-<h2 class="hasAnchor">
-<a href="#design-choices" class="anchor"></a>Design choices</h2>
-<div id="code" class="section level3">
-<h3 class="hasAnchor">
-<a href="#code" class="anchor"></a>Code</h3>
+<div class="section level2">
+<h2 id="design-choices">Design choices<a class="anchor" aria-label="anchor" href="#design-choices"></a>
+</h2>
+<div class="section level3">
+<h3 id="code">Code<a class="anchor" aria-label="anchor" href="#code"></a>
+</h3>
 <p>The code is all R: no C, C++, FORTRAN as they’re really beyond my programming abilities.</p>
 <p>I have tried to indent and space the code following the conventions that lintr::lint() likes so a lot of space and consistent indenting. I have also tried to comment things liberally. Perhaps sometimes I have overdone that where the code might have been sufficiently clear not to need comments. However, I know my coding is not good (I’m essentially self-taught: a week of introduction to FORTRAN for students <em>not</em> doing computing in 1975). I do now sometimes find myself working with long thin format datasets with over a million rows and that will climb so some of these functions may get to be run on such sizes of data, however, most of what I work with is much, much smaller so I have almost never worried about speed or whether large numbers will break anything. I have put some error traps in on bootstrapping functions where I think the number of replications might tie things up for a long time. However, I think I have always allowed for those traps to be overridden.</p>
 </div>
-<div id="messages-error-messages-and-warnings" class="section level3">
-<h3 class="hasAnchor">
-<a href="#messages-error-messages-and-warnings" class="anchor"></a>Messages, error messages and warnings</h3>
+<div class="section level3">
+<h3 id="messages-error-messages-and-warnings">Messages, error messages and warnings<a class="anchor" aria-label="anchor" href="#messages-error-messages-and-warnings"></a>
+</h3>
 <p>I have tried to put in error messages that will stop functions rather than warnings. Sometimes, where it might conceivably be sensible to do override such a trap because you have a value you want to input to a function that I have tried to warn against, I have tried to give the function an argument that allows you to turn that error into a warning. I have put in warnings in the rarer cases when I really don’t think an error stopping things is correct, but where I think the input might be a mistake.</p>
 <p>I have also put in messages from some functions but if I have, I think I have always also added a “verbose =” argument which if you set it to FALSE, will suppress the warning.</p>
 <p>I have put in ridiculous numbers of sanity checks on inputs and other arguments, often there are &gt; 10 of these even for fairly simple functions. My rationale was that I want this package to be fairly friendly for relative newcomers to R, or those only using it infrequently. I have done this to try to avoid the situation in which I put something silly into a function but it passes it on to a deeper function or step with the result that the error message I see can be very hard to understand and won’t immediately point me to my error. My aspiration is that everything you might not have meant to do gets trapped before it goes any further.</p>
 </div>
-<div id="functionnamesareverlongand-names-generally" class="section level3">
-<h3 class="hasAnchor">
-<a href="#functionnamesareverlongand-names-generally" class="anchor"></a>FunctionNamesAreVerlongAnd … names generally!</h3>
+<div class="section level3">
+<h3 id="functionnamesareverlongand-names-generally">FunctionNamesAreVerlongAnd … names generally!<a class="anchor" aria-label="anchor" href="#functionnamesareverlongand-names-generally"></a>
+</h3>
 <p>I have used long names for functions and for arguments. I’m sorry but I think the extra typing is offset by reduced confusion.</p>
 <p>My function names tend to start with a verb: “classify”, “get” and “plot” are recurring ones. I am also using a rather debased “camelCase” where names start with a lower case letter and upper case letters mark where a space has been lost from ordinary English. However, I can’t bear to use getNNa for “get the Number of NA values” so it’s <code>getNNA</code>. Generally I have priviledged multiple capital letters from English abbreviations over strict camelCase in that way.</p>
 <p>I have tried to use names inside functions that start with the class of the object: vecN, valX, listNames, matCorr, tibData. However, I think you won’t see those unless you want to see the code inside a function, which you can always do with <code>functionName</code>, i.e. the function but without the usual “()” on the end.</p>
 </div>
-<div id="synonyms" class="section level3">
-<h3 class="hasAnchor">
-<a href="#synonyms" class="anchor"></a>Synonyms</h3>
+<div class="section level3">
+<h3 id="synonyms">Synonyms<a class="anchor" aria-label="anchor" href="#synonyms"></a>
+</h3>
 <p>Occasionally I have created a synonym for a function, for example <code><a href="../reference/isOneToOne.html">checkIsOneToOne()</a></code> is simply the same function as <code><a href="../reference/isOneToOne.html">isOneToOne()</a></code> and if you ask for the ### Code testing</p>
 <p>I have used the excellent testthat library and tried to write tests for all functions. Every function has tests on the sanity tests on the inputs/arguments you give the fun, if the function can give warnings, then I have tested them and generally I have put in some test on expected output from sample input. However, at the moment I am not testing the ggplot output from <code>plotFunction()</code> functions as I suspect that would then involve me having to reset the test targets whenever <code>ggplot()</code> is updated.</p>
 <p>Those tests get run every time I update the package and are run on my local machine but also on the major operating systems and major R releases back to 3.5 (see above for requirements).</p>
 </div>
-<div id="help-pages-and-vignettes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#help-pages-and-vignettes" class="anchor"></a>Help pages and vignettes</h3>
+<div class="section level3">
+<h3 id="help-pages-and-vignettes">Help pages and vignettes<a class="anchor" aria-label="anchor" href="#help-pages-and-vignettes"></a>
+</h3>
 <p>I am trying to make the help pages far more extensive than they would be for many R functions and have tried to write them so they not only give the basics to enable you to run the function, know what arguments do what and what it returns, but also to give a lot of examples of use of the function. Again unusually, I have tried to give at least some of the statistical, psychometric or pragmatic background to the function. I am also planning to build a lot of vignettes into the package which will often link a number of functions together and give more background and perhaps some illustrations of use and output. I am also aiming for the help pages, but particularly the vignettes to link to the web resources, particularly to my own (that’s not just narcissism: it’s also because then I am responsible for keeping the links working and logical and so links shouldn’t break).</p>
 <p>At the moment the vignettes here are:</p>
 <ul>
@@ -181,15 +177,15 @@
 </ul>
 </div>
 </div>
-<div id="background" class="section level2">
-<h2 class="hasAnchor">
-<a href="#background" class="anchor"></a>Background</h2>
+<div class="section level2">
+<h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
+</h2>
 <p>You can find more background about the tiny team working on this, and some other background, in the background vignette. You should be able to get to that with this.</p>
-<pre><code><a href="../articles/Background.html">vignette("Background", package = "CECPfuns") </a></code></pre>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"Background"</span>, package <span class="op">=</span> <span class="st">"CECPfuns"</span><span class="op">)</span></code></pre>
 </div>
-<div id="to-do-list" class="section level2">
-<h2 class="hasAnchor">
-<a href="#to-do-list" class="anchor"></a>To do list!</h2>
+<div class="section level2">
+<h2 id="to-do-list">To do list!<a class="anchor" aria-label="anchor" href="#to-do-list"></a>
+</h2>
 <p>Sadly, this list is long and certainly incomplete. I am sure it will continue to develop, the package too I hope, for years!</p>
 <ul>
 <li>
@@ -258,11 +254,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Chris Evans.</p>
+  <p></p>
+<p>Developed by Chris Evans.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -270,6 +268,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,18 +36,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">CECPfuns</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9041</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9041</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -86,36 +82,36 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="cecpfuns" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#cecpfuns" class="anchor"></a>CECPfuns</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="cecpfuns">CECPfuns<a class="anchor" aria-label="anchor" href="#cecpfuns"></a>
+</h1></div>
 <!-- badges: start -->
 
-<p>The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single, up to date, repository where I can find potentially reusable functions I have written. However, it is something that has been very much encouraged by (Dr. Clara Paz)<br><span class="math display"> &lt; <em>h</em><em>t</em><em>t</em><em>p</em><em>s</em> : //<em>i</em><em>n</em><em>v</em><em>e</em><em>s</em><em>t</em><em>i</em><em>g</em><em>a</em><em>c</em><em>i</em><em>o</em><em>n</em>.<em>u</em><em>d</em><em>l</em><em>a</em>.<em>e</em><em>d</em><em>u</em>.<em>e</em><em>c</em>/<em>u</em><em>d</em><em>l</em><em>a</em><sub><em>t</em></sub><em>e</em><em>a</em><em>m</em><em>s</em>/<em>c</em><em>l</em><em>a</em><em>r</em><em>a</em> − <em>p</em><em>a</em><em>z</em>/&gt;</span><br> and she has contributed to some of these functions and to the general idea of the package. Input has also come from (Emily Blackshaw)<br><span class="math display"> &lt; <em>h</em><em>t</em><em>t</em><em>p</em><em>s</em> : //<em>w</em><em>w</em><em>w</em>.<em>r</em><em>e</em><em>s</em><em>e</em><em>a</em><em>r</em><em>c</em><em>h</em><em>g</em><em>a</em><em>t</em><em>e</em>.<em>n</em><em>e</em><em>t</em>/<em>p</em><em>r</em><em>o</em><em>f</em><em>i</em><em>l</em><em>e</em>/<em>E</em><em>m</em><em>i</em><em>l</em><em>y</em><sub><em>B</em></sub><em>l</em><em>a</em><em>c</em><em>k</em><em>s</em><em>h</em><em>a</em><em>w</em>2&gt;</span><br>. It is possible that these functions may be of use to others so I am now uploading it to GitHub at <a href="https://github.com/cpsyctc/CECPfuns" class="uri">https://github.com/cpsyctc/CECPfuns</a> after any significant changes.</p>
+<p>The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single, up to date, repository where I can find potentially reusable functions I have written. However, it is something that has been very much encouraged by (Dr. Clara Paz)[ <a href="https://investigacion.udla.edu.ec/udla_teams/clara-paz/" class="external-link uri">https://investigacion.udla.edu.ec/udla_teams/clara-paz/</a>] and she has contributed to some of these functions and to the general idea of the package. Input has also come from (Emily Blackshaw)[<a href="https://www.researchgate.net/profile/Emily_Blackshaw2" class="external-link uri">https://www.researchgate.net/profile/Emily_Blackshaw2</a>]. It is possible that these functions may be of use to others so I am now uploading it to GitHub at <a href="https://github.com/cpsyctc/CECPfuns" class="uri">https://github.com/cpsyctc/CECPfuns</a> after any significant changes.</p>
 <p>There is also now a pkgdown produced web site for the package at <a href="https::/cecpfuns.psyctc.org/" class="uri">https::/cecpfuns.psyctc.org/</a>.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the latest version of CECPfuns from <a href="https://github.com/cpsyctc/CECPfuns" class="uri">https://github.com/cpsyctc/CECPfuns</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"cpsyctc/CECPfuns"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">### or</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"cpsyctc/CECPfuns"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>If you really want to make sure you always have the latest version, you can look for it every time you launch R, see <a href="https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/#how-i-am-synching-my-package-to-machines-other-than-my-main-machine">here</a>.</p>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"cpsyctc/CECPfuns"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>If you really want to make sure you always have the latest version, you can look for it every time you launch R, see <a href="https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/#how-i-am-synching-my-package-to-machines-other-than-my-main-machine" class="external-link">here</a>.</p>
 </div>
-<div id="background-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#background-information" class="anchor"></a>Background information</h2>
+<div class="section level2">
+<h2 id="background-information">Background information<a class="anchor" aria-label="anchor" href="#background-information"></a>
+</h2>
 <ul>
-<li>As above, you can find out more about Clara at <a href="https://investigacion.udla.edu.ec/udla_teams/clara-paz/" class="uri">https://investigacion.udla.edu.ec/udla_teams/clara-paz/</a>,</li>
-<li>you can find out more about Emily at <a href="https://www.researchgate.net/profile/Emily_Blackshaw2" class="uri">https://www.researchgate.net/profile/Emily_Blackshaw2</a> and about her PhD which I am supervising on ResearchGate, <a href="https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility">here</a> and</li>
-<li>my own biggest research programme, which overlaps with Emily’s work, is the CORE system: <a href="https://www.corestemtrust.org.uk/" class="uri">https://www.corestemtrust.org.uk/</a> and a web site about my non-CORE work is slowly building (from a much earlier one) at <a href="https://www.psyctc.org/psyctc/" class="uri">https://www.psyctc.org/psyctc/</a> and my personal site is <a href="https://www.psyctc.org/pelerinage2016" class="uri">https://www.psyctc.org/pelerinage2016</a>.</li>
+<li>As above, you can find out more about Clara at <a href="https://investigacion.udla.edu.ec/udla_teams/clara-paz/" class="external-link uri">https://investigacion.udla.edu.ec/udla_teams/clara-paz/</a>,</li>
+<li>you can find out more about Emily at <a href="https://www.researchgate.net/profile/Emily_Blackshaw2" class="external-link uri">https://www.researchgate.net/profile/Emily_Blackshaw2</a> and about her PhD which I am supervising on ResearchGate, <a href="https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility" class="external-link">here</a> and</li>
+<li>my own biggest research programme, which overlaps with Emily’s work, is the CORE system: <a href="https://www.corestemtrust.org.uk/" class="external-link uri">https://www.corestemtrust.org.uk/</a> and a web site about my non-CORE work is slowly building (from a much earlier one) at <a href="https://www.psyctc.org/psyctc/" class="external-link uri">https://www.psyctc.org/psyctc/</a> and my personal site is <a href="https://www.psyctc.org/pelerinage2016" class="external-link uri">https://www.psyctc.org/pelerinage2016</a>.</li>
 </ul>
 </div>
-<div id="licence-and-disclaimer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#licence-and-disclaimer" class="anchor"></a>Licence and disclaimer</h2>
-<p>The package is licensed under the MIT licence <a href="https://opensource.org/licenses/MIT" class="uri">https://opensource.org/licenses/MIT</a> which means you should be able to reuse anything here that you find useful with no fee to me as long as you comply with the terms of that licence. The licence has a very capitalised disclaimer:</p>
+<div class="section level2">
+<h2 id="licence-and-disclaimer">Licence and disclaimer<a class="anchor" aria-label="anchor" href="#licence-and-disclaimer"></a>
+</h2>
+<p>The package is licensed under the MIT licence <a href="https://opensource.org/licenses/MIT" class="external-link uri">https://opensource.org/licenses/MIT</a> which means you should be able to reuse anything here that you find useful with no fee to me as long as you comply with the terms of that licence. The licence has a very capitalised disclaimer:</p>
 <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </div>
 </div>
@@ -123,50 +119,56 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing CECPfuns</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Chris Evans <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-4197-4202" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing CECPfuns</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://codecov.io/gh/cpsyctc/CECPfuns?branch=main"><img src="https://codecov.io/gh/cpsyctc/CECPfuns/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li>Chris Evans <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-4197-4202" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://codecov.io/gh/cpsyctc/CECPfuns?branch=main" class="external-link"><img src="https://codecov.io/gh/cpsyctc/CECPfuns/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/cpsyctc/CECPfuns/actions"><img src="https://github.com/cpsyctc/CECPfuns/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Chris Evans.</p>
+  <p></p>
+<p>Developed by Chris Evans.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -174,6 +176,8 @@
 
   
 
+
+  
 
   </body>
 </html>

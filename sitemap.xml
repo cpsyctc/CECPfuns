@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/404.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/articles/Background.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/articles/Bootstrapping.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/articles/Introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/articles/RCSC_framework.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/authors.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/cpsyctc/CECPfuns/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/news/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/cpsyctc/CECPfuns/reference/CECPfuns-package.html</loc>
@@ -26,6 +62,9 @@
   </url>
   <url>
     <loc>https://github.com/cpsyctc/CECPfuns/reference/getBootCIalpha.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/reference/getBootCIgrpMeanDiff.html</loc>
   </url>
   <url>
     <loc>https://github.com/cpsyctc/CECPfuns/reference/getBootCImean.html</loc>
@@ -55,6 +94,9 @@
     <loc>https://github.com/cpsyctc/CECPfuns/reference/hyphenateWords.html</loc>
   </url>
   <url>
+    <loc>https://github.com/cpsyctc/CECPfuns/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/cpsyctc/CECPfuns/reference/isOneToOne.html</loc>
   </url>
   <url>
@@ -62,17 +104,5 @@
   </url>
   <url>
     <loc>https://github.com/cpsyctc/CECPfuns/reference/plotCIcorrelation.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/cpsyctc/CECPfuns/articles/Background.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/cpsyctc/CECPfuns/articles/Bootstrapping.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/cpsyctc/CECPfuns/articles/Introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/cpsyctc/CECPfuns/articles/RCSC_framework.html</loc>
   </url>
 </urlset>
