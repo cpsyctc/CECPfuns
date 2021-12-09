@@ -54,6 +54,8 @@
 #'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) %>%
 #'   ### remember to unnnest again!
 #'   unnest_wider(meanDiff)
+#'   }
+#'
 getBootCIgrpMeanDiff <- function(formula1, data, bootReps = 1000, conf = .95, bootCImethod = "pe") {
   ### function to return bootstrap CI around an observed correlation
   ### between two variables fed in within a formula as variable1 ~ variable2
