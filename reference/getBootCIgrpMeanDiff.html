@@ -106,6 +106,49 @@ Function designed for use in dplyr (tidyverse) piping to return mean diff and bo
 <code><a href="getBootCImean.html">getBootCImean</a>()</code></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="co">### will need tidyverse to run</span></span>
+<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="co">### create some data</span></span>
+<span class="r-in"><span class="co">### get replicable data</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">120</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># Gaussian random base for scores</span></span>
+<span class="r-in">  <span class="co">### now add a grouping variable: help-seeking or not</span></span>
+<span class="r-in">  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"not"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span class="r-in">  <span class="co">### now add gender</span></span>
+<span class="r-in">  gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="co">### next add a gender effect nudging women's scores up by .4</span></span>
+<span class="r-in">  <span class="fu">mutate</span><span class="op">(</span>scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"F"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">.4</span>, <span class="va">scores</span><span class="op">)</span>,</span>
+<span class="r-in">  <span class="co">### next add the crucial help-seeking effect of 1.1</span></span>
+<span class="r-in">        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpDat</span></span>
+<span class="r-in"><span class="co">#</span></span>
+<span class="r-in"><span class="co">### have a look at that</span></span>
+<span class="r-in"><span class="va">tmpDat</span></span>
+<span class="r-in"><span class="co">#</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable results from the bootstrap</span></span>
+<span class="r-in"><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span>
+<span class="r-in">  <span class="co">### you are creating list output</span></span>
+<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanDiff <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCIgrpMeanDiff</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="co">### now unnest the list to columns</span></span>
+<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanDiff</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">### now an example of how this becomes useful: same but by gender</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable results from the bootstrap</span></span>
+<span class="r-in"><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="co">### remember the list output again!</span></span>
+<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanDiff <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCIgrpMeanDiff</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span class="r-in">  <span class="co">### remember to unnnest again!</span></span>
+<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanDiff</span><span class="op">)</span></span>
+<span class="r-in">  <span class="op">}</span></span>
+<span class="r-in"></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
