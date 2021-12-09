@@ -84,6 +84,7 @@ Other RCSC functions:
 Other bootstrap CI functions: 
 \code{\link{getBootCICorr}()},
 \code{\link{getBootCIalpha}()},
+\code{\link{getBootCIgrpMeanDiff}()},
 \code{\link{getBootCImean}()}
 }
 \author{

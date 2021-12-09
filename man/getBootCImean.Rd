@@ -163,7 +163,8 @@ tmpDat \%>\%
 Other bootstrap CI functions: 
 \code{\link{getBootCICSC}()},
 \code{\link{getBootCICorr}()},
-\code{\link{getBootCIalpha}()}
+\code{\link{getBootCIalpha}()},
+\code{\link{getBootCIgrpMeanDiff}()}
 }
 \author{
 Chris Evans

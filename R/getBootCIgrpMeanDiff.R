@@ -1,12 +1,12 @@
 #' Title
-#'  Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that
+#'  Function designed for use in dplyr (tidyverse) piping to return mean diff and bootstrap CI around that
 #' @param formula1 formula defining the two variables to be correlated as scores ~ group
 #' @param data data.frame or tibble with the data, often cur_data() in dplyr
 #' @param bootReps integer giving number of bootstrap replications
 #' @param conf numeric value giving width of confidence interval, e.g. .95 (default)
 #' @param bootCImethod string giving method to derive bootstrap CI, minimum two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca
 #'
-#' @return list of named values obsCSC, LCLCSC and UCLCSC
+#' @return list of named values obsDiff, LCLdiff and UCLdiff
 #' @export
 #'
 #' @importFrom stats na.omit
@@ -14,18 +14,15 @@
 #' @importFrom dplyr n
 #' @importFrom dplyr mutate
 #'
-#' @section Background:
-#' For general information about the CSC (Clinically Significant Change criterion), see \code{\link{getCSC}}
-#'
-#' @family RCSC functions
 #' @family bootstrap CI functions
-#' @seealso \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
 #'
 #' @examples
 #' \dontrun{
 #' ### will need tidyverse to run
 #' library(tidyverse)
 #' ### create some data
+#' ### get replicable data
+#' set.seed(12345)
 #' n <- 120
 #' list(scores = rnorm(n), # Gaussian random base for scores
 #'   ### now add a grouping variable: help-seeking or not
@@ -37,33 +34,27 @@
 #'   mutate(scores = if_else(gender == "F", scores + .4, scores),
 #'   ### next add the crucial help-seeking effect of 1.1
 #'         scores = if_else(grp == "HS", scores + 1.1, scores)) -> tmpDat
-#'
+#' #
 #' ### have a look at that
 #' tmpDat
-#'
+#' #
 #' set.seed(12345) # to get replicable results from the bootstrap
 #' tmpDat %>%
 #'   ### don't forget to prefix the call with "list(" to tell dplyr
 #'   ### you are creating list output
-#'   summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) %>%
+#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) %>%
 #'   ### now unnest the list to columns
-#'   unnest_wider(CSC)
+#'   unnest_wider(meanDiff)
 #'
 #' ### now an example of how this becomes useful: same but by gender
+#' set.seed(12345) # to get replicable results from the bootstrap
 #' tmpDat %>%
 #'   group_by(gender) %>%
 #'   ### remember the list output again!
-#'   summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) %>%
+#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) %>%
 #'   ### remember to unnnest again!
-#'   unnest_wider(CSC)
-#' }
-#'
-#' @author Chris Evans
-#'
-#' @section History/development log:
-#' Started before 5.iv.21
-#'
-getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImethod = "pe") {
+#'   unnest_wider(meanDiff)
+getBootCIgrpMeanDiff <- function(formula1, data, bootReps = 1000, conf = .95, bootCImethod = "pe") {
   ### function to return bootstrap CI around an observed correlation
   ### between two variables fed in within a formula as variable1 ~ variable2
   ### and each within a data frame or tibble, data
@@ -158,8 +149,7 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
   }
   ### end of sanity checking
   ###
-  message("Function: getBootCICSC")
-  message("CSC method is c as I think that's the only useful one!")
+  message("Function: getBootCIgrpMeanDiff")
   message("Function always uses only complete values of both variables")
   message(paste("Number of bootstrap replications is:",
                 bootReps))
@@ -169,60 +159,61 @@ getBootCICSC <- function(formula1, data, bootReps = 1000, conf = .95, bootCImeth
                 conf,
                 "i.e.",
                 paste0(round(100 * conf),
-                      "%")))
-  ### now we need a function to feed into boot() to get CSC
-  ### first a minimal getCSC
-  getCSClocal <- function(tmpDat) {
+                       "%")))
+  ### now we need a function to feed into boot() to get mean
+  ### first a minimal getMeanLocal
+  getMeanlocal <- function(tmpDat) {
     ### tmpDat has two columns: scores and grp and has been prechecked
     tmpDat %>%
       dplyr::group_by(grp) %>%
-      dplyr::summarise(n = n(),
-                       mean = mean(scores),
-                       sd = sd(scores)) -> tibStats
-    tibStats %>%
-      dplyr::summarise(denominator = sum(sd)) %>%
-      dplyr::pull() -> denominator
-    numerator <- tibStats$mean[2] * tibStats$sd[1] + tibStats$mean[1] * tibStats$sd[2]
-    ### CSC is numerator / denominator (doh!)
-    numerator / denominator
+      dplyr::summarise(mean = mean(scores)) %>%
+      ungroup() %>%
+      pull() -> vecMeans
+    ### get the difference
+    vecMeans[2] - vecMeans[1]
   }
-  getCSCforBoot <- function(tmpDat, i) {
+  getMeanforBoot <- function(tmpDat, i) {
     ### expects x as two column structure
-    getCSClocal(tmpDat[i, ])
+    getMeanlocal(tmpDat[i, ])
   }
   ### now use that to do the bootstrapping
   ### have to use as.data.frame() so we can index by columns even though
   ### tmpDat is a tibble
   tmpDat <- as.data.frame(tmpDat)
   tmpBootRes <- boot::boot(tmpDat, # data
-                           statistic = getCSCforBoot, # function to apply
+                           statistic = getMeanforBoot, # function to apply
                            stype = "i", # bootstrapping within strata done by indexing
                            # that means that i is a row number _within_ the stratum for each stratum
                            strata = tmpDat[, 2], # tells boot::boot() which variable to use for strata
                            R = bootReps) # number of bootstrap replications
   ### and now get the CI from that,
+  print(tmpBootRes$t0)
   tmpCI <- boot::boot.ci(tmpBootRes,
                          type = useBootCImethod,
                          conf = conf)
   if (bootCImethod == "pe") {
-    retVal <- list(obsCSC = as.numeric(tmpBootRes$t0),
-                   LCLCSC = tmpCI$percent[4],
-                   UCLCSC = tmpCI$percent[5])
+    retVal <- list(Diff = as.numeric(tmpBootRes$t0),
+                   LCLdiff = tmpCI$percent[4],
+                   UCLdiff = tmpCI$percent[5])
   }
   if (bootCImethod == "ba") {
-    retVal <- list(obsCSC = as.numeric(tmpBootRes$t0),
-                   LCLCSC = tmpCI$basic[4],
-                   UCLCSC = tmpCI$basic[5])
+    retVal <- list(Diff = as.numeric(tmpBootRes$t0),
+                   LCLdiff = tmpCI$basic[4],
+                   UCLdiff = tmpCI$basic[5])
   }
   if (bootCImethod == "bc") {
-    retVal <- list(obsCSC = as.numeric(tmpBootRes$t0),
-                   LCLCSC = tmpCI$bca[4],
-                   UCLCSC = tmpCI$bca[5])
+    retVal <- list(Diff = as.numeric(tmpBootRes$t0),
+                   LCLdiff = tmpCI$bca[4],
+                   UCLdiff = tmpCI$bca[5])
   }
   if (bootCImethod == "no") {
-    retVal <- list(obsCSC = as.numeric(tmpBootRes$t0),
-                   LCLCSC = tmpCI$normal[2],
-                   UCLCSC = tmpCI$normal[3])
+    retVal <- list(Diff = as.numeric(tmpBootRes$t0),
+                   LCLdiff = tmpCI$normal[2],
+                   UCLdiff = tmpCI$normal[3])
   }
   retVal
 }
+
+
+
+

@@ -59,6 +59,7 @@ getBootCIalpha (tmpMat)
 Other bootstrap CI functions: 
 \code{\link{getBootCICSC}()},
 \code{\link{getBootCICorr}()},
+\code{\link{getBootCIgrpMeanDiff}()},
 \code{\link{getBootCImean}()}
 
 Other Chronbach alpha functions: 
