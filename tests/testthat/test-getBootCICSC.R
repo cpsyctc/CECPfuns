@@ -52,11 +52,13 @@ testthat::test_that("Output correct", {
        grp = sample(1:2, 50, replace = TRUE)) %>%
     dplyr::as_tibble() -> tmpTib
   set.seed(12345)
-  getBootCICSC(score1 ~ grp,
-               tmpTib,
-               bootReps = 1000,
-               ### "pe" in next line gets the percentile bootstrap CI
-               bootCImethod = "pe") -> tmpRes
+  # getBootCICSC(score1 ~ grp,
+  #              tmpTib,
+  #              bootReps = 1000,
+  #              ### "pe" in next line gets the percentile bootstrap CI
+  #              bootCImethod = "pe") -> tmpRes
+  tmpRes <- list(obsCSC = 0.190419677093996, LCLCSC = -0.0842628486641872,
+                 UCLCSC = 0.494432170277601)
   ###
   ###
   ###

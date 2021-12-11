@@ -189,7 +189,6 @@ getBootCIgrpMeanDiff <- function(formula1, data, bootReps = 1000, conf = .95, bo
                            strata = tmpDat[, 2], # tells boot::boot() which variable to use for strata
                            R = bootReps) # number of bootstrap replications
   ### and now get the CI from that,
-  print(tmpBootRes$t0)
   tmpCI <- boot::boot.ci(tmpBootRes,
                          type = useBootCImethod,
                          conf = conf)
