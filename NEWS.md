@@ -1,3 +1,6 @@
+# Version 0.0.0.9042
+Added getCIforQuantiles.R  No tests on it yet and some other things need work to deal with changes in R and package building tools since I last updated package (a long time ago!)
+
 # Version 0.0.0.9041
 Just trying using "Build Source" to see if that gets me the vignettes up on GitHub.  Small tweaks to Introduction vignette.
 
