@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,47 +66,62 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plotCIcorrelation</span><span class="op">(</span>
-  <span class="va">corr</span>,
-  <span class="va">minN</span>,
-  <span class="va">maxN</span>,
-  step <span class="op">=</span> <span class="fl">1</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>,
-  minY <span class="op">=</span> <span class="cn">NULL</span>,
-  maxY <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">plotCIPearson</span><span class="op">(</span>
-  <span class="va">corr</span>,
-  <span class="va">minN</span>,
-  <span class="va">maxN</span>,
-  step <span class="op">=</span> <span class="fl">1</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>,
-  minY <span class="op">=</span> <span class="cn">NULL</span>,
-  maxY <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plotCIcorrelation</span><span class="op">(</span></span>
+<span>  <span class="va">corr</span>,</span>
+<span>  <span class="va">minN</span>,</span>
+<span>  <span class="va">maxN</span>,</span>
+<span>  step <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  minY <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  maxY <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">plotCIPearson</span><span class="op">(</span></span>
+<span>  <span class="va">corr</span>,</span>
+<span>  <span class="va">minN</span>,</span>
+<span>  <span class="va">maxN</span>,</span>
+<span>  step <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  minY <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  maxY <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>corr</dt>
 <dd><p>numeric: observed correlation (assumes Pearson correlation, approximately OK for Spearman)</p></dd>
+
+
 <dt>minN</dt>
 <dd><p>numeric: the smallest n for which you want the CI</p></dd>
+
+
 <dt>maxN</dt>
 <dd><p>numeric: the largest n for which you want the CI</p></dd>
+
+
 <dt>step</dt>
 <dd><p>numeric: the step by which you want n to increment (default is 1), with minN and maxN should give no more than 200 values of n</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric: the confidence interval you want, defaults to .95</p></dd>
+
+
 <dt>minY</dt>
 <dd><p>numeric: if you want to set the y axis limits input a number greater than -1 here</p></dd>
+
+
 <dt>maxY</dt>
 <dd><p>numeric: if you want to set the y axis limits input a number smaller than 1 here</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a ggplot object so if you don't capture it it will plot to your default plot device</p>
+    
+
+<p>a ggplot object so if you don't capture it it will plot to your default plot device</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -135,30 +150,30 @@ intervals (CIs) for a range of sample/dataset sizes.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co">### simple example for observed 95% confidence interval (CI) around observed correlation of .7</span></span>
-<span class="r-in"><span class="co">### for sample sizes between 10 and 100</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### similar but for dataset sizes between 10 and 500 by steps of 5</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### similar but asking for 99% CI</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### similar but setting lower y axis limit to -1</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### and you can set the upper y limit, observed R = 0 for a change</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxY <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### same but exporting to tmpPlot and then changing plot</span></span>
-<span class="r-in"><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxY <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpPlot</span></span>
-<span class="r-in"><span class="va">tmpPlot</span> <span class="op">+</span></span>
-<span class="r-in">   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"95% CI around observed Pearson correlation of zero for n from 10 to 500"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co">### simple example for observed 95% confidence interval (CI) around observed correlation of .7</span></span></span>
+<span class="r-in"><span><span class="co">### for sample sizes between 10 and 100</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### similar but for dataset sizes between 10 and 500 by steps of 5</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### similar but asking for 99% CI</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### similar but setting lower y axis limit to -1</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### and you can set the upper y limit, observed R = 0 for a change</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxY <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### same but exporting to tmpPlot and then changing plot</span></span></span>
+<span class="r-in"><span><span class="fu">plotCIcorrelation</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">500</span>, <span class="fl">5</span>, conf <span class="op">=</span> <span class="fl">.99</span>, minY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxY <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpPlot</span></span></span>
+<span class="r-in"><span><span class="va">tmpPlot</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"95% CI around observed Pearson correlation of zero for n from 10 to 500"</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -173,7 +188,7 @@ intervals (CIs) for a range of sample/dataset sizes.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

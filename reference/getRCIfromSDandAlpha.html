@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,21 +66,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getRCIfromSDandAlpha</span><span class="op">(</span><span class="va">SD</span>, <span class="va">rel</span>, conf <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getRCIfromSDandAlpha</span><span class="op">(</span><span class="va">SD</span>, <span class="va">rel</span>, conf <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>SD</dt>
 <dd><p>single number giving the baseline score standard deviation</p></dd>
+
+
 <dt>rel</dt>
 <dd><p>reliability of the measure, typically, and sensibly, Cronbach's alpha</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>the expectation/confidence interval, almost always .95</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>single number giving the RCI</p>
+    
+
+<p>single number giving the RCI</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -94,7 +101,7 @@ aggregated data about change in therapy, and clinicians who tend to think about 
 
 \[RCI = \varphi(conf)\! \times\! \sqrt{2}\! \times SD\times\sqrt{1 - rel}\]</p>
 <p>Where</p><ul><li><p><em>SD</em> is the Standard Deviation (doh!) at baseline/t1,</p></li>
-<li><p>\(\varphi(conf)\) is the value of Gaussian distribution for <em>conf</em> coverage with <em>conf</em>, usually .95 and hence \(\varphi(conf)\) = 1.96</p></li>
+<li><p>\(\varphi(conf)\) is the value of Gaussian distribution for <em>conf</em> coverage with <em>conf</em>, usually .95 and hence <em></em>\(\varphi(conf)\) = 1.96</p></li>
 <li><p>and <em>rel</em> is the reliability of the measures, usually from Cronbach's alpha.</p></li>
 </ul><p>The logic of the this is that this bit:
 \[\sqrt{2}\! \times SD\times\sqrt{1 - rel}\]</p>
@@ -144,11 +151,11 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">getRCIfromSDandAlpha</span><span class="op">(</span><span class="fl">7.5</span>, <span class="fl">.8</span>, conf <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="co"># from Jacobson &amp; Truax (1991)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">getRCIfromSDandAlpha</span><span class="op">(</span><span class="fl">7.5</span>, <span class="fl">.8</span>, conf <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="co"># from Jacobson &amp; Truax (1991)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -163,7 +170,7 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

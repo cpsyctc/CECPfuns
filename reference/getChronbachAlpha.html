@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,21 +66,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">dat</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">dat</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dat</dt>
 <dd><p>data, matrix, data frame or tibble and numeric item data as columns</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>logical which causes function to throw error if there is missing data</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical, if FALSE switches off message about n(items) and number of usable rows</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Cronbach as numeric</p>
+    
+
+<p>Cronbach as numeric</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -122,15 +129,15 @@ McDonald R. P. (1999) Test Theory: A Unified Treatment. Mahwah, NJ: Erlbaum</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co">### make some nonsense data</span></span>
-<span class="r-in"><span class="va">tmpMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">200</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">### default call</span></span>
-<span class="r-in"><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">tmpMat</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">### switch off message with dimensions of non-missing data</span></span>
-<span class="r-in"><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">tmpMat</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co">### make some nonsense data</span></span></span>
+<span class="r-in"><span><span class="va">tmpMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">200</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### default call</span></span></span>
+<span class="r-in"><span><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">tmpMat</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### switch off message with dimensions of non-missing data</span></span></span>
+<span class="r-in"><span><span class="fu">getChronbachAlpha</span><span class="op">(</span><span class="va">tmpMat</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -145,7 +152,7 @@ McDonald R. P. (1999) Test Theory: A Unified Treatment. Mahwah, NJ: Erlbaum</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,19 +66,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getCSC</span><span class="op">(</span><span class="va">formula1</span>, <span class="va">data</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getCSC</span><span class="op">(</span><span class="va">formula1</span>, <span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula1</dt>
 <dd><p>defines variables to use as score ~ grp where score has scores and grp has grouping</p></dd>
+
+
 <dt>data</dt>
 <dd><p>is the data, typically cur_data() when called in tidyverse pipe</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A single numeric value for the CSC</p>
+    
+
+<p>A single numeric value for the CSC</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -137,34 +142,34 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># example uses very crude simulated data but illustrates utility of being able to pipe grouped</span></span>
-<span class="r-in"><span class="co"># data into getCSC()</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">250</span> <span class="co"># total sample size</span></span>
-<span class="r-in"><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="co"># get some random numbers</span></span>
-<span class="r-in"><span class="co"># now random allocation to help-seeking or non-help-seeking samples</span></span>
-<span class="r-in"><span class="va">grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"notHS"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># and random allocation by gender</span></span>
-<span class="r-in"><span class="va">gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="va">scores</span>,</span>
-<span class="r-in">    grp <span class="op">=</span> <span class="va">grp</span>,</span>
-<span class="r-in">    gender <span class="op">=</span> <span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">mutate</span><span class="op">(</span>scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"F"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">.13</span>, <span class="va">scores</span><span class="op">)</span>, <span class="co"># make women .13 higher scoring</span></span>
-<span class="r-in">        <span class="co">### then make help-seeking group score 1.1 higher</span></span>
-<span class="r-in">        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tibDat</span></span>
-<span class="r-in"><span class="co">### now get CSC overall</span></span>
-<span class="r-in"><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### get CSC by gender</span></span>
-<span class="r-in"><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># example uses very crude simulated data but illustrates utility of being able to pipe grouped</span></span></span>
+<span class="r-in"><span><span class="co"># data into getCSC()</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">250</span> <span class="co"># total sample size</span></span></span>
+<span class="r-in"><span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="co"># get some random numbers</span></span></span>
+<span class="r-in"><span><span class="co"># now random allocation to help-seeking or non-help-seeking samples</span></span></span>
+<span class="r-in"><span><span class="va">grp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"notHS"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># and random allocation by gender</span></span></span>
+<span class="r-in"><span><span class="va">gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="va">scores</span>,</span></span>
+<span class="r-in"><span>    grp <span class="op">=</span> <span class="va">grp</span>,</span></span>
+<span class="r-in"><span>    gender <span class="op">=</span> <span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">mutate</span><span class="op">(</span>scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"F"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">.13</span>, <span class="va">scores</span><span class="op">)</span>, <span class="co"># make women .13 higher scoring</span></span></span>
+<span class="r-in"><span>        <span class="co">### then make help-seeking group score 1.1 higher</span></span></span>
+<span class="r-in"><span>        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tibDat</span></span></span>
+<span class="r-in"><span><span class="co">### now get CSC overall</span></span></span>
+<span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### get CSC by gender</span></span></span>
+<span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -179,7 +184,7 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

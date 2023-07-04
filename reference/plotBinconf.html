@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,36 +66,49 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plotBinconf</span><span class="op">(</span><span class="va">proportion</span>, <span class="va">minN</span>, <span class="va">maxN</span>, step <span class="op">=</span> <span class="fl">1</span>, conf <span class="op">=</span> <span class="fl">0.95</span>, fixYlim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">plotCIProportion</span><span class="op">(</span>
-  <span class="va">proportion</span>,
-  <span class="va">minN</span>,
-  <span class="va">maxN</span>,
-  step <span class="op">=</span> <span class="fl">1</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>,
-  fixYlim <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="va">proportion</span>, <span class="va">minN</span>, <span class="va">maxN</span>, step <span class="op">=</span> <span class="fl">1</span>, conf <span class="op">=</span> <span class="fl">0.95</span>, fixYlim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">plotCIProportion</span><span class="op">(</span></span>
+<span>  <span class="va">proportion</span>,</span>
+<span>  <span class="va">minN</span>,</span>
+<span>  <span class="va">maxN</span>,</span>
+<span>  step <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  fixYlim <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>proportion</dt>
 <dd><p>numeric: the proportion sought (actual proportion will be nearest possible for each n)</p></dd>
+
+
 <dt>minN</dt>
 <dd><p>numeric: the smallest sample size, n, to estimate and plot</p></dd>
+
+
 <dt>maxN</dt>
 <dd><p>numeric: the largest n</p></dd>
+
+
 <dt>step</dt>
 <dd><p>numeric: the steps to use between minN and maxN, defaults to 1 but set higher if plotting a wide range of n</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric: confidence interval width, usually .95</p></dd>
+
+
 <dt>fixYlim</dt>
 <dd><p>logical: if FALSE, ggplot finds sensible y limits, if TRUE, y axis runs from 0 to 1</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a ggplot object, by default that will print but you can save it and modify it as you like</p>
+    
+
+<p>a ggplot object, by default that will print but you can save it and modify it as you like</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -127,38 +140,38 @@ able to see a plot of how intervals around observed proportions change with samp
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### 95% CI around proportion .5 for n from 10 to 70</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span> <span class="co"># don't have to declare conf, defaults to .95</span></span>
-<span class="r-in"><span class="co">### notice that the observed proportion wiggles up and down as n increases as</span></span>
-<span class="r-in"><span class="co">### you can only have integer counts so functions gets nearest to the desired</span></span>
-<span class="r-in"><span class="co">### proportion, here .5, possible for that n, so for n = 10, we can have perfect .5</span></span>
-<span class="r-in"><span class="co">### but for n = 11 6/11 is .545454..</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### 90% CI around proportion .5 for n from 10 to 70</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### 90% CI around proportion .5 for n from 100 to 200</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### same but fixing y limits to 0 and 1</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span>, fixYlim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default 95% CI, exporting to tmpPlot and then changing plot</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpPlot</span></span>
-<span class="r-in"><span class="va">tmpPlot</span> <span class="op">+</span></span>
-<span class="r-in">   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"95% CI around proportion .5 for n from 10 to 70"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### other inputs</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.95</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">.95</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">.95</span>, <span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.95</span>, <span class="fl">100</span>, <span class="fl">700</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### 95% CI around proportion .5 for n from 10 to 70</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.95</span><span class="op">)</span> <span class="co"># don't have to declare conf, defaults to .95</span></span></span>
+<span class="r-in"><span><span class="co">### notice that the observed proportion wiggles up and down as n increases as</span></span></span>
+<span class="r-in"><span><span class="co">### you can only have integer counts so functions gets nearest to the desired</span></span></span>
+<span class="r-in"><span><span class="co">### proportion, here .5, possible for that n, so for n = 10, we can have perfect .5</span></span></span>
+<span class="r-in"><span><span class="co">### but for n = 11 6/11 is .545454..</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### 90% CI around proportion .5 for n from 10 to 70</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### 90% CI around proportion .5 for n from 100 to 200</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### same but fixing y limits to 0 and 1</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span>, conf <span class="op">=</span> <span class="fl">.90</span>, fixYlim <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default 95% CI, exporting to tmpPlot and then changing plot</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpPlot</span></span></span>
+<span class="r-in"><span><span class="va">tmpPlot</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>   <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"95% CI around proportion .5 for n from 10 to 70"</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### other inputs</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.95</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">.95</span>, <span class="fl">10</span>, <span class="fl">70</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.7</span>, <span class="fl">.95</span>, <span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plotBinconf</span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.95</span>, <span class="fl">100</span>, <span class="fl">700</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -173,7 +186,7 @@ able to see a plot of how intervals around observed proportions change with samp
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

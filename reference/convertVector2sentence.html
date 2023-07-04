@@ -29,7 +29,7 @@ e.g. 1:3 becomes 1, 2 and 3"><!-- mathjax --><script src="https://cdnjs.cloudfla
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -71,40 +71,51 @@ e.g. 1:3 becomes 1, 2 and 3</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">convertVector2sentence</span><span class="op">(</span>
-  <span class="va">x</span>,
-  andChar <span class="op">=</span> <span class="st">" and "</span>,
-  quoted <span class="op">=</span> <span class="cn">FALSE</span>,
-  quoteChar <span class="op">=</span> <span class="st">"\""</span>,
-  italicY <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">convertVectorToSentence</span><span class="op">(</span>
-  <span class="va">x</span>,
-  andChar <span class="op">=</span> <span class="st">" and "</span>,
-  quoted <span class="op">=</span> <span class="cn">FALSE</span>,
-  quoteChar <span class="op">=</span> <span class="st">"\""</span>,
-  italicY <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convertVector2sentence</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  andChar <span class="op">=</span> <span class="st">" and "</span>,</span>
+<span>  quoted <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  quoteChar <span class="op">=</span> <span class="st">"\""</span>,</span>
+<span>  italicY <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">convertVectorToSentence</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  andChar <span class="op">=</span> <span class="st">" and "</span>,</span>
+<span>  quoted <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  quoteChar <span class="op">=</span> <span class="st">"\""</span>,</span>
+<span>  italicY <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>input vector or one dimensional list to convert</p></dd>
+
+
 <dt>andChar</dt>
 <dd><p>string to put between penultimate and last entry</p></dd>
+
+
 <dt>quoted</dt>
 <dd><p>logical indicating whether each item should be
 quoted and hence</p></dd>
+
+
 <dt>quoteChar</dt>
 <dd><p>string to put around each item to quote it</p></dd>
+
+
 <dt>italicY</dt>
 <dd><p>logical to have items italicised</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>string</p>
+    
+
+<p>string</p>
     </div>
     <div id="history-development-log">
     <h2>History/development log</h2>
@@ -129,33 +140,33 @@ convert numbers to English words, e.g. "87" to "eighty-seven".</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">### default behaviour</span></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">### default behaviour</span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1, 2, 3 and 4"</span>
-<span class="r-in"><span class="co">### [1] "1, 2, 3 and 4"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default behaviour</span></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">### [1] "1, 2, 3 and 4"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default behaviour</span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\"1\", \"2\", \"3\" and \"4\""</span>
-<span class="r-in"><span class="co">### [1] "\"1\", \"2\", \"3\" and \"4\""</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### change andChar (note the spaces,</span></span>
-<span class="r-in"><span class="co">###  I can't see why you wouldn't want them but ...)</span></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, andChar <span class="op">=</span> <span class="st">' &amp; '</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">### [1] "\"1\", \"2\", \"3\" and \"4\""</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### change andChar (note the spaces,</span></span></span>
+<span class="r-in"><span><span class="co">###  I can't see why you wouldn't want them but ...)</span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, andChar <span class="op">=</span> <span class="st">' &amp; '</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1, 2, 3 &amp; 4"</span>
-<span class="r-in"><span class="co">### [1] "1, 2, 3 &amp; 4"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### change the quoting character (note no spaces)</span></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span>, quoteChar <span class="op">=</span> <span class="st">"'"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">### [1] "1, 2, 3 &amp; 4"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### change the quoting character (note no spaces)</span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span>, quoteChar <span class="op">=</span> <span class="st">"'"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "'1', '2', '3' and '4'"</span>
-<span class="r-in"><span class="co">### [1] "'1', '2', '3' and '4'"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, italicY <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># italicises the items</span></span>
+<span class="r-in"><span><span class="co">### [1] "'1', '2', '3' and '4'"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, italicY <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># italicises the items</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "*1*, *2*, *3* and *4*"</span>
-<span class="r-in"><span class="co">### and now italics and quotation:</span></span>
-<span class="r-in"><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, italicY <span class="op">=</span> <span class="cn">TRUE</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">### and now italics and quotation:</span></span></span>
+<span class="r-in"><span><span class="fu">convertVector2sentence</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, italicY <span class="op">=</span> <span class="cn">TRUE</span>, quoted <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "*\"1*\", \"*2*\", \"*3\"* and *\"4\"*"</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -170,7 +181,7 @@ convert numbers to English words, e.g. "87" to "eighty-seven".</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

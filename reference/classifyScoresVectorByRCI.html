@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,52 +66,77 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span>
-  scoreChange <span class="op">=</span> <span class="cn">NULL</span>,
-  score1 <span class="op">=</span> <span class="cn">NULL</span>,
-  score2 <span class="op">=</span> <span class="cn">NULL</span>,
-  RCI <span class="op">=</span> <span class="cn">NULL</span>,
-  cueing <span class="op">=</span> <span class="st">"negative"</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  returnTable <span class="op">=</span> <span class="cn">TRUE</span>,
-  dp <span class="op">=</span> <span class="fl">1</span>,
-  addCI <span class="op">=</span> <span class="cn">FALSE</span>,
-  returnNumeric <span class="op">=</span> <span class="cn">FALSE</span>,
-  CLsSeparate <span class="op">=</span> <span class="cn">FALSE</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span></span>
+<span>  scoreChange <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  score1 <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  score2 <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  RCI <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cueing <span class="op">=</span> <span class="st">"negative"</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  returnTable <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  dp <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  addCI <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  returnNumeric <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  CLsSeparate <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>scoreChange</dt>
 <dd><p>numeric vector of score changes</p></dd>
+
+
 <dt>score1</dt>
 <dd><p>numeric vector of baseline scores (if not giving scoreChange)</p></dd>
+
+
 <dt>score2</dt>
 <dd><p>numeric vector of final scores (if not giving scoreChange)</p></dd>
+
+
 <dt>RCI</dt>
 <dd><p>numeric value of the RCI</p></dd>
+
+
 <dt>cueing</dt>
 <dd><p>whether measure is cued positively or negatively</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical: suppresses messages if FALSE</p></dd>
+
+
 <dt>returnTable</dt>
 <dd><p>logical: whether summary table returned (TRUE) or a tibble of classified scores (FALSE)</p></dd>
+
+
 <dt>dp</dt>
 <dd><p>numeric: number of decimal places in percentages (if returnTable TRUE)</p></dd>
+
+
 <dt>addCI</dt>
 <dd><p>logical: whether to add confidence intervals around observed percentages e.g. "69.6% to 87.5%"</p></dd>
+
+
 <dt>returnNumeric</dt>
 <dd><p>logical: whether to return values as numeric or as nicely formatted strings (the default)</p></dd>
+
+
 <dt>CLsSeparate</dt>
 <dd><p>logical: returns CI as two separate variables instead of that string</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric, gives the width of the confidence interval (if addCI is TRUE)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a tibble, either of the summary breakdown with n and % by classification, or a tibble of the data with classified change</p>
+    
+
+<p>a tibble, either of the summary breakdown with n and % by classification, or a tibble of the data with classified change</p>
     </div>
     <div id="warning">
     <h2>Warning</h2>
@@ -190,39 +215,39 @@ discussion of that choice and references.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### start with some very simple change values:</span></span>
-<span class="r-in"><span class="va">scoreChanges</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">5</span></span>
-<span class="r-in"><span class="va">scoreChanges</span> <span class="co"># is:</span></span>
-<span class="r-in"><span class="co">#  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## so now apply an RCI value of 2 to that:</span></span>
-<span class="r-in"><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span>scoreChange <span class="op">=</span> <span class="va">scoreChanges</span>, RCI <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">## produces:</span></span>
-<span class="r-in"><span class="co"># You input 11 values for scoreChange.  There were no missing values.</span></span>
-<span class="r-in"><span class="co">## A tibble: 3 x 4</span></span>
-<span class="r-in"><span class="co"># RCIclass                   n percent valid_percent</span></span>
-<span class="r-in"><span class="co"># &lt;ord&gt;                  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
-<span class="r-in"><span class="co">#   1 Reliable deterioration     3 27.3%   27.3%</span></span>
-<span class="r-in"><span class="co">#   2 No reliable change         5 45.5%   45.5%</span></span>
-<span class="r-in"><span class="co">#   3 Reliable improvement       3 27.3%   27.3%</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### you could pipe that to your R/tidyverse table formatting</span></span>
-<span class="r-in"><span class="co">### tool of choice, \code{pander}, \code{huxtable}, whatever.</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### you can add the 95% CI:</span></span>
-<span class="r-in"><span class="co">### create some spurious scores</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">75</span></span>
-<span class="r-in"><span class="va">score1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="co"># random Gaussian scores</span></span>
-<span class="r-in"><span class="va">score2</span> <span class="op">&lt;-</span> <span class="va">score1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">.2</span>, sd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="co"># and some random change</span></span>
-<span class="r-in"><span class="va">scoreChange</span> <span class="op">&lt;-</span> <span class="va">score1</span> <span class="op">-</span> <span class="va">score2</span> <span class="co"># get the change</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span><span class="va">scoreChange</span>, RCI <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span>score1 <span class="op">=</span> <span class="va">score1</span>, score2 <span class="op">=</span> <span class="va">score2</span>, RCI <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### start with some very simple change values:</span></span></span>
+<span class="r-in"><span><span class="va">scoreChanges</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">5</span></span></span>
+<span class="r-in"><span><span class="va">scoreChanges</span> <span class="co"># is:</span></span></span>
+<span class="r-in"><span><span class="co">#  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## so now apply an RCI value of 2 to that:</span></span></span>
+<span class="r-in"><span><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span>scoreChange <span class="op">=</span> <span class="va">scoreChanges</span>, RCI <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## produces:</span></span></span>
+<span class="r-in"><span><span class="co"># You input 11 values for scoreChange.  There were no missing values.</span></span></span>
+<span class="r-in"><span><span class="co">## A tibble: 3 x 4</span></span></span>
+<span class="r-in"><span><span class="co"># RCIclass                   n percent valid_percent</span></span></span>
+<span class="r-in"><span><span class="co"># &lt;ord&gt;                  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;</span></span></span>
+<span class="r-in"><span><span class="co">#   1 Reliable deterioration     3 27.3%   27.3%</span></span></span>
+<span class="r-in"><span><span class="co">#   2 No reliable change         5 45.5%   45.5%</span></span></span>
+<span class="r-in"><span><span class="co">#   3 Reliable improvement       3 27.3%   27.3%</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### you could pipe that to your R/tidyverse table formatting</span></span></span>
+<span class="r-in"><span><span class="co">### tool of choice, \code{pander}, \code{huxtable}, whatever.</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### you can add the 95% CI:</span></span></span>
+<span class="r-in"><span><span class="co">### create some spurious scores</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">75</span></span></span>
+<span class="r-in"><span><span class="va">score1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="co"># random Gaussian scores</span></span></span>
+<span class="r-in"><span><span class="va">score2</span> <span class="op">&lt;-</span> <span class="va">score1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">.2</span>, sd <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="co"># and some random change</span></span></span>
+<span class="r-in"><span><span class="va">scoreChange</span> <span class="op">&lt;-</span> <span class="va">score1</span> <span class="op">-</span> <span class="va">score2</span> <span class="co"># get the change</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span><span class="va">scoreChange</span>, RCI <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">classifyScoresVectorByRCI</span><span class="op">(</span>score1 <span class="op">=</span> <span class="va">score1</span>, score2 <span class="op">=</span> <span class="va">score2</span>, RCI <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -237,7 +262,7 @@ discussion of that choice and references.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -29,7 +29,7 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -71,25 +71,36 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">formula1</span>, <span class="va">data</span>, bootReps <span class="op">=</span> <span class="fl">1000</span>, conf <span class="op">=</span> <span class="fl">0.95</span>, bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">formula1</span>, <span class="va">data</span>, bootReps <span class="op">=</span> <span class="fl">1000</span>, conf <span class="op">=</span> <span class="fl">0.95</span>, bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula1</dt>
 <dd><p>formula defining the two variables to be correlated as scores ~ group</p></dd>
+
+
 <dt>data</dt>
 <dd><p>data.frame or tibble with the data, often cur_data() in dplyr</p></dd>
+
+
 <dt>bootReps</dt>
 <dd><p>integer giving number of bootstrap replications</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric value giving width of confidence interval, e.g. .95 (default)</p></dd>
+
+
 <dt>bootCImethod</dt>
 <dd><p>string giving method to derive bootstrap CI, minimum two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>list of named values obsCSC, LCLCSC and UCLCSC</p>
+    
+
+<p>list of named values obsCSC, LCLCSC and UCLCSC</p>
     </div>
     <div id="background">
     <h2>Background</h2>
@@ -123,42 +134,42 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co">### will need tidyverse to run</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="co">### create some data</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">120</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># Gaussian random base for scores</span></span>
-<span class="r-in">  <span class="co">### now add a grouping variable: help-seeking or not</span></span>
-<span class="r-in">  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"not"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="co">### now add gender</span></span>
-<span class="r-in">  gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="co">### next add a gender effect nudging women's scores up by .4</span></span>
-<span class="r-in">  <span class="fu">mutate</span><span class="op">(</span>scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"F"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">.4</span>, <span class="va">scores</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="co">### next add the crucial help-seeking effect of 1.1</span></span>
-<span class="r-in">        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpDat</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### have a look at that</span></span>
-<span class="r-in"><span class="va">tmpDat</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable results from the bootstrap</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span>
-<span class="r-in">  <span class="co">### you are creating list output</span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="co">### now unnest the list to columns</span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### now an example of how this becomes useful: same but by gender</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="co">### remember the list output again!</span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">  <span class="co">### remember to unnnest again!</span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co">### will need tidyverse to run</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### create some data</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">120</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># Gaussian random base for scores</span></span></span>
+<span class="r-in"><span>  <span class="co">### now add a grouping variable: help-seeking or not</span></span></span>
+<span class="r-in"><span>  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"not"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="co">### now add gender</span></span></span>
+<span class="r-in"><span>  gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### next add a gender effect nudging women's scores up by .4</span></span></span>
+<span class="r-in"><span>  <span class="fu">mutate</span><span class="op">(</span>scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"F"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">.4</span>, <span class="va">scores</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="co">### next add the crucial help-seeking effect of 1.1</span></span></span>
+<span class="r-in"><span>        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpDat</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### have a look at that</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable results from the bootstrap</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span></span>
+<span class="r-in"><span>  <span class="co">### you are creating list output</span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### now unnest the list to columns</span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### now an example of how this becomes useful: same but by gender</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### remember the list output again!</span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### remember to unnnest again!</span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -173,7 +184,7 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

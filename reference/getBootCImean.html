@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,46 +66,67 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getBootCImean</span><span class="op">(</span>
-  <span class="va">x</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
-  bootReps <span class="op">=</span> <span class="fl">1000</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>,
-  bootCImethod <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"perc"</span>, <span class="st">"norm"</span>, <span class="st">"basic"</span>, <span class="st">"bca"</span><span class="op">)</span>,
-  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  nLT20err <span class="op">=</span> <span class="cn">TRUE</span>,
-  nGT10kerr <span class="op">=</span> <span class="cn">TRUE</span>,
-  zeroSDerr <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getBootCImean</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  bootReps <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  bootCImethod <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"perc"</span>, <span class="st">"norm"</span>, <span class="st">"basic"</span>, <span class="st">"bca"</span><span class="op">)</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nLT20err <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  nGT10kerr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  zeroSDerr <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>name of variable in data, character or bare name, or simply a numeric vector if data is NULL, see examples</p></dd>
+
+
 <dt>data</dt>
 <dd><p>data frame or tibble containing variable, NULL if x passed directly</p></dd>
+
+
 <dt>bootReps</dt>
 <dd><p>integer for number of bootstrap replications</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric confidence interval desired as fraction, e.g. .95</p></dd>
+
+
 <dt>bootCImethod</dt>
 <dd><p>method of deriving bootstrap CI from "perc", "norm", "basic" or "bca"</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>logical, set to FALSE to ensure function will fail if there are missing data</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical, FALSE suppresses the messages</p></dd>
+
+
 <dt>nLT20err</dt>
 <dd><p>logical, throws error if length(na.omit(x)) &lt; 20, otherwise returns NA for CI</p></dd>
+
+
 <dt>nGT10kerr</dt>
 <dd><p>logical, throws error if length(na.omit(x)) &gt; 10k to prevent very long rusn, override with FALSE</p></dd>
+
+
 <dt>zeroSDerr</dt>
 <dd><p>logical, default is to return NA for CI if sd(x) is near zero or zero, zeroSDerr throws error</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>list of length 3: obsmean, LCLmean and UCLmean</p>
+    
+
+<p>list of length 3: obsmean, LCLmean and UCLmean</p>
     </div>
     <div id="comment">
     <h2>comment</h2>
@@ -142,97 +163,97 @@ Tweaked 11.iv.21 to fix error in examples.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># get replicable results</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="co">### now make up some silly data</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># get some random Gaussian data</span></span>
-<span class="r-in">  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co">### create a spurious grouping variable</span></span>
-<span class="r-in">  <span class="fu">mutate</span><span class="op">(</span>food <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sausages"</span>, <span class="st">"carrots"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">         <span class="co">### create variable with some missing data to test na.rm = FALSE</span></span>
-<span class="r-in">         y <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">value</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpDat</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### check that worked</span></span>
-<span class="r-in"><span class="va">tmpDat</span></span>
-<span class="r-in"><span class="co">### looks fine!</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, just supply variable</span></span>
-<span class="r-in"><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">tmpDat</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, select variable by name as character</span></span>
-<span class="r-in"><span class="fu">getBootCImean</span><span class="op">(</span><span class="st">"value"</span>, <span class="va">tmpDat</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, select variable by name as bare name</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, select variable by name as character</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="st">"value"</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, select variable by name as bare name</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default arguments, get mean of value by food</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">group_by</span><span class="op">(</span><span class="va">food</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### suppress messages</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### default silent omission of missing data, messages back</span></span>
-<span class="r-in"><span class="co">###  analysing variable y which has missing data</span></span>
-<span class="r-in"><span class="co">###  (see "Usable n")</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### use na.rm = FALSE to ensure call will fail if there are missing data</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                                        na.rm <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### change bootstrap interval</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        conf <span class="op">=</span> <span class="fl">.9</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### change bootstrap CI method ("perc" is default)</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                                        bootCImethod <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### should fail on impossible to decode choice of method in args</span></span>
-<span class="r-in"><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span>
-<span class="r-in">                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                                        bootCImethod <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># get replicable results</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### now make up some silly data</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># get some random Gaussian data</span></span></span>
+<span class="r-in"><span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co">### create a spurious grouping variable</span></span></span>
+<span class="r-in"><span>  <span class="fu">mutate</span><span class="op">(</span>food <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sausages"</span>, <span class="st">"carrots"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>         <span class="co">### create variable with some missing data to test na.rm = FALSE</span></span></span>
+<span class="r-in"><span>         y <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">value</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tmpDat</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### check that worked</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span></span></span>
+<span class="r-in"><span><span class="co">### looks fine!</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, just supply variable</span></span></span>
+<span class="r-in"><span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">tmpDat</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, select variable by name as character</span></span></span>
+<span class="r-in"><span><span class="fu">getBootCImean</span><span class="op">(</span><span class="st">"value"</span>, <span class="va">tmpDat</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, select variable by name as bare name</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, select variable by name as character</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="st">"value"</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, select variable by name as bare name</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default arguments, get mean of value by food</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">food</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### suppress messages</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">value</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### default silent omission of missing data, messages back</span></span></span>
+<span class="r-in"><span><span class="co">###  analysing variable y which has missing data</span></span></span>
+<span class="r-in"><span><span class="co">###  (see "Usable n")</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### use na.rm = FALSE to ensure call will fail if there are missing data</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                                        na.rm <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### change bootstrap interval</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        conf <span class="op">=</span> <span class="fl">.9</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### change bootstrap CI method ("perc" is default)</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                                        bootCImethod <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### should fail on impossible to decode choice of method in args</span></span></span>
+<span class="r-in"><span><span class="va">tmpDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>meanCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCImean</span><span class="op">(</span><span class="va">y</span>,</span></span>
+<span class="r-in"><span>                                        <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                                        verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                                        bootCImethod <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">meanCI</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -247,7 +268,7 @@ Tweaked 11.iv.21 to fix error in examples.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

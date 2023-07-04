@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -66,34 +66,47 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getBootCICorr</span><span class="op">(</span>
-  <span class="va">formula1</span>,
-  <span class="va">data</span>,
-  method <span class="op">=</span> <span class="st">"p"</span>,
-  bootReps <span class="op">=</span> <span class="fl">1000</span>,
-  conf <span class="op">=</span> <span class="fl">0.95</span>,
-  bootCImethod <span class="op">=</span> <span class="st">"pe"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getBootCICorr</span><span class="op">(</span></span>
+<span>  <span class="va">formula1</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"p"</span>,</span>
+<span>  bootReps <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  conf <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  bootCImethod <span class="op">=</span> <span class="st">"pe"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula1</dt>
 <dd><p>formula defining the two variables to be correlated as var1 ~ var2</p></dd>
+
+
 <dt>data</dt>
 <dd><p>data.frame or tibble with the data, often cur_data() in dplyr</p></dd>
+
+
 <dt>method</dt>
 <dd><p>string giving correlation method, can be single letter 'p', 's' or 'k' for pearson, spearman or kendall (in cor())</p></dd>
+
+
 <dt>bootReps</dt>
 <dd><p>integer giving number of bootstrap replications</p></dd>
+
+
 <dt>conf</dt>
 <dd><p>numeric value giving width of confidence interval, e.g. .95 (default)</p></dd>
+
+
 <dt>bootCImethod</dt>
 <dd><p>string giving method to derive bootstrap CI, can be two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>list of named values: obsCorr, LCLCorr and UCLCorr</p>
+    
+
+<p>list of named values: obsCorr, LCLCorr and UCLCorr</p>
     </div>
     <div id="history-development-log">
     <h2>History/development log</h2>
@@ -116,21 +129,21 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span>
-<span class="r-in">   <span class="co">### you are creating list output</span></span>
-<span class="r-in">   <span class="fu">summarise</span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">score1</span> <span class="op">~</span> <span class="va">score2</span>,</span>
-<span class="r-in">             <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">             method <span class="op">=</span> <span class="st">"p"</span>, <span class="co"># gets the Pearson correlation</span></span>
-<span class="r-in">             bootReps <span class="op">=</span> <span class="fl">1000</span>,</span>
-<span class="r-in">             <span class="co">### "pe" in next line gets the percentile bootstrap CI</span></span>
-<span class="r-in">             bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span class="r-in">   <span class="co">### now unnest the list output to separate columns</span></span>
-<span class="r-in">   <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">corr</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>   <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span></span>
+<span class="r-in"><span>   <span class="co">### you are creating list output</span></span></span>
+<span class="r-in"><span>   <span class="fu">summarise</span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">score1</span> <span class="op">~</span> <span class="va">score2</span>,</span></span>
+<span class="r-in"><span>             <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             method <span class="op">=</span> <span class="st">"p"</span>, <span class="co"># gets the Pearson correlation</span></span></span>
+<span class="r-in"><span>             bootReps <span class="op">=</span> <span class="fl">1000</span>,</span></span>
+<span class="r-in"><span>             <span class="co">### "pe" in next line gets the percentile bootstrap CI</span></span></span>
+<span class="r-in"><span>             bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>   <span class="co">### now unnest the list output to separate columns</span></span></span>
+<span class="r-in"><span>   <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">corr</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -145,7 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
