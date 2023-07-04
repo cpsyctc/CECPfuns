@@ -38,12 +38,16 @@ duplicated ID values.  Sometimes it's not just a single variable that should be 
 of this is when you have data from multiple services and ID values for participants from each service.
 Then there may be multiple values for ID but they should each come from a different service.  (Mind you,
 once I have established that rows are unique across serviceID and participantID I usally paste the two
-variables together with something like\preformatted{data$superID = paste0(data$serviceID, ":", data$participantID)
-}
+variables together with something like
 
-or a tidyverse way of doing it:\preformatted{data \%>\%
+\if{html}{\out{<div class="sourceCode">}}\preformatted{data$superID = paste0(data$serviceID, ":", data$participantID)
+}\if{html}{\out{</div>}}
+
+or a tidyverse way of doing it:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{data \%>\%
          mutate(superID = str_c(serviceID, ":", participantID))
-}
+}\if{html}{\out{</div>}}
 
 Making sure things are unique also prevents all sorts of sometimes very confusing error messages if you want to pivot
 data depending on an ID variable whose values ought to be unique but aren't.  Checking for this is in my
