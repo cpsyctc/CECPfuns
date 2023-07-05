@@ -93,7 +93,7 @@ getCSC <- function(formula1, data) {
   ### if things go wrong
   ### I'm using tibbles and piping so ...
   invisible(stopifnot(base::requireNamespace("magrittr")))
-  if (class(formula1) != "formula") {
+  if (!inherits(formula1, "formula")) {
     stop("Argument must be a simple formula of form scores ~ groups")
   }
   ###

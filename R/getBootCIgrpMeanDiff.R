@@ -68,7 +68,7 @@ getBootCIgrpMeanDiff <- function(formula1, data, bootReps = 1000, conf = .95, bo
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
   ### sanity check 1: is formula1 a formula?!
-  if (class(formula1) != "formula") {
+  if (!inherits(formula1, "formula")) {
     stop("first argument must be a simple formula of form dependent ~ predictor")
   }
   ### sanity check 2: it should have two terms
