@@ -1,3 +1,6 @@
+# Version 0.0.0.9043
+Replaced class(arg) == "formula" tests with inherits(arg, "formula") in some functions as the class() test is deprecated.  On local machine I installed missing R packages covr & specr and the Linux command line utility qpdf (not to be confused with the R package qpdf!) to suppress check warnings/notes but those are just local changes.
+
 # Version 0.0.0.9042
 Added getCIforQuantiles.R  No tests on it yet and some other things need work to deal with changes in R and package building tools since I last updated package (a long time ago!)
 
