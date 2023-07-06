@@ -13,6 +13,7 @@
 #' @importFrom stats quantile
 #' @importFrom stringr str_to_sentence
 #' @importFrom dplyr rename
+#' @importFrom devtools install_github
 #'
 #' @section Background:
 #' Quantiles, like percentiles, can be a very useful way of
@@ -83,12 +84,12 @@
 #' @section History:
 #' Started 4.vii.23
 #'
-getCIforQuantiles <- function(vecDat,
-                              vecQuantiles,
+getCIforQuantiles <- function(vecDat = NA,
+                              vecQuantiles = NA,
                               method = c("Nyblom", "Exact", "Bootstrap"),
                               ci = .95,
                               R = 9999,
-                              type = c(8, 1:7, 9)) {
+                              type = NULL) {
   ### function to get CI around observed quantiles
   ### vecDat is data
   ### vecQuantiles is vector of desired quantiles
@@ -107,9 +108,15 @@ getCIforQuantiles <- function(vecDat,
   ###
   ### get quantileCI
   if (system.file(package = "quantileCI") == "") {
-    devtools::install_github("hoehleatsu/quantileCI")
+    install_github("hoehleatsu/quantileCI")
   }
   ### sanity checking
+  if(isNothing(vecDat)) {
+    paste0("Your data, vecDat, is ",
+           vecDat,
+           "  You must give the data from which to get the quantiles!") -> tmpMessage
+    stop(tmpMessage)
+  }
   vecDat <- unlist(vecDat) # in case this is coming from a tibble
   if (!is.numeric(vecDat)) {
     stop("The data, vecDat, must be numeric")
@@ -125,6 +132,12 @@ getCIforQuantiles <- function(vecDat,
            length(vecDat),
            ".  You won't get much precision about quantiles with so few observations.") -> tmpMessage
     warning(tmpMessage)
+  }
+  if(isNothing(vecQuantiles)) {
+    paste0("Your vector of quantiles, vecQuantiles, is ",
+           vecQuantiles,
+           "  You must give the quantiles you want!") -> tmpMessage
+    stop(tmpMessage)
   }
   if (!is.numeric(vecQuantiles)) {
     stop("The quantiles you want, vecQuantiles, must be numeric")
@@ -165,7 +178,7 @@ getCIforQuantiles <- function(vecDat,
     if (is.na(R) | length(R) > 1) {
       stop("R, the number of bootstrap replications you want, must be as single integer, 999 < R < 10000.")
     }
-    if (R < 999 | ci > 10000) {
+    if (R < 999 | R > 10000) {
       paste0("You have input ",
              R,
              " for R, the number of bootstrap replications you want.",
@@ -173,11 +186,12 @@ getCIforQuantiles <- function(vecDat,
       stop(tmpMessage)
     }
   }
-  if (!is.numeric(type)) {
-    stop("The type of quantile you want must be numeric.")
-  }
-  if (is.na(type) | length(type) > 1) {
-    stop("You have a missing value for type, the type of quantile you want or you have given more than one value. Must be single numeric value 1 <= type <= 9")
+  if (isNothing(type) || !is.numeric(type) || length(type) > 1) {
+    paste0("You have a missing, non-numeric or vector value for type, the type of quantile you want",
+           " or you have given more than one value. Must be single numeric value 1 <= type <= 9.",
+           " Type 8 will be used.  Change your input if that's not what you want.") -> tmpMessage
+    type <- 8
+    warning(tmpMessage)
   }
   if (type < 1 | type > 9) {
     paste0("You have input ",
@@ -206,7 +220,7 @@ getCIforQuantiles <- function(vecDat,
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Exact") {
-      tmpVec <- quantile_confint_exact(vecDat, prob)
+      tmpVec <- quantileCI::quantile_confint_exact(vecDat, prob)
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Bootstrap") {

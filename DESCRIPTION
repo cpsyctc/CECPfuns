@@ -40,7 +40,9 @@ Imports:
     dplyr,
     Hmisc,
     methods,
-    tidyselect
+    tidyselect,
+    devtools,
+    quantileCI
 Suggests:
   stats,
   boot,

@@ -33,9 +33,10 @@
 #'       mutate(score = getScoreFromItems(c_across(item1:item10, # declare items
 #'                                        ### next say that the score that is wanted is mean not sum
 #'                                                 scoreAsMean = TRUE,
-#'                                                 # now give prorating rule: here up to one missing item,
+#'                                                 # prorating rule: here up to one missing item,
 #'                                                 nProrateMin = 1,
-#'                                                 # next the optional check that number of items is correct: here 10
+#'                                                 # optional check that number of items is correct:
+#'                                                 #  here the number is 10
 #'                                                 k = 10,
 #'                                                 # next ask the function to check the item scores
 #'                                                 checkItemScores = TRUE,
@@ -49,7 +50,7 @@
 #' }
 getScoreFromItems <- function(vec,
                               scoreAsMean = TRUE,
-                              propProrateMin = .1,
+                              propProrateMin = NULL,
                               nProrateMin = NULL,
                               k = NULL,
                               checkItemScores = FALSE,
@@ -61,6 +62,12 @@ getScoreFromItems <- function(vec,
   ### test arguments
   if (!is.numeric(vec)) {
     stop("vec, i.e. the item scores, must be numeric")
+  }
+  if (length(vec) < 2) {
+    paste0("The items in this row are: ",
+           vec,
+           ".  You must have at least two values to compute a score.  Something is wrong!") -> tmpMessage
+    stop(tmpMessage)
   }
   if (!is.logical(scoreAsMean)) {
     stop("scoreAsMean, which says you want the score as a mean, must be logical, either TRUE or FALSE!")
@@ -100,6 +107,18 @@ getScoreFromItems <- function(vec,
   if(!is.null(k)) {
     if(!(is.numeric(k))) {
       stop("Value of k, the expected number of items, must be numeric!")
+    }
+    if(length(k) > 1) {
+      paste0("You entered k as ",
+             k,
+             ".  The value of k, the expected number of items, must be a single number!") -> tmpMessage
+      stop(tmpMessage)
+    }
+    if(k < 2) {
+      paste0("You entered k as ",
+             k,
+             ".  The value of k, the expected number of items, must be more than one!") -> tmpMessage
+      stop(tmpMessage)
     }
   }
   if (!is.null(checkItemScores) & !is.logical(checkItemScores)) {

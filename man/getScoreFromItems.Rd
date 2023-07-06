@@ -7,7 +7,7 @@
 getScoreFromItems(
   vec,
   scoreAsMean = TRUE,
-  propProrateMin = 0.1,
+  propProrateMin = NULL,
   nProrateMin = NULL,
   k = NULL,
   checkItemScores = FALSE,
@@ -60,9 +60,10 @@ tibData \%>\%
       mutate(score = getScoreFromItems(c_across(item1:item10, # declare items
                                        ### next say that the score that is wanted is mean not sum
                                                 scoreAsMean = TRUE,
-                                                # now give prorating rule: here up to one missing item,
+                                                # prorating rule: here up to one missing item,
                                                 nProrateMin = 1,
-                                                # next the optional check that number of items is correct: here 10
+                                                # optional check that number of items is correct:
+                                                #  here the number is 10
                                                 k = 10,
                                                 # next ask the function to check the item scores
                                                 checkItemScores = TRUE,

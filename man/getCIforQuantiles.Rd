@@ -6,12 +6,12 @@
 '}
 \usage{
 getCIforQuantiles(
-  vecDat,
-  vecQuantiles,
+  vecDat = NA,
+  vecQuantiles = NA,
   method = c("Nyblom", "Exact", "Bootstrap"),
   ci = 0.95,
   R = 9999,
-  type = c(8, 1:7, 9)
+  type = NULL
 )
 }
 \arguments{

@@ -10,38 +10,37 @@ testthat::test_that("sanity checks work", {
                                              R = 9999,
                                              type = 8))
   ### vecQuantiles
-  testthat::expect_error(getCIforQuantiles(vecQuantiles = "A"))
-  testthat::expect_error(getCIforQuantiles(vecQuantiles = NA))
-  testthat::expect_error(getCIforQuantiles(vecQuantiles = -.5))
-  testthat::expect_error(getCIforQuantiles(vecQuantiles = 1.5))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = "A"))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = NA))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = -.5))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = 1.5))
   ### method
-  testthat::expect_error(getCIforQuantiles(method = "sausages"))
-  ###  must have only 2 values in grp
-  testthat::expect_error(getCIforQuantiles(score ~ grp, data = tmpTib1))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "sausages"))
   ### ci
-  testthat::expect_error(getCIforQuantiles(ci = NA))
-  testthat::expect_error(getCIforQuantiles(ci = "A"))
-  testthat::expect_error(getCIforQuantiles(ci = c(.5, .9)))
-  testthat::expect_error(getCIforQuantiles(ci = 1.5))
-  testthat::expect_error(getCIforQuantiles(ci = .5))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), ci = NA))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), ci = "A"))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9),ci = c(.5, .9)))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), ci = 1.5))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), ci = .5))
   ### bootstrap
-  testthat::expect_error(getCIforQuantiles(method = "B", R = "A"))
-  testthat::expect_error(getCIforQuantiles(method = "B", R = NA))
-  testthat::expect_error(getCIforQuantiles(method = "B", R = 1:2))
-  testthat::expect_error(getCIforQuantiles(method = "B", R = 5))
-  testthat::expect_error(getCIforQuantiles(method = "B", R = 50000))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "B", R = "A", type = 8))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "B", R = NA))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "B", R = 1:2))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "B", R = 5))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), method = "B", R = 50000, type = 8))
   ### type
-  testthat::expect_error(getCIforQuantiles(type = NA))
-  testthat::expect_error(getCIforQuantiles(type = "A"))
-  testthat::expect_error(getCIforQuantiles(type = 1:2))
-  testthat::expect_error(getCIforQuantiles(type = 0))
-  testthat::expect_error(getCIforQuantiles(type = 10))
+  testthat::expect_warning(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = NA))
+  testthat::expect_warning(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = NULL))
+  testthat::expect_warning(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = "A"))
+  testthat::expect_warning(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = 1:2))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = 0))
+  testthat::expect_error(getCIforQuantiles(vecDat = 1:100, vecQuantiles = c(.1, .9), type = 10))
 })
 
 ### test of outputs
 testthat::test_that("Output correct", {
   if (system.file(package = "quantileCI") == "") {
-    devtools::install_github("hoehleatsu/quantileCI")
+    install_github("hoehleatsu/quantileCI")
   }
   library(quantileCI)
   ### make results

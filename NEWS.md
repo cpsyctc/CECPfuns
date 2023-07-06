@@ -1,3 +1,6 @@
+# Version 0.0.0.9045
+Improved sanity checking for getCIforQuantiles, added internalUtils.R for hidden functions, first one is isNothing() and added test-getScoreFromItems but getScoreFromItems still work in progress
+
 # Version 0.0.0.9044
 Realised that test-getCIforQuantiles had been lost in the github mess, reinstated it.  Creating getScoreFromItems in progress.
 
