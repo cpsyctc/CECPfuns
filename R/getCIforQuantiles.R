@@ -105,10 +105,26 @@ getCIforQuantiles <- function(vecDat,
   value <- NULL
   quantileCI <- NULL
   ###
+  ### get quantileCI
+  if (system.file(package = "quantileCI") == "") {
+    devtools::install_github("hoehleatsu/quantileCI")
+  }
   ### sanity checking
   vecDat <- unlist(vecDat) # in case this is coming from a tibble
   if (!is.numeric(vecDat)) {
     stop("The data, vecDat, must be numeric")
+  }
+  if (length(vecDat) < 10) {
+    paste0("You have data of length ",
+           length(vecDat),
+           ".  You won't get any precision about quantiles with so few observations.") -> tmpMessage
+    stop(tmpMessage)
+  }
+  if (length(vecDat) < 25) {
+    paste0("You have data of length ",
+           length(vecDat),
+           ".  You won't get much precision about quantiles with so few observations.") -> tmpMessage
+    warning(tmpMessage)
   }
   if (!is.numeric(vecQuantiles)) {
     stop("The quantiles you want, vecQuantiles, must be numeric")
