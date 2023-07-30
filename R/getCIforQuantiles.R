@@ -108,18 +108,23 @@ getCIforQuantiles <- function(vecDat = NA,
   ###
   ### get quantileCI
   if (system.file(package = "quantileCI") == "") {
+    warning("You didn't have the required package, quantileCI installed, installing it now.")
     install_github("hoehleatsu/quantileCI")
   }
   ### sanity checking
-  if(isNothing(vecDat)) {
-    paste0("Your data, vecDat, is ",
-           vecDat,
-           "  You must give the data from which to get the quantiles!") -> tmpMessage
-    stop(tmpMessage)
-  }
   vecDat <- unlist(vecDat) # in case this is coming from a tibble
   if (!is.numeric(vecDat)) {
     stop("The data, vecDat, must be numeric")
+  }
+  # if(isNothing(vecDat)) {
+  #   paste0("Your data, vecDat, is ",
+  #          vecDat,
+  #          "  You must give the data from which to get the quantiles!") -> tmpMessage
+  #   stop(tmpMessage)
+  # }
+  nMiss <- getNNA(vecDat)
+  if(nMiss > 0 ) {
+    warning(paste0("You have ", nMiss, " missing values in your data."))
   }
   if (length(vecDat) < 10) {
     paste0("You have data of length ",
@@ -199,8 +204,7 @@ getCIforQuantiles <- function(vecDat = NA,
            " for the type of quantile you want.  Must be single numeric value 1 <= type <= 9.  Please correct that!") -> tmpMessage
     stop(tmpMessage)
   }
-  nMiss <- getNNA(vecDat) # number of missing values in vecDat
-  vec <- na.omit(vecDat)
+  vecDat <- na.omit(vecDat)
   n <- length(vecDat)
   paste0("You are asking for the ",
          method,
@@ -216,7 +220,7 @@ getCIforQuantiles <- function(vecDat = NA,
   ###
   getCI <- function(vecDat, prob, method, R = R, type = type) {
     if(method == "Nyblom") {
-      tmpVec <- quantile_confint_nyblom(vecDat, prob)
+      tmpVec <- quantileCI::quantile_confint_nyblom(vecDat, prob)
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Exact") {
@@ -224,7 +228,7 @@ getCIforQuantiles <- function(vecDat = NA,
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Bootstrap") {
-      tmpVec <- quantile_confint_boot(vecDat, prob, R = R, type = type)
+      tmpVec <- quantileCI::quantile_confint_boot(vecDat, prob, R = R, type = type)
       names(tmpVec) = c("LCL", "UCL")
     }
     tmpVec
