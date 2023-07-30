@@ -69,7 +69,7 @@
 #' getCIforQuantiles(1:1000, c(.1, .5, .95), "b", ci = .95, R = 9999, type = 8)
 #' }
 #'
-#' @family CI functions
+#' @family CI functions, quantile functions
 #'
 #' @references
 #'
