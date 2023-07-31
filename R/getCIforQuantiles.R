@@ -7,7 +7,14 @@
 #' @param R Number of bootstrap replications if using bootstrap method
 #' @param type Type of quantile (default is 8)
 #'
-#' @return A tibble of the results
+#' @return A tibble of the results with variables:
+#'    prob: the quantile required, i.e. .05, .5 would give the median, .95 the 95th (per)centile
+#'    n: total n
+#'    nOK: number of non-missing values
+#'    nMiss: number of missing values
+#'    quantile: the quantile for that value of prob
+#'    LCL: lower confidence limit for that quantile
+#'    UCL: upper confidence limt for that quantile
 #' @export
 #'
 #' @importFrom stats quantile
@@ -204,8 +211,9 @@ getCIforQuantiles <- function(vecDat = NA,
            " for the type of quantile you want.  Must be single numeric value 1 <= type <= 9.  Please correct that!") -> tmpMessage
     stop(tmpMessage)
   }
-  vecDat <- na.omit(vecDat)
   n <- length(vecDat)
+  vecDat <- na.omit(vecDat)
+  nOK <- length(vecDat)
   paste0("You are asking for the ",
          method,
          " method ",
@@ -213,7 +221,7 @@ getCIforQuantiles <- function(vecDat = NA,
          "% CI and you have ",
          nMiss,
          " missing data and ",
-         n,
+         nOK,
          " usable data.  The quantile type is ",
          type) -> tmpMessage
   message(tmpMessage)
@@ -238,6 +246,7 @@ getCIforQuantiles <- function(vecDat = NA,
     rename(prob = value) %>%
     rowwise() %>%
     mutate(n = n,
+           nOK = nOK,
            nMiss = nMiss,
            quantile = quantile(vecDat, prob, type = type),
            quantileCI = list(getCI(vecDat, prob, method = method, R = R, type = type))) %>%

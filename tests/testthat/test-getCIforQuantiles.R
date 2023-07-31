@@ -46,10 +46,9 @@ testthat::test_that("Output correct", {
   ### make results
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
                  nMiss = c(0L, 0L, 0L),
-                 quantile = c(`10%` = 100.366666666667,
-                              `50%` = 500.5,
-                              `95%` = 950.65),
+                 quantile = c(`10%` = 100.366666666667, `50%` = 500.5, `95%` = 950.65),
                  LCL = c(82L, 469L, 936L),
                  UCL = c(120L, 532L, 964L)),
             class = c("tbl_df", "tbl", "data.frame"),
@@ -68,6 +67,7 @@ testthat::test_that("Output correct", {
   ###
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
                  nMiss = c(0L, 0L, 0L),
                  quantile = c(`10%` = 100.366666666667,
                               `50%` = 500.5,
@@ -88,6 +88,7 @@ testthat::test_that("Output correct", {
   ###
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
                  nMiss = c(0L, 0L, 0L),
                  quantile = c(`10%` = 100.366666666667,
                               `50%` = 500.5,

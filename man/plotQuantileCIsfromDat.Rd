@@ -13,10 +13,16 @@ plotQuantileCIsfromDat(
   type = NULL,
   xLab = "Value for probability (quantile)",
   yLab = "Probability",
+  percent = FALSE,
   colPoint = "black",
   colLCL = "black",
   colUCL = "black",
+  vertQuantiles = TRUE,
+  vertCLs = FALSE,
+  shadeCI = TRUE,
+  addAnnotation = TRUE,
   titleText = "ECDF with quantiles and CIs around quantiles",
+  subtitleText = "",
   titleJust = 0.5,
   themeBW = TRUE,
   printPlot = TRUE,
@@ -40,15 +46,27 @@ plotQuantileCIsfromDat(
 
 \item{yLab}{Label for y axis}
 
+\item{percent}{Logical: whether to show quantile as \% instead of proportion (defaults to FALSE)}
+
 \item{colPoint}{Colour of quantile point (defaults to "black")}
 
 \item{colLCL}{Colour of LCL point (defaults to "black")}
 
 \item{colUCL}{Colour of UCL point (defaults to "black")}
 
+\item{vertQuantiles}{Whether to drop vertical line from quantiles (defaults to TRUE)}
+
+\item{vertCLs}{Whether to drop vertical line from confidence limits (defaults to FALSE)}
+
+\item{shadeCI}{Whether to shade area of CI (defaults to TRUE)}
+
+\item{addAnnotation}{Whether to add informative annotation (defaults to TRUE)}
+
 \item{titleText}{Text for title}
 
-\item{titleJust}{Justification for title (0, .5 or 1)}
+\item{subtitleText}{Text for subtitle}
+
+\item{titleJust}{Justification for title (0, .5 or 1, defaults to .05, centred)}
 
 \item{themeBW}{Logical: whether or not to use them_bw()}
 
@@ -64,42 +82,29 @@ Title Function that plots ecdf of a vector of values with quantiles marked with 
 }
 \section{Background}{
 
-Quantiles, like percentiles, can be a very useful way of
-understanding a distribution, in MH research, typically a
-distribution of scores, often either help-seeking sample
-distribution or a non-help-seeking sample.
+The empirical cumulative distribution function is an
+alternative to the histogram to show the distribution
+of a set of scores.  It plots the proportion of the
+sample set of scores below any observed score against
+that score.  The proportion (or percentage) is plotted
+on the y axis and the score on the x axis.  It's
+particularly useful for our typical mental health (MH)
+change/outcome measures as we're interested in how where
+someone's score lies in a possible population distribution
+of scores.
 
-For example, you might want to see if a score you have for
-someone is above the 95\% (per)centile, i.e. above the .95
-quantile of the non-help-seeking sample distribution.
+ECDFs complement quantiles as a quantile (a.k.a. centile,
+percentile, decile), is the score (on that x axis) that
+maps the percentage, so for the 95\% percentile that
+percentile is the score that only 5\% of the sample scored
+above, and 95\% scored below.
 
-The catch is that, like any sample statistic, a
-quantile/percentile is generally being used as an estimate
-of a population value.  That is to say we are really interested
-in whether the score we have is above the 95\% percentile of a
-non-help-seeking population.  That means that the
-quantiles/percentiles from a sample are only approximate guides
-to the population values.
+This function takes a set of scores/values and plots their
+ECDF with the quantiles you ask for with their confidence
+intervals of the width that wanted (typically 95\%, i.e. .95).
 
-As usual, a confidence interval (CI) around an observed quantile
-is a way of seeing how precisely, assuming random sampling of
-course, the sample quantile can guide us about the population
-quantile.
-
-Again as usual, the catch is that there are different ways of
-compute the CI around a quantile.  This function is a wrapper
-around three methods from Michael Höhle's quantileCI package:
-\itemize{
-\item the Nyblom method
-\item the "exact" method
-\item the bootstrap method
-}
-
-As I understand the quantileCI package the classic paper by
-Nyblom, generally the Nyblom method will be as good or better
-than the exact method and much faster than bootstrapping
-so the Nyblom method is the default here but I have put the
-others in for completeness.
+See the help page for getCIforQuantiles() to learn more about
+the computation of the confidence intervals.
 }
 
 \section{History}{
@@ -116,12 +121,53 @@ library(tidyverse)
 # devtools::install_github("hoehleatsu/quantileCI")
 library(quantileCI)
 
-### use the exact method
-getCIforQuantiles(1:1000, c(.1, .5, .95), "e", ci = .95, R = 9999, type = 8)
-### use the Nyblom method
-getCIforQuantiles(1:1000, c(.1, .5, .95), "n", ci = .95, R = 9999, type = 8)
-### use the bootstrap method
-getCIforQuantiles(1:1000, c(.1, .5, .95), "b", ci = .95, R = 9999, type = 8)
+### define the quantiles you want
+### here I'm going for the 5th, 10th, 90th and 95\% (per)centiles and the quartiles and median
+vecQuantiles <- c(.05, .1, .25, .5, .75, .9, .95)
+
+### looking at 100 scores from 1 to 100
+plotQuantileCIsfromDat(vecDat = 1:100, vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8,
+                     titleJust = 1, # right justify the title and subtitle
+                     themeBW = TRUE) # use theme_bw()
+
+### same data
+plotQuantileCIsfromDat(vecDat = 1:100, vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8,
+                     titleJust = .5, # centre the title and subtitle
+                     themeBW = TRUE)
+
+### same data
+plotQuantileCIsfromDat(vecDat = 1:100, vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8,
+                     titleJust = .5, themeBW = FALSE,
+                     printPlot = FALSE, # this time don't plot from within the function call but
+                     ## this next argument ask the function the plot object
+                     returnPlot = TRUE) -> tmpPlot
+### so plot it! (plot() and print() will both work,
+### you can also manipulate the plot before printing)
+print(tmpPlot)
+
+### this illustrates the CIs getting tighter as the dataset size goes up
+plotQuantileCIsfromDat(vecDat = 1:1000, vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8)
+
+### and even more data, tighter CIs again
+plotQuantileCIsfromDat(vecDat = 1:10000, vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8)
+
+### now a Gaussian ("Normal") distribution of scores
+plotQuantileCIsfromDat(vecDat = rnorm(100), vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8)
+
+### larger dataset
+plotQuantileCIsfromDat(vecDat = rnorm(1000), vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8)
+
+### and larger again
+plotQuantileCIsfromDat(vecDat = rnorm(10000), vecQuantiles = vecQuantiles,
+                     method = "N", ci = 0.95, R = 9999, type = 8,
+                     titleJust = .5, themeBW = TRUE)
 }
 
 }

@@ -28,7 +28,14 @@ getCIforQuantiles(
 \item{type}{Type of quantile (default is 8)}
 }
 \value{
-A tibble of the results
+A tibble of the results with variables:
+prob: the quantile required, i.e. .05, .5 would give the median, .95 the 95th (per)centile
+n: total n
+nOK: number of non-missing values
+nMiss: number of missing values
+quantile: the quantile for that value of prob
+LCL: lower confidence limit for that quantile
+UCL: upper confidence limt for that quantile
 }
 \description{
 Function returns a tibble of quantiles and confidence interval of quantiles for a range of probabilities.
