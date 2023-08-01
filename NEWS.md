@@ -1,3 +1,6 @@
+# Version 0.0.0.9046
+Whoops, been forgetting to update this.  getCIforQuantiles has been improved and plotQuantileCIsfromDat added with full testing for getCIforQuantiles and testing of the sanity testing for plotQuantileCIsfromDat.  A few ancillary things removed on github as they had clearly aged beyond their "will work by dates".
+
 # Version 0.0.0.9045
 Improved sanity checking for getCIforQuantiles, added internalUtils.R for hidden functions, first one is isNothing() and added test-getScoreFromItems but getScoreFromItems still work in progress
 
