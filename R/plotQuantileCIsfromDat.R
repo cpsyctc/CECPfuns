@@ -287,7 +287,6 @@ plotQuantileCIsfromDat <- function(vecDat = NA, vecQuantiles = NA, method = c("N
 
   ### handle theme settings
   oldTheme <- theme_get()
-  print(titleJust)
   if (themeBW) {
     theme_set(theme_bw())
   }

@@ -581,8 +581,6 @@ testthat::test_that("sanity checks work", {
                                                 themeBW = TRUE,
                                                 printPlot = TRUE,
                                                 returnPlot = LETTERS))
-
-
 })
 
 
