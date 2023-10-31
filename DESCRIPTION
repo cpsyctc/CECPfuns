@@ -42,7 +42,8 @@ Imports:
     methods,
     tidyselect,
     devtools,
-    quantileCI
+    quantileCI,
+    clipr
 Suggests:
   stats,
   boot,
@@ -55,6 +56,7 @@ Suggests:
   specr,
   testthat (>= 3.0.0),
   covr
+Additional_repositories: hoehleatsu/quantileCI
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 
