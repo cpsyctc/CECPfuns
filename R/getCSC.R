@@ -2,7 +2,7 @@
 #' @description
 #' Fairly trivial function to compute CSC, mainly useful if using group_by() piping to find CSCs for various groups/subsets in your data.
 #' @param formula1 defines variables to use as score ~ grp where score has scores and grp has grouping
-#' @param data is the data, typically cur_data() when called in tidyverse pipe
+#' @param data is the data, typically a subset creatd with group_by() and pick(everything()) when called in tidyverse pipe
 #'
 #' @return A single numeric value for the CSC
 #'
@@ -64,12 +64,13 @@
 #'         scores = if_else(grp == "HS", scores + 1.1, scores)) -> tibDat
 #'### now get CSC overall
 #'tibDat %>%
-#'  summarise(CSC = getCSC(scores ~ grp, cur_data()))
+#'  ### pick(everything()) has replaced cur_data() in dplyr: more flexible but more verbose
+#'  summarise(CSC = getCSC(scores ~ grp, pick(everything())))
 #'
 #'### get CSC by gender
 #'tibDat %>%
 #'  group_by(gender) %>%
-#'  summarise(CSC = getCSC(scores ~ grp, cur_data()))
+#'  summarise(CSC = getCSC(scores ~ grp, pick(everything())))
 #' }
 #'
 #' @family RCSC functions

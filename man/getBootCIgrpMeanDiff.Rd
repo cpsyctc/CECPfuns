@@ -16,7 +16,7 @@ getBootCIgrpMeanDiff(
 \arguments{
 \item{formula1}{formula defining the two variables to be correlated as scores ~ group}
 
-\item{data}{data.frame or tibble with the data, often cur_data() in dplyr}
+\item{data}{data.frame or tibble with the data, often a subset of data created with group_by() and pick()}
 
 \item{bootReps}{integer giving number of bootstrap replications}
 
@@ -57,7 +57,8 @@ set.seed(12345) # to get replicable results from the bootstrap
 tmpDat \%>\%
   ### don't forget to prefix the call with "list(" to tell dplyr
   ### you are creating list output
-  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) \%>\%
+  ### pick(everything()) has replaced cur_data(), verbose but more flexbible
+  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) \%>\%
   ### now unnest the list to columns
   unnest_wider(meanDiff)
 
@@ -66,7 +67,7 @@ set.seed(12345) # to get replicable results from the bootstrap
 tmpDat \%>\%
   group_by(gender) \%>\%
   ### remember the list output again!
-  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) \%>\%
+  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) \%>\%
   ### remember to unnnest again!
   unnest_wider(meanDiff)
   }

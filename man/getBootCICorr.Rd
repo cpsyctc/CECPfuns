@@ -16,7 +16,7 @@ getBootCICorr(
 \arguments{
 \item{formula1}{formula defining the two variables to be correlated as var1 ~ var2}
 
-\item{data}{data.frame or tibble with the data, often cur_data() in dplyr}
+\item{data}{data.frame or tibble with the data, often subset of the data created with group_by() and pick()}
 
 \item{method}{string giving correlation method, can be single letter 'p', 's' or 'k' for pearson, spearman or kendall (in cor())}
 
@@ -40,11 +40,20 @@ Started before 5.iv.21
 \examples{
 \dontrun{
 library(tidyverse)
+### create some data
+set.seed(12345) # make this replicable
+n <- 150
+tibble(x = rnorm(n), y = rnorm(y)) \%>\%
+   ### that's got us sample x and y from population in which they're uncorrelated
+   ### make them correlated:
+   mutate(y = y + .2 * x)  -> data
+
 data \%>\%
    ### don't forget to prefix the call with "list(" to tell dplyr
    ### you are creating list output
-   summarise(corr = list(getBootCICorr(score1 ~ score2,
-             cur_data(),
+   summarise(corr = list(getBootCICorr(x ~ y,
+             pick(everything()),
+             ### pick(everything()) is, to my mind, a rather verbose replacement for cur_data()
              method = "p", # gets the Pearson correlation
              bootReps = 1000,
              ### "pe" in next line gets the percentile bootstrap CI

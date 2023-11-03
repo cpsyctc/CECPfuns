@@ -15,7 +15,7 @@
 #'
 #' @importFrom stringr str_to_lower
 #' @importFrom dplyr mutate
-#' @importFrom dplyr cur_data
+#' @importFrom dplyr pick
 #' @importFrom tidyr unnest_wider
 #'
 #' @section comment:
@@ -55,29 +55,30 @@
 #'
 #' ### default arguments, select variable by name as bare name
 #' tmpDat %>%
-#'   summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
+#'   ### pick(everything()) has replaced cur_data(): more flexible but more verbose
+#'   summarise(meanCI = list(getBootCImean(value, pick(everything())))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### default arguments, select variable by name as character
 #' tmpDat %>%
-#'   summarise(meanCI = list(getBootCImean("value", cur_data()))) %>%
+#'   summarise(meanCI = list(getBootCImean("value", pick(everything())))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### default arguments, select variable by name as bare name
 #' tmpDat %>%
-#'   summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
+#'   summarise(meanCI = list(getBootCImean(value, pick(everything())))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### default arguments, get mean of value by food
 #' tmpDat %>%
 #'   group_by(food) %>%
-#'   summarise(meanCI = list(getBootCImean(value, cur_data()))) %>%
+#'   summarise(meanCI = list(getBootCImean(value, pick(everything())))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### suppress messages
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(value,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         verbose = FALSE))) %>%
 #'   unnest_wider(meanCI)
 #'
@@ -86,14 +87,14 @@
 #' ###  (see "Usable n")
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(y,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         verbose = TRUE))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### use na.rm = FALSE to ensure call will fail if there are missing data
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(y,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         verbose = TRUE,
 #'                                         na.rm = FALSE))) %>%
 #'   unnest_wider(meanCI)
@@ -101,14 +102,14 @@
 #' ### change bootstrap interval
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(y,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         conf = .9))) %>%
 #'   unnest_wider(meanCI)
 #'
 #' ### change bootstrap CI method ("perc" is default)
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(y,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         verbose = TRUE,
 #'                                         bootCImethod = "no"))) %>%
 #'   unnest_wider(meanCI)
@@ -116,7 +117,7 @@
 #' ### should fail on impossible to decode choice of method in args
 #' tmpDat %>%
 #'   summarise(meanCI = list(getBootCImean(y,
-#'                                         cur_data(),
+#'                                         pick(everything()),
 #'                                         verbose = TRUE,
 #'                                         bootCImethod = "b"))) %>%
 #'   unnest_wider(meanCI)

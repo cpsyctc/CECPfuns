@@ -9,7 +9,7 @@ getCSC(formula1, data)
 \arguments{
 \item{formula1}{defines variables to use as score ~ grp where score has scores and grp has grouping}
 
-\item{data}{is the data, typically cur_data() when called in tidyverse pipe}
+\item{data}{is the data, typically a subset creatd with group_by() and pick(everything()) when called in tidyverse pipe}
 }
 \value{
 A single numeric value for the CSC
@@ -72,12 +72,13 @@ list(scores = scores,
         scores = if_else(grp == "HS", scores + 1.1, scores)) -> tibDat
 ### now get CSC overall
 tibDat \%>\%
- summarise(CSC = getCSC(scores ~ grp, cur_data()))
+ ### pick(everything()) has replaced cur_data() in dplyr: more flexible but more verbose
+ summarise(CSC = getCSC(scores ~ grp, pick(everything())))
 
 ### get CSC by gender
 tibDat \%>\%
  group_by(gender) \%>\%
- summarise(CSC = getCSC(scores ~ grp, cur_data()))
+ summarise(CSC = getCSC(scores ~ grp, pick(everything())))
 }
 
 }

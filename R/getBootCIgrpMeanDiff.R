@@ -1,7 +1,7 @@
 #' Title
 #'  Function designed for use in dplyr (tidyverse) piping to return mean diff and bootstrap CI around that
 #' @param formula1 formula defining the two variables to be correlated as scores ~ group
-#' @param data data.frame or tibble with the data, often cur_data() in dplyr
+#' @param data data.frame or tibble with the data, often a subset of data created with group_by() and pick()
 #' @param bootReps integer giving number of bootstrap replications
 #' @param conf numeric value giving width of confidence interval, e.g. .95 (default)
 #' @param bootCImethod string giving method to derive bootstrap CI, minimum two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca
@@ -42,7 +42,8 @@
 #' tmpDat %>%
 #'   ### don't forget to prefix the call with "list(" to tell dplyr
 #'   ### you are creating list output
-#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) %>%
+#'   ### pick(everything()) has replaced cur_data(), verbose but more flexbible
+#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) %>%
 #'   ### now unnest the list to columns
 #'   unnest_wider(meanDiff)
 #'
@@ -51,7 +52,7 @@
 #' tmpDat %>%
 #'   group_by(gender) %>%
 #'   ### remember the list output again!
-#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, cur_data()))) %>%
+#'   summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) %>%
 #'   ### remember to unnnest again!
 #'   unnest_wider(meanDiff)
 #'   }
