@@ -1,7 +1,7 @@
 #' Title
 #'  Function designed for use in dplyr (tidyverse) piping to return CSC and bootstrap CI around that
 #' @param formula1 formula defining the two variables to be correlated as scores ~ group
-#' @param data data.frame or tibble with the data, often cur_data() in dplyr
+#' @param data data.frame or tibble with the data, often constructed with pick() in dplyr
 #' @param bootReps integer giving number of bootstrap replications
 #' @param conf numeric value giving width of confidence interval, e.g. .95 (default)
 #' @param bootCImethod string giving method to derive bootstrap CI, minimum two letters 'pe', 'no', 'ba' or 'bc' for percentile, normal, basic or bca
@@ -27,6 +27,7 @@
 #' library(tidyverse)
 #' ### create some data
 #' n <- 120
+#' set.seed(12345) # to get replicable sample and results from the bootstrap
 #' list(scores = rnorm(n), # Gaussian random base for scores
 #'   ### now add a grouping variable: help-seeking or not
 #'   grp = sample(c("HS", "not"), n, replace = TRUE),
@@ -41,19 +42,22 @@
 #' ### have a look at that
 #' tmpDat
 #'
-#' set.seed(12345) # to get replicable results from the bootstrap
+#' ### this just computes the CSC and CI(CSC) for the whole dataset
 #' tmpDat %>%
 #'   ### don't forget to prefix the call with "list(" to tell dplyr
 #'   ### you are creating list output
-#'   summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) %>%
+#'   ### Also pick(everything()) has replaced the deprecated cur_data() that I used
+#'   ### earlier I see the flexibility of pick() but it's ugly when used to replace
+#'   ### the simpler cur_data() for this sort of thing.  Not my choice!
+#'   summarise(CSC = list(getBootCICSC(scores ~ grp, pick(everything())))) %>%
 #'   ### now unnest the list to columns
 #'   unnest_wider(CSC)
 #'
-#' ### now an example of how this becomes useful: same but by gender
+#' ### now an example of how this becomes useful: same but by grouping by gender
 #' tmpDat %>%
 #'   group_by(gender) %>%
 #'   ### remember the list output again!
-#'   summarise(CSC = list(getBootCICSC(scores ~ grp, cur_data()))) %>%
+#'   summarise(CSC = list(getBootCICSC(scores ~ grp, pick(everything())))) %>%
 #'   ### remember to unnnest again!
 #'   unnest_wider(CSC)
 #' }
