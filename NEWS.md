@@ -1,3 +1,8 @@
+# Version 0.0.0.9048
+Renamed plotCIcorrelation() to plotCIPearson() (which was an alias of plotCIcorrelation()) to allow for creation of plotCISpearman() soon.
+While at that, tweaked the code to avoid irritating warning message caused by changes in tidyverse and to improve the code a bit. Created
+getCIPearson() pulling that out of plotCIPearson().
+
 # Version 0.0.0.9047
 Added convertClipboardAuthorNames()
 

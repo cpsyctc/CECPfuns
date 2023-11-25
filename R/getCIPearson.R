@@ -1,0 +1,125 @@
+#' Function to return parametric CI around observed Pearson correlation
+#'
+#' @param r numeric: the observed correlation -1 <= r <= 1
+#' @param n numeric: integer count of observations in the data
+#' @param ci numeric: confidence interval required, defaults to .95
+#'
+#' @return A named vector LCL and UCL
+#' @export
+#'
+#' @section Background:
+#' This is very simple function to return the confidence limits of the confidence interval
+#' around an observed Pearson correlation given the number of observations in the dataset (n)
+#' and the confidence interval required (ci, defaults to .95).  The maths go back for ever.
+#' I suspect that my first version of this function, written for S+ not R, was probably drawing
+#' on Altman, D. G., & Gardner, M. J. (1988). Calculating confidence intervals for regression
+#' and correlation. British Medical Journal, 296, 1238–1242.
+#' The confidence interval is based on the Gaussian distribution model for both variables so if
+#' you have the raw data it's almost certainly better to use the bootstrap confidence interval
+#' which is provided by getBootCICorr() in this package.  This is probably mainly useful when
+#' you read a Pearson correlation value in some report, with the n on which it was derived but
+#' the report doesn't give a CI and you want to have a sense of that CI to have a sense of the
+#' precision of estimation there for comparing that correlation with others, perhaps your own
+#' from your own data.
+#'
+#' The function just returns a named vector of the LCL and UCL which should help using it in
+#' tidyverse pipes.  See examples.
+#'
+#' For perfect observed correlations, i.e. R = +1.0 or -1.0 the function returns c(1, 1) or
+#' c(-1, -1). This may feel slightly counterintuitive as you might expect the intervals to
+#' be c(something, 1) and c(-1, something) respectively on the logic that if you added one
+#' more pair of values such that the correlation would no longer be perfect the computed CI
+#' ought to reflect that (hence my "something" above!)  However, the reality is that if the
+#' observed correlation really was perfect there is no way given the data to compute a
+#' sensible lower bound (for observed R = 1.0, upper bound for observed R = -1).  Returning
+#' c(1, 1) for perfect positive correlation and c(-1, -1) for perfect negative correlation
+#' is the only sensible option and is in line with cor.test{stats}.
+
+#' @examples
+#' \dontrun{
+#' ### this is a trivial example of the impact of sample size!
+#' getCIPearson(.7)
+#' #      LCL       UCL
+#' # 0.1258332 0.9228784
+#' getCIPearson(.7, 100)
+#' # LCL       UCL
+#' # 0.5838581 0.7880650
+#' getCIPearson(.7, 1000)
+#' # LCL       UCL
+#' # 0.6669493 0.7303015
+#'
+#' ### This illustrates the handling of a perfect correlation
+#' getCIPearson(1, 10)
+#' # LCL UCL
+#' # 1   1
+#'
+#' ### this is an example of how the function can be used in a tidyverse pipe
+#' tibble(n = rep(n, n)) %>% # column of data sizesx = rnorm(n))
+#'    ### now create some raw data of varying degrees of correlation
+#'    mutate(x = rnorm(n),
+#'    y = x + 2, # perfectly correlated
+#'    z0 = rnorm(n), # get uncorrelated y
+#'    z1 = x + 10 * rnorm(n), # create weakly correlated values
+#'    ### and now much more strongly correlated values
+#'    z2 = x + rnorm(n)) -> tmpTib
+#' tmpTib
+#'
+#' tmpTib %>%
+#'   summarise(n = first(n), # keep n
+#'             R1 = cor(x, y), # first correlation (perfect)
+#'             R2 = cor(x, z0), # next (random)
+#'             R3 = cor(x, z1), # next (weak correlation)
+#'             ### and finally: strong correlation
+#'             R4 = cor(x, z2)) %>%
+#'   pivot_longer(cols = R1 : R4) -> tmpTib
+#' tmpTib
+#'
+#' ### now use getCIPearson() in a dplyr/tidverse pipe
+#' tmpTib %>%
+#'   group_by(name) %>% # as we want the CIs for each of those correlations
+#'   mutate(CIPearson = list(getCIPearson(value, n))) %>% # use list() as getCIPearson retuns a vector
+#'   ### can now unnest the returned values to see them
+#'   unnest_wider(CIPearson)
+#' ### in real life groups by gender or other demographics and say correlating CORE scores
+#' ### against number of children might be sensible examples of doing this
+#' }
+#' @family confidence interval functions
+#'
+#' @author Chris Evans
+#'
+#' @section History/development log:
+#' Version 1: 25.xi.23
+#'
+getCIPearson <- function(r, n, ci = .95) {
+  ### confidence interval of a Pearson correlation tweaked from almost the first S+ function I ever wrote!
+  ### sanity checking arguments
+  if (!is.numeric(r)) {
+    stop("r must be a number between -1 and 1")
+  }
+  if (r < -1 | r > 1) {
+    stop("r must be a number between -1 and 1")
+  }
+  if (!is.numeric(n)) {
+    stop("n, dataset size, must be a number greater than 2")
+  }
+  if (n < 3) {
+    stop("n, dataset size, must be a number greater than 2")
+  }
+  if (!is.numeric(ci)) {
+    stop("ci, the CI width must be a number > .7 and < 1")
+  }
+  if (ci < .7 | ci >= 1) {
+    stop("ci, the CI width must be a number > .7 and < 1")
+  }
+
+  ### OK proceed
+  z <- atanh(r)
+  norm <- qnorm((1 - ci) / 2)
+  den <- sqrt(n - 3)
+  zl <- z + norm / den
+  zu <- z - norm / den
+  rl <- tanh(zl)
+  ru <- tanh(zu)
+  ci <- c(LCL = rl, UCL = ru)
+  return(ci)
+}

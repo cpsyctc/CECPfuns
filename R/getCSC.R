@@ -92,8 +92,6 @@ getCSC <- function(formula1, data) {
   ### takes to
   ### OK now some input sanity checking largely to get informative error messages
   ### if things go wrong
-  ### I'm using tibbles and piping so ...
-  invisible(stopifnot(base::requireNamespace("magrittr")))
   if (!inherits(formula1, "formula")) {
     stop("Argument must be a simple formula of form scores ~ groups")
   }

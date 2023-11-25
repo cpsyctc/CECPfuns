@@ -85,9 +85,12 @@ plotBinconf(.3, .95, 100, 700, 5)
 }
 \seealso{
 Other confidence interval functions: 
+\code{\link{getCIPearson}()},
+\code{\link{plotCIPearson}()},
 \code{\link{plotCIcorrelation}()}
 
 Other demonstration functions: 
+\code{\link{plotCIPearson}()},
 \code{\link{plotCIcorrelation}()}
 }
 \author{

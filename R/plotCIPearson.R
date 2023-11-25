@@ -1,6 +1,6 @@
 #' Function outputting a plot of confidence interval around a correlation for a range of sample sizes
 #'
-#' @param corr numeric: observed correlation (assumes Pearson correlation, approximately OK for Spearman)
+#' @param corr numeric: Pearson correlation
 #' @param minN numeric: the smallest n for which you want the CI
 #' @param maxN numeric: the largest n for which you want the CI
 #' @param step numeric: the step by which you want n to increment (default is 1), with minN and maxN should give no more than 200 values of n
@@ -21,22 +21,22 @@
 #' \dontrun{
 #' ### simple example for observed 95% confidence interval (CI) around observed correlation of .7
 #' ### for sample sizes between 10 and 100
-#' plotCIcorrelation(.7, 10, 100)
+#' plotCIPearson(.7, 10, 100)
 #'
 #' ### similar but for dataset sizes between 10 and 500 by steps of 5
-#' plotCIcorrelation(.7, 10, 500, 5)
+#' plotCIPearson(.7, 10, 500, 5)
 #'
 #' ### similar but asking for 99% CI
-#' plotCIcorrelation(.7, 10, 500, 5, conf = .99)
+#' plotCIPearson(.7, 10, 500, 5, conf = .99)
 #'
 #' ### similar but setting lower y axis limit to -1
-#' plotCIcorrelation(.7, 10, 500, 5, conf = .99, minY = -1)
+#' plotCIPearson(.7, 10, 500, 5, conf = .99, minY = -1)
 #'
 #' ### and you can set the upper y limit, observed R = 0 for a change
-#' plotCIcorrelation(0, 10, 500, 5, conf = .99, minY = -1, maxY = 1)
+#' plotCIPearson(0, 10, 500, 5, conf = .99, minY = -1, maxY = 1)
 #'
 #' ### same but exporting to tmpPlot and then changing plot
-#' plotCIcorrelation(0, 10, 500, 5, conf = .99, minY = -1, maxY = 1) -> tmpPlot
+#' plotCIPearson(0, 10, 500, 5, conf = .99, minY = -1, maxY = 1) -> tmpPlot
 #' tmpPlot +
 #'    ggtitle("95% CI around observed Pearson correlation of zero for n from 10 to 500") +
 #'    theme_bw()
@@ -49,9 +49,12 @@
 #'
 #' @section History/development log:
 #' Version 1: 5.iv.21
+#' Version 2: 25.xi.23 Renamed to plotCIPearson to allow for addition of plotCISpearman soon.
 #'
-plotCIcorrelation <- function(corr, minN, maxN, step = 1, conf = .95, minY = NULL, maxY = NULL) {
+plotCIPearson <- function(corr, minN, maxN, step = 1, conf = .95, minY = NULL, maxY = NULL) {
   ### little function using Hmisc::binconf() to get CI around observed correlation and plot this
+  invisible(stopifnot(base::requireNamespace("tidyverse")))
+  invisible(stopifnot(base::requireNamespace("Hmisc")))
   ### sanity checks
   ###
   ### sanity check 1
@@ -156,7 +159,3 @@ plotCIcorrelation <- function(corr, minN, maxN, step = 1, conf = .95, minY = NUL
     ggplot2::ylab("Correlation") -> p
   p
 }
-#'
-#' @rdname plotCIcorrelation
-#' @export
-plotCIPearson <- plotCIcorrelation
