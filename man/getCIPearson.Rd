@@ -105,9 +105,9 @@ tmpTib \%>\%
 }
 \seealso{
 Other confidence interval functions: 
+\code{\link{getCISpearman}()},
 \code{\link{plotBinconf}()},
-\code{\link{plotCIPearson}()},
-\code{\link{plotCIcorrelation}()}
+\code{\link{plotCIPearson}()}
 }
 \author{
 Chris Evans

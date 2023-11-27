@@ -76,12 +76,11 @@ tmpPlot +
 \seealso{
 Other confidence interval functions: 
 \code{\link{getCIPearson}()},
-\code{\link{plotBinconf}()},
-\code{\link{plotCIcorrelation}()}
+\code{\link{getCISpearman}()},
+\code{\link{plotBinconf}()}
 
 Other demonstration functions: 
-\code{\link{plotBinconf}()},
-\code{\link{plotCIcorrelation}()}
+\code{\link{plotBinconf}()}
 }
 \author{
 Chris Evans
