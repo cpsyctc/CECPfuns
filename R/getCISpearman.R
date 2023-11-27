@@ -75,7 +75,8 @@
 #' \enumerate{
 #' \item This started from finding the excellent answers from \code{onestop} \url{https://stats.stackexchange.com/users/449/onestop}
 #'  and \code{retodomax} \url{https://stats.stackexchange.com/users/237402/retodomax}
-#' to the question on CrossValidated \href{https://stats.stackexchange.com/}{How to calculate a confidence interval for Spearman's rank correlation?}
+#' to the question on  \href{https://stats.stackexchange.com/}{CrossValidated}
+#' specifically \href{https://stats.stackexchange.com/questions/18887/how-to-calculate-a-confidence-interval-for-spearmans-rank-correlation}{How to calculate a confidence interval for Spearman's rank correlation?}
 #' Also, as referenced in that page ...
 #'
 #' \item Bishara, A. J., & Hittner, J. B. (2017). Confidence intervals for correlations when data are not normal. Behavior Research Methods, 49(1),
