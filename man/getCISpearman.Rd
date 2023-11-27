@@ -41,6 +41,9 @@ tidyverse pipes.  See examples.
 
 There is more information about the function in my \href{https://www.psyctc.org/Rblog/}{Rblog} at
 \href{https://www.psyctc.org/Rblog/posts/2023-11-27-cispearman/}{Confidence interval around Spearman correlation coefficient}.
+
+There is also a shiny app using this function at
+\url{https://shiny.psyctc.org/apps/CISpearman/}
 }
 
 \section{References/acknowledgements}{
