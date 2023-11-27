@@ -26,6 +26,9 @@
 #' The function just returns a named vector of the LCL and UCL which should help using it in
 #' tidyverse pipes.  See examples.
 #'
+#' There is more information about the function in my \href{https://www.psyctc.org/Rblog/}{Rblog} at
+#' \href{https://www.psyctc.org/Rblog/posts/2023-11-27-cispearman/}{Confidence interval around Spearman correlation coefficient}.
+#'
 #' @examples
 #' \dontrun{
 #' getCISpearman(.5, 50)
@@ -66,6 +69,30 @@
 #' ### pretty clear that the correlation for the women is very different
 #' ### from that for the men
 #' }
+#'
+#' @section References/acknowledgements:
+#'
+#' \enumerate{
+#' \item This started from finding the excellent answers from \code{onestop} \url{https://stats.stackexchange.com/users/449/onestop}
+#'  and \code{retodomax} \url{https://stats.stackexchange.com/users/237402/retodomax}
+#' to the question on CrossValidated \href{https://stats.stackexchange.com/}{How to calculate a confidence interval for Spearman's rank correlation?}
+#' Also, as referenced in that page ...
+#'
+#' \item Bishara, A. J., & Hittner, J. B. (2017). Confidence intervals for correlations when data are not normal. Behavior Research Methods, 49(1),
+#' 294–309. \url{https://doi.org/10.3758/s13428-016-0702-8}
+#' gives extensive simulation work covering much more than these CIs.
+#' I checked my code against the results from the R code given in Supplement A to that paper.  Then ...
+#'
+#' \item Bonett, D. G., & Wright, T. A. (2000). Sample size requirements for estimating pearson, kendall and spearman correlations.
+#' Psychometrika, 65(1), 23–28. \url{https://doi.org/10.1007/BF02294183} is a classic (interesting to see how typesetting of equations
+#' has improved since 2000!) and ...
+#'
+#' \item Ruscio, J. (2008). Constructing Confidence Intervals for Spearman’s Rank Correlation with Ordinal Data:
+#' A Simulation Study Comparing Analytic and Bootstrap Methods. Journal of Modern Applied Statistical Methods,
+#' 7(2), 416–434. \url{https://doi.org/10.22237/jmasm/1225512360} was another excellent paper on the topic.
+#' }
+#'
+#' Thanks to all those authors.
 #'
 #' @family confidence interval functions
 #'
