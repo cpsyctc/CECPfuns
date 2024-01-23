@@ -41,6 +41,7 @@ Imports:
     Hmisc,
     methods,
     tidyselect,
+    readr,
     devtools,
     quantileCI,
     clipr

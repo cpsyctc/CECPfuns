@@ -1,3 +1,6 @@
+# Version 0.0.0.9049
+Added first version of lookupCSCgenderAndAge().  Error checks probably not fully correct and no warning or output tests yet.
+
 # Version 0.0.0.9048
 Renamed plotCIcorrelation() to plotCIPearson() (which was an alias of plotCIcorrelation()) to allow for creation of plotCISpearman() soon.
 While at that, tweaked the code to avoid irritating warning message caused by changes in tidyverse and to improve the code a bit. Created
