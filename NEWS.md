@@ -1,3 +1,6 @@
+# Version 0.0.0.9050
+Fixed essentially cosmetic bug in plotQuantileCIsfromDat() (CI as percentage in plot label wrong: it showed .1 of what it should have been!) and more serious bug in getCIforQuantiles() that it was always using 95% for the CI not what was entered. Would only have affected things if someone wanted another CI so I think impact zero!
+
 # Version 0.0.0.9049
 Added first version of lookupCSCgenderAndAge().  Error checks probably not fully correct and no warning or output tests yet.
 

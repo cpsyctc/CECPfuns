@@ -74,9 +74,9 @@ testthat::test_that("Output correct", {
             row.names = c(NA, -3L)) -> tmpRes
   ### test that
   testthat::expect_equal(getCIforQuantiles(vecDat = 1:1000,
-                                           vecQuantiles = c(.1, .5, .8),
+                                           vecQuantiles = c(.1, .5, .95),
                                            method = "e",
-                                           ci = .95,
+                                           ci = .8,
                                            R = 9999,
                                            type = 8), tmpRes)
   ###
