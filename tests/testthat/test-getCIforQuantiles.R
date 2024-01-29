@@ -43,7 +43,7 @@ testthat::test_that("Output correct", {
     install_github("hoehleatsu/quantileCI")
   }
   library(quantileCI)
-  ### make results
+  ### make results for exact method and ci = .95
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
                  nOK = c(1000L, 1000L, 1000L),
@@ -53,9 +53,7 @@ testthat::test_that("Output correct", {
                  UCL = c(120L, 532L, 964L)),
             class = c("tbl_df", "tbl", "data.frame"),
             row.names = c(NA, -3L)) -> tmpRes
-  ###
-  ###
-  ###
+  ### test it
   testthat::expect_equal(getCIforQuantiles(vecDat = 1:1000,
                                            vecQuantiles = c(.1, .5, .95),
                                            method = "e",
@@ -64,7 +62,26 @@ testthat::test_that("Output correct", {
                                            type = 8), tmpRes)
   ###
   ###
+  ### make results for exact method and ci = .8
+  structure(list(prob = c(0.1, 0.5, 0.95),
+                 n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
+                 nMiss = c(0L, 0L, 0L),
+                 quantile = c(`10%` = 100.366666666667, `50%` = 500.5, `95%` = 950.65),
+                 LCL = c(88L, 480L, 941L),
+                 UCL = c(113L, 521L, 960L)),
+            class = c("tbl_df", "tbl", "data.frame"),
+            row.names = c(NA, -3L)) -> tmpRes
+  ### test that
+  testthat::expect_equal(getCIforQuantiles(vecDat = 1:1000,
+                                           vecQuantiles = c(.1, .5, .8),
+                                           method = "e",
+                                           ci = .95,
+                                           R = 9999,
+                                           type = 8), tmpRes)
   ###
+  ###
+  ### make results for Nyblom method and ci = .95
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
                  nOK = c(1000L, 1000L, 1000L),
@@ -76,7 +93,7 @@ testthat::test_that("Output correct", {
                  UCL = c(119.434476280789, 531.466913398299, 963.518163381601)),
             class = c("tbl_df", "tbl", "data.frame"),
             row.names = c(NA, -3L)) -> tmpRes
-
+  ### test that
   testthat::expect_equal(getCIforQuantiles(1:1000,
                                            c(.1, .5, .95),
                                            method = "n",
@@ -85,7 +102,27 @@ testthat::test_that("Output correct", {
                                            type = 8), tmpRes)
   ###
   ###
+  ### results for Nyblom method and ci = .8
+  structure(list(prob = c(0.1, 0.5, 0.95),
+                 n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
+                 nMiss = c(0L, 0L, 0L),
+                 quantile = c(`10%` = 100.366666666667, `50%` = 500.5, `95%` = 950.65),
+                 LCL = c(88.4507909854177, 480.245254144715, 941.599446067047),
+                 UCL = c(112.726662823844, 520.754745855285, 959.208940367161)),
+            class = c("tbl_df", "tbl", "data.frame"),
+            row.names = c(NA, -3L))-> tmpRes
+  ### test that
+  testthat::expect_equal(getCIforQuantiles(1:1000,
+                                           c(.1, .5, .95),
+                                           method = "n",
+                                           ci = .8,
+                                           R = 9999,
+                                           type = 8), tmpRes)
+
   ###
+  ###
+  ### results for bootstrap method and ci = .95
   structure(list(prob = c(0.1, 0.5, 0.95),
                  n = c(1000L, 1000L, 1000L),
                  nOK = c(1000L, 1000L, 1000L),
@@ -102,6 +139,25 @@ testthat::test_that("Output correct", {
                                           vecQuantiles =  c(.1, .5, .95),
                                            method = "b",
                                            ci = .95,
+                                           R = 9999,
+                                           type = 8), tmpRes)
+  ###
+  ###
+  ### results for bootstrap method and ci = .95
+  structure(list(prob = c(0.1, 0.5, 0.95),
+                 n = c(1000L, 1000L, 1000L),
+                 nOK = c(1000L, 1000L, 1000L),
+                 nMiss = c(0L, 0L, 0L),
+                 quantile = c(`10%` = 100.366666666667, `50%` = 500.5, `95%` = 950.65),
+                 LCL = c(88.7333333333333, 480, 941.3),
+                 UCL = c(113.1, 520.5, 959)),
+            class = c("tbl_df", "tbl", "data.frame"),
+            row.names = c(NA, -3L))-> tmpRes
+  set.seed(12345)
+  testthat::expect_equal(getCIforQuantiles(vecDat = 1:1000,
+                                           vecQuantiles =  c(.1, .5, .95),
+                                           method = "b",
+                                           ci = .8,
                                            R = 9999,
                                            type = 8), tmpRes)
 

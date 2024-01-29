@@ -228,15 +228,15 @@ getCIforQuantiles <- function(vecDat = NA,
   ###
   getCI <- function(vecDat, prob, method, R = R, type = type) {
     if(method == "Nyblom") {
-      tmpVec <- quantileCI::quantile_confint_nyblom(vecDat, prob)
+      tmpVec <- quantileCI::quantile_confint_nyblom(vecDat, prob, conf.level = ci)
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Exact") {
-      tmpVec <- quantileCI::quantile_confint_exact(vecDat, prob)
+      tmpVec <- quantileCI::quantile_confint_exact(vecDat, prob, conf.level = ci)
       names(tmpVec) = c("LCL", "UCL")
     }
     if(method == "Bootstrap") {
-      tmpVec <- quantileCI::quantile_confint_boot(vecDat, prob, R = R, type = type)
+      tmpVec <- quantileCI::quantile_confint_boot(vecDat, prob, R = R, type = type, conf.level = ci)
       names(tmpVec) = c("LCL", "UCL")
     }
     tmpVec
@@ -256,6 +256,9 @@ getCIforQuantiles <- function(vecDat = NA,
 }
 ### test that
 # args(getCIforQuantiles)
+# getCIforQuantiles(1:1000, c(.1, .5, .95), "e", ci = .95, R = 9999, type = 8)
+# getCIforQuantiles(1:1000, c(.1, .5, .95), "n", ci = .95, R = 9999, type = 8)
+# getCIforQuantiles(1:1000, c(.1, .5, .95), "b", ci = .95, R = 9999, type = 8)
 # getCIforQuantiles(1:1000, c(.1, .5, .95), "e", ci = .95, R = 9999, type = 8)
 # getCIforQuantiles(1:1000, c(.1, .5, .95), "n", ci = .95, R = 9999, type = 8)
 # getCIforQuantiles(1:1000, c(.1, .5, .95), "b", ci = .95, R = 9999, type = 8)
