@@ -1,132 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/CODE_OF_CONDUCT.html</loc>
+    <loc>/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/CONTRIBUTING.html</loc>
+    <loc>/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/LICENSE-text.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/LICENSE.html</loc>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/articles/Background.html</loc>
+    <loc>/articles/Background.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/articles/Bootstrapping.html</loc>
+    <loc>/articles/Bootstrapping.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/articles/Introduction.html</loc>
+    <loc>/articles/Introduction.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/articles/RCSC_framework.html</loc>
+    <loc>/articles/RCSC_framework.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/articles/index.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/authors.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/index.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/news/index.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/CECPfuns-package.html</loc>
+    <loc>/reference/CECPfuns-package.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/checkAllUnique.html</loc>
+    <loc>/reference/checkAllUnique.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/classifyScoresVectorByRCI.html</loc>
+    <loc>/reference/classifyScoresVectorByRCI.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/convert2CEdate.html</loc>
+    <loc>/reference/convert2CEdate.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/convertClipboardAuthorNames.html</loc>
+    <loc>/reference/convertClipboardAuthorNames.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/convertVector2sentence.html</loc>
+    <loc>/reference/convertVector2sentence.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getBootCICSC.html</loc>
+    <loc>/reference/getBootCICSC.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getBootCICorr.html</loc>
+    <loc>/reference/getBootCICorr.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getBootCIalpha.html</loc>
+    <loc>/reference/getBootCIalpha.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getBootCIgrpMeanDiff.html</loc>
+    <loc>/reference/getBootCIgrpMeanDiff.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getBootCImean.html</loc>
+    <loc>/reference/getBootCImean.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getCIPearson.html</loc>
+    <loc>/reference/getCIPearson.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getCISpearman.html</loc>
+    <loc>/reference/getCISpearman.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getCIforQuantiles.html</loc>
+    <loc>/reference/getCIforQuantiles.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getCSC.html</loc>
+    <loc>/reference/getCSC.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getChronbachAlpha.html</loc>
+    <loc>/reference/getChronbachAlpha.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getICCfromMLM.html</loc>
+    <loc>/reference/getICCfromMLM.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getNNA.html</loc>
+    <loc>/reference/getNNA.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getNOK.html</loc>
+    <loc>/reference/getNOK.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getRCIfromSDandAlpha.html</loc>
+    <loc>/reference/getRCIfromSDandAlpha.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getRelBySpearmanBrown.html</loc>
+    <loc>/reference/getRelBySpearmanBrown.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/getScoreFromItems.html</loc>
+    <loc>/reference/getScoreFromItems.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/hyphenateWords.html</loc>
+    <loc>/reference/hyphenateWords.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/index.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/isNothing.html</loc>
+    <loc>/reference/isNothing.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/isOneToOne.html</loc>
+    <loc>/reference/isOneToOne.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/lookupCSCgenderAndAge.html</loc>
+    <loc>/reference/lookupCSCgenderAndAge.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/plotBinconf.html</loc>
+    <loc>/reference/plotBinconf.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/plotCIPearson.html</loc>
+    <loc>/reference/plotCIPearson.html</loc>
   </url>
   <url>
-    <loc>https://cpsyctc.github.io/CECPfuns/reference/plotQuantileCIsfromDat.html</loc>
+    <loc>/reference/plotQuantileCIsfromDat.html</loc>
   </url>
 </urlset>
