@@ -20,6 +20,13 @@ to get the the vignette that gives the best introduction to the package
 or jump to the index of the package's (as with any R package, index link is at the bottom of every
 help page within any package).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://cpsyctc.github.io/CECPfuns/}
+}
+
+}
 \author{
 \strong{Maintainer}: Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
 

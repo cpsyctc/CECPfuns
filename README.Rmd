@@ -28,7 +28,7 @@ The goal driving the creation of CECPfuns is largely selfish: to make sure I hav
 idea of the package.  Input has also come from (Emily Blackshaw)[https://www.researchgate.net/profile/Emily_Blackshaw2].  It is possible that 
 these functions may be of use to others so I am now uploading it to GitHub at https://github.com/cpsyctc/CECPfuns after any significant changes. 
 
-There is also now a pkgdown produced web site for the package at https::/cecpfuns.psyctc.org/.
+There is also now a pkgdown produced web site for the package at https:/cecpfuns.psyctc.org/.
 
 ## Installation
 
