@@ -83,7 +83,7 @@
 
 
 <dt>data</dt>
-<dd><p>data.frame or tibble with the data, often cur_data() in dplyr</p></dd>
+<dd><p>data.frame or tibble with the data, often subset of the data created with group_by() and pick()</p></dd>
 
 
 <dt>method</dt>
@@ -131,11 +131,20 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### create some data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># make this replicable</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">150</span></span></span>
+<span class="r-in"><span><span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>   <span class="co">### that's got us sample x and y from population in which they're uncorrelated</span></span></span>
+<span class="r-in"><span>   <span class="co">### make them correlated:</span></span></span>
+<span class="r-in"><span>   <span class="fu">mutate</span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">.2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span>  <span class="op">-&gt;</span> <span class="va">data</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>   <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span></span>
 <span class="r-in"><span>   <span class="co">### you are creating list output</span></span></span>
-<span class="r-in"><span>   <span class="fu">summarise</span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">score1</span> <span class="op">~</span> <span class="va">score2</span>,</span></span>
-<span class="r-in"><span>             <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">summarise</span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">x</span> <span class="op">~</span> <span class="va">y</span>,</span></span>
+<span class="r-in"><span>             <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="co">### pick(everything()) is, to my mind, a rather verbose replacement for cur_data()</span></span></span>
 <span class="r-in"><span>             method <span class="op">=</span> <span class="st">"p"</span>, <span class="co"># gets the Pearson correlation</span></span></span>
 <span class="r-in"><span>             bootReps <span class="op">=</span> <span class="fl">1000</span>,</span></span>
 <span class="r-in"><span>             <span class="co">### "pe" in next line gets the percentile bootstrap CI</span></span></span>

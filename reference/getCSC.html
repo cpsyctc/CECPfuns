@@ -76,7 +76,7 @@
 
 
 <dt>data</dt>
-<dd><p>is the data, typically cur_data() when called in tidyverse pipe</p></dd>
+<dd><p>is the data, typically a subset creatd with group_by() and pick(everything()) when called in tidyverse pipe</p></dd>
 
 </dl></div>
     <div id="value">
@@ -162,12 +162,13 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 <span class="r-in"><span>        scores <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">grp</span> <span class="op">==</span> <span class="st">"HS"</span>, <span class="va">scores</span> <span class="op">+</span> <span class="fl">1.1</span>, <span class="va">scores</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tibDat</span></span></span>
 <span class="r-in"><span><span class="co">### now get CSC overall</span></span></span>
 <span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="co">### pick(everything()) has replaced cur_data() in dplyr: more flexible but more verbose</span></span></span>
+<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">### get CSC by gender</span></span></span>
 <span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span> <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu">getCSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

@@ -81,7 +81,7 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 
 
 <dt>data</dt>
-<dd><p>data.frame or tibble with the data, often cur_data() in dplyr</p></dd>
+<dd><p>data.frame or tibble with the data, often constructed with pick() in dplyr</p></dd>
 
 
 <dt>bootReps</dt>
@@ -139,6 +139,7 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">### create some data</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">120</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable sample and results from the bootstrap</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>scores <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="co"># Gaussian random base for scores</span></span></span>
 <span class="r-in"><span>  <span class="co">### now add a grouping variable: help-seeking or not</span></span></span>
 <span class="r-in"><span>  grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HS"</span>, <span class="st">"not"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
@@ -153,19 +154,22 @@ Function designed for use in dplyr (tidyverse) piping to return CSC and bootstra
 <span class="r-in"><span><span class="co">### have a look at that</span></span></span>
 <span class="r-in"><span><span class="va">tmpDat</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># to get replicable results from the bootstrap</span></span></span>
+<span class="r-in"><span><span class="co">### this just computes the CSC and CI(CSC) for the whole dataset</span></span></span>
 <span class="r-in"><span><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>  <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span></span>
 <span class="r-in"><span>  <span class="co">### you are creating list output</span></span></span>
-<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="co">### Also pick(everything()) has replaced the deprecated cur_data() that I used</span></span></span>
+<span class="r-in"><span>  <span class="co">### earlier I see the flexibility of pick() but it's ugly when used to replace</span></span></span>
+<span class="r-in"><span>  <span class="co">### the simpler cur_data() for this sort of thing.  Not my choice!</span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>  <span class="co">### now unnest the list to columns</span></span></span>
 <span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### now an example of how this becomes useful: same but by gender</span></span></span>
+<span class="r-in"><span><span class="co">### now an example of how this becomes useful: same but by grouping by gender</span></span></span>
 <span class="r-in"><span><span class="va">tmpDat</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>  <span class="co">### remember the list output again!</span></span></span>
-<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">cur_data</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>  <span class="fu">summarise</span><span class="op">(</span>CSC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICSC</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">grp</span>, <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
 <span class="r-in"><span>  <span class="co">### remember to unnnest again!</span></span></span>
 <span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CSC</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>

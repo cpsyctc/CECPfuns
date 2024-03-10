@@ -61,6 +61,30 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9050" id="version-0009050">Version 0.0.0.9050<a class="anchor" aria-label="anchor" href="#version-0009050"></a></h2>
+<p>Fixed essentially cosmetic bug in plotQuantileCIsfromDat() (CI as percentage in plot label wrong: it showed .1 of what it should have been!) and more serious bug in getCIforQuantiles() that it was always using 95% for the CI not what was entered. Would only have affected things if someone wanted another CI so I think impact zero!</p>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9049" id="version-0009049">Version 0.0.0.9049<a class="anchor" aria-label="anchor" href="#version-0009049"></a></h2>
+<p>Added first version of lookupCSCgenderAndAge(). Error checks probably not fully correct and no warning or output tests yet.</p>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9048" id="version-0009048">Version 0.0.0.9048<a class="anchor" aria-label="anchor" href="#version-0009048"></a></h2>
+<p>Renamed plotCIcorrelation() to plotCIPearson() (which was an alias of plotCIcorrelation()) to allow for creation of plotCISpearman() soon. While at that, tweaked the code to avoid irritating warning message caused by changes in tidyverse and to improve the code a bit. Created getCIPearson() pulling that out of plotCIPearson().</p>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9047" id="version-0009047">Version 0.0.0.9047<a class="anchor" aria-label="anchor" href="#version-0009047"></a></h2>
+<p>Added convertClipboardAuthorNames()</p>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9046" id="version-0009046">Version 0.0.0.9046<a class="anchor" aria-label="anchor" href="#version-0009046"></a></h2>
+<p>Whoops, been forgetting to update this. getCIforQuantiles has been improved and plotQuantileCIsfromDat added with full testing for getCIforQuantiles and testing of the sanity testing for plotQuantileCIsfromDat. A few ancillary things removed on github as they had clearly aged beyond their “will work by dates”.</p>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.0.0.9045" id="version-0009045">Version 0.0.0.9045<a class="anchor" aria-label="anchor" href="#version-0009045"></a></h2>
+<p>Improved sanity checking for getCIforQuantiles, added internalUtils.R for hidden functions, first one is isNothing() and added test-getScoreFromItems but getScoreFromItems still work in progress</p>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.0.0.9044" id="version-0009044">Version 0.0.0.9044<a class="anchor" aria-label="anchor" href="#version-0009044"></a></h2>
 <p>Realised that test-getCIforQuantiles had been lost in the github mess, reinstated it. Creating getScoreFromItems in progress.</p>
 </div>
