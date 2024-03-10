@@ -28,7 +28,7 @@ uploading it to GitHub at <https://github.com/cpsyctc/CECPfuns> after
 any significant changes.
 
 There is also now a pkgdown produced web site for the package at
-<https::/cecpfuns.psyctc.org/>.
+<https://cecpfuns.psyctc.org/>.
 
 ## Installation
 
@@ -47,18 +47,18 @@ can look for it every time you launch R, see
 
 ## Background information
 
--   As above, you can find out more about Clara at
-    <https://investigacion.udla.edu.ec/udla_teams/clara-paz/>,
--   you can find out more about Emily at
-    <https://www.researchgate.net/profile/Emily_Blackshaw2> and about
-    her PhD which I am supervising on ResearchGate,
-    [here](https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility)
-    and
--   my own biggest research programme, which overlaps with Emily’s work,
-    is the CORE system: <https://www.corestemtrust.org.uk/> and a web
-    site about my non-CORE work is slowly building (from a much earlier
-    one) at <https://www.psyctc.org/psyctc/> and my personal site is
-    <https://www.psyctc.org/pelerinage2016>.
+- As above, you can find out more about Clara at
+  <https://investigacion.udla.edu.ec/udla_teams/clara-paz/>,
+- you can find out more about Emily at
+  <https://www.researchgate.net/profile/Emily_Blackshaw2> and about her
+  PhD which I am supervising on ResearchGate,
+  [here](https://www.researchgate.net/project/Young-Persons-Clinical-Outcomes-in-Routine-Evaluation-YP-CORE-Scale-psychometric-properties-and-utility)
+  and
+- my own biggest research programme, which overlaps with Emily’s work,
+  is the CORE system: <https://www.corestemtrust.org.uk/> and a web site
+  about my non-CORE work is slowly building (from a much earlier one) at
+  <https://www.psyctc.org/psyctc/> and my personal site is
+  <https://www.psyctc.org/pelerinage2016>.
 
 ## Licence and disclaimer
 

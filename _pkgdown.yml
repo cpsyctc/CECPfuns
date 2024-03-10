@@ -1,3 +1,4 @@
-destination: docs
-url: https://cpsyctc.github.io/CECPfuns/
+url: ~
+template:
+  bootstrap: 5
 
