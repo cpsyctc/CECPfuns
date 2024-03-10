@@ -45,6 +45,7 @@ Imports:
     devtools,
     quantileCI,
     clipr
+Remotes: hoehleatsu/quantileCI
 Suggests:
   stats,
   boot,
