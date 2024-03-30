@@ -72,4 +72,4 @@ convert2CEdate <- function(date) {
 #'
 #' @rdname convert2CEdate
 #' @export
-converToCEdate <- convert2CEdate
+convertToCEdate <- convert2CEdate

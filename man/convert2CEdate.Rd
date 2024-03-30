@@ -2,12 +2,12 @@
 % Please edit documentation in R/convert2CEdate.R
 \name{convert2CEdate}
 \alias{convert2CEdate}
-\alias{converToCEdate}
+\alias{convertToCEdate}
 \title{Function to convert Dates to my date format strings}
 \usage{
 convert2CEdate(date)
 
-converToCEdate(date)
+convertToCEdate(date)
 }
 \arguments{
 \item{date}{Date}
