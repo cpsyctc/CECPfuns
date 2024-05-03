@@ -54,6 +54,16 @@ That also gives some arguments that the formula should really be termed the Brow
 bowing to historical precedent here.
 }
 
+\section{related_resources}{
+
+
+\enumerate{
+\item In my \href{https://www.psyctc.org/psyctc/book/glossary/}{OMbook glossary}: entry \href{https://www.psyctc.org/psyctc/glossary2/spearman-brown-formula/}{here}.
+\item In my \href{https://www.psyctc.org/Rblog/index.html}{Rblog}: entry \href{https://www.psyctc.org/Rblog/posts/2021-04-09-spearman-brown-formula/}{here}.
+\item In my \href{https://shiny.psyctc.org/}{online shiny apps}: app that uses this function to give predicted reliabilities given length of existing measure and its internal reliability \href{https://shiny.psyctc.org/apps/Spearman-Brown/}{here}.
+}
+}
+
 \section{History/development log}{
 
 Started before 5.iv.21, updated help page 10.iv.21.
