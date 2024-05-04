@@ -359,7 +359,7 @@ plotQuantileCIsfromDat <- function(vecDat = NA, vecQuantiles = NA, method = c("N
                              "n(missing) = ", nMiss, "\n",
                              "n(usable) = ", nOK, "\n",
                              "ci = ", ci, " i.e. ", paste0(100 * ci), "%\n",
-                             "quantiles = ", vecQuantiles)
+                             "quantile = ", vecQuantiles)
     } else {
       annotateText <- paste0("n(total) = ", nAll, "\n",
                              "n(missing) = ", nMiss, "\n",
