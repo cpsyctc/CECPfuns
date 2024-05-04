@@ -354,11 +354,19 @@ plotQuantileCIsfromDat <- function(vecDat = NA, vecQuantiles = NA, method = c("N
   }
 
   if (addAnnotation) {
-    annotateText <- paste0("n(total) = ", nAll, "\n",
-                           "n(missing) = ", nMiss, "\n",
-                           "n(usable) = ", nOK, "\n",
-                           "ci = ", ci, " i.e. ", paste0(100 * ci), "%\n",
-                           "quantiles = ", convertVectorToSentence(vecQuantiles))
+    if (length(vecQuantiles) == 1) {
+      annotateText <- paste0("n(total) = ", nAll, "\n",
+                             "n(missing) = ", nMiss, "\n",
+                             "n(usable) = ", nOK, "\n",
+                             "ci = ", ci, " i.e. ", paste0(100 * ci), "%\n",
+                             "quantiles = ", vecQuantiles)
+    } else {
+      annotateText <- paste0("n(total) = ", nAll, "\n",
+                             "n(missing) = ", nMiss, "\n",
+                             "n(usable) = ", nOK, "\n",
+                             "ci = ", ci, " i.e. ", paste0(100 * ci), "%\n",
+                             "quantiles = ", convertVectorToSentence(vecQuantiles))
+    }
     tmpPlot +
       annotate("text",
                x = minVal + .015 * rangeVal,
