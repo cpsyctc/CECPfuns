@@ -167,9 +167,9 @@ getScoreFromItems <- function(vec,
   ### work out prorating criterion using number rather than proportion, whichever was given
   if(is.na(nProrateMin)) {
     if (is.null(k)) {
-      nProrateMin <- round(propProrateMin * length(vec))
+      nProrateMin <- round(propProrateMin * length(vec), 1)
     } else {
-      nProrateMin <- round(propProrateMin * k)
+      nProrateMin <- round(propProrateMin * k, 1)
     }
   }
   ### check whether the data can be prorated
