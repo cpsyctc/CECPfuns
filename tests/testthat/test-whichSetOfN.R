@@ -1,10 +1,12 @@
 testthat::test_that("sanity checks work", {
   testthat::expect_error(whichSetOfN(0, 3))
   testthat::expect_error(whichSetOfN(-1:3, 3))
-    testthat::expect_error(whichSetOfN(3, -3))
+  testthat::expect_error(whichSetOfN(3, -3))
   testthat::expect_error(whichSetOfN(3, 0))
   testthat::expect_error(whichSetOfN(3, 1))
   testthat::expect_error(whichSetOfN(3, 2.1))
+  testthat::expect_error(whichSetOfN("A", 3))
+  testthat::expect_error(whichSetOfN(3, "A"))
 })
 
 ## test warnings

@@ -1,5 +1,9 @@
+# Version 0.0.0.9052
+Added getAttenuatedR() and tweakes to whichSetOfN().
+
 # Version 0.0.0.9051
 Added whichSetOfN(), some cleaning and updating and resynchronised these version numbers between this file and DESCRIPTION.
+
 # Version 0.0.0.9050
 Fixed essentially cosmetic bug in plotQuantileCIsfromDat() (CI as percentage in plot label wrong: it showed .1 of what it should have been!) and more serious bug in getCIforQuantiles() that it was always using 95% for the CI not what was entered. Would only have affected things if someone wanted another CI so I think impact zero!
 

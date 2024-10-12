@@ -31,13 +31,21 @@ whichSetOfN <- function(x, n){
   if (x[1] <= 0) {
     stop("Index number, x, must be 1 or higher")
   }
+  if (!is.numeric(x[1])) {
+    stop("Index number, x, must be numeric")
+  }
   if (abs(x[1] - round(x[1])) > .05) {
     warning(paste0("The x value you input: ",
                    x[1],
                    " is not an integer, is this really what you want?"))
   }
+  if (!is.numeric(n)) {
+    stop(paste0("Set size, n, must be 2 or higher. You entered ",
+                n))
+  }
   if (n <= 2) {
-    stop("Set size must be 2 or higher")
+    stop(paste0("Set size, n, must be 2 or higher. You entered ",
+                n))
   }
   if (abs(n - round(n)) > .0000005) {
     stop(paste0("The n value you input: ",
