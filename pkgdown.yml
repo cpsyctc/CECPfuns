@@ -1,10 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   Background: Background.html
   Bootstrapping: Bootstrapping.html
   Introduction: Introduction.html
   RCSC_framework: RCSC_framework.html
-last_built: 2024-05-15T19:37Z
-
+last_built: 2024-10-12T12:45Z
