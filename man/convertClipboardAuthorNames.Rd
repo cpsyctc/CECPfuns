@@ -74,5 +74,9 @@ convertClipboardAuthorNames(toClipboard = FALSE)
 }
 
 }
+\seealso{
+Other utility functions: 
+\code{\link{whichSetOfN}()}
+}
 \concept{text utility functions}
 \concept{utility functions}

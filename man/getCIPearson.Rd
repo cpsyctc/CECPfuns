@@ -46,7 +46,7 @@ ought to reflect that (hence my "something" above!)  However, the reality is tha
 observed correlation really was perfect there is no way given the data to compute a
 sensible lower bound (for observed R = 1.0, upper bound for observed R = -1).  Returning
 c(1, 1) for perfect positive correlation and c(-1, -1) for perfect negative correlation
-is the only sensible option and is in line with cor.test{stats}.
+is the only sensible option and is in line with stats::cor.test().
 }
 
 \section{History/development log}{

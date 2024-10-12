@@ -27,6 +27,7 @@
 #' method c is this.
 #'
 #' \loadmathjax{}
+#'
 #' \mjdeqn{\frac{SD_{HS}*M_{notHS} + SD_{notHS}*M_{HS}}{SD_{HS}+SD_{notHS}}}{}
 #'
 #' (with SD for Standard Deviation (doh!) and M for Mean)
@@ -36,6 +37,7 @@
 #'
 #' @export
 #'
+#' @importFrom mathjaxr preview_rd
 #' @importFrom stats qnorm
 #' @importFrom tibble as_tibble
 #' @importFrom magrittr %>%
