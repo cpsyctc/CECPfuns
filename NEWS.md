@@ -1,3 +1,6 @@
+# Version 0.0.0.9053
+Added getCorrectedR() and tweaks to getAttenuatedR().
+
 # Version 0.0.0.9052
 Added getAttenuatedR() and tweakes to whichSetOfN().
 
