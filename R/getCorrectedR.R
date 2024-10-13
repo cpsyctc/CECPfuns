@@ -17,7 +17,7 @@
 #' The formula is simple:
 #' \loadmathjax{}
 #'
-#' \mjdeqn{correctedCorr=observedCorr\frac{\sqrt{rel_{1}*rel_{2}}}}{}
+#' \mjdeqn{correctedCorr=\frac{observedCorr}{\sqrt{rel_{1}*rel_{2}}}}{correctedR = obsR / sqrt(rel1 * rel2)}
 #'
 #' The short summary is that unreliability in the measurement of both variables involved in a correlation
 #' always reduces the observed correlation between the variables from what it would have been had the

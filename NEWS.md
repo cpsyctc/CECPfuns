@@ -1,3 +1,6 @@
+# Version 0.0.0.9054
+Corrected typos in the latex formulae in getAttenuatedR() and getCorrectedR()
+
 # Version 0.0.0.9053
 Added getCorrectedR() and tweaks to getAttenuatedR().
 
