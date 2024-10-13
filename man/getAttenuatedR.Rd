@@ -4,7 +4,7 @@
 \alias{getAttenuatedR}
 \title{Function that gives the attenuated R for an unattenuated R and two reliability values}
 \usage{
-getAttenuatedR(unattR, rel1, rel2)
+getAttenuatedR(unattR, rel1, rel2, dp = 3)
 }
 \arguments{
 \item{unattR}{unattenuated R}
@@ -12,6 +12,8 @@ getAttenuatedR(unattR, rel1, rel2)
 \item{rel1}{reliability of first of the variables (order of variables is arbitrary)}
 
 \item{rel2}{reliability of second of the variables (order of variables is arbitrary)}
+
+\item{dp}{number of decimal places required for attenuated R}
 }
 \value{
 numeric: attenuated correlation
@@ -48,6 +50,7 @@ getAttenuatedR(.9, .7, .8)
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
+\code{\link{getCorrectedR}()},
 \code{\link{whichSetOfN}()}
 }
 \author{

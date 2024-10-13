@@ -40,7 +40,8 @@ whichSetOfN(1:7, 3)
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
-\code{\link{getAttenuatedR}()}
+\code{\link{getAttenuatedR}()},
+\code{\link{getCorrectedR}()}
 }
 \author{
 Chris Evans
