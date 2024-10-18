@@ -28,7 +28,6 @@ testthat::test_that("Test warning", {
 
 ### test of outputs
 testthat::test_that("Output correct", {
-  set.seed(12345)
   testthat::expect_equal(getCorrectedR(.3, .7, .7),
                          0.429)
   testthat::expect_equal(getCorrectedR(.3, .7, .7, 4),

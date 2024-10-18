@@ -76,6 +76,7 @@ convertClipboardAuthorNames(toClipboard = FALSE)
 }
 \seealso{
 Other utility functions: 
+\code{\link{fixVarNames}()},
 \code{\link{getAttenuatedR}()},
 \code{\link{getCorrectedR}()},
 \code{\link{whichSetOfN}()}

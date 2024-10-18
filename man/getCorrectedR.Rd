@@ -56,6 +56,7 @@ getCorrectedR(.3, .7, .7)
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
+\code{\link{fixVarNames}()},
 \code{\link{getAttenuatedR}()},
 \code{\link{whichSetOfN}()}
 }

@@ -27,7 +27,6 @@ testthat::test_that("Test warning", {
 
 ### test of outputs
 testthat::test_that("Output correct", {
-  set.seed(12345)
   testthat::expect_equal(getAttenuatedR(.9, .7, .7),
                          .63)
   testthat::expect_equal(getAttenuatedR(.7, .7, .8, 5),

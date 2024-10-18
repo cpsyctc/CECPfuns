@@ -50,6 +50,7 @@ getAttenuatedR(.9, .7, .8)
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
+\code{\link{fixVarNames}()},
 \code{\link{getCorrectedR}()},
 \code{\link{whichSetOfN}()}
 }

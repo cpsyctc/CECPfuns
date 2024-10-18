@@ -40,6 +40,7 @@ whichSetOfN(1:7, 3)
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
+\code{\link{fixVarNames}()},
 \code{\link{getAttenuatedR}()},
 \code{\link{getCorrectedR}()}
 }
