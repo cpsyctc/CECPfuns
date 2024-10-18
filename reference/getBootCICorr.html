@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CECPfuns</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9054</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9055</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,23 +113,23 @@
 <span class="r-in"><span><span class="co">### create some data</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># make this replicable</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">150</span></span></span>
-<span class="r-in"><span><span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>   <span class="co">### that's got us sample x and y from population in which they're uncorrelated</span></span></span>
 <span class="r-in"><span>   <span class="co">### make them correlated:</span></span></span>
-<span class="r-in"><span>   <span class="fu">mutate</span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">.2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span>  <span class="op">-&gt;</span> <span class="va">data</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">.2</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span>  <span class="op">-&gt;</span> <span class="va">data</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>   <span class="co">### don't forget to prefix the call with "list(" to tell dplyr</span></span></span>
 <span class="r-in"><span>   <span class="co">### you are creating list output</span></span></span>
-<span class="r-in"><span>   <span class="fu">summarise</span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">x</span> <span class="op">~</span> <span class="va">y</span>,</span></span>
-<span class="r-in"><span>             <span class="fu">pick</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>corr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCICorr</span><span class="op">(</span><span class="va">x</span> <span class="op">~</span> <span class="va">y</span>,</span></span>
+<span class="r-in"><span>             <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">pick</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>             <span class="co">### pick(everything()) is, to my mind, a rather verbose replacement for cur_data()</span></span></span>
 <span class="r-in"><span>             method <span class="op">=</span> <span class="st">"p"</span>, <span class="co"># gets the Pearson correlation</span></span></span>
 <span class="r-in"><span>             bootReps <span class="op">=</span> <span class="fl">1000</span>,</span></span>
 <span class="r-in"><span>             <span class="co">### "pe" in next line gets the percentile bootstrap CI</span></span></span>
-<span class="r-in"><span>             bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span></span>
+<span class="r-in"><span>             bootCImethod <span class="op">=</span> <span class="st">"pe"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>   <span class="co">### now unnest the list output to separate columns</span></span></span>
-<span class="r-in"><span>   <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">corr</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="va">corr</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

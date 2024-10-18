@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CECPfuns</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9054</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9055</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,7 +155,7 @@ A Simulation Study Comparing Analytic and Bootstrap Methods. Journal of Modern A
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">### imaginary correlations of CORE-OM scores against number of children by parental gender</span></span></span>
 <span class="r-in"><span><span class="co">### create a tibble of the imaginary data</span></span></span>
-<span class="r-in"><span><span class="fu">tribble</span><span class="op">(</span><span class="op">~</span><span class="va">pGender</span>, <span class="op">~</span><span class="va">rs</span>, <span class="op">~</span><span class="va">n</span>,</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span><span class="op">~</span><span class="va">pGender</span>, <span class="op">~</span><span class="va">rs</span>, <span class="op">~</span><span class="va">n</span>,</span></span>
 <span class="r-in"><span>        <span class="st">"M"</span>, <span class="fl">.12</span>, <span class="fl">643</span>,</span></span>
 <span class="r-in"><span>        <span class="st">"F"</span>, <span class="fl">.57</span>, <span class="fl">808</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tibDat</span></span></span>
 <span class="r-in"><span></span></span>
@@ -164,12 +164,12 @@ A Simulation Study Comparing Analytic and Bootstrap Methods. Journal of Modern A
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">### use it</span></span></span>
 <span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html" class="external-link">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="co">### need to use list() as we're getting a vector</span></span></span>
 <span class="r-in"><span>  <span class="co">### using the default arguments for getCISpearman()</span></span></span>
-<span class="r-in"><span>  <span class="fu">mutate</span><span class="op">(</span>CISpearman <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getCISpearman</span><span class="op">(</span><span class="va">rs</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>CISpearman <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getCISpearman</span><span class="op">(</span><span class="va">rs</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="co">### now get the values from the vectors</span></span></span>
-<span class="r-in"><span>  <span class="fu">unnest_wider</span><span class="op">(</span><span class="va">CISpearman</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="va">CISpearman</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># # A tibble: 2 × 5</span></span></span>
 <span class="r-in"><span><span class="co"># pGender    rs     n    LCL   UCL</span></span></span>
 <span class="r-in"><span><span class="co"># &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span></span>
