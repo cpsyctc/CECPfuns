@@ -1,7 +1,7 @@
 Package: CECPfuns
 Type: Package
 Title: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being Work (Created by Chris Evans and Clara Paz)
-Version: 0.0.0.9055
+Version: 0.0.0.9058
 Maintainer: Chris Evans <chris@psyctc.org>
 Description: This should evolve into a repository of all the functions that I (CE)
   and Clara Paz (CP) have created (so far only CE!) and tested enough to
@@ -27,24 +27,26 @@ Encoding: UTF-8
 LazyData: no
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-RdMacros: mathjaxr
+RdMacros: mathjaxr,
+  Rdpack
 Imports:
-    mathjaxr,
+    clipr,
+    devtools,
+    dplyr,
     ggplot2,
+    Hmisc,
     lubridate,
     magrittr,
+    mathjaxr,
+    methods,
+    quantileCI,
+    Rdpack,
+    readr,
     rlang,
     stringr,
     tibble,
     tidyr,
-    dplyr,
-    Hmisc,
-    methods,
-    tidyselect,
-    readr,
-    devtools,
-    quantileCI,
-    clipr
+    tidyselect
 Remotes: hoehleatsu/quantileCI
 Suggests:
   stats,

@@ -10,6 +10,7 @@
 #' @export
 #'
 #' @importFrom stats pf
+#' @importFrom Rdpack reprompt
 #'
 #' @family p-value functions
 #'
@@ -41,7 +42,9 @@
 #' for most therapy measures that fit is very dubious and looking at alpha
 #' values is a solid place to start.
 #'
-#' The maths comes from a 1969 paper by Feldt and is based on the assumption
+#' The maths comes from a 1969 paper by Feldt
+#' \insertCite{feldt_test_1969}{CECPfuns}
+#' and is based on the assumption
 #' that the population distributions (i.e. of the item scores) are all
 #' Gaussian.  I've used the more complicated derivation of the p value from
 #' Feldt's paper as his simpler version is not robust for short measures.
@@ -76,9 +79,12 @@
 #' ### sampling from a population (or populations) where the population
 #' ### alpha values are the same
 #'
+#' @references
+#'    \insertAllCited{}
+#'
 #' @author Chris Evans
 #' @section History/development log:
-#' Created 21.xi.24 based on earlier SAS and S+ versions
+#' Created 12.xi.24 based on earlier SAS and S+ versions
 #'
 getPdiff2alphas <- function(alpha1, alpha2, k, n1, n2) {
   ### program translated from SAS program I wrote, Feldt2.sas

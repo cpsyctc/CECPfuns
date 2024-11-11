@@ -1,3 +1,9 @@
+# Version 0.0.0.9058
+Various tweaks to get reference to Feldt (1969) into getPdiff2alphas()
+
+# Version 0.0.0.9057
+Tweaks to man page for getPdiff2alphas()
+
 # Version 0.0.0.9056
 Added getPdiff2alphas()
 

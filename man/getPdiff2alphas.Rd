@@ -52,7 +52,9 @@ framework and that's fine where measures really do fit the CFA model but
 for most therapy measures that fit is very dubious and looking at alpha
 values is a solid place to start.
 
-The maths comes from a 1969 paper by Feldt and is based on the assumption
+The maths comes from a 1969 paper by Feldt
+\insertCite{feldt_test_1969}{CECPfuns}
+and is based on the assumption
 that the population distributions (i.e. of the item scores) are all
 Gaussian.  I've used the more complicated derivation of the p value from
 Feldt's paper as his simpler version is not robust for short measures.
@@ -81,7 +83,7 @@ paradigm is helpful.
 
 \section{History/development log}{
 
-Created 21.xi.24 based on earlier SAS and S+ versions
+Created 12.xi.24 based on earlier SAS and S+ versions
 }
 
 \examples{
@@ -94,6 +96,9 @@ getPdiff2alphas(.7, .8, 8, 200, 150)
 ### sampling from a population (or populations) where the population
 ### alpha values are the same
 
+}
+\references{
+\insertAllCited{}
 }
 \author{
 Chris Evans
