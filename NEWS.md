@@ -1,3 +1,6 @@
+# Version 0.0.0.9056
+Added getPdiff2alphas()
+
 # Version 0.0.0.9055
 Added fixVarNames()
 
