@@ -1,3 +1,6 @@
+# Version 0.0.0.9059
+README.Rmd tweaked to include instructions about installing pandoc if installation fails and vignettes are wanted.
+
 # Version 0.0.0.9058
 Various tweaks to get reference to Feldt (1969) into getPdiff2alphas()
 

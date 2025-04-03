@@ -35,10 +35,26 @@ There is also now a pkgdown produced web site for the package at
 You can install the latest version of CECPfuns from
 <https://github.com/cpsyctc/CECPfuns>.
 
+To get it with the vignettes use one of these instructions within R.
+
 ``` r
 devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
 ### or
 remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
+```
+
+However, that may fail with a complaint if you don’t have pandoc
+installed on your machine as R uses pandoc to build vignettes. You can
+install it following the instructions at
+<https://pandoc.org/installing.html>. I would then close and reopen R
+(just in case it needs to find pandoc) and then repeat one of the above
+instructions. Alternatively, you can install it without the vignettes
+using one of the following.
+
+``` r
+devtools::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)
+### or
+remotes::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)
 ```
 
 If you really want to make sure you always have the latest version, you
