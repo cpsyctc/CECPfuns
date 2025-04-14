@@ -1,3 +1,6 @@
+# Version 0.0.0.9060
+Silly little tweak adding "BuildManual: yes" to DESCRIPTION as I think it's needed now
+
 # Version 0.0.0.9059
 README.Rmd tweaked to include instructions about installing pandoc if installation fails and vignettes are wanted.
 
