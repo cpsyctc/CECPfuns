@@ -76,12 +76,14 @@
 was about trying to bridge the gap between (quantitative) researchers who then, and still, tend to think in terms of
 aggregated data about change in therapy, and clinicians who tend to think about individual client's change.</p>
 <p>The authors came up with two indices: the CSC, and the one here: the RCI or Reliable Change Index.</p>
-<p>RCI = (conf)\! \! 2\!  SD1 - rel</p>
+<p><script id="MathJax-script" async src="../../mathjaxr/doc/mathjax/es5/tex-chtml-full.js"></script>
+
+\[RCI = \varphi(conf)\! \times\! \sqrt{2}\! \times SD\times\sqrt{1 - rel}\]</p>
 <p>Where</p><ul><li><p><em>SD</em> is the Standard Deviation (doh!) at baseline/t1,</p></li>
-<li><p>\(\varphi(conf)\) is the value of Gaussian distribution for <em>conf</em> coverage with <em>conf</em>, usually .95 and hence (conf) = 1.96</p></li>
+<li><p>\(\varphi(conf)\) is the value of Gaussian distribution for <em>conf</em> coverage with <em>conf</em>, usually .95 and hence <em></em>\(\varphi(conf)\) = 1.96</p></li>
 <li><p>and <em>rel</em> is the reliability of the measures, usually from Cronbach's alpha.</p></li>
 </ul><p>The logic of the this is that this bit:
-2\!  SD1 - rel</p>
+\[\sqrt{2}\! \times SD\times\sqrt{1 - rel}\]</p>
 <p>is the standard error (SE) of a difference between two scores in Classical Test Theory (CTT)  In fact the 1984 paper omitted the \(\sqrt(2)\) term
 and that was corrected by a subsequent letter from Christensen &amp; Menoza (1986).  If we accept the model of CTT in which all these
 distributions are Gaussian then multiplying the SE by \(\varphi(conf)\) gives you a range of scores that would include a proportion <em>conf</em> of change
@@ -144,7 +146,7 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
