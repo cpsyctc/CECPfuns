@@ -24,6 +24,7 @@ help page within any package).
 Useful links:
 \itemize{
   \item \url{https://cpsyctc.github.io/CECPfuns/}
+  \item \url{https://cecpfuns.psyctc.org/}
 }
 
 }

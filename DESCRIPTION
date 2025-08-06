@@ -66,4 +66,4 @@ BuildManual: yes
 Config/testthat/edition: 3
 Depends: 
     R (>= 3.50)
-URL: https://cpsyctc.github.io/CECPfuns/
+URL: https://cpsyctc.github.io/CECPfuns/, https://cecpfuns.psyctc.org/
