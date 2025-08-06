@@ -22,7 +22,7 @@
 checkIsVector <- function(x) {
   ### alternative to base::is.vector() where you aren't worried about a vector having additional attributes
   ### if it does base::is.vector() will return FALSE
-  methods::is(x, "vector") && !is.list(x)
+  !is.list(x) && methods::is(x, "vector")
   ### this will return FALSE if x is a list, you may occasionally want to treat a list of length 1 as a vector
   ### use checkIsOneDim() for that
 }

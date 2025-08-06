@@ -2,7 +2,7 @@
 #'
 #' @param x object to test
 #'
-#' @return TRUE if x is one dimensional
+#' @return TRUE if x is one dimensional,i.e. a vector or list
 #' @noRd
 #'
 #' @examples
@@ -21,7 +21,7 @@ checkIsOneDim <- function(x){
   if(checkIsVector(x)){
     return(TRUE)
   } else {
-    if (is.list(x) & length(x)) {
+    if (is.list(x) & length(x) == 1) {
       return(TRUE)
     }
   }

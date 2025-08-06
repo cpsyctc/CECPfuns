@@ -116,6 +116,20 @@ convertVector2sentence <- function(x,
                        italicChar)
   }
   ### now we can move to handle the vector
+  if (length(x) == 1) {
+    print("got here")
+    ### just the one value, super easy!
+    if (quoted) {
+      return(paste0(italicChar,
+                    quoteChar,
+                    x[1],
+                    quoteChar,
+                    italicChar))
+    }
+    return(paste0(italicChar,
+                  x[1],
+                  italicChar))
+  }
   if (length(x) == 2) {
     ### two values, very easy
     if (quoted) {
