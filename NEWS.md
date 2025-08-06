@@ -1,3 +1,6 @@
+# Version 0.0.0.9061
+Tweak to convertVectorToSentence to throw warning not error if input is length 1. Also tweaked syntax in test-getPdiff2alphas.R.
+
 # Version 0.0.0.9060
 Silly little tweak adding "BuildManual: yes" to DESCRIPTION as I think it's needed now
 

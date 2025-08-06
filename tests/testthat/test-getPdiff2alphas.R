@@ -42,7 +42,8 @@ testthat::test_that("check warnings", {
 testthat::test_that("Output correct", {
   testthat::expect_equal(getPdiff2alphas(.7, .7, 8, 200, 150),
                          expected = 0.502352468524279)
-  testthat::test_that("Output correct",
-    testthat::expect_equal(getPdiff2alphas(.7, .8, 8, 200, 150),
-                           expected = 0.0073145138320746))
+})
+testthat::test_that("Output correct", {
+  testthat::expect_equal(getPdiff2alphas(.7, .8, 8, 200, 150),
+                         expected = 0.0073145138320746)
 })

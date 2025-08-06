@@ -54,8 +54,8 @@ convertVector2sentence <- function(x,
   ### CE 20201215 added quoteChar so I can quote with ', " or * (or anything!)
   ### CE 20210306 added sanity checking on input and then a test-convertVector2sentence.R file
   ### sanity check 1
-  if (!checkIsOneDim(x) | length(x) == 1 | is.list(x)) {
-    stop("x must be vector or single dimension list and vector of length 1 input is unlikely to parse as you want so it throws an error")
+  if (!checkIsOneDim(x) | is.list(x)) {
+    stop("x must be vector or single dimension list")
   }
   ### sanity check 2
   if (!is.character(andChar) | length(andChar) > 1) {
@@ -72,6 +72,10 @@ convertVector2sentence <- function(x,
   ### sanity check 5
   if (!is.logical(italicY)) {
     stop("italicY must be logical: 'TRUE', 'FALSE' or, less safely, 'T' or 'F'")
+  }
+  ### warning 1
+  if (length(x) == 1){
+    warning("Your vector has only one item, function will just return that.")
   }
 
   ### end of sanity checking

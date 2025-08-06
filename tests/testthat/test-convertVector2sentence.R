@@ -5,7 +5,6 @@ testthat::test_that("sanity checks work", {
   ### 1
   ### if(!is.vector(x) | length(x) == 1 | is.list(x))
   testthat::expect_error(convertVector2sentence(list(NULL)))
-  testthat::expect_error(convertVector2sentence(1))
   testthat::expect_error(convertVector2sentence(tmpMat))
   ### 2
   ###  if(!is.character(andVal) | length(andVal) > 1) {
@@ -21,6 +20,8 @@ testthat::test_that("sanity checks work", {
   ### 5
   ### if (!is.logical(italicY))
   testthat::expect_error(convertVector2sentence(italicY = 1))
+  ### test for warning on length 1 vector
+  testthat::expect_warning(convertVector2sentence(1))
 })
 
 ### there are no warnings to test
