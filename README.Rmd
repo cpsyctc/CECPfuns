@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal driving the creation of CECPfuns is largely selfish: to make sure I have a single, up to date, repository where I can find potentially reusable functions I have written.  However, it is something that has been very much encouraged by 
-(Dr. Clara Paz)[ https://investigacion.udla.edu.ec/udla_teams/clara-paz/] and she has contributed to some of these functions and to the general
+(Dr. Clara Paz)[https://investigacion.udla.edu.ec/udla_teams/clara-paz/] and she has contributed to some of these functions and to the general
 idea of the package.  Input has also come from (Emily Blackshaw)[https://www.researchgate.net/profile/Emily_Blackshaw2].  It is possible that 
 these functions may be of use to others so I am now uploading it to GitHub at https://github.com/cpsyctc/CECPfuns after any significant changes. 
 

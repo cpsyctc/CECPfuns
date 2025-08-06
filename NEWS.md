@@ -1,3 +1,6 @@
+# Version 0.0.0.9063
+Hm.  This has been a bit of a silly day for the package with me wasting some hours as I'd forgotten how the github pages and pkgdown processes work.  This update is just to get the package numbering correct in both NEWS.md and DESCRIPTION!
+
 # Version 0.0.0.9062
 Now added correction to convertVectorToSentence to handle input of length 1 sensibly.  Also corrections to improve checkIsOneDim.R and checkIsVector.R.  Mostly I'm still trying to understand github and the gh-pages branch and why pkgdown seems to have stopped working to create https://cecpfuns.psyctc.org/.
 
