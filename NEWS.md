@@ -1,3 +1,6 @@
+# Version 0.0.0.9062
+Now added correction to convertVectorToSentence to handle input of length 1 sensibly.  Also corrections to improve checkIsOneDim.R and checkIsVector.R.  Mostly I'm still trying to understand github and the gh-pages branch and why pkgdown seems to have stopped working to create https://cecpfuns.psyctc.org/.
+
 # Version 0.0.0.9061
 Tweak to convertVectorToSentence to throw warning not error if input is length 1. Also tweaked syntax in test-getPdiff2alphas.R.
 
