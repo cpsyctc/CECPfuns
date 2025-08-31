@@ -52,6 +52,7 @@ Other utility functions:
 \code{\link{convertClipboardAuthorNames}()},
 \code{\link{fixVarNames}()},
 \code{\link{getCorrectedR}()},
+\code{\link{getSvalFromPval}()},
 \code{\link{whichSetOfN}()}
 }
 \author{

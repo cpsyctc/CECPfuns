@@ -42,7 +42,8 @@ Other utility functions:
 \code{\link{convertClipboardAuthorNames}()},
 \code{\link{fixVarNames}()},
 \code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()}
+\code{\link{getCorrectedR}()},
+\code{\link{getSvalFromPval}()}
 }
 \author{
 Chris Evans

@@ -1,3 +1,6 @@
+# Version 0.0.0.9064
+Added trivial getSvalFromPval function.
+
 # Version 0.0.0.9063
 Hm.  This has been a bit of a silly day for the package with me wasting some hours as I'd forgotten how the github pages and pkgdown processes work.  This update is just to get the package numbering correct in both NEWS.md and DESCRIPTION!
 

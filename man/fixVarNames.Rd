@@ -97,6 +97,7 @@ Other utility functions:
 \code{\link{convertClipboardAuthorNames}()},
 \code{\link{getAttenuatedR}()},
 \code{\link{getCorrectedR}()},
+\code{\link{getSvalFromPval}()},
 \code{\link{whichSetOfN}()}
 }
 \author{
