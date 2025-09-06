@@ -1,3 +1,6 @@
+# Version 0.0.0.9065
+Vectorised trivial getSvalFromPval function.
+
 # Version 0.0.0.9064
 Added trivial getSvalFromPval function.
 

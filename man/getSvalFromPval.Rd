@@ -47,9 +47,29 @@ For what it is worth the s value of p = .05 is 4.322.
 
 \section{History/development log}{
 
-Started 31.viii.25
+Started 31.viii.25.
+Tweaked 6.ix.25 vectorizing the function.
 }
 
+\examples{
+getCorrectedR(.3, .7, .7)
+### should return 0.428571428571429
+### yes, that's a silly number of decimal places!
+
+### return an s value for p = .05 to three decimal places
+getSvalFromPval(.05, 3)
+### should return 4.322
+
+### return s value for throwing four heads in a row when you wanted heads
+getSvalFromPval(.5^4, 3)
+### should return 4 which is pretty much the definition of what an s value is, see background
+
+### the function is vectorised so can handle a vector of p values:
+getSvalFromPval(c(.5, .05, .01, .005, .001))
+### should return 1.000 4.322 6.644 7.644 9.966
+
+
+}
 \seealso{
 Other utility functions: 
 \code{\link{convertClipboardAuthorNames}()},
