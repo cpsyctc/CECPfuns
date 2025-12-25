@@ -1,0 +1,96 @@
+# Title Function designed for use in dplyr (tidyverse) piping to return mean diff and bootstrap CI around that
+
+Title Function designed for use in dplyr (tidyverse) piping to return
+mean diff and bootstrap CI around that
+
+## Usage
+
+``` r
+getBootCIgrpMeanDiff(
+  formula1,
+  data,
+  bootReps = 1000,
+  conf = 0.95,
+  bootCImethod = "pe"
+)
+```
+
+## Arguments
+
+- formula1:
+
+  formula defining the two variables to be correlated as scores ~ group
+
+- data:
+
+  data.frame or tibble with the data, often a subset of data created
+  with group_by() and pick()
+
+- bootReps:
+
+  integer giving number of bootstrap replications
+
+- conf:
+
+  numeric value giving width of confidence interval, e.g. .95 (default)
+
+- bootCImethod:
+
+  string giving method to derive bootstrap CI, minimum two letters 'pe',
+  'no', 'ba' or 'bc' for percentile, normal, basic or bca
+
+## Value
+
+list of named values obsDiff, LCLdiff and UCLdiff
+
+## See also
+
+Other bootstrap CI functions:
+[`getBootCICSC()`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md),
+[`getBootCICorr()`](https://cecpfuns.psyctc.org/reference/getBootCICorr.md),
+[`getBootCIalpha()`](https://cecpfuns.psyctc.org/reference/getBootCIalpha.md),
+[`getBootCImean()`](https://cecpfuns.psyctc.org/reference/getBootCImean.md)
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+### will need tidyverse to run
+library(tidyverse)
+### create some data
+### get replicable data
+set.seed(12345)
+n <- 120
+list(scores = rnorm(n), # Gaussian random base for scores
+  ### now add a grouping variable: help-seeking or not
+  grp = sample(c("HS", "not"), n, replace = TRUE),
+  ### now add gender
+  gender = sample(c("F", "M"), n, replace = TRUE)) %>%
+  as_tibble() %>%
+  ### next add a gender effect nudging women's scores up by .4
+  mutate(scores = if_else(gender == "F", scores + .4, scores),
+  ### next add the crucial help-seeking effect of 1.1
+        scores = if_else(grp == "HS", scores + 1.1, scores)) -> tmpDat
+#
+### have a look at that
+tmpDat
+#
+set.seed(12345) # to get replicable results from the bootstrap
+tmpDat %>%
+  ### don't forget to prefix the call with "list(" to tell dplyr
+  ### you are creating list output
+  ### pick(everything()) has replaced cur_data(), verbose but more flexbible
+  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) %>%
+  ### now unnest the list to columns
+  unnest_wider(meanDiff)
+
+### now an example of how this becomes useful: same but by gender
+set.seed(12345) # to get replicable results from the bootstrap
+tmpDat %>%
+  group_by(gender) %>%
+  ### remember the list output again!
+  summarise(meanDiff = list(getBootCIgrpMeanDiff(scores ~ grp, pick(everything())))) %>%
+  ### remember to unnnest again!
+  unnest_wider(meanDiff)
+  } # }
+```

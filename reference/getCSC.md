@@ -1,0 +1,129 @@
+# Function to return Jacobson (et al.) Clinically Significant Change (CSC)
+
+Fairly trivial function to compute CSC, mainly useful if using
+group_by() piping to find CSCs for various groups/subsets in your data.
+
+## Usage
+
+``` r
+getCSC(formula1, data)
+```
+
+## Arguments
+
+- formula1:
+
+  defines variables to use as score ~ grp where score has scores and grp
+  has grouping
+
+- data:
+
+  is the data, typically a subset creatd with group_by() and
+  pick(everything()) when called in tidyverse pipe
+
+## Value
+
+A single numeric value for the CSC
+
+## Background
+
+Like the CSC, the RCI comes out of the classic paper Jacobson, Follette
+& Revenstorf (1984). The thrust of the paper was about trying to bridge
+the gap between (quantitative) researchers who then, and still, tend to
+think in terms of aggregated data about change in therapy, and
+clinicians who tend to think about individual client's change.
+
+The authors came up with two indices: the RCI, and the one here: the CSC
+or Clinically Significant Change (cut-off).
+
+The authors defined three methods to set a criterion between "clinical"
+and "non-clinical" scores. Generally we prefer "help-seeking" and
+"non-help-seeking" to "clinical" and "non-clinical" to avoid
+automatically jumping into a disease/medical model.
+
+For a measure cued so that higher scores indicate more problems the
+methods were as follows.
+
+- Method a: the score 2 SD below the mean in the help-seeking group.
+
+- Method b: the score 2 SD above the mean in the non-help-seeking group.
+
+- Method c: the score between the means of the two groups defined so
+  that, for Gaussian distributions of scores, the cutting point would
+  misclassify the same proportions of each group. This is often spoken
+  of as the point halfway between the two means but the definition is
+  actually more subtle than that and will only be halfway between the
+  means where the two groups have the same score SD. Where the groups
+  have different SD the formula for method c is this.
+
+\\\frac{SD\_{HS}\*M\_{notHS} +
+SD\_{notHS}\*M\_{HS}}{SD\_{HS}+SD\_{notHS}}\\
+
+(with SD for Standard Deviation (doh!) and M for Mean)
+
+## History/development log
+
+Started before 5.iv.21
+
+## References
+
+- Jacobson, N. S., Follette, W. C., & Revenstorf, D. (1984).
+  Psychotherapy outcome research: Methods for reporting variability and
+  evaluating clinical significance. Behavior Therapy, 15, 336–352.
+
+- Evans, C., Margison, F., & Barkham, M. (1998). The contribution of
+  reliable and clinically significant change methods to evidence-based
+  mental health. Evidence Based Mental Health, 1, 70–72.
+  https://doi.org/0.1136/ebmh.1.3.70
+
+## See also
+
+[`getBootCICSC`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md)
+for CSC and bootstrap CI around it
+
+Other RCSC functions:
+[`classifyScoresVectorByRCI()`](https://cecpfuns.psyctc.org/reference/classifyScoresVectorByRCI.md),
+[`getBootCICSC()`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md),
+[`getRCIfromSDandAlpha()`](https://cecpfuns.psyctc.org/reference/getRCIfromSDandAlpha.md)
+
+Other RCSC functions:
+[`classifyScoresVectorByRCI()`](https://cecpfuns.psyctc.org/reference/classifyScoresVectorByRCI.md),
+[`getBootCICSC()`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md),
+[`getRCIfromSDandAlpha()`](https://cecpfuns.psyctc.org/reference/getRCIfromSDandAlpha.md)
+
+## Author
+
+Chris Evans
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# example uses very crude simulated data but illustrates utility of being able to pipe grouped
+# data into getCSC()
+library(tidyverse)
+set.seed(12345)
+n <- 250 # total sample size
+scores <- rnorm(n) # get some random numbers
+# now random allocation to help-seeking or non-help-seeking samples
+grp <- sample(c("HS", "notHS"), n, replace = TRUE)
+# and random allocation by gender
+gender <- sample(c("F", "M"), n, replace = TRUE)
+list(scores = scores,
+    grp = grp,
+    gender = gender) %>%
+ as_tibble() %>%
+ mutate(scores = if_else(gender == "F", scores + .13, scores), # make women .13 higher scoring
+        ### then make help-seeking group score 1.1 higher
+        scores = if_else(grp == "HS", scores + 1.1, scores)) -> tibDat
+### now get CSC overall
+tibDat %>%
+ ### pick(everything()) has replaced cur_data() in dplyr: more flexible but more verbose
+ summarise(CSC = getCSC(scores ~ grp, pick(everything())))
+
+### get CSC by gender
+tibDat %>%
+ group_by(gender) %>%
+ summarise(CSC = getCSC(scores ~ grp, pick(everything())))
+} # }
+```

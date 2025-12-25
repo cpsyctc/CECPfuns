@@ -1,0 +1,128 @@
+# Function returns a tibble of quantiles and confidence interval of quantiles for a range of probabilities. '
+
+Function returns a tibble of quantiles and confidence interval of
+quantiles for a range of probabilities. '
+
+## Usage
+
+``` r
+getCIforQuantiles(
+  vecDat = NA,
+  vecQuantiles = NA,
+  method = c("Nyblom", "Exact", "Bootstrap"),
+  ci = 0.95,
+  R = 9999,
+  type = NULL
+)
+```
+
+## Arguments
+
+- vecDat:
+
+  Vector of the data
+
+- vecQuantiles:
+
+  Vector of the quantiles you want
+
+- method:
+
+  Method you want to use to get the confidence intervals
+
+- ci:
+
+  Confidence interval (default .95)
+
+- R:
+
+  Number of bootstrap replications if using bootstrap method
+
+- type:
+
+  Type of quantile (default is 8)
+
+## Value
+
+A tibble of the results with variables: prob: the quantile required,
+i.e. .05, .5 would give the median, .95 the 95th (per)centile n: total n
+nOK: number of non-missing values nMiss: number of missing values
+quantile: the quantile for that value of prob LCL: lower confidence
+limit for that quantile UCL: upper confidence limt for that quantile
+
+## Background
+
+Quantiles, like percentiles, can be a very useful way of understanding a
+distribution, in MH research, typically a distribution of scores, often
+either help-seeking sample distribution or a non-help-seeking sample.
+
+For example, you might want to see if a score you have for someone is
+above the 95% (per)centile, i.e. above the .95 quantile of the
+non-help-seeking sample distribution.
+
+The catch is that, like any sample statistic, a quantile/percentile is
+generally being used as an estimate of a population value. That is to
+say we are really interested in whether the score we have is above the
+95% percentile of a non-help-seeking population. That means that the
+quantiles/percentiles from a sample are only approximate guides to the
+population values.
+
+As usual, a confidence interval (CI) around an observed quantile is a
+way of seeing how precisely, assuming random sampling of course, the
+sample quantile can guide us about the population quantile.
+
+Again as usual, the catch is that there are different ways of compute
+the CI around a quantile. This function is a wrapper around three
+methods from Michael Höhle's quantileCI package:
+
+- the Nyblom method
+
+- the "exact" method
+
+- the bootstrap method
+
+As I understand the quantileCI package the classic paper by Nyblom,
+generally the Nyblom method will be as good or better than the exact
+method and much faster than bootstrapping so the Nyblom method is the
+default here but I have put the others in for completeness.
+
+## History
+
+Started 4.vii.23
+
+## References
+
+- Nyblom, J. (1992). Note on interpolated order statistics. Statistics &
+  Probability Letters, 14(2), 129–131.
+  https://doi.org/10.1016/0167-7152(92)90076-H
+
+- https://github.com/mhoehle/quantileCI
+
+## See also
+
+Other CI functions, quantile functions:
+[`plotQuantileCIsfromDat()`](https://cecpfuns.psyctc.org/reference/plotQuantileCIsfromDat.md)
+
+## Author
+
+Chris Evans
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+### will need tidyverse to run
+library(tidyverse)
+### will need quantileCI to run
+### if you don't have quantileCI package you need to get it from github:
+# devtools::install_github("hoehleatsu/quantileCI")
+library(quantileCI)
+
+### use the exact method
+getCIforQuantiles(1:1000, c(.1, .5, .95), "e", ci = .95, R = 9999, type = 8)
+### use the Nyblom method
+getCIforQuantiles(1:1000, c(.1, .5, .95), "n", ci = .95, R = 9999, type = 8)
+### use the bootstrap method
+getCIforQuantiles(1:1000, c(.1, .5, .95), "b", ci = .95, R = 9999, type = 8)
+} # }
+```
