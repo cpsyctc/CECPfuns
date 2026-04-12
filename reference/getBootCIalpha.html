@@ -101,7 +101,8 @@
     <h2 id="history-development-log">History/development log<a class="anchor" aria-label="anchor" href="#history-development-log"></a></h2>
 
 
-<p>Started before 5.iv.21</p>
+<p>Started before 5.iv.21
+Improved help 12.iv.26</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -121,13 +122,61 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">tmpMat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">200</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">tmpDat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">tmpMat</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">tmpTib</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">tmpDat</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### I will create some examples of how the function can be used,</span></span></span>
+<span class="r-in"><span><span class="co">### in base R or tidyverse modes.</span></span></span>
+<span class="r-in"><span><span class="co">### create some data: 200 rows, 10 variables</span></span></span>
+<span class="r-in"><span><span class="co">### Gaussian distribution</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">12345</span><span class="op">)</span> <span class="co"># just to get same data every time</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">2000</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">matDat</span></span></span>
+<span class="r-in"><span><span class="co">### now pipe that matrix into a data frame</span></span></span>
+<span class="r-in"><span><span class="va">matDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="co">### this next line saves going through the rather</span></span></span>
+<span class="r-in"><span><span class="co">### laborious way of constructing variable</span></span></span>
+<span class="r-in"><span><span class="co">### names that you have to follow if</span></span></span>
+<span class="r-in"><span><span class="co">### you go direct to as_tibble() !</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="co">### so now we have a 200x10 tibble (i.e. a</span></span></span>
+<span class="r-in"><span><span class="co">### tidyverse version of a data frame)</span></span></span>
+<span class="r-in"><span><span class="co">### let's make some of these participants</span></span></span>
+<span class="r-in"><span><span class="co">### young and some old</span></span></span>
+<span class="r-in"><span><span class="co">### make the odd numbered ones "young"</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>                       <span class="st">"young"</span>,</span></span>
+<span class="r-in"><span>                       <span class="st">"old"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="co">### get variables in a more sensible order</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">tibDat</span></span></span>
+<span class="r-in"><span><span class="co">### OK, we have some data, let's use it!</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">### all default arguments</span></span></span>
-<span class="r-in"><span><span class="fu">getBootCIalpha</span> <span class="op">(</span><span class="va">tmpMat</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">### As with all bootstrap functions, it's wise</span></span></span>
+<span class="r-in"><span><span class="co">### to set the random number generator (RNG) seed</span></span></span>
+<span class="r-in"><span><span class="co">### before running the function to ensure you see</span></span></span>
+<span class="r-in"><span><span class="co">### exactly the same results every time.</span></span></span>
+<span class="r-in"><span><span class="co">### That's a different issue from the one above</span></span></span>
+<span class="r-in"><span><span class="co">### about setting the RNG seed to get the same data</span></span></span>
+<span class="r-in"><span><span class="co">### every time when generating data.  Same principle</span></span></span>
+<span class="r-in"><span><span class="co">### different effect.</span></span></span>
+<span class="r-in"><span><span class="co">###</span></span></span>
+<span class="r-in"><span><span class="co">### this is base R idiom and using the function's default arguments</span></span></span>
+<span class="r-in"><span><span class="co">### to analyse a matrix</span></span></span>
+<span class="r-in"><span><span class="fu">getBootCIalpha</span><span class="op">(</span><span class="va">matDat</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">###</span></span></span>
+<span class="r-in"><span><span class="co">### this is base R analysing a tibble (or data frame)</span></span></span>
+<span class="r-in"><span><span class="fu">getBootCIalpha</span><span class="op">(</span><span class="va">tibDat</span><span class="op">[</span> , <span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">###</span></span></span>
+<span class="r-in"><span><span class="co">### now tidyverse, still entire tibble</span></span></span>
+<span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>alphaCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCIalpha</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">pick</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="va">alphaCI</span><span class="op">)</span> <span class="co"># unnest to get the results</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### more useful tidyverse, analysing the age groups separately</span></span></span>
+<span class="r-in"><span><span class="va">tibDat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>alphaCI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">getBootCIalpha</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">pick</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="va">ungroup</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="va">alphaCI</span><span class="op">)</span> <span class="co"># unnest again</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
