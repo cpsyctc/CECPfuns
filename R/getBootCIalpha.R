@@ -14,13 +14,61 @@
 #'
 #' @examples
 #' \dontrun{
-#' set.seed(12345)
-#' tmpMat <- matrix(rnorm(200), ncol = 10)
-#' tmpDat <- as.data.frame(tmpMat)
-#' tmpTib <- as_tibble(tmpDat)
+#' ### I will create some examples of how the function can be used,
+#' ### in base R or tidyverse modes.
+#' ### create some data: 200 rows, 10 variables
+#' ### Gaussian distribution
+#' set.seed(12345) # just to get same data every time
+#' matrix(rnorm(2000), ncol = 10) -> matDat
+#' ### now pipe that matrix into a data frame
+#' matDat %>%
+#' ### this next line saves going through the rather
+#' ### laborious way of constructing variable
+#' ### names that you have to follow if
+#' ### you go direct to as_tibble() !
+#' as.data.frame() %>%
+#' as_tibble() %>%
+#' ### so now we have a 200x10 tibble (i.e. a
+#' ### tidyverse version of a data frame)
+#' ### let's make some of these participants
+#' ### young and some old
+#' ### make the odd numbered ones "young"
+#' mutate(age = if_else(row_number() %% 2 == 1,
+#'                        "young",
+#'                        "old")) %>%
+#' ### get variables in a more sensible order
+#' select(age, everything()) -> tibDat
+#' ### OK, we have some data, let's use it!
 #'
-#' ### all default arguments
-#' getBootCIalpha (tmpMat)
+#' ### As with all bootstrap functions, it's wise
+#' ### to set the random number generator (RNG) seed
+#' ### before running the function to ensure you see
+#' ### exactly the same results every time.
+#' ### That's a different issue from the one above
+#' ### about setting the RNG seed to get the same data
+#' ### every time when generating data.  Same principle
+#' ### different effect.
+#' ###
+#' ### this is base R idiom and using the function's default arguments
+#' ### to analyse a matrix
+#' getBootCIalpha(matDat)
+#' ###
+#' ### this is base R analysing a tibble (or data frame)
+#' getBootCIalpha(tibDat[ , -1])
+#' ###
+#' ### now tidyverse, still entire tibble
+#' tibDat %>%
+#' select(-age) %>%
+#' summarise(alphaCI = list(getBootCIalpha(pick(everything())))) %>%
+#' unnest_wider(alphaCI) # unnest to get the results
+#'
+#'
+#' ### more useful tidyverse, analysing the age groups separately
+#' tibDat %>%
+#' group_by(age) %>%
+#'   summarise(alphaCI = list(getBootCIalpha(pick(everything())))) %>%
+#'   ungroup %>%
+#'   unnest_wider(alphaCI) # unnest again
 #' }
 #'
 #' @family bootstrap CI functions
@@ -30,6 +78,7 @@
 #'
 #' @section History/development log:
 #' Started before 5.iv.21
+#' Improved help 12.iv.26
 #'
 getBootCIalpha  <- function(dat,
                            verbose = TRUE,
