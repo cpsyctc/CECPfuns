@@ -1,3 +1,6 @@
+# Version 0.0.0.9067
+Tweaks to help in getBootCIalpha.
+
 # Version 0.0.0.9066
 Added getLastDateInMonth function.
 
