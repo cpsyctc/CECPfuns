@@ -4,6 +4,9 @@
 #' @param scoreAsMean Score is mean of item scores (as opposed to total/sum score)
 #' @param propProrateMin Minimum proportion of missing item responses that allows prorating
 #' @param nProrateMin Minimum number of missing item responses that allows prorating
+#' @param roundToInteger Round to integer after prorating
+#' @param replaceMissingWithFixed Replace missing item scores with a fixed value
+#' @param replacementValue value with which to replace missing items
 #' @param k Optional check on the number of items
 #' @param checkItemScores logical, i.e. TRUE or FALSE, which says whether to check the item scores
 #' @param minItemScore minimum allowed item score
@@ -52,6 +55,9 @@ getScoreFromItems <- function(vec,
                               scoreAsMean = TRUE,
                               propProrateMin = NULL,
                               nProrateMin = NULL,
+                              roundToInteger=FALSE,
+                              replaceMissingWithFixed=FALSE,
+                              replacementValue=NULL,
                               k = NULL,
                               checkItemScores = FALSE,
                               minItemScore = NULL,
@@ -102,6 +108,29 @@ getScoreFromItems <- function(vec,
            propProrateMin,
            "  You can't have more than all the items missing!  Rethink?!") -> tmpMessage
     warning(tmpMessage)
+  }
+  if(!is.logical(roundToInteger)){
+    stop("You supplied a value for roundToInteger that wasn TRUE or FALSE.  Fix that!")
+  }
+  if(!is.logical(replaceMissingWithFixed)){
+    stop("You supplied a value for replaceMissingWithFixed that wasn TRUE or FALSE.  Fix that!")
+  }
+  if(!is.null(replacementValue) & !replaceMissingWithFixed) {
+    stop("You supplied a non-null value for replacementValue but had replaceMissingWithFalse as FALSE: something wrong there!")
+  }
+  if(is.null(replacementValue) & replaceMissingWithFixed) {
+    stop("You supplied a (default) null value for replacementValue but had replaceMissingWithFalse as TRUE: something wrong there!")
+  }
+  if(replaceMissingWithFixed) {
+    if(!is.numeric(replacementValue)) {
+      stop("You supplied replaceMissingWithFalse as TRUE but a non-numeric value for replacementValue: something wrong there!")
+    }
+    if(length(replacementValue) != 1) {
+      paste0("You have set replacement value as ",
+             replacementValue,
+             " but that must be a single numeric value!  Rethink?!") -> tmpMessage
+      stop(tmpMessage)
+    }
   }
   ### k is an optional double check on the data
   if(!is.null(k)) {
@@ -178,7 +207,7 @@ getScoreFromItems <- function(vec,
     return(NA)
   }
 
-  ### got usable data of the correct length but do we check items
+  ### got usable data of the correct length but do we check items, if so
   if(checkItemScores) {
     maxScore <- max(vec, na.rm = TRUE)
     minScore <- min(vec, na.rm = TRUE)
@@ -200,12 +229,19 @@ getScoreFromItems <- function(vec,
     }
   }
 
+  ### deal with the fixed replacement
+  if(replaceMissingWithFixed) {
+    vec[is.na(vec)] <- replacementValue
+  }
+
   ### OK.  Finally we can score the data!!
   tmpMean <- mean(vec, na.rm = TRUE)
-  if (scoreAsMean){
-    return(tmpMean)
-  } else {
-    return(tmpMean * k)
+  if (!scoreAsMean) {
+    tmpMean * k -> tmpMean
   }
+  if (roundToInteger) {
+    round(tmpMean) -> tmpMean
+  }
+  tmpMean
 }
 
