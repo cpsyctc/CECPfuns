@@ -1,6 +1,7 @@
 # Bootstrapping
 
 ``` r
+
 library(CECPfuns)
 ```
 

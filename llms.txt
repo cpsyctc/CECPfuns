@@ -23,6 +23,7 @@ You can install the latest version of CECPfuns from
 To get it with the vignettes use one of these instructions within R.
 
 ``` r
+
 devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
 ### or
 remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
@@ -37,6 +38,7 @@ instructions. Alternatively, you can install it without the vignettes
 using one of the following.
 
 ``` r
+
 devtools::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)
 ### or
 remotes::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)

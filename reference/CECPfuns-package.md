@@ -29,6 +29,11 @@ Useful links:
 **Maintainer**: Chris Evans <chris@psyctc.org>
 ([ORCID](https://orcid.org/0000-0002-4197-4202)) \[copyright holder\]
 
+Authors:
+
+- Chris Evans <chris@psyctc.org>
+  ([ORCID](https://orcid.org/0000-0002-4197-4202)) \[copyright holder\]
+
 Other contributors:
 
 - Clara Paz <clara.paz@udla.edu.ec>

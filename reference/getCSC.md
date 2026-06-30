@@ -86,11 +86,6 @@ Other RCSC functions:
 [`getBootCICSC()`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md),
 [`getRCIfromSDandAlpha()`](https://cecpfuns.psyctc.org/reference/getRCIfromSDandAlpha.md)
 
-Other RCSC functions:
-[`classifyScoresVectorByRCI()`](https://cecpfuns.psyctc.org/reference/classifyScoresVectorByRCI.md),
-[`getBootCICSC()`](https://cecpfuns.psyctc.org/reference/getBootCICSC.md),
-[`getRCIfromSDandAlpha()`](https://cecpfuns.psyctc.org/reference/getRCIfromSDandAlpha.md)
-
 ## Author
 
 Chris Evans
