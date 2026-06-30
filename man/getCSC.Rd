@@ -95,15 +95,10 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 \seealso{
 \code{\link{getBootCICSC}} for CSC and bootstrap CI around it
 
-Other RCSC functions: 
-\code{\link{classifyScoresVectorByRCI}()},
-\code{\link{getBootCICSC}()},
-\code{\link{getRCIfromSDandAlpha}()}
-
-Other RCSC functions: 
-\code{\link{classifyScoresVectorByRCI}()},
-\code{\link{getBootCICSC}()},
-\code{\link{getRCIfromSDandAlpha}()}
+Other RCSC functions:
+\code{\link[=classifyScoresVectorByRCI]{classifyScoresVectorByRCI()}},
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getRCIfromSDandAlpha]{getRCIfromSDandAlpha()}}
 }
 \author{
 Chris Evans

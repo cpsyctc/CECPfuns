@@ -64,11 +64,11 @@ data \%>\%
 
 }
 \seealso{
-Other bootstrap CI functions: 
-\code{\link{getBootCICSC}()},
-\code{\link{getBootCIalpha}()},
-\code{\link{getBootCIgrpMeanDiff}()},
-\code{\link{getBootCImean}()}
+Other bootstrap CI functions:
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getBootCIalpha]{getBootCIalpha()}},
+\code{\link[=getBootCIgrpMeanDiff]{getBootCIgrpMeanDiff()}},
+\code{\link[=getBootCImean]{getBootCImean()}}
 }
 \author{
 Chris Evans

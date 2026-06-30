@@ -84,13 +84,13 @@ plotBinconf(.3, .95, 100, 700, 5)
 
 }
 \seealso{
-Other confidence interval functions: 
-\code{\link{getCIPearson}()},
-\code{\link{getCISpearman}()},
-\code{\link{plotCIPearson}()}
+Other confidence interval functions:
+\code{\link[=getCIPearson]{getCIPearson()}},
+\code{\link[=getCISpearman]{getCISpearman()}},
+\code{\link[=plotCIPearson]{plotCIPearson()}}
 
-Other demonstration functions: 
-\code{\link{plotCIPearson}()}
+Other demonstration functions:
+\code{\link[=plotCIPearson]{plotCIPearson()}}
 }
 \author{
 Chris Evans

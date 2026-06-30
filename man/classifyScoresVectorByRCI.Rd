@@ -154,10 +154,10 @@ the documentation for \code{\link[Hmisc]{binconf}} for a brief
 discussion of that choice and references.
 }
 
-Other RCSC functions: 
-\code{\link{getBootCICSC}()},
-\code{\link{getCSC}()},
-\code{\link{getRCIfromSDandAlpha}()}
+Other RCSC functions:
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getCSC]{getCSC()}},
+\code{\link[=getRCIfromSDandAlpha]{getRCIfromSDandAlpha()}}
 }
 \author{
 Chris Evans

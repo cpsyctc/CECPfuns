@@ -204,10 +204,10 @@ checkAllUnique(tmpDatNA, allowMultipleColumns = TRUE, errIfNA = FALSE)
 
 }
 \seealso{
-Other data checking functions: 
-\code{\link{getNNA}()},
-\code{\link{getNOK}()},
-\code{\link{isOneToOne}()}
+Other data checking functions:
+\code{\link[=getNNA]{getNNA()}},
+\code{\link[=getNOK]{getNOK()}},
+\code{\link[=isOneToOne]{isOneToOne()}}
 }
 \author{
 Chris Evans

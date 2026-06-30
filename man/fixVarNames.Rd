@@ -93,13 +93,13 @@ rename_with(fixVarNames, starts_with("I"), width = 3, newText = "YP")
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{convertClipboardAuthorNames}()},
-\code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getLastDateInMonth}()},
-\code{\link{getSvalFromPval}()},
-\code{\link{whichSetOfN}()}
+Other utility functions:
+\code{\link[=convertClipboardAuthorNames]{convertClipboardAuthorNames()}},
+\code{\link[=getAttenuatedR]{getAttenuatedR()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getLastDateInMonth]{getLastDateInMonth()}},
+\code{\link[=getSvalFromPval]{getSvalFromPval()}},
+\code{\link[=whichSetOfN]{whichSetOfN()}}
 }
 \author{
 Chris Evans

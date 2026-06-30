@@ -44,8 +44,8 @@ convert2CEdate(dates12)
 
 }
 \seealso{
-Other converting utilities: 
-\code{\link{convertVector2sentence}()}
+Other converting utilities:
+\code{\link[=convertVector2sentence]{convertVector2sentence()}}
 }
 \author{
 Chris Evans

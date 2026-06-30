@@ -28,13 +28,13 @@ getNNA(c(1:5, NA, 7:10))
 \seealso{
 \code{\link{getNOK}} for count of non-missing values
 
-Other counting functions: 
-\code{\link{getNOK}()}
+Other counting functions:
+\code{\link[=getNOK]{getNOK()}}
 
-Other data checking functions: 
-\code{\link{checkAllUnique}()},
-\code{\link{getNOK}()},
-\code{\link{isOneToOne}()}
+Other data checking functions:
+\code{\link[=checkAllUnique]{checkAllUnique()}},
+\code{\link[=getNOK]{getNOK()}},
+\code{\link[=isOneToOne]{isOneToOne()}}
 }
 \author{
 Chris Evans

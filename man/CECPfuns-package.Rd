@@ -31,6 +31,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
 
+Authors:
+\itemize{
+  \item Chris Evans \email{chris@psyctc.org} (\href{https://orcid.org/0000-0002-4197-4202}{ORCID}) [copyright holder]
+}
+
 Other contributors:
 \itemize{
   \item Clara Paz \email{clara.paz@udla.edu.ec} (\href{https://orcid.org/0000-0003-1106-9567}{ORCID}) [consultant, reviewer]

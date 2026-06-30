@@ -29,8 +29,8 @@ hyphenateWords(87, capitalise = TRUE)
 \seealso{
 \code{\link{convertVector2sentence}} for another utility function for text, converts vectors to comma (or other symbol), separated clauses, e.g. 1:3 to "1, 2 and 3".
 
-Other text utilities: 
-\code{\link{convertVector2sentence}()}
+Other text utilities:
+\code{\link[=convertVector2sentence]{convertVector2sentence()}}
 }
 \author{
 Chris Evans

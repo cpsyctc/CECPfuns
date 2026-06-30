@@ -113,8 +113,8 @@ https://doi.org/10.1016/0167-7152(92)90076-H
 }
 }
 \seealso{
-Other CI functions, quantile functions: 
-\code{\link{plotQuantileCIsfromDat}()}
+Other CI functions, quantile functions:
+\code{\link[=plotQuantileCIsfromDat]{plotQuantileCIsfromDat()}}
 }
 \author{
 Chris Evans

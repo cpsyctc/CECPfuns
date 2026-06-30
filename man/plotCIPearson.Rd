@@ -74,13 +74,13 @@ tmpPlot +
 }
 }
 \seealso{
-Other confidence interval functions: 
-\code{\link{getCIPearson}()},
-\code{\link{getCISpearman}()},
-\code{\link{plotBinconf}()}
+Other confidence interval functions:
+\code{\link[=getCIPearson]{getCIPearson()}},
+\code{\link[=getCISpearman]{getCISpearman()}},
+\code{\link[=plotBinconf]{plotBinconf()}}
 
-Other demonstration functions: 
-\code{\link{plotBinconf}()}
+Other demonstration functions:
+\code{\link[=plotBinconf]{plotBinconf()}}
 }
 \author{
 Chris Evans

@@ -85,10 +85,10 @@ change methods to evidence-based mental health. Evidence Based Mental Health, 1,
 }
 }
 \seealso{
-Other RCSC functions: 
-\code{\link{classifyScoresVectorByRCI}()},
-\code{\link{getBootCICSC}()},
-\code{\link{getCSC}()}
+Other RCSC functions:
+\code{\link[=classifyScoresVectorByRCI]{classifyScoresVectorByRCI()}},
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getCSC]{getCSC()}}
 }
 \author{
 Chris Evans

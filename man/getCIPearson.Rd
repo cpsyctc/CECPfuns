@@ -104,10 +104,10 @@ tmpTib \%>\%
 }
 }
 \seealso{
-Other confidence interval functions: 
-\code{\link{getCISpearman}()},
-\code{\link{plotBinconf}()},
-\code{\link{plotCIPearson}()}
+Other confidence interval functions:
+\code{\link[=getCISpearman]{getCISpearman()}},
+\code{\link[=plotBinconf]{plotBinconf()}},
+\code{\link[=plotCIPearson]{plotCIPearson()}}
 }
 \author{
 Chris Evans

@@ -56,8 +56,8 @@ Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. P
 McDonald R. P. (1999) Test Theory: A Unified Treatment. Mahwah, NJ: Erlbaum
 }
 \seealso{
-Other Chronbach alpha functions: 
-\code{\link{getBootCIalpha}()}
+Other Chronbach alpha functions:
+\code{\link[=getBootCIalpha]{getBootCIalpha()}}
 }
 \author{
 Chris Evans

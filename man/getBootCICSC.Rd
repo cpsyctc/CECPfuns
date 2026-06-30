@@ -80,16 +80,16 @@ tmpDat \%>\%
 \seealso{
 \code{\link{getCSC}} provides just the CSC if you don't need the CI around it.  Much faster of course!
 
-Other RCSC functions: 
-\code{\link{classifyScoresVectorByRCI}()},
-\code{\link{getCSC}()},
-\code{\link{getRCIfromSDandAlpha}()}
+Other RCSC functions:
+\code{\link[=classifyScoresVectorByRCI]{classifyScoresVectorByRCI()}},
+\code{\link[=getCSC]{getCSC()}},
+\code{\link[=getRCIfromSDandAlpha]{getRCIfromSDandAlpha()}}
 
-Other bootstrap CI functions: 
-\code{\link{getBootCICorr}()},
-\code{\link{getBootCIalpha}()},
-\code{\link{getBootCIgrpMeanDiff}()},
-\code{\link{getBootCImean}()}
+Other bootstrap CI functions:
+\code{\link[=getBootCICorr]{getBootCICorr()}},
+\code{\link[=getBootCIalpha]{getBootCIalpha()}},
+\code{\link[=getBootCIgrpMeanDiff]{getBootCIgrpMeanDiff()}},
+\code{\link[=getBootCImean]{getBootCImean()}}
 }
 \author{
 Chris Evans

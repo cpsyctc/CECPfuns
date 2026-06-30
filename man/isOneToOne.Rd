@@ -87,10 +87,10 @@ isOneToOne(1:26,c("a",letters[1:25]))
 
 }
 \seealso{
-Other data checking functions: 
-\code{\link{checkAllUnique}()},
-\code{\link{getNNA}()},
-\code{\link{getNOK}()}
+Other data checking functions:
+\code{\link[=checkAllUnique]{checkAllUnique()}},
+\code{\link[=getNNA]{getNNA()}},
+\code{\link[=getNOK]{getNOK()}}
 }
 \author{
 Chris Evans

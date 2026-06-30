@@ -75,13 +75,13 @@ convertClipboardAuthorNames(toClipboard = FALSE)
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{fixVarNames}()},
-\code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getLastDateInMonth}()},
-\code{\link{getSvalFromPval}()},
-\code{\link{whichSetOfN}()}
+Other utility functions:
+\code{\link[=fixVarNames]{fixVarNames()}},
+\code{\link[=getAttenuatedR]{getAttenuatedR()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getLastDateInMonth]{getLastDateInMonth()}},
+\code{\link[=getSvalFromPval]{getSvalFromPval()}},
+\code{\link[=whichSetOfN]{whichSetOfN()}}
 }
 \concept{text utility functions}
 \concept{utility functions}

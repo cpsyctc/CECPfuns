@@ -74,11 +74,11 @@ convertVector2sentence(1:4, italicY = TRUE, quoted = TRUE)
 \code{\link{hyphenateWords}} for another utility function to
 convert numbers to English words, e.g. "87" to "eighty-seven".
 
-Other text utilities: 
-\code{\link{hyphenateWords}()}
+Other text utilities:
+\code{\link[=hyphenateWords]{hyphenateWords()}}
 
-Other converting utilities: 
-\code{\link{convert2CEdate}()}
+Other converting utilities:
+\code{\link[=convert2CEdate]{convert2CEdate()}}
 }
 \author{
 Chris Evans

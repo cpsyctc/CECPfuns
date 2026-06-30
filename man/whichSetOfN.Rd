@@ -38,13 +38,13 @@ whichSetOfN(1:7, 3)
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{convertClipboardAuthorNames}()},
-\code{\link{fixVarNames}()},
-\code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getLastDateInMonth}()},
-\code{\link{getSvalFromPval}()}
+Other utility functions:
+\code{\link[=convertClipboardAuthorNames]{convertClipboardAuthorNames()}},
+\code{\link[=fixVarNames]{fixVarNames()}},
+\code{\link[=getAttenuatedR]{getAttenuatedR()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getLastDateInMonth]{getLastDateInMonth()}},
+\code{\link[=getSvalFromPval]{getSvalFromPval()}}
 }
 \author{
 Chris Evans

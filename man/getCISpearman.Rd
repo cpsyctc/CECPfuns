@@ -121,10 +121,10 @@ tibDat \%>\%
 
 }
 \seealso{
-Other confidence interval functions: 
-\code{\link{getCIPearson}()},
-\code{\link{plotBinconf}()},
-\code{\link{plotCIPearson}()}
+Other confidence interval functions:
+\code{\link[=getCIPearson]{getCIPearson()}},
+\code{\link[=plotBinconf]{plotBinconf()}},
+\code{\link[=plotCIPearson]{plotCIPearson()}}
 }
 \author{
 Chris Evans

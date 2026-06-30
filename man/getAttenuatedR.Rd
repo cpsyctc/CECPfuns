@@ -48,13 +48,13 @@ getAttenuatedR(.9, .7, .8)
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{convertClipboardAuthorNames}()},
-\code{\link{fixVarNames}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getLastDateInMonth}()},
-\code{\link{getSvalFromPval}()},
-\code{\link{whichSetOfN}()}
+Other utility functions:
+\code{\link[=convertClipboardAuthorNames]{convertClipboardAuthorNames()}},
+\code{\link[=fixVarNames]{fixVarNames()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getLastDateInMonth]{getLastDateInMonth()}},
+\code{\link[=getSvalFromPval]{getSvalFromPval()}},
+\code{\link[=whichSetOfN]{whichSetOfN()}}
 }
 \author{
 Chris Evans

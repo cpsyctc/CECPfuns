@@ -43,13 +43,13 @@ getLastDateInMonth(as.Date(c("15/02/1975",  "15/02/1976"), format = "\%d/\%m/\%Y
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{convertClipboardAuthorNames}()},
-\code{\link{fixVarNames}()},
-\code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getSvalFromPval}()},
-\code{\link{whichSetOfN}()}
+Other utility functions:
+\code{\link[=convertClipboardAuthorNames]{convertClipboardAuthorNames()}},
+\code{\link[=fixVarNames]{fixVarNames()}},
+\code{\link[=getAttenuatedR]{getAttenuatedR()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getSvalFromPval]{getSvalFromPval()}},
+\code{\link[=whichSetOfN]{whichSetOfN()}}
 }
 \author{
 Chris Evans

@@ -180,8 +180,8 @@ https://doi.org/10.1016/0167-7152(92)90076-H
 }
 }
 \seealso{
-Other CI functions, quantile functions: 
-\code{\link{getCIforQuantiles}()}
+Other CI functions, quantile functions:
+\code{\link[=getCIforQuantiles]{getCIforQuantiles()}}
 }
 \author{
 Chris Evans

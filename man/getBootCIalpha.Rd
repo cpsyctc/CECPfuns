@@ -105,14 +105,14 @@ group_by(age) \%>\%
 
 }
 \seealso{
-Other bootstrap CI functions: 
-\code{\link{getBootCICSC}()},
-\code{\link{getBootCICorr}()},
-\code{\link{getBootCIgrpMeanDiff}()},
-\code{\link{getBootCImean}()}
+Other bootstrap CI functions:
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getBootCICorr]{getBootCICorr()}},
+\code{\link[=getBootCIgrpMeanDiff]{getBootCIgrpMeanDiff()}},
+\code{\link[=getBootCImean]{getBootCImean()}}
 
-Other Chronbach alpha functions: 
-\code{\link{getChronbachAlpha}()}
+Other Chronbach alpha functions:
+\code{\link[=getChronbachAlpha]{getChronbachAlpha()}}
 }
 \author{
 Chris Evans

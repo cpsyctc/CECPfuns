@@ -161,11 +161,11 @@ tmpDat \%>\%
 
 }
 \seealso{
-Other bootstrap CI functions: 
-\code{\link{getBootCICSC}()},
-\code{\link{getBootCICorr}()},
-\code{\link{getBootCIalpha}()},
-\code{\link{getBootCIgrpMeanDiff}()}
+Other bootstrap CI functions:
+\code{\link[=getBootCICSC]{getBootCICSC()}},
+\code{\link[=getBootCICorr]{getBootCICorr()}},
+\code{\link[=getBootCIalpha]{getBootCIalpha()}},
+\code{\link[=getBootCIgrpMeanDiff]{getBootCIgrpMeanDiff()}}
 }
 \author{
 Chris Evans

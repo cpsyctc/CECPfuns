@@ -71,13 +71,13 @@ getSvalFromPval(c(.5, .05, .01, .005, .001))
 
 }
 \seealso{
-Other utility functions: 
-\code{\link{convertClipboardAuthorNames}()},
-\code{\link{fixVarNames}()},
-\code{\link{getAttenuatedR}()},
-\code{\link{getCorrectedR}()},
-\code{\link{getLastDateInMonth}()},
-\code{\link{whichSetOfN}()}
+Other utility functions:
+\code{\link[=convertClipboardAuthorNames]{convertClipboardAuthorNames()}},
+\code{\link[=fixVarNames]{fixVarNames()}},
+\code{\link[=getAttenuatedR]{getAttenuatedR()}},
+\code{\link[=getCorrectedR]{getCorrectedR()}},
+\code{\link[=getLastDateInMonth]{getLastDateInMonth()}},
+\code{\link[=whichSetOfN]{whichSetOfN()}}
 }
 \author{
 Chris Evans

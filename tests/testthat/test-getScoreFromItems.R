@@ -18,6 +18,17 @@ testthat::test_that("sanity checks work", {
   testthat::expect_error(getScoreFromItems(nProrateMin = 0.1))
   testthat::expect_error(getScoreFromItems(nProrateMin = 1.2))
   testthat::expect_error(getScoreFromItems(nProrateMin = 1, propProrateMin = .1))
+  ### roundToInteger
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2, roundToInteger = "a"))
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2, roundToInteger = 1:2))
+  ### replaceMissingWithFixed
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2, replaceMissingWithFixed = "a"))
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2, replaceMissingWithFixed = 1:2))
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2, replaceMissingWithFixed = T))
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2,
+                                           replaceMissingWithFixed = T, replacementValue = "a"))
+  testthat::expect_error(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0), propProrateMin = .2,
+                                           replaceMissingWithFixed = T, replacementValue = 1:2))
   ### k
   testthat::expect_error(getScoreFromItems(k = "A"))
   testthat::expect_error(getScoreFromItems(k = 1))
@@ -72,8 +83,13 @@ testthat::test_that("Output correct", {
                                            checkItemScores = TRUE,
                                            minItemScore =  1,
                                            maxItemScore = 9), NA)
-
-
+  testthat::expect_equal(getScoreFromItems(c(1, 1, NA, 1, 1, 1, 0, 0),
+                                           propProrateMin = .2,
+                                           roundToInteger = T), 1)
+  testthat::expect_equal(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0),
+                                           propProrateMin = .2,
+                                           replaceMissingWithFixed = T,
+                                           replacementValue = 0), .625)
 })
 
 ### tidy up
