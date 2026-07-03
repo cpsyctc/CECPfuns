@@ -37,6 +37,10 @@
 #' I think it has grown into a function that may be useful to others.  More usefully, I have built in the prorating but perhaps
 #' most usefully of all, I have built in some sanity checks on the inputs and on the item scores.
 #'
+#' Thanks to Maren Rogawski for making me aware of measures that use the, to my mind, rather bizarre, fixed value
+#' replacement of missing item values rather than what I regard as more defensible pro-rating using the mean of the
+#' completed items.
+#'
 #' @examples
 #' \dontrun{
 #' ### will need tidyverse to run
@@ -352,6 +356,8 @@ getScoreFromItems <- function(vec,
                         " so something is wrong!")
       stop(errText)
     }
+  } else {
+    k <- length(vec)
   }
 
   ### work out prorating criterion using number rather than proportion, whichever was given

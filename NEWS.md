@@ -1,5 +1,8 @@
+# Version 0.0.0.9069
+Corrected corner case in getScoreFromItems where scoreAsMean was FALSE and k wasn't supplied.
+
 # Version 0.0.0.9068
-Tweaks to help in getBootCIalpha.
+Tweaks to getScoreFromItems to add fixed value replacement of missing item.
 
 # Version 0.0.0.9067
 Tweaks to help in getBootCIalpha.

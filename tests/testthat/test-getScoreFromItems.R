@@ -90,6 +90,11 @@ testthat::test_that("Output correct", {
                                            propProrateMin = .2,
                                            replaceMissingWithFixed = T,
                                            replacementValue = 0), .625)
+  testthat::expect_equal(getScoreFromItems(c(1,1, NA, 1, 1, 1, 0, 0),
+                                           scoreAsMean = FALSE,
+                                           propProrateMin = .2,
+                                           replaceMissingWithFixed = T,
+                                           replacementValue = 0), 5)
 })
 
 ### tidy up
