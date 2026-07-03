@@ -15,12 +15,12 @@
 
 Evans E (????). *CECPfuns: Package of Utility Functions for
 Psychological Therapies, Mental Health and Well-being work (Created by
-Chris Evans and Clara Paz)*. R package version 0.0.0.9068,
+Chris Evans and Clara Paz)*. R package version 0.0.0.9069,
 <https://github.com/cpsyctc/CECPfuns>.
 
     @Manual{,
       title = {{CECPfuns}: Package of Utility Functions for Psychological Therapies, Mental Health and Well-being work (Created by Chris Evans and Clara Paz)},
       author = {Evans Evans},
-      note = {R package version 0.0.0.9068},
+      note = {R package version 0.0.0.9069},
       url = {https://github.com/cpsyctc/CECPfuns},
     }
