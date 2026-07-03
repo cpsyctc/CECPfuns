@@ -101,6 +101,11 @@ that may be useful to others. More usefully, I have built in the
 prorating but perhaps most usefully of all, I have built in some sanity
 checks on the inputs and on the item scores.
 
+Thanks to Maren Rogawski for making me aware of measures that use the,
+to my mind, rather bizarre, fixed value replacement of missing item
+values rather than what I regard as more defensible pro-rating using the
+mean of the completed items.
+
 ## Examples
 
 ``` r
