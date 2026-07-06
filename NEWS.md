@@ -1,3 +1,6 @@
+# Version 0.0.0.9071
+Added pak::pkg_install() option to README.Rmd.
+
 # Version 0.0.0.9070
 Added first version of getNcomplete.  Man page still incomplete.
 

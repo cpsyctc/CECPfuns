@@ -40,6 +40,8 @@ To get it with the vignettes use one of these instructions within R.
 devtools::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
 ### or
 remotes::install_github("cpsyctc/CECPfuns", build_vignettes = TRUE)
+### or
+pak::pkg_install("cpsyctc/CECPfuns")
 ```
 
 However, that may fail with a complaint if you don't have pandoc installed on your machine as R uses pandoc to build vignettes.  You can install it following the instructions at https://pandoc.org/installing.html.  I would then close and reopen R (just in case it needs to find pandoc) and then repeat one of the above instructions.  Alternatively, you can install it without the vignettes using one of the following.
@@ -48,6 +50,8 @@ However, that may fail with a complaint if you don't have pandoc installed on yo
 devtools::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)
 ### or
 remotes::install_github("cpsyctc/CECPfuns", build_vignettes = FALSE)
+### as far as I can seek the pak::pkg_install() approach doesn't give the option
+### not to install vignettes
 ```
 
 If you really want to make sure you always have the latest version, you can look for it every time you launch R, see [here](https://www.psyctc.org/Rblog/posts/2021-02-10-making-my-first-usable-package/#how-i-am-synching-my-package-to-machines-other-than-my-main-machine).
@@ -65,3 +69,5 @@ The package is licensed under the MIT licence https://opensource.org/licenses/MI
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+## History
+Created July 2021, tweaks to this README.rmd 6.vii.2026.
