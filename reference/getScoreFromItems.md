@@ -172,8 +172,8 @@ tibWideDat %>%
                                     maxItemScore = 5)) %>%
            ### now we have to shift the data out of the rowwise() grouping:
            ungroup() ### you would probably save this as a new tibble: -> tibDataWithScores
-### that has returned the scores as mean scores and pro-rating for ID 1 which has only one missing value
-### so is pro-ratable given nProrateMin = 1 in the arguments
+### that has returned the scores as mean scores and pro-rating for ID 1 which has only one
+### missing value so is pro-ratable given nProrateMin = 1 in the arguments
 
 tibWideDat %>%
   ### as that has the item scores in rows

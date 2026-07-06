@@ -146,6 +146,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   Trivial function to count number of NA values in input
 - [`getNOK()`](https://cecpfuns.psyctc.org/reference/getNOK.md) :
   Trivial function to count number of non-NA values in input
+- [`getNcomplete()`](https://cecpfuns.psyctc.org/reference/getNcomplete.md)
+  : Function to get the number of rows with complete data for a given
+  dataset and collection variables
 - [`getPdiff2alphas()`](https://cecpfuns.psyctc.org/reference/getPdiff2alphas.md)
   : Gets the two-sided p value for the difference between two
   independent Cronbach alpha values

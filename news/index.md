@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.0.9070
+
+Added first version of getNcomplete. Man page still incomplete.
+
 ## Version 0.0.0.9069
 
 Corrected corner case in getScoreFromItems where scoreAsMean was FALSE

@@ -1,0 +1,118 @@
+# Function to get the number of rows with complete data for a given dataset and collection variables
+
+Function to get the number of rows with complete data for a given
+dataset and collection variables
+
+## Usage
+
+``` r
+getNcomplete(
+  data = NULL,
+  vars = NULL,
+  name = NULL,
+  returnType = c("named number", "raw number", "list")
+)
+```
+
+## Arguments
+
+- data:
+
+  The data as a data frame or tibble.
+
+- vars:
+
+  The variables to check, in tidyselect syntax
+
+- name:
+
+  Optional name, if not supplied, vars will be used.
+
+- returnType:
+
+  Character argument specifying the return type, see description.
+
+## Value
+
+number of rows of complete data as a named number, an unnamed number or
+list.
+
+## Background
+
+This function does a very simple thing: returns the number of rows of
+data in the dataset 'data' with non-missing values for all the variables
+in 'vars'.
+
+Depending on the value of 'returnType' it returns a raw number, a named
+number or a list with members 'name' and 'nComplete'.
+
+The 'name' can be supplied in the argument 'name' or, if nothing is
+specified there the character form of the variable selection is used as
+the name for the named number or the list return.
+
+The nice thing is that you can use any tidyselect syntax to select the
+variables, see the examples.
+
+The option to return a list makes it easy to write a sequence of dplyr
+summarise() statements to build a table of the numbers of complete data
+for various selections of variables. These can then, of course, be
+embedded in a dplyr group_by() specifications so the same counting can
+be done for subsets of the data.
+
+I will expand the examples below and this probably needs a vignette to
+explain it more fully.
+
+Acknowledgement: this wouldn't have happened had Maren Rogaski not been
+keen on getting these values!
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+valN <- 10
+
+tibble(a = rnorm(valN),
+       b = rnorm(valN),
+       c = rnorm(valN),
+       aChar = rep("a", valN),
+       nums = 1:valN) %>%
+  mutate(a = if_else(row_number() == 1,
+                     NA_real_,
+                     a),
+         b = if_else(row_number() == 2,
+                     NA_real_,
+                     b),
+         c = if_else(row_number() == 3,
+                     NA_real_,
+                     c),
+         aChar = if_else(row_number() == 4,
+                         NA_character_,
+                         aChar),
+         nums = if_else(row_number() == 5,
+                        NA_integer_,
+                        nums)) -> tmpTib
+
+getNcomplete(tmpTib) # you can call the dataset by its object name
+getNcomplete("tmpTib") # or supply that as a character variable
+### but those will throw an error as the function wants you to be explicit:
+### so use 'everything()' if you want all the variables in the dataset.
+getNcomplete("tmpTib", everything())
+getNcomplete(tmpTib, everything())
+### but you can use any 'tidyselect' specification of the variables:
+getNcomplete(tmpTib, a : nums)
+getNcomplete(tmpTib, a : aChar)
+getNcomplete(tmpTib, a)
+getNcomplete(tmpTib, "a")
+getNcomplete(tmpTib, where(is.integer))
+getNcomplete(tmpTib, where(is.character))
+getNcomplete(tmpTib, where(is.numeric))
+getNcomplete(tmpTib, c("a", "c"))
+### but this will throw a raw R error complaining there is no variable 'sausages'!
+getNcomplete(tmpTib, sausages)
+### you can specify three return types with returnType (imaginative names eh?)
+### # 'named number'
+### # 'raw number'
+### # 'list'
+
+} # }
+```
