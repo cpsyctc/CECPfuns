@@ -1,3 +1,6 @@
+# Version 0.0.0.9072
+Replaced deprecated quo_name() with as_label() in getNcomplete.
+
 # Version 0.0.0.9071
 Added pak::pkg_install() option to README.Rmd.
 

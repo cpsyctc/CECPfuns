@@ -10,7 +10,7 @@
 #'
 #' @importFrom rlang quo_is_null
 #' @importFrom rlang enquo
-#' @importFrom rlang quo_name
+#' @importFrom rlang as_label
 #' @importFrom stringr str_flatten
 #' @importFrom stringr str_sub
 #' @importFrom stringr str_to_upper
@@ -153,7 +153,7 @@ getNcomplete <- function(data = NULL,
 
   ### If no name was supplied, use the vars argument
   if(is.null(name)) {
-    name <- quo_name(vars)
+    name <- as_label(vars)
   }
 
 
