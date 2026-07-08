@@ -1,12 +1,12 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   Background: Background.html
   Bootstrapping: Bootstrapping.html
   Introduction: Introduction.html
   RCSC_framework: RCSC_framework.html
-last_built: 2026-07-06T10:17Z
+last_built: 2026-07-08T07:24Z
 urls:
   reference: https://cecpfuns.psyctc.org/reference
   article: https://cecpfuns.psyctc.org/articles
